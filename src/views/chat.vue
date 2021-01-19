@@ -6,12 +6,38 @@
                     <th style="width: 51%;">Название</th>
                     <th class="chat_block_inner_table_special_th" style="width: 19%">Каналы</th>
                     <th class="chat_block_inner_table_special_th" style="width: 12%">Лиды</th>
-                    <th class="chat_block_inner_table_special_th" style="width: 18%">Срок</th>
+                    <th class="chat_block_inner_table_special_th" colspan = 2 style="width: 18%">Срок</th>
+                
                 </tr>
 
                 <tr>
                     <td style="width: 51%;">ID</td>
-                    <td style="width: 19%">+777777777</td>
+                    <td class="chat_block_inner_second_column">
+                        <div class="chat_block_inner_margin">
+                            
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+79665989033</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/telegram.png" alt="telegram"><strong>@dsfddsddsflsd_bot</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/viber.png" alt="viber"><strong>propusk</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/vk.png" alt="vk"><strong>50932384</strong><div class="chat_green_point"></div><br>
+                            </div>
+                          
+                            <div class="chat_novye">
+                                <span>Новые: </span>
+                                <img src="" alt="">
+                                <span>Сегодня</span>
+                                <img src="" alt="">
+                                <span></span>
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                    </td>
                     <td class="chat_block_inner_third_column">
                         <div class="chat_block_inner_margin">
                             <p>1235 лидов</p>
@@ -19,8 +45,15 @@
                             <a href="#">Подробнее</a>
                         </div>
                     </td>
-                    <td style="width: 13%;">Модуль действителен</td>
-                    <td style="width: 5%;">Button to destroy it down</td>
+                    <td class="chat_block_inner_fourth_column">
+                        <div class="chat_block_inner_margin">
+                            <p>Модуль действителен еще:<span>93 дня</span></p>
+                            <a href="#">Настроить тариф</a>
+                        </div>
+                    </td>
+                    <td class="chat_block_inner_fifth_column">
+                        <img src="../assets/close.png" alt="close">
+                    </td>
                 </tr>
             </table>
         </div>
@@ -74,22 +107,63 @@ export default {
         justify-content: center;
     }
 
+    .chat_block_inner_second_column{
+        width: 19%;
+    }
+    .chat_block_inner_second_column img{
+        width: 22px;
+        vertical-align: top;
+        margin-right: 10px;
+    }
+    .chat_block_inner_second_column strong{
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .chat_green_point {
+        width: 7px;
+        display: inline-block;
+        height: 7px;
+        background-color: rgb(51,125,25);
+        border-radius: 25px;
+        vertical-align: middle;
+        margin-left: 5px;
+        margin-bottom: 2px;
+    }
     .chat_block_inner_third_column{
         width: 12%;
 
     }
     .chat_block_inner_margin{
+        width: 80%;
         margin-left: 20px;
     }
-    .chat_block_inner_third_column p{
+    .chat_block_inner_margin p{
         margin: 0;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 500;
     }
-    .chat_block_inner_third_column a{
+    .chat_block_inner_margin a{
         color: rgb(180, 46, 120);
-        font-size: 14px;
+        font-size: 15px;
+    }
+    .chat_block_inner_margin span{
+        color: rgb(51,125,25);
     }
 
+    .chat_block_inner_fourth_column{
+        width: 13%;
+    } 
+    .chat_block_inner_fifth_column{
+        width: 5%;
+    }
+    .chat_block_inner_fifth_column img{
+        width: 50%;
+        margin-left: 25%;
+        transition: 0.3s all ease;
+    }
+    .chat_block_inner_fifth_column img:hover{
+        width: 60%;
+        margin-left: 22%;
+    }
 
 </style>
