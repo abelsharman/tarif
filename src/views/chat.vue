@@ -2,7 +2,7 @@
   <div class="chat_block">
         <div class="chat_block_inner">
             <table>
-                <tr class="chat_block_inner_row_heading" style="border:0px;">
+                <tr class="chat_block_inner_row_heading" style="border:0px;background-color: white;border-radius: 15px;">
                     <th style="width: 51%;">Название</th>
                     <th class="chat_block_inner_table_special_th" style="width: 19%">Каналы</th>
                     <th class="chat_block_inner_table_special_th" style="width: 12%">Лиды</th>
@@ -11,7 +11,64 @@
                 </tr>
 
                 <tr>
-                    <td style="width: 51%;">ID</td>
+                    <td class="chat_block_inner_first_column">
+                        <div class="chat_block_inner_margin1">
+                            <div class="chat_block_id_1">
+                                <p class="chat_block_id_1_grey">ID 22345</p>
+                                <p class="chat_block_id_1_big">Бот_Валера_1</p>
+                                <p class="chat_block_id_1_green">Баланс WABA: $9,900</p>
+                                <p class="chat_block_id_1_darkgrey">3 мб</p>
+                                <p class="chat_block_id_1_grey">13 июня, 2019</p>
+                            </div>
+
+                            <div class="chat_block_id_2">
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/info.png" alt="info"><strong>Профиль</strong>
+                                 </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/links.png" alt="links"><strong>Ссылки</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/view.png" alt="view"><strong>Операторы</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/links.png" alt="links"><strong>WABA профиль</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/h.png" alt="h"><strong>HSM</strong>
+                                </div>
+                            </div>
+
+                            <div class="chat_block_id_3">
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/chat.png" alt="chat">
+                                    <p>ДИАЛОГИ NEW</p>
+                                </div>
+
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/layers.png" alt="layers">
+                                    <p>РЕДАКТОР СЦЕНАРИЯ</p>
+                                </div>
+
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/mail.png" alt="mail">
+                                    <p>РАССЫЛКА</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+
+
+
                     <td class="chat_block_inner_second_column">
                         <div class="chat_block_inner_margin">
                             
@@ -29,15 +86,17 @@
                             </div>
                           
                             <div class="chat_novye">
-                                <span>Новые: </span>
-                                <img src="" alt="">
-                                <span>Сегодня</span>
-                                <img src="" alt="">
-                                <span></span>
-                                <img src="" alt="">
+                                <span style="color: rgb(100,100,100);font-size:14px;">Новые: </span>
+                                <img src="../assets/left_arrow.png" alt="">
+                                <span style="color: rgb(100,100,100);font-size:14px;">Сегодня</span>
+                                <span id="chat_novye_span">3236</span>
+                                <img src="../assets/right_arrow.png" alt="">
                             </div>
                         </div>
                     </td>
+
+
+
                     <td class="chat_block_inner_third_column">
                         <div class="chat_block_inner_margin">
                             <p>1235 лидов</p>
@@ -45,12 +104,248 @@
                             <a href="#">Подробнее</a>
                         </div>
                     </td>
+
+
+
                     <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
                             <p>Модуль действителен еще:<span>93 дня</span></p>
                             <a href="#">Настроить тариф</a>
                         </div>
                     </td>
+
+
+
+                    <td class="chat_block_inner_fifth_column">
+                        <img src="../assets/close.png" alt="close">
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="chat_block_inner_first_column">
+                        <div class="chat_block_inner_margin1">
+                            <div class="chat_block_id_1">
+                                <p class="chat_block_id_1_grey">ID 22345</p>
+                                <p class="chat_block_id_1_big">Бот_Валера_1</p>
+                                <p class="chat_block_id_1_green">Баланс WABA: $9,900</p>
+                                <p class="chat_block_id_1_darkgrey">3 мб</p>
+                                <p class="chat_block_id_1_grey">13 июня, 2019</p>
+                            </div>
+
+                            <div class="chat_block_id_2">
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/info.png" alt="info"><strong>Профиль</strong>
+                                 </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/links.png" alt="links"><strong>Ссылки</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/view.png" alt="view"><strong>Операторы</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/links.png" alt="links"><strong>WABA профиль</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/h.png" alt="h"><strong>HSM</strong>
+                                </div>
+                            </div>
+
+                            <div class="chat_block_id_3">
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/chat.png" alt="chat">
+                                    <p>ДИАЛОГИ NEW</p>
+                                </div>
+
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/layers.png" alt="layers">
+                                    <p>РЕДАКТОР СЦЕНАРИЯ</p>
+                                </div>
+
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/mail.png" alt="mail">
+                                    <p>РАССЫЛКА</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+
+
+
+                    <td class="chat_block_inner_second_column">
+                        <div class="chat_block_inner_margin">
+                            
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+79665989033</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/telegram.png" alt="telegram"><strong>@dsfddsddsflsd_bot</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/viber.png" alt="viber"><strong>propusk</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/vk.png" alt="vk"><strong>50932384</strong><div class="chat_green_point"></div><br>
+                            </div>
+                          
+                            <div class="chat_novye">
+                                <span style="color: rgb(100,100,100);font-size:14px;">Новые: </span>
+                                <img src="../assets/left_arrow.png" alt="">
+                                <span style="color: rgb(100,100,100);font-size:14px;">Сегодня</span>
+                                <span id="chat_novye_span">3236</span>
+                                <img src="../assets/right_arrow.png" alt="">
+                            </div>
+                        </div>
+                    </td>
+
+
+
+                    <td class="chat_block_inner_third_column">
+                        <div class="chat_block_inner_margin">
+                            <p>1235 лидов</p>
+                            <p>242 контакта</p>
+                            <a href="#">Подробнее</a>
+                        </div>
+                    </td>
+
+
+
+                    <td class="chat_block_inner_fourth_column">
+                        <div class="chat_block_inner_margin">
+                            <p>Модуль действителен еще:<span>93 дня</span></p>
+                            <a href="#">Настроить тариф</a>
+                        </div>
+                    </td>
+
+
+
+                    <td class="chat_block_inner_fifth_column">
+                        <img src="../assets/close.png" alt="close">
+                    </td>
+                </tr>
+
+
+
+
+
+
+                <tr>
+                    <td class="chat_block_inner_first_column">
+                        <div class="chat_block_inner_margin1">
+                            <div class="chat_block_id_1">
+                                <p class="chat_block_id_1_grey">ID 22345</p>
+                                <p class="chat_block_id_1_big">Бот_Валера_1</p>
+                                <p class="chat_block_id_1_green">Баланс WABA: $9,900</p>
+                                <p class="chat_block_id_1_darkgrey">3 мб</p>
+                                <p class="chat_block_id_1_grey">13 июня, 2019</p>
+                            </div>
+
+                            <div class="chat_block_id_2">
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/info.png" alt="info"><strong>Профиль</strong>
+                                 </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/links.png" alt="links"><strong>Ссылки</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/view.png" alt="view"><strong>Операторы</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/links.png" alt="links"><strong>WABA профиль</strong>
+                                </div>
+
+                                <div style="margin-bottom: 2px;">
+                                    <img src="../assets/h.png" alt="h"><strong>HSM</strong>
+                                </div>
+                            </div>
+
+                            <div class="chat_block_id_3">
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/chat.png" alt="chat">
+                                    <p>ДИАЛОГИ NEW</p>
+                                </div>
+
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/layers.png" alt="layers">
+                                    <p>РЕДАКТОР СЦЕНАРИЯ</p>
+                                </div>
+
+                                <div class="chat_block_id_3_border">
+                                    <img src="../assets/mail.png" alt="mail">
+                                    <p>РАССЫЛКА</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+
+
+
+                    <td class="chat_block_inner_second_column">
+                        <div class="chat_block_inner_margin">
+                            
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+79665989033</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/telegram.png" alt="telegram"><strong>@dsfddsddsflsd_bot</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/viber.png" alt="viber"><strong>propusk</strong><div class="chat_green_point"></div><br>
+                            </div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/vk.png" alt="vk"><strong>50932384</strong><div class="chat_green_point"></div><br>
+                            </div>
+                          
+                            <div class="chat_novye">
+                                <span style="color: rgb(100,100,100);font-size:14px;">Новые: </span>
+                                <img src="../assets/left_arrow.png" alt="">
+                                <span style="color: rgb(100,100,100);font-size:14px;">Сегодня</span>
+                                <span id="chat_novye_span">3236</span>
+                                <img src="../assets/right_arrow.png" alt="">
+                            </div>
+                        </div>
+                    </td>
+
+
+
+                    <td class="chat_block_inner_third_column">
+                        <div class="chat_block_inner_margin">
+                            <p>1235 лидов</p>
+                            <p>242 контакта</p>
+                            <a href="#">Подробнее</a>
+                        </div>
+                    </td>
+
+
+
+                    <td class="chat_block_inner_fourth_column">
+                        <div class="chat_block_inner_margin">
+                            <p>Модуль действителен еще:<span>93 дня</span></p>
+                            <a href="#">Настроить тариф</a>
+                        </div>
+                    </td>
+
+
+
                     <td class="chat_block_inner_fifth_column">
                         <img src="../assets/close.png" alt="close">
                     </td>
@@ -68,6 +363,22 @@ export default {
 </script>
 
 <style>
+    .chat_block_inner_margin{
+        width: 85%;
+        margin-left: 20px;
+    }
+    .chat_block_inner_margin p{
+        margin: 0;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .chat_block_inner_margin a{
+        color: rgb(180, 46, 120);
+        font-size: 15px;
+    }
+    .chat_block_inner_margin span{
+        color: rgb(51,125,25);
+    }
     .chat_block{
         margin: 0;
         height: 400px;
@@ -90,6 +401,12 @@ export default {
     .chat_block_inner tr{
         border-bottom: 1px dashed rgb(207,219,224);
         border-left: 5px solid rgb(207,219,224);
+        background-color: rgb(249,250,251);
+        transition: 0.5s all ease;
+    }
+    .chat_block_inner tr:hover{
+        border-left: 5px solid rgb(163,23,98);
+        background-color: white;
     }
     .chat_block_inner th{
         text-transform: uppercase;
@@ -103,9 +420,91 @@ export default {
     .chat_block_inner td{
         height: 200px;
         border-left: 1px solid rgb(229, 230, 231);
-        background-color: rgb(249,250,251);
         justify-content: center;
     }
+    .chat_block_inner_margin1{
+        width: 95%;
+        margin-left: 20px;
+        height: auto;
+    }
+    .chat_block_inner_first_column{
+        width: 51%;
+    }
+    .chat_block_id_1{
+        display: inline-block;
+        width: 39%;
+        vertical-align: top;
+        margin-top: 20px;
+    }
+    .chat_block_id_1 .chat_block_id_1_grey{
+        color: rgb(181,182,183);
+        font-size: 14px;
+        margin: 9px 0;
+    }
+    .chat_block_id_1 .chat_block_id_1_big{
+        font-size: 17px;
+        margin: 7px 0 3px 0;
+        color: rgb(40,12,68)
+    }
+    .chat_block_id_1 .chat_block_id_1_green{
+        color: rgb(51,125,25);
+        font-size: 14px;
+        margin: 3px 0;
+    }
+    .chat_block_id_1 .chat_block_id_1_darkgrey{
+        color: rgb(99,100,101);
+        font-size: 14px;
+        margin: 3px 0;
+    }
+
+    .chat_block_id_2{
+        display: inline-block;
+        width: 28%;
+        vertical-align: top;
+        margin-top: 20px;
+    }
+    .chat_block_id_2 img{
+        width: 15px;
+        vertical-align: middle;  
+        margin-right: 7px;  
+    }
+    .chat_block_id_2 strong{
+        color: rgb(180,46,117);
+        text-decoration: underline;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+
+    .chat_block_id_3{
+        display: inline-block;
+        width: 33%;
+        vertical-align: top;
+        margin-top: 30px;
+    }
+    .chat_block_id_3_border{
+        padding: 1px 20px;
+        height: 28px;
+        text-align: center;
+        border: 1px solid rgb(180,46,117);
+        border-radius: 25px;
+        margin-bottom: 6px;
+    }
+    .chat_block_id_3_border img{
+        width: 18px;
+        vertical-align: middle;
+        margin-right: 7px;
+
+    }
+    .chat_block_id_3_border p{
+        display: inline-block;
+        font-weight: 500;
+        font-size: 13px;
+        margin-top: 5px;
+        
+    }
+
+
 
     .chat_block_inner_second_column{
         width: 19%;
@@ -129,26 +528,28 @@ export default {
         margin-left: 5px;
         margin-bottom: 2px;
     }
+    .chat_novye{
+        margin-top: 10%;
+    }
+    #chat_novye_span{
+        color: rgb(100,100,100);
+        background-color: rgb(206,215,221);
+        padding: 1px 7px;
+        border-radius: 15px;
+        margin: 0px 4px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .chat_novye img{
+        width: 11px;
+        margin-top: 5px;
+        margin-left: 1px;
+    }
     .chat_block_inner_third_column{
         width: 12%;
 
     }
-    .chat_block_inner_margin{
-        width: 80%;
-        margin-left: 20px;
-    }
-    .chat_block_inner_margin p{
-        margin: 0;
-        font-size: 15px;
-        font-weight: 500;
-    }
-    .chat_block_inner_margin a{
-        color: rgb(180, 46, 120);
-        font-size: 15px;
-    }
-    .chat_block_inner_margin span{
-        color: rgb(51,125,25);
-    }
+    
 
     .chat_block_inner_fourth_column{
         width: 13%;
@@ -162,7 +563,7 @@ export default {
         transition: 0.3s all ease;
     }
     .chat_block_inner_fifth_column img:hover{
-        width: 60%;
+        width: 55%;
         margin-left: 22%;
     }
 
