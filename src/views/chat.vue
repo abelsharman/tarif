@@ -1,7 +1,47 @@
 <template>
-  <div class="chat_block">
-        <div class="chat_block_inner">
-            <table>
+    <div class="left_block">
+         <router-link to="/">
+        <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
+        </router-link >
+
+        <div class="left_block_inner">
+            <a href="#"><img src="../assets/sidebar_logo.png" alt="name"></a>
+            <a href="#"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+            <a href="#"><img src="../assets/sidebar_menu_list.png" alt="list"></a>
+            <a href="#"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+        </div>
+
+
+         <div class="left_block_inner left_block_inner2">
+            <a href="#"><img src="../assets/sidebar_help.png" alt="help"></a>
+        </div>
+    </div>
+
+    <div class="right_block">
+        <div class="right_block_inner">
+            <h2>Ваши чат-боты</h2>
+
+            <div class="right_block_inner_balans">
+                <img src="../assets/photo.png" alt="">
+           
+               
+               <div class="right_block_inner_balans_right">
+                    <p>Ваш баланс: <span>0 ₽</span></p>
+                    <router-link to="/balans">Пополнить баланс</router-link>
+               </div>
+                
+            </div>
+
+
+            <div class="right_block_inner_logout">
+                <img src="../assets/header_exit.png">
+            </div>
+        </div>
+
+    
+        <div class="chat_block">
+            <div class="chat_block_inner">
+                <table>
                 <tr class="chat_block_inner_row_heading" style="border:0px;background-color: white;border-radius: 15px;">
                     <th style="width: 51%;">Название</th>
                     <th class="chat_block_inner_table_special_th" style="width: 19%">Каналы</th>
@@ -131,7 +171,7 @@
                     <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
                             <p>Модуль действителен еще:<span>93 дня</span></p>
-                            <a href="#">Настроить тариф</a>
+                            <router-link to="/tarif">Настроить тариф</router-link>
                         </div>
                     </td>
 
@@ -269,7 +309,7 @@
                     <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
                             <p>Модуль действителен еще:<span>93 дня</span></p>
-                            <a href="#">Настроить тариф</a>
+                            <router-link to="/tarif">Настроить тариф</router-link>
                         </div>
                     </td>
 
@@ -405,7 +445,7 @@
                     <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
                             <p>Бесплатный период заканчивается через:<span class="chat_block_red">2 дня</span></p>
-                            <a href="#">Настроить тариф</a>
+                            <router-link to="/tarif">Настроить тариф</router-link>
                         </div>
                     </td>
 
@@ -415,9 +455,10 @@
                         <img src="../assets/close.png" alt="close">
                     </td>
                 </tr>
-            </table>
+                </table>
+            </div>
         </div>
-  </div>
+    </div>
   
 </template>
 
@@ -428,6 +469,98 @@ export default {
 </script>
 
 <style>
+    .left_block{
+        float: left;
+        width: 6%;
+        
+        height: 100%;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+    }
+    .left_block_inner{
+        margin-top: 200px;
+    }
+    .left_block_inner img{
+        margin-top: 30px;
+        display: block;
+        margin-left: 35%;
+        width: 30%;
+        
+    }
+    .left_block_inner2{
+        margin-top: 280px;
+        padding-bottom: 42px;
+    }
+
+
+
+
+    .right_block{
+        float: right;
+        width: 94%;
+        margin: 0;
+    }
+    .right_block_inner{
+        width: 100%;
+        margin: 0;
+        text-align: left;
+        height: 100px;
+        background-color: rgb(249,250,251);
+    }
+    .right_block_inner h2{
+        width: 65%;
+        padding: 30px 40px;
+        display: inline-block;
+        margin: 0;
+        font-size: 1.3em;
+    }
+    .right_block_inner_balans{
+        width: 17%;
+        display: inline-block;
+    }
+    .right_block_inner_balans img{
+        width: 15%;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    .right_block_inner_balans p{
+        display: inline-block;
+    }
+    .right_block_inner_balans_right{
+        vertical-align: bottom;
+        margin-left: 15px;
+        display: inline-block;
+        line-height: 10px;
+    }
+    .right_block_inner_balans_right p,a{
+        display: block;
+        font-size: 14px;
+    }
+    .right_block_inner_balans_right a, span{
+        color: rgb(207,30,65);
+    }
+    .right_block_inner_balans_right span{
+        font-size: 22px;
+        font-weight: 600;
+    }
+ 
+
+
+
+    .right_block_inner_logout{
+        display: inline-block;
+    }
+    .right_block_inner_logout img{
+        width: 40px;
+        vertical-align: middle;
+        border-left: 1px solid rgb(209,218,223);
+        padding-left: 10px;
+        padding: 15px 0 15px 50px;
+    }
+
+
+
+
+
     .chat_block_inner_margin{
         width: 85%;
         margin-left: 20px;
@@ -452,8 +585,8 @@ export default {
         margin: 0;
         height: 400px;
         text-align: left;
-        width: 99%;
-        padding: 10px;
+        width: 95%;
+        padding: 10px 30px;
     }
     .chat_block_inner{
         position: relative;
@@ -465,6 +598,7 @@ export default {
     .chat_block_inner table{
         width: 100%;
         height: 100px;
+        border-radius: 9px;
         border-collapse: collapse;
     }
     .chat_block_inner tr{
@@ -485,6 +619,7 @@ export default {
     }
     .chat_block_inner_table_special_th{
         color: rgb(128, 156, 174);
+        border-radius: 9px;
     }
     .chat_block_inner td{
         height: 200px;
@@ -562,7 +697,7 @@ export default {
         margin-top: 3%;
     }
     .chat_block_id_3_border{
-        padding: 1px 20px;
+        padding: 1px 18px;
         height: 28px;
         text-align: center;
         border: 1px solid rgb(180,46,117);
@@ -575,7 +710,7 @@ export default {
         color: rgb(103,104,105);
     }
     .chat_block_id_3_border img{
-        width: 18px;
+        width: 16px;
         vertical-align: middle;
         margin-right: 7px;
 
@@ -584,7 +719,7 @@ export default {
         display: inline-block;
         font-weight: 500;
         color: #2c3e50;
-        font-size: 13px;
+        font-size: 12px;
         margin-top: 5px;
         
     }

@@ -1,11 +1,17 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> 
   </div>
   <router-view/>
 </template>
 
 <style>
+body{
+  margin: 0;
+}
+template{
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +21,8 @@
 }
 
 #nav {
-  padding: 30px;
+  margin: 0;
+  padding: 0px;
 }
 
 #nav a {
