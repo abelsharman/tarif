@@ -134,25 +134,91 @@
                             <p>Привязать данную карту к аккаунту</p>
                         </div>
                     </div>
-
-
                 </div>
-
-
-
-               
             </div>
 
 
             <div class="right_balans_right">
+                <table>
+                    <tr class="table_first_row">
+                        <th colspan=3>
+                            Пополнение баланса WABA
+                        </th>
+                    </tr>
 
+
+                    <tr class="table_odd_row">
+                        <td class="table_odd_row_1">
+                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
+                        </td>
+
+                        <td class="table_odd_row_2"> 
+                            <p>Баланс WABA: $9,900</p>
+                        </td>
+
+                        <td class="table_odd_row_3">
+                            <p>Пополнить</p>
+                        </td>
+                    </tr>
+
+
+
+                     <tr class="table_odd_row table_even_row">
+                        <td class="table_odd_row_1">
+                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
+                        </td>
+
+                        <td class="table_odd_row_2"> 
+                            <p>Баланс WABA: $9,900</p>
+                        </td>
+
+                        <td class="table_odd_row_3">
+                            <p>Пополнить</p>
+                        </td>
+                    </tr>
+
+
+                    <tr class="table_odd_row">
+                        <td class="table_odd_row_1">
+                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
+                        </td>
+
+                        <td class="table_odd_row_2"> 
+                            <p>Баланс WABA: $9,900</p>
+                        </td>
+
+                        <td class="table_odd_row_3">
+                            <p>Пополнить</p>
+                        </td>
+                    </tr>
+
+
+
+                     <tr class="table_odd_row table_even_row">
+                        <td class="table_odd_row_1">
+                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
+                        </td>
+
+                        <td class="table_odd_row_2"> 
+                            <p>Баланс WABA: $9,900</p>
+                        </td>
+
+                        <td class="table_odd_row_3">
+                            <p>Пополнить</p>
+                            
+                        </td>
+                    </tr>
+
+
+
+                </table>
             </div>
         </div>
      </div>
 </template>
 
 
-<script>
+<script scoped>
 export default {
     name: 'Balans',
     data() {
@@ -275,7 +341,7 @@ export default {
 
     .right_balans_left{
         float: left;
-        width: 46%;
+        width: 44%;
         height: auto;
         border: 1px solid rgb(229,230,231);
         background-color: rgb(248,249,250);
@@ -472,7 +538,68 @@ export default {
         width: 20px;
         margin-right: 0px;
     }
-
+    .right_balans_right{
+        width: 51%;
+        display: inline-block;
+    }
+    .right_balans_right table{
+        border-collapse: collapse;
+        width: 90%;
+        text-align: left;
+        margin: 30px;
+        border: 1px solid rgb(229,230,231);
+        background-color: rgb(248,249,250);
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
+    }
+    .right_balans_right th{
+        border-radius: 15px;
+        background-color: white;
+        font-weight: 500;
+        padding: 13px 0 13px 30px;
+    }
+    .table_odd_row{
+        background-color: rgb(239,240,242)
+    }
+    .table_odd_row td{
+        border-right: 1px solid rgb(229,230,231);
+    }
+    .table_odd_row img{
+        width: 20px;
+        vertical-align: middle;
+        margin: 5px 10px 5px 30px;
+    }
+    .table_odd_row span{
+        color: black;
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+    .table_odd_row_1{
+        width: 30%;
+    }
+    .table_odd_row_2 {
+        width: 48%;
+    }
+    .table_odd_row_3{
+        width: 20%;
+    }
+    .table_odd_row_2 p{
+        font-weight: 500;
+        font-size: 0.9em;
+        margin-left: 30px;
+        color: green;
+    }
+    .table_odd_row_3 p{
+        color: rgb(207,30,65);
+        font-size: 0.9em;
+        border-bottom: 1px solid rgb(207,30,65);
+        width: 60%;
+        margin-left: 10%;
+        cursor: pointer;
+    }
+    .table_even_row{
+        background-color:  rgb(248,249,250) !important;
+    }
 
 
 </style>

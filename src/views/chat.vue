@@ -468,7 +468,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .left_block{
         float: left;
         width: 6%;
