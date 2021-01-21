@@ -41,7 +41,112 @@
 
 
         <div class="right_balans">
+            <div class="right_balans_left">
+                <div class="right_balans_left_inner">
+                    <div class="right_balans_left_inner_img">
+                        <img src="../assets/camera.png" alt="">
+                    </div>
+                    <div class="right_balans_left_inner_summa">
+                        <h2>Общий баланс аккаунта: </h2>
+                        <h1>1,200 ₽</h1>
+                    </div>
 
+
+                    <form>
+                        <div class="right_balans_left_inner_input" v-show="carta">
+                            <input type="text" placeholder="Введите сумму" required>
+                            <input ref="submit_button" type="submit" value="ПОПОЛНИТЬ">
+                        </div>
+                    </form>
+
+                    <div class="right_balans_left_inner_add_cart_form" v-if="!carta">
+                        <form>
+                        <h3>Привязка карты к аккаунту</h3>
+                        <p>Имя держателя карты:</p>
+                        <input type="text" placeholder="Антон Анатолий Андреевич" required><br>
+
+                        <div class="right_balans_left_inner_add_cart_form_1">
+                            <p>Номер карты:</p>
+                            <input type="text" placeholder="4149 5678 5584 4920" required>
+                        </div>
+
+                        <div class="right_balans_left_inner_add_cart_form_2">
+                            <p>CVV код:</p>
+                            <input type="text" placeholder="567" required>
+                        </div>
+
+                        <div class="right_balans_left_inner_add_cart_form_3">
+                            <p>Срок действия:</p>
+                            <input type="text" placeholder="ММ/ГГ" required>
+                        </div>
+
+                        <input type="submit" value="ПРИВЯЗАТЬ КАРТУ">
+                        <a @click="showForm()">Отмена</a>
+                        </form>
+                    </div>
+
+                    <div class="right_balans_left_inner_add_cart_button" @click="showForm()" v-if="carta && !carta_info">
+                        <img src="../assets/menu_add.png" alt="add">
+                        <p>Привязать карту</p>
+                    </div>
+
+
+                    <div class="right_balans_left_inner_carts" v-if="!carta" @click="showAnotherForm()">
+                        <p>Ваши карты</p>
+                        <div class="right_balans_left_inner_carts_cart">   
+                            <img src="../assets/money.png" alt="">
+                            <p>4149...4920<span>x</span></p>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="right_balans_left_inner_add_cart_form" v-if="carta_info">
+                        <form>
+                        <h3>Данные о карте</h3>
+                        <p>Имя держателя карты:</p>
+                        <input type="text" placeholder="Антон Анатолий Андреевич" required><br>
+
+                        <div class="right_balans_left_inner_add_cart_form_1">
+                            <p>Номер карты:</p>
+                            <input type="text" placeholder="4149 5678 5584 4920" required>
+                        </div>
+
+                        <div class="right_balans_left_inner_add_cart_form_2">
+                            <p>CVV код:</p>
+                            <input type="text" placeholder="567" required>
+                        </div>
+
+                        <div class="right_balans_left_inner_add_cart_form_3">
+                            <p>Срок действия:</p>
+                            <input type="text" placeholder="ММ/ГГ" required>
+                        </div>
+
+                        <input type="submit" value="ПОПОЛНИТЬ">
+                        <a @click="closeAnotherForm()">Отмена</a>
+                        </form>
+
+
+                        <div class="right_balans_left_inner_add_cart_button right_balans_left_inner_add_cart_another_button" @click="closeAnotherForm()">
+                            <img src="../assets/menu_add.png" alt="add">
+                            <p>Привязать данную карту к аккаунту</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+               
+            </div>
+
+
+            <div class="right_balans_right">
+
+            </div>
         </div>
      </div>
 </template>
@@ -52,8 +157,25 @@ export default {
     name: 'Balans',
     data() {
         return{
-            courses: []
+            courses: [],
+            carta: true, 
+            carta_info: false
         }
+    },
+    methods: {
+        showForm: function(){
+            this.carta = !this.carta
+        }, 
+        showAnotherForm(){
+            this.carta_info = true
+            this.carta = true
+            this.$refs.submit_button.style.display = 'none'
+        },
+        closeAnotherForm(){
+            this.carta_info = false
+            this.$refs.submit_button.style.display = 'inline-block'
+        }
+        
     },
     created() {
         const axios = require('axios');
@@ -70,9 +192,9 @@ export default {
 
 <style>
     .left_block{
+        outline: none;
         float: left;
         width: 6%;
-        
         height: 100%;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
@@ -90,11 +212,8 @@ export default {
         margin-top: 280px;
         padding-bottom: 42px;
     }
-
-
-
-
     .right_block{
+        outline: none;
         float: right;
         width: 94%;
         margin: 0;
@@ -142,9 +261,6 @@ export default {
         font-size: 22px;
         font-weight: 600;
     }
- 
-
-
 
     .right_block_inner_logout{
         display: inline-block;
@@ -156,4 +272,207 @@ export default {
         padding-left: 10px;
         padding: 15px 0 15px 50px;
     }
+
+    .right_balans_left{
+        float: left;
+        width: 46%;
+        height: auto;
+        border: 1px solid rgb(229,230,231);
+        background-color: rgb(248,249,250);
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
+        margin: 30px;
+        text-align: right;
+    }
+    .right_balans_left_inner{
+        width: 90%;
+        margin: 5%;
+    }
+    .right_balans_left_inner_img{
+        display: inline-block;
+        width: 39%;
+    } 
+    .right_balans_left_inner_img img{
+        width: 100%;
+    }
+    .right_balans_left_inner_summa{
+        display: inline-block;
+        width: 59%;
+        vertical-align: top;
+    }
+    .right_balans_left_inner_summa h2{
+        padding-top: 20%;
+        margin:0;
+    }
+    .right_balans_left_inner_summa h1{
+        margin: 0;
+        font-size: 4em;
+        color: rgb(207,30,65)
+    }
+    .right_balans_left_inner_input{
+        width: 100%;
+    }
+    .right_balans_left_inner_input input[type="text"]{
+        background-image: url('../assets/money.png');
+        background-size: 5%;
+        background-position: left;
+        background-position-x: 10px;
+        background-position-y: 3px;
+        background-repeat: no-repeat;
+        width: 90%;
+        margin-right: 5%;
+        font-size: 1em;
+        border: 0px;
+        border-bottom: 1px solid grey;
+        padding: 7px 0 7px 50px;
+        background-color: rgb(249,250,252);
+        outline: none;
+        color: black;
+    }
+    .right_balans_left_inner_input input[type="text"]::placeholder{
+        color: grey;
+    }
+    .right_balans_left_inner_input input[type="submit"]{
+        color: white;
+        font-weight: 600;
+        font-size: 0.9em;
+        border: 0px;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+        padding: 14px;
+        border-radius: 30px;
+        width: 50%;
+        margin-right: 25%;
+        margin-top: 7%;
+        transition: 0.8s all ease;
+    }
+    .right_balans_left_inner_input input[type="submit"]:hover{
+        color: yellow;
+    }
+    .right_balans_left_inner_add_cart{
+        margin-top: 100px;
+    }
+    .right_balans_left_inner_add_cart img{
+        width: 3%;
+        display: inline-block;
+    }
+    .right_balans_left_inner_add_cart p{
+        display: inline-block;
+        padding-bottom: 7px;
+        vertical-align: middle;
+        color: darkgrey;
+        margin-left: 10px;
+        font-size: 0.9em;
+    }
+    .right_balans_left_inner_add_cart_form{
+        width: 90%;
+        text-align: left;
+        background-color: white;
+        margin-top: 20px;
+        padding: 30px;
+        padding-top: 5px;
+        border-radius: 8px;
+    }
+    .right_balans_left_inner_add_cart_form p{
+        font-size: 0.9em;
+        margin: 5px 0 5px 10px;
+
+    }
+    .right_balans_left_inner_add_cart_form input[type="text"]{
+        width: 90%;
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 10px;    
+        font-size: 0.9em;
+    }
+    .right_balans_left_inner_add_cart_form_1{
+        width: 46%;
+        display:inline-block;
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+    .right_balans_left_inner_add_cart_form_2{
+        width: 20%;
+        display:inline-block;
+        margin-right: 20px;
+    }
+    .right_balans_left_inner_add_cart_form_3{
+        width: 25%;
+        display:inline-block;
+        margin-right: 5px;
+    }
+    .right_balans_left_inner_add_cart_form input[type="submit"]{
+        color: white;
+        font-weight: 600;
+        font-size: 0.9em;
+        border: 0px;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+        padding: 14px;
+        border-radius: 30px;
+        width: 50%;
+        margin-left: 15%;
+        margin-top: 7%;
+        transition: 0.8s all ease;
+        display: inline-block;
+    }
+    .right_balans_left_inner_add_cart_form a{
+        display: inline-block;
+        color: darkgrey;
+        margin-left: 20px;
+    }
+    .right_balans_left_inner_add_cart_button{
+        margin-top: 100px;
+    }
+    .right_balans_left_inner_add_cart_button img{
+        width: 3%;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+    .right_balans_left_inner_add_cart_button p{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.9em;
+        color: darkgrey;
+    }
+    .right_balans_left_inner_carts{
+        background-color: inherit;
+        text-align: left;
+        width: 90%;
+        
+    }
+    .right_balans_left_inner_carts_cart{
+        padding: 5px 20px;
+        font-size: 0.9em;
+        border: 1px solid darkgrey;
+        border-radius: 8px;
+    }
+    .right_balans_left_inner_carts_cart p{
+        margin: 0;
+        width: 80%;
+        display: inline-block;
+    }
+    .right_balans_left_inner_carts_cart img{
+        width: 30px;
+        margin-right: 15px;
+        vertical-align: top;
+        display: inline-block;
+    }
+    .right_balans_left_inner_carts span{
+        margin: 0;
+        margin-left: 88%;
+        font-size: 1.5em;
+        font-weight: 800;
+    }
+    .right_balans_left_inner_add_cart_another_button{
+        margin-top: 30px;
+        text-align: center;
+        font-size: 1.1em;
+    }
+    .right_balans_left_inner_add_cart_another_button img{
+        width: 20px;
+        margin-right: 0px;
+    }
+
+
+
 </style>
