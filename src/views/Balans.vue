@@ -230,9 +230,57 @@
 
 
 
-                <div>
-                    
+                <div class="right_balans_right_count">
+                    <h4>Выставление счета для юридических лиц</h4>
 
+                    <div class="right_balans_right_count_inner" v-if="!billForm" @click="this.billForm = !this.billForm">
+                        <img src="../assets/menu_add.png" alt="add">
+                        <p>Создать новый счет</p>
+                    </div>
+
+
+                    <div v-if="billForm" class="right_balans_right_count_bill">   
+                        <div class="right_balans_right_count_bill_1">
+                            <p>Получатель платежа:</p>
+                            <input type="text" placeholder="ОАО Русгазбанк" required>
+                        </div>
+
+                        <div class="right_balans_right_count_bill_2">
+                            <p>E-mail для отправки:</p>
+                            <input type="text" placeholder="mail@gmail.com" required>
+                        </div>
+
+                        <br>
+
+                        <div class="right_balans_right_count_bill_3">
+                            <p>ИНН:</p>
+                            <input type="text" placeholder="1234567890" required>
+                        </div>
+
+                        <div class="right_balans_right_count_bill_4"> 
+                            <p>КПП:</p>
+                            <input type="text" placeholder="1234567890" required>
+                        </div>
+
+                        <div class="right_balans_right_count_bill_5">
+                            <p>ОГРН:</p>
+                            <input type="text" placeholder="12345678901234567890" required>
+                        </div>
+
+                      
+                        <div class="right_balans_right_count_bill_6">
+                            <p>Сумма,руб:</p>
+                            <input type="text" placeholder="5000" required>
+                        </div>
+
+                        <input type="submit" value="ОТПРАВИТЬ СЧЕТ" @click="this.billForm = !this.billForm">
+
+
+                        <div class="right_balans_right_count_bill_7">
+                            <img src="../assets/down_arrow.png" alt="">
+                            <a @click="this.billForm = !this.billForm">Скачать счет в PDF</a>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -250,7 +298,8 @@ export default {
             courses: [],
             carta: true, 
             carta_info: false,
-            addBalans: false
+            addBalans: false,
+            billForm: true
         }
     },
     methods: {
@@ -665,6 +714,120 @@ export default {
         background-size: cover;
         border: 0px;
     }
+    .right_balans_right_count{
+        border-collapse: collapse;
+        width: 90%;
+        text-align: left;
+        margin: 30px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border: 1px solid rgb(229,230,231);
+        background-color: rgb(248,249,250);
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
+    }
+
+    .right_balans_right_count h4{
+        margin: 0;
+        background-color: white;
+        font-weight: 500;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding: 13px 0 13px 30px;
+    }
+    .right_balans_right_count_inner{
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+    }
+    .right_balans_right_count_inner img{
+        width: 3%;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+    .right_balans_right_count_inner p{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1em;
+        color: darkgrey;
+    }
+    .right_balans_right_count_bill p{
+        font-size: 0.9em;
+        margin: 0;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+        
+    }
+    .right_balans_right_count_bill input[type="text"]{
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 10px;    
+        font-size: 0.9em;
+        width: 85%;
+        background-color: inherit;
+        outline: none;
+    }
+    .right_balans_right_count_bill_1{
+        margin-left: 4%;
+        width: 48%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_2{
+        width: 48%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_3{
+        margin-left: 4%;
+        width: 30%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_4{
+        width: 30%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_5{
+        width: 34%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_6{
+        width: 48%;
+        margin-left: 4%;
+        display: inline-block;
+    }
+    .right_balans_right_count input[type="submit"]{
+        color: white;
+        font-weight: 600;
+        font-size: 0.9em;
+        border: 0px;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+        padding: 14px;
+        border-radius: 30px;
+        width: 45%;
+        display: inline-block;
+        transition: 0.8s all ease;
+    }
+    .right_balans_right_count_bill_7{
+        text-align:center;
+        margin: 20px 0px;
+    }
+    .right_balans_right_count_bill_7 img{
+        width: 17px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .right_balans_right_count_bill_7 a{
+        display: inline-block;
+        margin-left: 10px;
+        color: rgba(214,73,111,1);
+        text-decoration: underline;
+
+    }
+
+
+
+
+
 
 
 </style>
