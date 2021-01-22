@@ -1,7 +1,137 @@
 <template>
-    <div>
-        <p>Tarif</p>        
+    <div class="left_block">
+         <router-link to="/">
+        <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
+        </router-link >
+
+        <div class="left_block_inner">
+            <a href="#"><img src="../assets/sidebar_logo.png" alt="name"></a>
+            <a href="#"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+            <a href="#"><img src="../assets/sidebar_menu_list.png" alt="list"></a>
+            <a href="#"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+        </div>
+
+
+         <div class="left_block_inner left_block_inner2">
+            <a href="#"><img src="../assets/sidebar_help.png" alt="help"></a>
+        </div>
     </div>
+
+
+    <div class="right_block">
+        <div class="right_block_inner">
+            <h2>Тарифы</h2>
+
+            <div class="right_block_inner_balans">
+                <img src="../assets/photo.png" alt="">
+           
+               
+               <div class="right_block_inner_balans_right">
+                    <p>Ваш баланс: <span>0 ₽</span></p>
+                    <router-link to="/balans">Пополнить баланс</router-link>
+               </div>
+                
+            </div>
+
+
+            <div class="right_block_inner_logout">
+                <img src="../assets/header_exit.png">
+            </div>
+        </div>
+
+
+
+        <div class="right_tarif">
+            <h4>Настрой свой тариф для Бот_Валера_1</h4>
+
+            <div class="tarif_calculator">
+                <div class="tarif_calculator_scroll">
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+                    <p>asd</p>
+
+                </div>
+
+                <div class="tarif_calculator_result">
+
+                    <div class="tarif_calculator_result_grey">
+                        <p>Модуль действителен еще: <span style="color: green">93 дня</span></p>
+                        <p>Функция "Написать первым" действительна еще: <span>8 дней</span></p>
+                    </div>
+
+
+                    <div class="tarif_calculator_result_red">
+                        <div class="tarif_calculator_result_red1">
+                            <img src="../assets/clock.png" alt="">
+                        </div>
+                        
+                        <div class="tarif_calculator_result_red2">
+                            <p><strong>Бесплатный пробный период закончился!</strong></p>
+                            <p>Выберите тариф и пополните ваш баланс.</p>
+                        </div>
+                    </div>
+
+
+                    <p class="tarif_calculator_result_itogo">Итого:</p>
+
+                    <h1>0 ₽/месяц</h1>
+                    <div class="tarif_calculator_result_checkbox">
+                        <span style="color:grey">Ежемесячно </span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                        </label>
+                        <span style="color:black;"> Ежегодно</span>
+                        <span> -50%</span>
+                    </div>
+
+                    <input type="submit" value="ПОДКЛЮЧИТЬ">
+
+
+
+                    <div class="tarif_calculator_result_modul">   
+                        <p><span style="border-bottom: 1px solid rgb(207,30,65)">Привяжите карту</span> к аккаунту для подключения функций модуля</p>
+                    </div>
+
+                    <p class="tarif_calculator_result_list"><strong>Бесплатный</strong> функционал</p>
+                    <ul>
+                        <li><div></div>Уведомления о лидах</li>
+                        <li><div></div>Техническая поддержка</li>
+                        <li><div></div>Аналитика</li>
+                        <li><div></div>Внедрение и настройка</li>
+                    </ul>
+
+
+                    <p class="tarif_calculator_result_end">Если на вашем балансе недостаточно средств для подключения набора функций к модулю, деньги спишутся с подключенной карты. Подключить карту можно в <a href="#">Личном кабинете</a></p>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+     </div>
 </template>
 
 
@@ -10,3 +140,218 @@ export default {
     name: 'Tarif'
 }
 </script>
+<style>
+    .right_tarif{
+        width: 90%;
+        text-align: left;
+        margin: 30px;
+        border: 1px solid rgb(229,230,231);
+        background-color: rgb(248,249,250);
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
+    }
+    .right_tarif h4{
+        margin: 0;
+        background-color: white;
+        font-weight: 600;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding: 13px 0 13px 30px;
+    }
+    .tarif_calculator{
+        width: 100%;
+        margin: 0px;
+    }
+    .tarif_calculator_scroll{
+        width: 50%;
+        vertical-align: top;
+        display: inline-block;
+        height:73vh;
+        background-color: white;
+        margin: 0;
+        overflow: scroll;
+    }
+    .tarif_calculator_result{
+        width: 50%;
+        display: inline-block;
+        margin: 0;
+    }
+    .tarif_calculator_result_itogo{
+        margin-top: 40px;
+        width: 100%;
+        text-align: center;
+    }
+    .tarif_calculator_result h1{
+        width: 100%;
+        text-align: center;
+        color: rgb(207,30,65);
+        margin-top: 0px;
+    }
+    .tarif_calculator_result_checkbox{
+        width: 100%;
+        text-align: center;
+        font-size: 0.9em;
+    }
+    .tarif_calculator_result_checkbox .switch {
+        position: relative;
+        margin: 0px 15px;
+        display: inline-block;
+        width: 46px;
+        height: 20px;
+    }
+
+    .tarif_calculator_result_checkbox .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .tarif_calculator_result_checkbox .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }   
+
+    .tarif_calculator_result_checkbox .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 1px;
+        bottom: 0px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .tarif_calculator_result_checkbox input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    .tarif_calculator_result_checkbox input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    .tarif_calculator_result_checkbox input:checked + .slider:before {
+        -webkit-transform: translateX(24px);
+        -ms-transform: translateX(24px);
+        transform: translateX(24px);
+    }
+
+
+    .tarif_calculator_result_checkbox .slider.round {
+        border-radius: 34px;
+    }
+
+    .tarif_calculator_result_checkbox .slider.round:before {
+        border-radius: 50%;
+    }
+    .tarif_calculator_result input[type="submit"]{
+        color: white;
+        outline: none;
+        font-weight: 600;
+        font-size: 0.9em;
+        border: 0px;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+        padding: 16px;
+        border-radius: 30px;
+        width: 50%;
+        margin-left: 25%;
+        margin-top: 7%;
+        transition: 0.8s all ease;
+    }
+    .tarif_calculator_result_list{
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+    }
+    .tarif_calculator_result ul{
+        margin: 0;
+        margin-top: 3%;
+    }
+    .tarif_calculator_result li{
+        font-weight: 300;
+        margin-top: 4px;
+        font-size: 14px;
+        margin-left: 33%;
+        list-style: none;
+    }
+    .tarif_calculator_result li div{
+        background-color: rgb(207,30,65);
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        vertical-align: middle;
+        margin-right: 10px;
+        border-radius: 50px;
+    }
+    .tarif_calculator_result_end{
+        width: 80%;
+        margin: 5% 10% 0 10%;
+        font-size: 0.9em;
+        line-height: 20px;
+        font-weight: 400;
+    }
+    .tarif_calculator_result_end a{
+        display: inline-block;
+        color:rgb(207,30,65);
+    }
+    .tarif_calculator_result_modul {
+        width:100%;
+        text-align: center;
+        color:rgb(207,30,65);
+        font-size: 0.9em;
+        margin: 20px 0;
+        display: none;
+    }
+    .tarif_calculator_result_grey{
+        width: 70%;
+        margin: 0px 15% 0px 15%;
+        background-color: rgb(227,228,229);
+        text-align: center;
+        padding: 10px 0;
+        font-size: 0.9em;
+        margin-top: 10px;
+        display: none;
+    }
+    .tarif_calculator_result_grey p{
+        margin: 5px 0;
+    }
+    .tarif_calculator_result_red{
+        width: 70%;
+        margin: 0px 15% 0px 15%;
+        background-color: rgba(214,73,111,1);
+        text-align: center;
+        padding: 0;
+        color: white;
+        font-size: 0.9em;
+        margin-top: 15px;
+        display: none;
+    }
+    .tarif_calculator_result_red1{
+        width: 10%;
+    }
+    .tarif_calculator_result_red1, .tarif_calculator_result_red2{
+        display: inline-block;
+    }
+    .tarif_calculator_result_red2{
+        width: 85%;
+        padding: 15px 0;
+    }
+    .tarif_calculator_result_red2 p{
+        margin: 0;
+    }
+    .tarif_calculator_result_red1 img{
+        width: 70%;
+        margin: 0;
+        margin-left: 40%;
+        
+        
+    }
+</style>
