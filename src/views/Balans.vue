@@ -157,7 +157,11 @@
                         </td>
 
                         <td class="table_odd_row_3">
-                            <p>Пополнить</p>
+                            <div class="table_add_balans" v-show="addBalans">
+                                <input type="text">
+                                <button type="submit" @click="closeBalansForm"></button>
+                            </div>
+                            <p @click="addBalansForm">Пополнить</p>
                         </td>
                     </tr>
 
@@ -168,12 +172,17 @@
                             <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
                         </td>
 
-                        <td class="table_odd_row_2"> 
-                            <p>Баланс WABA: $9,900</p>
+                        <td class="table_odd_row_2_red"> 
+                            <img src="../assets/danger.png" alt="danger">
+                            <p>Баланс WABA: $0</p>
                         </td>
 
                         <td class="table_odd_row_3">
-                            <p>Пополнить</p>
+                            <div class="table_add_balans" v-show="addBalans">
+                                <input type="text">
+                                <button type="submit" @click="closeBalansForm"></button>
+                            </div>
+                            <p @click="addBalansForm">Пополнить</p>
                         </td>
                     </tr>
 
@@ -188,7 +197,11 @@
                         </td>
 
                         <td class="table_odd_row_3">
-                            <p>Пополнить</p>
+                            <div class="table_add_balans" v-show="addBalans">
+                                <input type="text">
+                                <button type="submit" @click="closeBalansForm"></button>
+                            </div>
+                            <p @click="addBalansForm">Пополнить</p>
                         </td>
                     </tr>
 
@@ -204,14 +217,25 @@
                         </td>
 
                         <td class="table_odd_row_3">
-                            <p>Пополнить</p>
+                            <div class="table_add_balans" v-show="addBalans">
+                                <input type="text">
+                                <button type="submit" @click="closeBalansForm"></button>
+                            </div>
+                            <p @click="addBalansForm">Пополнить</p>
                             
                         </td>
                     </tr>
-
-
-
                 </table>
+
+
+
+
+                <div>
+                    
+
+                </div>
+
+
             </div>
         </div>
      </div>
@@ -225,7 +249,8 @@ export default {
         return{
             courses: [],
             carta: true, 
-            carta_info: false
+            carta_info: false,
+            addBalans: false
         }
     },
     methods: {
@@ -240,6 +265,14 @@ export default {
         closeAnotherForm(){
             this.carta_info = false
             this.$refs.submit_button.style.display = 'inline-block'
+        }, 
+        addBalansForm(event){
+            event.target.parentNode.childNodes[0].style.display = 'block'
+            event.target.style.display = 'none'
+        },
+        closeBalansForm(event){
+            event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
+            event.target.parentNode.style.display = 'none'
         }
         
     },
@@ -578,16 +611,30 @@ export default {
         width: 30%;
     }
     .table_odd_row_2 {
-        width: 48%;
+        width: 46%;
     }
     .table_odd_row_3{
-        width: 20%;
+        width: 23%;
     }
     .table_odd_row_2 p{
         font-weight: 500;
         font-size: 0.9em;
         margin-left: 30px;
         color: green;
+    }
+    .table_odd_row_2_red{
+        width: 48%;
+    }
+    .table_odd_row_2_red p{
+        font-weight: 500;
+        font-size: 0.9em;
+        margin-left: 0px;
+        color: rgb(207,30,65);
+        display: inline-block;
+    }
+    .table_odd_row_2_red img{
+        width: 5%;
+        display: inline-block;
     }
     .table_odd_row_3 p{
         color: rgb(207,30,65);
@@ -599,6 +646,24 @@ export default {
     }
     .table_even_row{
         background-color:  rgb(248,249,250) !important;
+    }
+    .table_add_balans input[type="text"]{
+        width: 50%;
+        border: 1px solid lightgrey;
+        text-align: center;
+        outline: none;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin: 0px 5px 0px 10px;
+    }
+    .table_add_balans button{
+        width: 20px;
+        vertical-align: top;
+        height: 20px;
+        background-image: url('../assets/check.png');
+        background-position: center;
+        background-size: cover;
+        border: 0px;
     }
 
 
