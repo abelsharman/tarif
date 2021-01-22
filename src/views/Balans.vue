@@ -233,13 +233,13 @@
                 <div class="right_balans_right_count">
                     <h4>Выставление счета для юридических лиц</h4>
 
-                    <div class="right_balans_right_count_inner" v-if="!billForm" @click="this.billForm = !this.billForm">
+                    <div class="right_balans_right_count_inner" v-if="billForm" @click="this.billForm = !this.billForm">
                         <img src="../assets/menu_add.png" alt="add">
                         <p>Создать новый счет</p>
                     </div>
 
 
-                    <div v-if="billForm" class="right_balans_right_count_bill">   
+                    <div v-if="!billForm" class="right_balans_right_count_bill">   
                         <div class="right_balans_right_count_bill_1">
                             <p>Получатель платежа:</p>
                             <input type="text" placeholder="ОАО Русгазбанк" required>
