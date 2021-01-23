@@ -46,31 +46,264 @@
 
             <div class="tarif_calculator">
                 <div class="tarif_calculator_scroll">
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
-                    <p>asd</p>
+                    <div class="tarif_calculator_scroll_first_block" style="box-shadow: 0 5px 10px -1px rgb(239,240,245) inset;">
+                        <h1>01</h1>
 
+
+                        <strong class="tarif_calculator_scroll_first_block_cost1">Подключение мессенджеров: </strong>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>1,200</strong> ₽/месяц + <span>тарификация WhatsApp</span></p>
+
+                        <div class="tarif_calculator_scroll_first_block_icons">
+                            <div>
+                                <img src="../assets/whatsapp.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/telegram.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/viber.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+                        </div>
+
+
+                        <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                                <img class="img1" src="../assets/close2.png" alt="">
+                                <img class="img2" src="../assets/tick.png" alt="">
+                        </label>
+                        <span>Подключение вашего номера к WhatsApp Business API</span>
+
+
+                        <div class="tarif_calculator_scroll_first_block_list">
+                            <p>В стоимость входит:</p>
+                            <p>1.Создание бизнес-аккаунта в Facebook.</p>
+                            <p>2.Авторизация + модерация аккаунта Facebook.</p>
+                            <p>3.Подключение к WhatsApp Business API.</p>
+                            <p>4.Подача заявки на получение авторизованного названия компании: </p>
+                            <strong>Marketbot</strong>
+                            <img src="../assets/check2.png" alt="check2">
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="tarif_calculator_scroll_first_block">
+                        <h1>02</h1>
+
+
+                        <strong class="tarif_calculator_scroll_first_block_cost1">Настройка чат-центров: </strong>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>2,400</strong> ₽/месяц</p>
+
+                        <div class="tarif_calculator_scroll_first_block_icons">
+                            <div>
+                                <img src="../assets/whatsapp.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/telegram.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/viber.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+                        </div>
+
+
+                      
+
+
+                        <div class="tarif_calculator_scroll_first_block_list">
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="tarif_calculator_scroll_first_block">
+                        <h1>03</h1>
+
+
+                        <strong class="tarif_calculator_scroll_first_block_cost1">Настройка чат-ботов: </strong>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>1,300</strong> ₽/месяц</p>
+
+                        <div class="tarif_calculator_scroll_first_block_icons">
+                            <div>
+                                <img src="../assets/whatsapp.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/telegram.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/viber.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+                        </div>
+
+
+                      
+
+
+                        <div class="tarif_calculator_scroll_first_block_list">
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="tarif_calculator_scroll_first_block">
+                        <h1>04</h1>
+
+
+                        <strong class="tarif_calculator_scroll_first_block_cost1">Интеграция CRM: </strong>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>2,300</strong> ₽/месяц</p>
+
+                        <div class="tarif_calculator_scroll_first_block_icons">
+                            <div>
+                                <img src="../assets/whatsapp.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/telegram.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/viber.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+                        </div>
+
+
+                      
+
+
+                        <div class="tarif_calculator_scroll_first_block_list">
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="tarif_calculator_scroll_first_block">
+                        <h1>05</h1>
+
+
+                        <strong class="tarif_calculator_scroll_first_block_cost1">Рассылка сообщений: </strong>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>900</strong> ₽/месяц</p>
+
+                        <div class="tarif_calculator_scroll_first_block_icons">
+                            <div>
+                                <img src="../assets/whatsapp.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/telegram.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/viber.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+                        </div>
+
+
+                      
+
+
+                        <div class="tarif_calculator_scroll_first_block_list">
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="tarif_calculator_scroll_first_block">
+                        <h1>06</h1>
+
+
+                        <strong class="tarif_calculator_scroll_first_block_cost1">Хостинг: </strong>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong style="margin-left: 100px;">500</strong> ₽/месяц</p>
+
+                        <div class="tarif_calculator_scroll_first_block_icons">
+                            <div>
+                                <img src="../assets/whatsapp.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/telegram.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/viber.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+                            <div>
+                                <img src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+                        </div>
+
+
+                      
+
+
+                        <div class="tarif_calculator_scroll_first_block_list">
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="tarif_calculator_result">
@@ -154,6 +387,7 @@ export default {
         margin: 0;
         background-color: white;
         font-weight: 600;
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
         padding: 13px 0 13px 30px;
@@ -192,7 +426,7 @@ export default {
         text-align: center;
         font-size: 0.9em;
     }
-    .tarif_calculator_result_checkbox .switch {
+    .switch {
         position: relative;
         margin: 0px 15px;
         display: inline-block;
@@ -200,13 +434,13 @@ export default {
         height: 20px;
     }
 
-    .tarif_calculator_result_checkbox .switch input { 
+    .switch input { 
         opacity: 0;
         width: 0;
         height: 0;
     }
 
-    .tarif_calculator_result_checkbox .slider {
+    .slider {
         position: absolute;
         cursor: pointer;
         top: 0;
@@ -218,7 +452,7 @@ export default {
         transition: .4s;
     }   
 
-    .tarif_calculator_result_checkbox .slider:before {
+    .slider:before {
         position: absolute;
         content: "";
         height: 20px;
@@ -226,6 +460,7 @@ export default {
         left: 1px;
         bottom: 0px;
         background-color: white;
+        z-index: 99;
         -webkit-transition: .4s;
         transition: .4s;
     }
@@ -252,6 +487,32 @@ export default {
     .tarif_calculator_result_checkbox .slider.round:before {
         border-radius: 50%;
     }
+    .tarif_calculator_scroll_first_block .switch img{
+        position: relative;
+        width: 8px;
+        left: 23px;
+        top: -2px; 
+    }
+    .tarif_calculator_scroll_first_block .switch .img2{
+        left: -7px;
+
+    }
+
+    .tarif_calculator_scroll_first_block input:checked + .slider:before {
+        -webkit-transform: translateX(24px);
+        -ms-transform: translateX(24px);
+        transform: translateX(24px);
+    }
+
+
+    .tarif_calculator_scroll_first_block .slider.round {
+        border-radius: 34px;
+    }
+
+    .tarif_calculator_scroll_first_block .slider.round:before {
+        border-radius: 50%;
+    }
+
     .tarif_calculator_result input[type="submit"]{
         color: white;
         outline: none;
@@ -351,7 +612,80 @@ export default {
         width: 70%;
         margin: 0;
         margin-left: 40%;
-        
+    }
+    .tarif_calculator_scroll_first_block {
+        width: 95%;
+        padding: 0px 0px 0px 30px;
+        margin: 0;
+        border-bottom: 1px dashed rgb(207,208,209);
+    }
+    .tarif_calculator_scroll_first_block h1{
+        margin: 0;
+        font-size: 5em;
+        height: 40px;
+        margin-left: -55px;
+        color: rgb(241,242,243);
+    }
+    .tarif_calculator_scroll_first_block span{
+        color: rgb(127,128,129);
+        font-size: 0.9em;
+    }
+    .tarif_calculator_scroll_first_block_cost{
+        display: inline-block;
+        width: 57%;
+        margin: 0;
+        text-align: right;
+        font-size: 0.9em;
+        color: rgb(127,128,129);
+    }
+    .tarif_calculator_scroll_first_block_cost span{
+        color: rgb(127,128,129);
+        border-bottom: 1px solid rgb(127,128,129);
+    }
+    .tarif_calculator_scroll_first_block_cost strong{
+        font-size: 1.1em;
+    }
+    .tarif_calculator_scroll_first_block_cost1{
+        font-size: 0.9em;
+    }
+    .tarif_calculator_scroll_first_block_icons{
+        width: 80%;
+        margin: 6% 10%;
+        text-align: center;
+    }
+    .tarif_calculator_scroll_first_block_icons div{
+        width: 15%;
+        display: inline-block;
+        margin: 0 15px; 
+    }
+    .tarif_calculator_scroll_first_block_icons img{
+        width: 80%;
+        margin: 0 10%;
+    }
+    .tarif_calculator_scroll_first_block_icons p{
+        text-align: center;
+        margin: 5px 0;
+        font-size: 0.8em;
+    }
+    .tarif_calculator_scroll_first_block_list img{
+        width: 18px;
+        vertical-align: middle;
+        margin-left: 4px;
         
     }
+    .tarif_calculator_scroll_first_block_list {
+        width: 90%;
+        background-color: rgb(249,250,251);
+        border-radius: 10px;
+        margin: 5% 0;
+        padding: 20px 0 20px 20px;
+    }
+    .tarif_calculator_scroll_first_block_list p{
+        font-size: 13px;
+        color: rgb(57,58,59);
+        margin: 4px 0;
+        
+    }
+
+
 </style>
