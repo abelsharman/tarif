@@ -190,7 +190,10 @@
 
                             <div>      
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus">
-                                    <p @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
+                                    <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
+                                    <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1"  style="background-color:rgb(240,241,242)">-</p>
+
+
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ countOperator }}</p>
                                     <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
                                 </div>
@@ -213,35 +216,37 @@
                         <p class="tarif_calculator_scroll_first_block_cost" style="width:60%"><strong>1,300</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div v-if="this.info.used_features.features.includes('chat')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor">
+                            <div v-if="this.info.used_features.features.includes('deferred_exec')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
                                 <p>Редактор сценария</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('chat') && checkChat">
-                                <img @click="closeEditor" class="tarif_calculator_scroll_first_block_greyicons"  style="padding:10px; background-color: rgb(140,40,110);width: 60%" src="../assets/editor.png" alt="editor">
+                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && checkEditor">
+                                <img @click="closeEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
                                 <p>Редактор сценария</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('chat') && !checkChat">
-                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" style="padding:10px; background-color: rgb(140,40,110);width: 60%"  src="../assets/editor3.png" alt="editor">
+                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && !checkEditor">
+                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor3.png" tyle="padding:10px;background-color:rgb(209,218,223);width: 60%" alt="editor">
                                 <p>Редактор сценария</p>
                             </div>
 
 
 
-
-                            <div>
-                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
-                                <p>Редактор сценария</p>
-                            </div>
-
-                            <div>
-                                <img @click="clickFunnel" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
+                            <div v-if="this.info.used_features.features.includes('deferred_exec')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" style="padding:10px; background-color: rgb(140,40,110);width: 60%" alt="funnel">
                                 <p>Автоворонки</p>
                             </div>
 
-                        
+                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && checkFunnel">
+                                <img @click="closeFunnel" class="tarif_calculator_scroll_first_block_greyicons" style="padding:10px; background-color: rgb(140,40,110);width: 60%" src="../assets/funnel.png" alt="funnel">
+                                <p>Автоворонки</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && !checkFunnel">
+                                <img @click="clickFunnel" class="tarif_calculator_scroll_first_block_greyicons" style="padding:10px;background-color:rgb(209,218,223);width: 60%" src="../assets/funnel3.png" alt="funnel">
+                                <p>Автоворонки</p>
+                            </div>
                         </div>
 
 
@@ -264,17 +269,38 @@
                         <p class="tarif_calculator_scroll_first_block_cost" style="width: 65%"><strong>2,300</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div>
-                                <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
+                            <div v-if="this.info.used_features.features.includes('bitrix24')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
 
-                            <div>
-                                <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo"> 
+                            <div v-if="!this.info.used_features.features.includes('bitrix24') && checkBitrix">
+                                <img @click="closeBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
+                                <p>Bitrix24</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('bitrix24') && !checkBitrix">
+                                <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/bitrix3.png" alt="bitrix">
+                                <p>Bitrix24</p>
+                            </div>
+
+
+
+
+                            <div v-if="this.info.used_features.features.includes('amocrm')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
 
-                            
+                            <div v-if="!this.info.used_features.features.includes('amocrm') && checkAmo">
+                                <img @click="closeAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
+                                <p>amoCRM</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('amocrm') && !checkAmo">
+                                <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/amo3.png" alt="amo">
+                                <p>amoCRM</p>
+                            </div>
                         </div>
 
 
@@ -298,10 +324,22 @@
                         <p class="tarif_calculator_scroll_first_block_cost" style="width: 60%;"><strong>900</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div style="width: 30%;margin-left: 0;">
-                                <img @click="clickMail" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;">
+                            <div v-if="this.info.used_features.features.includes('bot')" style="width: 30%;margin-left: 0;">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;" alt="mail2">
                                 <p>Массовая рассылка</p>
                             </div>
+
+                            <div v-if="!this.info.used_features.features.includes('bot') && checkMail" style="width: 30%;margin-left: 0;">
+                                <img @click="closeMail" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;" alt="mail2">
+                                <p>Массовая рассылка</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('bot') && !checkMail" style="width: 30%;margin-left: 0;">
+                                <img @click="clickMail" class="tarif_calculator_scroll_first_block_greyicons" style="padding: 10px;background-color:rgb(207,218,223);width: 27%;border-radius: 25px;" src="../assets/mail3.png" alt="mail2">
+                                <p>Массовая рассылка</p>
+                            </div>
+
+
 
                             
                         </div>
@@ -426,7 +464,11 @@ export default {
             checkVk: false,
             checkChat: false,
             checkWrite: false,
-
+            checkEditor: false,
+            checkFunnel: false,
+            checkBitrix: false,
+            chechAmo: false,
+            checkMail: false,
         }
     },
     methods:{
@@ -556,6 +598,7 @@ export default {
             }
         },
         clickEditor(){
+            this.checkEditor = !this.checkEditor
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -564,7 +607,18 @@ export default {
                  this.total += this.info.pricelist.bot
             }
         },
+        closeEditor(){
+            this.checkEditor = !this.checkEditor
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.bot
+            }
+        },
         clickFunnel(){
+            this.checkFunnel = !this.checkFunnel
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -573,16 +627,38 @@ export default {
                  this.total += this.info.pricelist.deferred_exec
             }
         },
+        closeFunnel(){
+            this.checkFunnel = !this.checkFunnel
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.deferred_exec
+            }
+        },
         clickBitrix(){
+            this.checkBitrix = !this.checkBitrix
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
                  this.total += this.info.pricelist.crm
+            }
+        },
+        closeBitrix(){
+            this.checkBitrix = !this.checkBitrix
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.crm
             }
         },
         clickAmo(){
+            this.checkAmo = !this.checkAmo
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -591,13 +667,34 @@ export default {
                  this.total += this.info.pricelist.crm
             }
         },
+        closeAmo(){
+            this.checkAmo = !this.checkAmo
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.crm
+            }
+        },
         clickMail(){
+            this.checkMail = !this.checkMail
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
                  this.total += this.info.pricelist.mailing
+            }
+        },
+        closeMail(){
+            this.checkMail = !this.checkMail
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.mailing
             }
         },
         clickDiscount(event){
@@ -661,6 +758,33 @@ export default {
             .then(function(response){
                 
                 self.info = response.data
+                if(response.data.used_features.features.includes('bitrix24')){
+                    self.total += response.data.pricelist.crm
+                }
+                if(response.data.used_features.features.includes('amocrm')){
+                    self.total += response.data.pricelist.crm
+                }
+                if(response.data.used_features.features.includes('chat')){
+                    self.total += response.data.pricelist.chat_cost
+                }
+                if(response.data.used_features.features.includes('chat')){
+                    self.total += response.data.pricelist.write_first_cost
+                }
+                if(response.data.used_features.features.includes('deferred_exec')){
+                    self.total += response.data.pricelist.deferred_exec
+                }
+                if(response.data.used_features.features.includes('GS')){
+                    self.total += response.data.pricelist.program_cost.GS
+                }
+                if(response.data.used_features.features.includes('TL')){
+                    self.total += response.data.pricelist.program_cost.TL
+                }
+                if(response.data.used_features.features.includes('VK')){
+                    self.total += response.data.pricelist.program_cost.VK
+                }
+                if(response.data.used_features.features.includes('VB')){
+                    self.total += response.data.pricelist.program_cost.VB
+                }
                 console.log(self.info.used_features.features.includes('bitrix24'))
             })
 
