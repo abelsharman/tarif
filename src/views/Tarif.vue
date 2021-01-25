@@ -55,22 +55,22 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="clickWhatsApp" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                             </div>
 
-                            <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
+                            <div> 
+                                <img @click="clickTelegram" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
                                 <p>Telegram</p>
                             </div>
 
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
+                                <img @click="clickViber" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
                                 <p>Viber</p>
                             </div>
 
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
+                                <img @click="clickVk" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
                                 <p>Vkontakte</p>
                             </div>
                         </div>
@@ -108,17 +108,21 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
+                                <img @click="clickChat" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
                                 <p>Чат</p>
                             </div>
 
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
+                                <img @click="clickWriteFirst" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
                                 <p>Написать первым</p>
                             </div>
 
-                            <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" style="border: 0px;padding: 8px;" src="../assets/question.png" alt="question">
+                            <div>      
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus">
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">0</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                </div>
                                 <p>Операторы</p>
                             </div>
 
@@ -139,12 +143,12 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
+                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
                                 <p>Редактор сценария</p>
                             </div>
 
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
+                                <img @click="clickFunnel" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
                                 <p>Автоворонки</p>
                             </div>
 
@@ -172,12 +176,12 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
+                                <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
 
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo"> 
+                                <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo"> 
                                 <p>amoCRM</p>
                             </div>
 
@@ -206,7 +210,7 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;">
+                                <img @click="clickMail" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;">
                                 <p>Массовая рассылка</p>
                             </div>
 
@@ -234,7 +238,11 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
-                                <img src="../assets/mail2.png" alt="mail" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;">
+                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus">
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">0</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                </div>
                                 <p>Память сервера</p>
                             </div>
                         </div>
@@ -272,15 +280,15 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1>0 ₽/месяц</h1>
+                    <h1>{{ total }} ₽/месяц</h1>
                     <div class="tarif_calculator_result_checkbox">
                         <span style="color:grey">Ежемесячно </span>
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
+                        <label class="switch">
+                            <input type="checkbox" ref="check" @click="clickDiscount">
+                            <span class="slider round" ></span>
                         </label>
                         <span style="color:black;"> Ежегодно</span>
-                        <span> -50%</span>
+                        <span> -{{ info.pricelist.yearly_discount * 100 }}%</span>
                     </div>
 
                     <input type="submit" value="ПОДКЛЮЧИТЬ">
@@ -314,7 +322,137 @@
 
 <script>
 export default {
-    name: 'Tarif'
+    name: 'Tarif',
+    data(){
+        return{
+            info: [],
+            total: 0,
+            
+        }
+    },
+    methods:{
+        clickWhatsApp(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.program_cost.GS
+            }
+        },
+        clickTelegram(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.program_cost.TL
+            }
+        },
+        clickViber(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.program_cost.VB
+            }
+        },
+        clickVk(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.program_cost.VK
+            }
+        },
+        clickChat(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.chat_cost
+            }
+        },
+        clickWriteFirst(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.write_first_cost
+            }
+        },
+        clickEditor(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.bot
+            }
+        },
+        clickFunnel(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.deferred_exec
+            }
+        },
+        clickBitrix(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.crm
+            }
+        },
+        clickAmo(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.crm
+            }
+        },
+        clickMail(){
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.mailing
+            }
+        },
+        clickDiscount(event){
+            if(event.target.checked == true){
+                this.total = this.total * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+             
+            }
+            else{
+                this.total = this.total / (1-this.info.pricelist.yearly_discount) / 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+        
+        }
+
+    },
+    created() {
+        const axios = require('axios');
+        let self = this
+        axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
+            .then(function(response){
+                self.info = response.data
+            })
+
+    }
 }
 </script>
 
@@ -637,6 +775,46 @@ export default {
         color: rgb(57,58,59);
         margin: 4px 0;
         
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus {
+        border: 1px solid rgb(140,40,110);
+        border-radius: 35px;
+        background-color: rgb(248,249,250);
+        height: 55px;
+        width: 55px;
+        margin: 10px 0;
+    }
+    .tarif_calculator_scroll_first_block_icons_plus_minus p{
+        color: rgb(140,40,110);
+        display: inline-block;
+        margin-top: 13px; 
+        font-size: 1em;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_1{
+        margin: 0;
+        position: relative;
+        left: -11px;
+        background-color: rgb(140,40,110);
+        border: 1px solid white;
+        color: white;
+        font-size: 0.8em;
+        border-radius: 45px;
+        padding:  0 7px;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
+        margin: 13px 0px;
+        font-size: 1.2em;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
+        margin: 0;
+        position: relative;
+        left: 11px;
+        background-color: rgb(140,40,110);
+        border: 1px solid white;
+        color: white;
+        font-size: 0.8em;
+        border-radius: 45px;
+        padding:  0 5px;
     }
 
 
