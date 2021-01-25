@@ -54,23 +54,69 @@
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>1,200</strong> ₽/месяц + <span>тарификация WhatsApp</span></p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div>
-                                <img @click="clickWhatsApp" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                            <div v-if="this.info.used_features.features.includes('GS')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                             </div>
 
-                            <div> 
-                                <img @click="clickTelegram" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
+                            <div v-if="!this.info.used_features.features.includes('GS') && checkWhatsApp">
+                                <img @click="closeWhatsApp" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('GS') && !checkWhatsApp">
+                                <img @click="clickWhatsApp" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
+                                <p>WhatsApp</p>
+                            </div>
+
+
+
+                            <div v-if="this.info.used_features.features.includes('TL')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
                                 <p>Telegram</p>
                             </div>
 
-                            <div>
-                                <img @click="clickViber" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
+                            <div v-if="!this.info.used_features.features.includes('TL') && checkTelegram">
+                                <img @click="closeTelegram" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('TL') && !checkTelegram">
+                                <img @click="clickTelegram" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram3.png" alt="telegram">
+                                <p>Telegram</p>
+                            </div>
+
+
+                            <div v-if="this.info.used_features.features.includes('VB')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
                                 <p>Viber</p>
                             </div>
 
-                            <div>
-                                <img @click="clickVk" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
+                            <div v-if="!this.info.used_features.features.includes('VB') && checkViber">
+                                <img @click="closeViber" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('VB') && !checkViber">
+                                <img @click="clickViber" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber3.png" alt="viber">
+                                <p>Viber</p>
+                            </div>
+
+
+
+
+                            <div v-if="this.info.used_features.features.includes('VK')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('VK') && checkVk">
+                                <img @click="closeVk" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
+                                <p>Vkontakte</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('VK') && !checkVk">
+                                <img @click="clickVk" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk3.png" alt="vk">
                                 <p>Vkontakte</p>
                             </div>
                         </div>
@@ -107,21 +153,46 @@
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>2,400</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div>
-                                <img @click="clickChat" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
+                            <div v-if="this.info.used_features.features.includes('chat')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
                                 <p>Чат</p>
                             </div>
 
-                            <div>
-                                <img @click="clickWriteFirst" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
+                            <div v-if="!this.info.used_features.features.includes('chat') && checkChat">
+                                <img @click="closeChat" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
+                                <p>Чат</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('chat') && !checkChat">
+                                <img @click="clickChat" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/chat3.png" alt="chat2">
+                                <p>Чат</p>
+                            </div>
+
+                            
+
+
+                            <div v-if="this.info.used_features.features.includes('bot')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
                                 <p>Написать первым</p>
                             </div>
 
+                            <div v-if="!this.info.used_features.features.includes('bot') && checkWrite">
+                                <img @click="closeWriteFirst" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
+                                <p>Написать первым</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('bot') && !checkWrite">
+                                <img @click="clickWriteFirst" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/question3.png" alt="question">
+                                <p>Написать первым</p>
+                            </div>
+
+
+
                             <div>      
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus">
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">0</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                    <p @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ countOperator }}</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
                                 </div>
                                 <p>Операторы</p>
                             </div>
@@ -142,6 +213,24 @@
                         <p class="tarif_calculator_scroll_first_block_cost" style="width:60%"><strong>1,300</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
+                            <div v-if="this.info.used_features.features.includes('chat')">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor">
+                                <p>Редактор сценария</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('chat') && checkChat">
+                                <img @click="closeEditor" class="tarif_calculator_scroll_first_block_greyicons"  style="padding:10px; background-color: rgb(140,40,110);width: 60%" src="../assets/editor.png" alt="editor">
+                                <p>Редактор сценария</p>
+                            </div>
+
+                            <div v-if="!this.info.used_features.features.includes('chat') && !checkChat">
+                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" style="padding:10px; background-color: rgb(140,40,110);width: 60%"  src="../assets/editor3.png" alt="editor">
+                                <p>Редактор сценария</p>
+                            </div>
+
+
+
+
                             <div>
                                 <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
                                 <p>Редактор сценария</p>
@@ -239,9 +328,11 @@
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
                                  <div class="tarif_calculator_scroll_first_block_icons_plus_minus">
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">0</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                    <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
+                                    <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
+                                    
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" style="width:20px;font-size:0.7em;margin:20px 0;">{{countMemory}} <span style="color:rgb(140,40,110);font-size:0.7em;">гб</span></p>
+                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
                                 </div>
                                 <p>Память сервера</p>
                             </div>
@@ -327,11 +418,20 @@ export default {
         return{
             info: [],
             total: 0,
-            
+            countOperator: 0,
+            countMemory: 0,
+            checkWhatsApp: false,
+            checkTelegram: false,
+            checkViber: false, 
+            checkVk: false,
+            checkChat: false,
+            checkWrite: false,
+
         }
     },
     methods:{
         clickWhatsApp(){
+            this.checkWhatsApp = !this.checkWhatsApp
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -340,7 +440,18 @@ export default {
                  this.total += this.info.pricelist.program_cost.GS
             }
         },
+        closeWhatsApp(){
+            this.checkWhatsApp = !this.checkWhatsApp
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.program_cost.GS
+            }
+        },
         clickTelegram(){
+            this.checkTelegram = !this.checkTelegram
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -349,7 +460,20 @@ export default {
                  this.total += this.info.pricelist.program_cost.TL
             }
         },
+
+        closeTelegram(){
+            this.checkTelegram = !this.checkTelegram
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.program_cost.TL
+            }
+        },
+
         clickViber(){
+            this.checkViber = !this.checkViber
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -358,7 +482,21 @@ export default {
                  this.total += this.info.pricelist.program_cost.VB
             }
         },
+
+        closeViber(){
+            this.checkViber = !this.checkViber
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.program_cost.VB
+            }
+        },
+
+
         clickVk(){
+            this.checkVk = !this.checkVk
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -367,7 +505,18 @@ export default {
                  this.total += this.info.pricelist.program_cost.VK
             }
         },
+        closeVk(){
+            this.checkVk = !this.checkVk
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.program_cost.VK
+            }
+        },
         clickChat(){
+            this.checkChat = !this.checkChat
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -376,13 +525,34 @@ export default {
                  this.total += this.info.pricelist.chat_cost
             }
         },
+        closeChat(){
+            this.checkChat = !this.checkChat
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.chat_cost
+            }
+        },
         clickWriteFirst(){
+            this.checkWrite = !this.checkWrite
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
                  this.total += this.info.pricelist.write_first_cost
+            }
+        },
+        closeWriteFirst(){
+            this.checkWrite = !this.checkWrite
+            if(this.$refs.check.checked == true){
+                this.total -= this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total -= this.info.pricelist.write_first_cost
             }
         },
         clickEditor(){
@@ -441,7 +611,47 @@ export default {
                 this.total = parseInt(this.total.toFixed(0))
             }
         
-        }
+        },
+        clickOperatorPlus(){
+            this.countOperator += 1
+            if(this.$refs.check.checked == true){
+                this.total = this.total + this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                this.total = this.total + this.info.pricelist.op_cost
+            }
+        },
+        clickOperatorMinus(){
+            this.countOperator -= 1
+            if(this.$refs.check.checked == true){
+                this.total = this.total - this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                this.total = this.total - this.info.pricelist.op_cost
+            }
+        },
+        clickMemoryPlus(){
+            this.countMemory += 1
+            if(this.$refs.check.checked == true){
+                this.total = this.total + this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                this.total = this.total + this.info.pricelist.storage_per_gib
+            }
+        },
+        clickMemoryMinus(){
+            this.countMemory -= 1
+            if(this.$refs.check.checked == true){
+                this.total = this.total - this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                this.total = this.total - this.info.pricelist.storage_per_gib
+            }
+        },
 
     },
     created() {
@@ -449,7 +659,9 @@ export default {
         let self = this
         axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
+                
                 self.info = response.data
+                console.log(self.info.used_features.features.includes('bitrix24'))
             })
 
     }
@@ -797,18 +1009,21 @@ export default {
         background-color: rgb(140,40,110);
         border: 1px solid white;
         color: white;
+        width: 5px;
         font-size: 0.8em;
         border-radius: 45px;
-        padding:  0 7px;
+        padding: 0 5px;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
-        margin: 13px 0px;
-        font-size: 1.2em;
+        margin: 15px 0px;
+        font-size: 1.1em;
+        width: 13px;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
         margin: 0;
         position: relative;
         left: 11px;
+        width: 6px;
         background-color: rgb(140,40,110);
         border: 1px solid white;
         color: white;
