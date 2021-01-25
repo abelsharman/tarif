@@ -55,22 +55,22 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img src="../assets/whatsapp.png" alt="whatsapp">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                             </div>
 
                             <div>
-                                <img src="../assets/telegram.png" alt="telegram">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
                                 <p>Telegram</p>
                             </div>
 
                             <div>
-                                <img src="../assets/viber.png" alt="viber">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
                                 <p>Viber</p>
                             </div>
 
                             <div>
-                                <img src="../assets/vk.png" alt="vk">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
                                 <p>Vkontakte</p>
                             </div>
                         </div>
@@ -108,34 +108,24 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img src="../assets/whatsapp.png" alt="whatsapp">
-                                <p>WhatsApp</p>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
+                                <p>Чат</p>
                             </div>
 
                             <div>
-                                <img src="../assets/telegram.png" alt="telegram">
-                                <p>Telegram</p>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
+                                <p>Написать первым</p>
                             </div>
 
                             <div>
-                                <img src="../assets/viber.png" alt="viber">
-                                <p>Viber</p>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" style="border: 0px;padding: 8px;" src="../assets/question.png" alt="question">
+                                <p>Операторы</p>
                             </div>
 
-                            <div>
-                                <img src="../assets/vk.png" alt="vk">
-                                <p>Vkontakte</p>
                             </div>
-                        </div>
-
-
-                      
-
-
-                        <div class="tarif_calculator_scroll_first_block_list">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
-                        </div>
-
+                            <div class="tarif_calculator_scroll_first_block_list">
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                            </div>
                     </div>
 
 
@@ -145,28 +135,20 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Настройка чат-ботов: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong>1,300</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width:60%"><strong>1,300</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img src="../assets/whatsapp.png" alt="whatsapp">
-                                <p>WhatsApp</p>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
+                                <p>Редактор сценария</p>
                             </div>
 
                             <div>
-                                <img src="../assets/telegram.png" alt="telegram">
-                                <p>Telegram</p>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
+                                <p>Автоворонки</p>
                             </div>
 
-                            <div>
-                                <img src="../assets/viber.png" alt="viber">
-                                <p>Viber</p>
-                            </div>
-
-                            <div>
-                                <img src="../assets/vk.png" alt="vk">
-                                <p>Vkontakte</p>
-                            </div>
+                        
                         </div>
 
 
@@ -186,28 +168,20 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Интеграция CRM: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong>2,300</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 65%"><strong>2,300</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div>
-                                <img src="../assets/whatsapp.png" alt="whatsapp">
-                                <p>WhatsApp</p>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
+                                <p>Bitrix24</p>
                             </div>
 
                             <div>
-                                <img src="../assets/telegram.png" alt="telegram">
-                                <p>Telegram</p>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo"> 
+                                <p>amoCRM</p>
                             </div>
 
-                            <div>
-                                <img src="../assets/viber.png" alt="viber">
-                                <p>Viber</p>
-                            </div>
-
-                            <div>
-                                <img src="../assets/vk.png" alt="vk">
-                                <p>Vkontakte</p>
-                            </div>
+                            
                         </div>
 
 
@@ -228,28 +202,15 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Рассылка сообщений: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong>900</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 60%;"><strong>900</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div>
-                                <img src="../assets/whatsapp.png" alt="whatsapp">
-                                <p>WhatsApp</p>
+                            <div style="width: 30%;margin-left: 0;">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;">
+                                <p>Массовая рассылка</p>
                             </div>
 
-                            <div>
-                                <img src="../assets/telegram.png" alt="telegram">
-                                <p>Telegram</p>
-                            </div>
-
-                            <div>
-                                <img src="../assets/viber.png" alt="viber">
-                                <p>Viber</p>
-                            </div>
-
-                            <div>
-                                <img src="../assets/vk.png" alt="vk">
-                                <p>Vkontakte</p>
-                            </div>
+                            
                         </div>
 
 
@@ -264,34 +225,17 @@
 
 
 
-
-
                     <div class="tarif_calculator_scroll_first_block">
                         <h1>06</h1>
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Хостинг: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong style="margin-left: 100px;">500</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 75%"><strong>500</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div>
-                                <img src="../assets/whatsapp.png" alt="whatsapp">
-                                <p>WhatsApp</p>
-                            </div>
-
-                            <div>
-                                <img src="../assets/telegram.png" alt="telegram">
-                                <p>Telegram</p>
-                            </div>
-
-                            <div>
-                                <img src="../assets/viber.png" alt="viber">
-                                <p>Viber</p>
-                            </div>
-
-                            <div>
-                                <img src="../assets/vk.png" alt="vk">
-                                <p>Vkontakte</p>
+                            <div style="width: 30%;margin-left: 0;">
+                                <img src="../assets/mail2.png" alt="mail" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;">
+                                <p>Память сервера</p>
                             </div>
                         </div>
 
@@ -360,11 +304,11 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-        
-     </div>
+   
 </template>
 
 
@@ -373,6 +317,8 @@ export default {
     name: 'Tarif'
 }
 </script>
+
+
 <style>
     .right_tarif{
         width: 90%;
@@ -615,7 +561,7 @@ export default {
     }
     .tarif_calculator_scroll_first_block {
         width: 95%;
-        padding: 0px 0px 0px 30px;
+        padding: 0px 0px 0px 20px;
         margin: 0;
         border-bottom: 1px dashed rgb(207,208,209);
     }
@@ -650,12 +596,13 @@ export default {
     }
     .tarif_calculator_scroll_first_block_icons{
         width: 80%;
-        margin: 6% 10%;
+        margin: 6% 10% 6% 8%;
         text-align: center;
     }
     .tarif_calculator_scroll_first_block_icons div{
         width: 15%;
         display: inline-block;
+        vertical-align: top;
         margin: 0 15px; 
     }
     .tarif_calculator_scroll_first_block_icons img{
@@ -666,6 +613,11 @@ export default {
         text-align: center;
         margin: 5px 0;
         font-size: 0.8em;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_greyicons{
+        border: 8px solid rgb(241,242,243);
+        border-radius: 40px;
+        margin: 0 8% 0 1%;
     }
     .tarif_calculator_scroll_first_block_list img{
         width: 18px;
