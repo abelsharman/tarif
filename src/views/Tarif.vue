@@ -459,7 +459,7 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1>{{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
+                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ total / (1-this.info.pricelist.yearly_discount) / 12 }} </span> {{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
                     <div class="tarif_calculator_result_checkbox">
                         <span style="color:grey">Ежемесячно </span>
                         <label class="switch">
@@ -1365,6 +1365,14 @@ export default {
         font-size: 0.8em;
         border-radius: 45px;
         padding:  0 5px;
+    }
+    .tarif_calculator_result_itogo_red_year{
+        color:grey;
+        font-size:0.6em;
+        font-weight:400;
+        text-decoration:line-through;
+        -webkit-text-decoration-color:rgb(207,30,65);
+        text-decoration-color:rgb(207,30,65);
     }
 
 
