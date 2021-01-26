@@ -50,12 +50,12 @@
                 
                 </tr>
 
-                <tr>
+                <tr v-for="(item, index) in info.bots" :key="index">
                     <td class="chat_block_inner_first_column">
                         <div class="chat_block_inner_margin1">
                             <div class="chat_block_id_1">
-                                <p class="chat_block_id_1_grey">ID 22345</p>
-                                <p class="chat_block_id_1_big">Бот_Валера_1</p>
+                                <p class="chat_block_id_1_grey">ID {{ item.id }}</p>
+                                <p class="chat_block_id_1_big">{{ item.name }}</p>
                                 <p class="chat_block_id_1_green">Баланс WABA: $9,900</p>
                                 <p class="chat_block_id_1_darkgrey">3 мб</p>
                                 <p class="chat_block_id_1_grey">13 июня, 2019</p>
@@ -133,17 +133,19 @@
                     <td class="chat_block_inner_second_column">
                         <div class="chat_block_inner_margin">
                             
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+79665989033</strong><div class="chat_green_point"></div><br>
+                            <div style="margin-bottom: 5px;" v-if="item.channel_status.GS.connected">
+                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+{{ item.channel_status.GS.name }}</strong>
+                                <div class="chat_green_point"></div>
+                                <br>
                             </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/telegram.png" alt="telegram"><strong>@dsfddsddsflsd_bot</strong><div class="chat_green_point"></div><br>
+                            <div style="margin-bottom: 5px;" v-if="item.channel_status.TL.connected">
+                                <img src="../assets/telegram.png" alt="telegram"><strong>@{{ item.channel_status.TL.name }}</strong><div class="chat_green_point"></div><br>
                             </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/viber.png" alt="viber"><strong>propusk</strong><div class="chat_green_point"></div><br>
+                            <div style="margin-bottom: 5px;" v-if="item.channel_status.VB.connected">
+                                <img src="../assets/viber.png" alt="viber"><strong>{{ item.channel_status.VB.name }}</strong><div class="chat_green_point"></div><br>
                             </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/vk.png" alt="vk"><strong>50932384</strong><div class="chat_green_point"></div><br>
+                            <div style="margin-bottom: 5px;" v-if="item.channel_status.VK.connected">
+                                <img src="../assets/vk.png" alt="vk"><strong>{{ item.channel_status.VK.name }}</strong><div class="chat_green_point"></div><br>
                             </div>
                           
                             <div class="chat_novye">
@@ -160,17 +162,25 @@
 
                     <td class="chat_block_inner_third_column">
                         <div class="chat_block_inner_margin">
-                            <p>1235 лидов</p>
-                            <p>242 контакта</p>
+                            <p>{{ item.lead_count }} лидов</p>
+                            <p>{{ item.contact_count }} контакта</p>
                             <a href="https://marketbot.biz/lead/index/10150">Подробнее</a>
                         </div>
                     </td>
 
 
 
-                    <td class="chat_block_inner_fourth_column">
+                    <td class="chat_block_inner_fourth_column" v-if="item.tariff.trial_until < item.tariff.paid_until">
                         <div class="chat_block_inner_margin">
-                            <p>Модуль действителен еще:<span>93 дня</span></p>
+                            <p>Модуль действителен еще:<span>{{ Math.round(item.tariff.paid_until)/1000/24/60/60 }} дня</span></p>
+                            <router-link to="/tariff">Настроить тариф</router-link>
+                        </div>
+                    </td>
+
+
+                    <td class="chat_block_inner_fourth_column" v-if="item.tariff.trial_until > item.tariff.paid_until">
+                        <div class="chat_block_inner_margin">
+                            <p>Бесплатный период заканчивается через:<span class="chat_block_red">{{ Math.round((unixtime - item.tariff.paid_until)/1000/24/60/60) }} дня</span></p>
                             <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
@@ -464,7 +474,22 @@
 
 <script>
 export default {
-    name: 'chat'
+    name: 'chat',
+     data() {
+        return{
+            info: [],
+            unixtime: Math.round(new Date().getTime() / 1000),
+        }
+    },
+    created() {
+        const axios = require('axios');
+        let self = this
+        axios.get('https://marketbot.biz/bot/api_botlist?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+            .then(function(response){
+                self.info = response.data
+            })
+
+    }
 }
 </script>
 
