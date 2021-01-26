@@ -439,18 +439,23 @@
 
                 <div class="tarif_calculator_result">
 
-                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.days_remating > 0">
-                        <p>Модуль действителен еще: <span style="color: green">{{ this.info.tariffdata.days_remating }} дней</span></p>
-                        <p v-if="this.info.tariffdata.write_first">Функция "Написать первым" действительна еще: <span>8 дней</span></p>
+                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.trial_until < this.info.tariffdata.paid_until">
+                        <p>Модуль действителен еще: <span style="color: green">{{ Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)}} дней</span></p>
+                        <p v-if="this.info.tariffdata.write_first > 0">Функция "Написать первым" действительна еще: <span>8 дней</span></p>
                     </div>
 
 
-                    <div class="tarif_calculator_result_red" v-if="this.info.tariffdata.days_remating == 0">
+                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.trial_until > this.info.tariffdata.paid_until">
+                        <p>Бесплатный тестовый период завершится через <span style="color: rgb(207,30,65);">{{ Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60) }} дня</span></p>
+                    </div>
+
+
+                    <div class="tarif_calculator_result_red" v-if="this.unixtime > this.info.tariffdata.trial_until">
                         <div class="tarif_calculator_result_red1">
                             <img src="../assets/clock.png" alt="">
                         </div>
                         
-                        <div class="tarif_calculator_result_red2" v-if="!this.info.tariffdata.days_remating > 0">
+                        <div class="tarif_calculator_result_red2">
                             <p><strong>Бесплатный пробный период закончился!</strong></p>
                             <p>Выберите тариф и пополните ваш баланс.</p>
                         </div>
@@ -526,6 +531,7 @@ export default {
             fourthBlockCount: 0,
             fifthBlockCount: 0,
             sixthBlockCount: 0,
+            unixtime: Math.round(new Date().getTime() / 1000),
 
         }
     },
@@ -953,6 +959,7 @@ export default {
         axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
                 self.info = response.data
+                console.log(self.unixtime - response.data.tariffdata.trial_until)
                 if(response.data.used_features.features.includes('waba_registered')){
                     self.total += response.data.pricelist.waba_setup_fee
                     self.fourthBlockCount += response.data.pricelist.waba_setup_fee
@@ -1224,7 +1231,6 @@ export default {
         color: white;
         font-size: 0.9em;
         margin-top: 15px;
-        display: none;
     }
     .tarif_calculator_result_red1{
         width: 10%;

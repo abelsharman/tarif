@@ -308,7 +308,7 @@ export default {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }
-            axios.post('https://marketbot.biz/tariff/dopay', params, config)
+            axios.post('http://marketbot.biz/balance/refill', params, config)
                 .then(function (response) {
                     console.log(response)
                     if(response.data.paid == true){
