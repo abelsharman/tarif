@@ -26,7 +26,7 @@
            
                
                <div class="right_block_inner_balans_right">
-                    <p>Ваш баланс: <span>{{ this.info.user_balance }} ₽</span></p>
+                    <p>Ваш баланс: <span style="font-size:1.1em;">{{ Math.round(this.info.user_balance) }} ₽</span></p>
                     <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
@@ -48,16 +48,16 @@
                     </div>
                     <div class="right_balans_left_inner_summa">
                         <h2>Общий баланс аккаунта: </h2>
-                        <h1>{{ this.info.user_balance }} ₽</h1>
+                        <h1>{{ Math.round(this.info.user_balance) }} ₽</h1>
                     </div>
 
 
-                    <form>
+                    
                         <div class="right_balans_left_inner_input" v-show="carta">
                             <input type="text" placeholder="Введите сумму" required>
-                            <input ref="submit_button" type="submit" value="ПОПОЛНИТЬ">
+                            <input ref="submit_button" type="submit" @click="submitBalance" value="ПОПОЛНИТЬ">
                         </div>
-                    </form>
+                    
 
                     <div class="right_balans_left_inner_add_cart_form" v-if="!carta">
                         <form>
@@ -294,11 +294,24 @@ export default {
         submitAmountToFill(event){
             event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
             event.target.parentNode.style.display = 'none'
-            console.log(event.target.parentNode.childNodes[0].value)
-            console.log(event.target.parentNode.childNodes[1].value)
+            let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
+            let uri =a.split('?');
+            if (uri.length == 2){
+                let vars = uri[1].split('&');
+                var getVars = {};
+                let tmp = '';
+                vars.forEach(function(v){
+                    tmp = v.split('=');
+                    if(tmp.length == 2)
+                        getVars[tmp[0]] = tmp[1];
+                    });
+            
+            }
+
+
             const axios = require('axios');
             const params = new URLSearchParams()
-            params.append('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
+            params.append('user_token', getVars.user_token)
             params.append('waba', event.target.parentNode.childNodes[1].value)
             params.append('amount', event.target.parentNode.childNodes[0].value)
         
@@ -322,7 +335,48 @@ export default {
                 })
                 
 
+        },
+        submitBalance(event){
+            const axios = require('axios');
+            const params = new URLSearchParams()
+            let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
+            let uri =a.split('?');
+            if (uri.length == 2){
+                let vars = uri[1].split('&');
+                var getVars = {};
+                let tmp = '';
+                vars.forEach(function(v){
+                    tmp = v.split('=');
+                    if(tmp.length == 2)
+                        getVars[tmp[0]] = tmp[1];
+                    });
+            
+            }
+
+
+            params.append('user_token', getVars.user_token)
+            params.append('waba', 0)
+            params.append('amount', event.target.parentNode.childNodes[0].value)
+        
+
+            const config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+            axios.post('http://marketbot.biz/balance/refill', params, config)
+                .then(function (response) {
+                    if(response.data.paid == true){
+                        alert('Транзакция успешна')
+                    }
+                    else{
+                        alert(response.data.errmsg, response.data.url, response.data.paid)
+                    }
+                    
+    
+                })
         }
+
         
     },
     created() {
