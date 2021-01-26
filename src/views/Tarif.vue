@@ -840,12 +840,21 @@ export default {
             const axios = require('axios');
             
             let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
-            let uri = a.substring(1)
-            let param = new URLSearchParams(uri)
+            let uri =a.split('?');
+            if (uri.length == 2){
+                let vars = uri[1].split('&');
+                var getVars = {};
+                let tmp = '';
+                vars.forEach(function(v){
+                    tmp = v.split('=');
+                    if(tmp.length == 2)
+                        getVars[tmp[0]] = tmp[1];
+                    });
+            
+            }
 
-
-
-            let botid = param.get('bot_id')
+          
+            let botid = getVars.botid
             let annual = this.$refs.check.checked ? 1 : 0
             let GS = 0
             let TL = 0
@@ -860,7 +869,7 @@ export default {
             let mailing = 0
             let ops = this.countOperator + this.info.used_features.ops
             let capacity_gib = this.countMemory + this.info.used_features.storage_usage_kib
-
+            
 
             if(this.info.used_features.features.includes('GS')){GS = 1}
             else{GS = this.checkWhatsApp ? 1 : 0}
@@ -880,8 +889,7 @@ export default {
             if(this.info.used_features.features.includes('chat')){chat = 1}
             else{chat = this.checkChat ? 1 : 0}
 
-            if(this.info.used_features.features.includes('chat')){write_first = 1}
-            else{write_first = this.checkWrite ? 1 : 0}
+            write_first = this.checkWrite ? 1 : 0
 
             if(this.info.used_features.features.includes('bot')){bot = 1}
             else{bot = this.checkEditor ? 1 : 0}
@@ -897,6 +905,7 @@ export default {
             if(this.info.used_features.features.includes('mailing')){mailing = 1}
             else{mailing = this.checkMail ? 1 : 0}
 
+            console.log(botid, annual)
 
             
             const params = new URLSearchParams()
@@ -916,7 +925,6 @@ export default {
             params.append('crm', crm)
             params.append('capacity_gib', capacity_gib)
 
-            
 
             const config = {
                 headers: {
@@ -945,6 +953,10 @@ export default {
         axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
                 self.info = response.data
+                if(response.data.used_features.features.includes('waba_registered')){
+                    self.total += response.data.pricelist.waba_setup_fee
+                    self.fourthBlockCount += response.data.pricelist.waba_setup_fee
+                }
                 if(response.data.used_features.features.includes('bitrix24')){
                     self.total += response.data.pricelist.crm
                     self.fourthBlockCount += response.data.pricelist.crm
@@ -982,6 +994,7 @@ export default {
                     self.secondBlockCount += (response.data.pricelist.op_cost * response.data.used_features.ops)
                 }
                 if(response.data.used_features.storage_usage_kib){
+                    response.data.used_features.storage_usage_kib = Math.ceil(response.data.used_features.storage_usage_kib / 1024 / 1024)
                     self.total += (response.data.pricelist.storage_per_gib * response.data.used_features.storage_usage_kib)
                     self.sixthBlockCount += (response.data.pricelist.storage_per_gib * response.data.used_features.storage_usage_kib)
                 }
