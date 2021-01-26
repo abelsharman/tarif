@@ -16,12 +16,12 @@ const routes = [
     component: chat
   },
   {
-    path: '/balans',
+    path: '/balance',
     name: 'Balans',
     component: Balans
   },
   {
-    path: '/tarif',
+    path: '/tariff',
     name: 'Tarif',
     component: Tarif
   }

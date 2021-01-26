@@ -26,8 +26,8 @@
            
                
                <div class="right_block_inner_balans_right">
-                    <p>Ваш баланс: <span>0 ₽</span></p>
-                    <router-link to="/balans">Пополнить баланс</router-link>
+                    <p>Ваш баланс: <span>{{ this.info.user_balance }} ₽</span></p>
+                    <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
             </div>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="right_balans_left_inner_summa">
                         <h2>Общий баланс аккаунта: </h2>
-                        <h1>1,200 ₽</h1>
+                        <h1>{{ this.info.user_balance }} ₽</h1>
                     </div>
 
 
@@ -85,17 +85,17 @@
                         </form>
                     </div>
 
-                    <div class="right_balans_left_inner_add_cart_button" @click="showForm()" v-if="carta && !carta_info">
+                    <div class="right_balans_left_inner_add_cart_button" @click="showForm()" v-if="carta && !carta_info && !this.info.cc.saved" >
                         <img src="../assets/menu_add.png" alt="add">
                         <p>Привязать карту</p>
                     </div>
 
 
-                    <div class="right_balans_left_inner_carts" v-if="!carta" @click="showAnotherForm()">
+                    <div class="right_balans_left_inner_carts" v-if="this.info.cc.saved" @click="showAnotherForm()">
                         <p>Ваши карты</p>
                         <div class="right_balans_left_inner_carts_cart">   
-                            <img src="../assets/money.png" alt="">
-                            <p>4149...4920<span>x</span></p>
+                            <img src="../assets/money.png" alt="{{ this.info.cc.type }}">
+                            <p>{{ this.info.cc.masked_num }}<span>x</span></p>
                         </div>
                     </div>
 
@@ -147,82 +147,50 @@
                     </tr>
 
 
-                    <tr class="table_odd_row">
-                        <td class="table_odd_row_1">
-                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
+                    <tr class="table_odd_row" v-for="(item,index) in this.info.botlist" :key="index">
+                        
+                        <td class="table_odd_row_1" style="background-color: rgb(248,249,250);" v-if="index % 2 == 0">
+                            <img src="../assets/whatsapp.png" alt=""><span>+{{ item.tel }}</span>
                         </td>
 
-                        <td class="table_odd_row_2"> 
-                            <p>Баланс WABA: $9,900</p>
+
+                        <td class="table_odd_row_1" v-if="index % 2 == 1">
+                            <img src="../assets/whatsapp.png" alt=""><span>+{{ item.tel }}</span>
                         </td>
 
-                        <td class="table_odd_row_3">
+                        <td class="table_odd_row_2" style="background-color: rgb(248,249,250);" v-if="index % 2 == 0"> 
+                            <img v-if="item.waba_balance_usd == 0" src="../assets/danger.png" alt="danger">
+                            <p v-if="item.waba_balance_usd == 0" style="color: red;">Баланс WABA: ${{ item.waba_balance_usd }}</p>
+
+                            <p v-if="item.waba_balance_usd > 0">Баланс WABA: ${{ item.waba_balance_usd }}</p>
+                        </td>
+
+
+                        <td class="table_odd_row_2" v-if="index % 2 == 1"> 
+                           <img v-if="item.waba_balance_usd == 0" src="../assets/danger.png" alt="danger">
+                            <p v-if="item.waba_balance_usd == 0" style="color: red;">Баланс WABA: ${{ item.waba_balance_usd }}</p>
+
+                            <p v-if="item.waba_balance_usd > 0">Баланс WABA: ${{ item.waba_balance_usd }}</p>
+                        </td>
+
+                        <td class="table_odd_row_3" style="background-color: rgb(248,249,250);" v-if="index % 2 == 0">
                             <div class="table_add_balans" v-show="addBalans">
-                                <input type="text">
-                                <button type="submit" @click="closeBalansForm"></button>
+                                <input type="text" required>
+                                <input type="hidden" v-bind:value="item.id">
+                                <button type="submit" @click="submitAmountToFill"></button>
                             </div>
                             <p @click="addBalansForm">Пополнить</p>
                         </td>
-                    </tr>
 
 
 
-                     <tr class="table_odd_row table_even_row">
-                        <td class="table_odd_row_1">
-                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
-                        </td>
-
-                        <td class="table_odd_row_2_red"> 
-                            <img src="../assets/danger.png" alt="danger">
-                            <p>Баланс WABA: $0</p>
-                        </td>
-
-                        <td class="table_odd_row_3">
+                        <td class="table_odd_row_3" v-if="index % 2 == 1">
                             <div class="table_add_balans" v-show="addBalans">
                                 <input type="text">
-                                <button type="submit" @click="closeBalansForm"></button>
+                                <input type="hidden" value="{{ item.id }}">
+                                <button type="submit" @click="submitAmountToFill"></button>
                             </div>
                             <p @click="addBalansForm">Пополнить</p>
-                        </td>
-                    </tr>
-
-
-                    <tr class="table_odd_row">
-                        <td class="table_odd_row_1">
-                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
-                        </td>
-
-                        <td class="table_odd_row_2"> 
-                            <p>Баланс WABA: $9,900</p>
-                        </td>
-
-                        <td class="table_odd_row_3">
-                            <div class="table_add_balans" v-show="addBalans">
-                                <input type="text">
-                                <button type="submit" @click="closeBalansForm"></button>
-                            </div>
-                            <p @click="addBalansForm">Пополнить</p>
-                        </td>
-                    </tr>
-
-
-
-                     <tr class="table_odd_row table_even_row">
-                        <td class="table_odd_row_1">
-                            <img src="../assets/whatsapp.png" alt=""><span>+79665989033</span>
-                        </td>
-
-                        <td class="table_odd_row_2"> 
-                            <p>Баланс WABA: $9,900</p>
-                        </td>
-
-                        <td class="table_odd_row_3">
-                            <div class="table_add_balans" v-show="addBalans">
-                                <input type="text">
-                                <button type="submit" @click="closeBalansForm"></button>
-                            </div>
-                            <p @click="addBalansForm">Пополнить</p>
-                            
                         </td>
                     </tr>
                 </table>
@@ -295,7 +263,7 @@ export default {
     name: 'Balans',
     data() {
         return{
-            courses: [],
+            info: [],
             carta: true, 
             carta_info: false,
             addBalans: false,
@@ -322,14 +290,35 @@ export default {
         closeBalansForm(event){
             event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
             event.target.parentNode.style.display = 'none'
+        },
+        submitAmountToFill(event){
+            event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
+            event.target.parentNode.style.display = 'none'
+            console.log(event.target.parentNode.childNodes[0].value)
+            console.log(event.target.parentNode.childNodes[1].value)
+            const axios = require('axios');
+
+            axios.post('https://marketbot.biz/tariff/dopay', {
+                user_token: '9c329f7404f8d74f0cf841e35b7e4680',
+                waba: event.target.parentNode.childNodes[1].value,
+                amount: event.target.parentNode.childNodes[0].value
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
         }
         
     },
     created() {
         const axios = require('axios');
-        axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+        let self = this
+        axios.get('http://marketbot.biz/balance/get_data?user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
-                console.log(response)
+                self.info = response.data
             })
 
     }

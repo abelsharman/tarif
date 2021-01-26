@@ -27,7 +27,7 @@
                
                <div class="right_block_inner_balans_right">
                     <p>Ваш баланс: <span>0 ₽</span></p>
-                    <router-link to="/balans">Пополнить баланс</router-link>
+                    <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
             </div>
@@ -171,7 +171,7 @@
                     <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
                             <p>Модуль действителен еще:<span>93 дня</span></p>
-                            <router-link to="/tarif">Настроить тариф</router-link>
+                            <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
 
@@ -309,7 +309,7 @@
                     <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
                             <p>Модуль действителен еще:<span>93 дня</span></p>
-                            <router-link to="/tarif">Настроить тариф</router-link>
+                            <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
 
@@ -445,7 +445,7 @@
                     <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
                             <p>Бесплатный период заканчивается через:<span class="chat_block_red">2 дня</span></p>
-                            <router-link to="/tarif">Настроить тариф</router-link>
+                            <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
 

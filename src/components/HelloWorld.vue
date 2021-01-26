@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
       <router-link to="/chat" style="margin-right:15px;">Ваши чат-боты</router-link>
-      <router-link to="/balans" style="margin-right:15px;">Ваш баланс</router-link>
-      <router-link to="/tarif" style="margin-right:15px;">Тарифы</router-link>
+      <router-link to="/balance" style="margin-right:15px;">Ваш баланс</router-link>
+      <router-link to="/tariff" style="margin-right:15px;">Тарифы</router-link>
   </div>
 </template>
 

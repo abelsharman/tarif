@@ -28,7 +28,7 @@
                
                <div class="right_block_inner_balans_right">
                     <p>Ваш баланс: <span>0 ₽</span></p>
-                    <router-link to="/balans">Пополнить баланс</router-link>
+                    <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
             </div>
@@ -122,13 +122,13 @@
                         </div>
 
 
-                        <label class="switch">
+                        <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
                                 <input type="checkbox">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
                         </label>
-                        <span>Подключение вашего номера к WhatsApp Business API</span>
+                        <span v-if="!this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
 
 
                         <div class="tarif_calculator_scroll_first_block_list">
@@ -189,7 +189,7 @@
 
 
                             <div>      
-                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus">
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="!this.info.used_features.ops">
                                     <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1"  style="background-color:rgb(240,241,242)">-</p>
 
@@ -197,6 +197,16 @@
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ countOperator }}</p>
                                     <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
                                 </div>
+
+
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.ops">
+                                   
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1"  style="background-color:rgb(240,241,242)">-</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ this.info.used_features.ops }}</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                </div>
+
+
                                 <p>Операторы</p>
                             </div>
 
@@ -365,13 +375,26 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
-                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus">
+                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="!this.info.used_features.storage_usage_kib">
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
                                     
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" style="width:20px;font-size:0.7em;margin:20px 0;">{{countMemory}} <span style="color:rgb(140,40,110);font-size:0.7em;">гб</span></p>
                                     <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
                                 </div>
+
+
+
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.storage_usage_kib">
+            
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
+                                    
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" style="width:20px;font-size:0.7em;vertical-align:middle;">{{this.info.used_features.storage_usage_kib}} <span style="color:rgb(140,40,110);font-size:0.7em;">гб</span></p>
+                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" >+</p>
+                                </div>
+
+
+
                                 <p>Память сервера</p>
                             </div>
                         </div>
@@ -389,18 +412,18 @@
 
                 <div class="tarif_calculator_result">
 
-                    <div class="tarif_calculator_result_grey">
-                        <p>Модуль действителен еще: <span style="color: green">93 дня</span></p>
-                        <p>Функция "Написать первым" действительна еще: <span>8 дней</span></p>
+                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.days_remating > 0">
+                        <p>Модуль действителен еще: <span style="color: green">{{ this.info.tariffdata.days_remating }} дней</span></p>
+                        <p v-if="this.info.tariffdata.write_first">Функция "Написать первым" действительна еще: <span>8 дней</span></p>
                     </div>
 
 
-                    <div class="tarif_calculator_result_red">
+                    <div class="tarif_calculator_result_red" v-if="this.info.tariffdata.days_remating == 0">
                         <div class="tarif_calculator_result_red1">
                             <img src="../assets/clock.png" alt="">
                         </div>
                         
-                        <div class="tarif_calculator_result_red2">
+                        <div class="tarif_calculator_result_red2" v-if="!this.info.tariffdata.days_remating > 0">
                             <p><strong>Бесплатный пробный период закончился!</strong></p>
                             <p>Выберите тариф и пополните ваш баланс.</p>
                         </div>
@@ -750,13 +773,28 @@ export default {
             }
         },
 
+        submitTarif(){
+            const axios = require('axios');
+
+            axios.post('https://marketbot.biz/tariff/dopay', {
+                firstNam: 'Fred',
+                lastName: 'Flintstone'
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
     },
     created() {
         const axios = require('axios');
         let self = this
         axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
-                
+                console.log(response.data.used_features.ops)
                 self.info = response.data
                 if(response.data.used_features.features.includes('bitrix24')){
                     self.total += response.data.pricelist.crm
@@ -785,7 +823,12 @@ export default {
                 if(response.data.used_features.features.includes('VB')){
                     self.total += response.data.pricelist.program_cost.VB
                 }
-                console.log(self.info.used_features.features.includes('bitrix24'))
+                if(response.data.used_features.ops){
+                    self.total += (response.data.pricelist.op_cost * response.data.used_features.ops)
+                }
+                if(response.data.used_features.storage_usage_kib){
+                    self.total += (response.data.pricelist.storage_per_gib * response.data.used_features.storage_usage_kib)
+                }
             })
 
     }
@@ -999,7 +1042,6 @@ export default {
         padding: 10px 0;
         font-size: 0.9em;
         margin-top: 10px;
-        display: none;
     }
     .tarif_calculator_result_grey p{
         margin: 5px 0;
