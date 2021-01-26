@@ -51,7 +51,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Подключение мессенджеров: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong>1,200</strong> ₽/месяц + <span>тарификация WhatsApp</span></p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ firstBlockCount }}</strong> ₽/месяц + <span>тарификация WhatsApp</span></p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div v-if="this.info.used_features.features.includes('GS')">
@@ -123,7 +123,7 @@
 
 
                         <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
-                                <input type="checkbox">
+                                <input type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
@@ -150,7 +150,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Настройка чат-центров: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong>2,400</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ secondBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div v-if="this.info.used_features.features.includes('chat')">
@@ -223,7 +223,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Настройка чат-ботов: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width:60%"><strong>1,300</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width:60%"><strong>{{ thirdBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div v-if="this.info.used_features.features.includes('deferred_exec')">
@@ -276,41 +276,68 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Интеграция CRM: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 65%"><strong>2,300</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 65%"><strong>{{ fourthBlockCount }}</strong> ₽/месяц</p>
 
-                        <div class="tarif_calculator_scroll_first_block_icons">
-                            <div v-if="this.info.used_features.features.includes('bitrix24')">
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('bitrix24')">
+                            <div>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
+                            <div>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/amo3.png" alt="amo">
+                                <p>amoCRM</p>
+                            </div>
+                        </div>
 
-                            <div v-if="!this.info.used_features.features.includes('bitrix24') && checkBitrix">
-                                <img @click="closeBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
+
+
+
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('amocrm')">
+                            <div>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-
-                            <div v-if="!this.info.used_features.features.includes('bitrix24') && !checkBitrix">
-                                <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/bitrix3.png" alt="bitrix">
-                                <p>Bitrix24</p>
-                            </div>
-
-
-
-
-                            <div v-if="this.info.used_features.features.includes('amocrm')">
+                            <div>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
+                        </div>
 
-                            <div v-if="!this.info.used_features.features.includes('amocrm') && checkAmo">
+
+
+
+
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="!this.info.used_features.features.includes('bitrix24') && !this.info.used_features.features.includes('amocrm')">
+                            <div v-if="checkBitrix && !checkAmo">
+                                <img @click="closeBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
+                                <p>Bitrix24</p>
+                            </div>
+                            <div v-if="checkBitrix && !checkAmo">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo3.png" alt="amo">
+                                <p>amoCRM</p>
+                            </div>
+
+
+                            <div v-if="!checkBitrix && checkAmo">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/bitrix3.png" alt="bitrix">
+                                <p>Bitrix24</p>
+                            </div>
+                             <div v-if="!checkBitrix && checkAmo">
                                 <img @click="closeAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('amocrm') && !checkAmo">
-                                <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/amo3.png" alt="amo">
+
+                            <div v-if="!checkBitrix && !checkAmo">
+                                <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/bitrix3.png" alt="bitrix">
+                                <p>Bitrix24</p>
+                            </div>
+                            <div v-if="!checkBitrix && !checkAmo">
+                                <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
+
+                        
                         </div>
 
 
@@ -331,7 +358,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Рассылка сообщений: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 60%;"><strong>900</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 60%;"><strong>{{ fifthBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div v-if="this.info.used_features.features.includes('bot')" style="width: 30%;margin-left: 0;">
@@ -371,7 +398,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Хостинг: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 75%"><strong>500</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 75%"><strong>{{ sixthBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
@@ -432,7 +459,7 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1>{{ total }} ₽/месяц</h1>
+                    <h1>{{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
                     <div class="tarif_calculator_result_checkbox">
                         <span style="color:grey">Ежемесячно </span>
                         <label class="switch">
@@ -443,7 +470,7 @@
                         <span> -{{ info.pricelist.yearly_discount * 100 }}%</span>
                     </div>
 
-                    <input type="submit" value="ПОДКЛЮЧИТЬ">
+                    <input type="submit" @click="submitTarif" value="ПОДКЛЮЧИТЬ">
 
 
 
@@ -492,10 +519,19 @@ export default {
             checkBitrix: false,
             chechAmo: false,
             checkMail: false,
+            checkYear: false,
+            firstBlockCount: 0,
+            secondBlockCount: 0,
+            thirdBlockCount: 0,
+            fourthBlockCount: 0,
+            fifthBlockCount: 0,
+            sixthBlockCount: 0,
+
         }
     },
     methods:{
         clickWhatsApp(){
+            this.firstBlockCount += this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
@@ -506,6 +542,7 @@ export default {
             }
         },
         closeWhatsApp(){
+            this.firstBlockCount -= this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
@@ -516,6 +553,7 @@ export default {
             }
         },
         clickTelegram(){
+            this.firstBlockCount += this.info.pricelist.program_cost.TL
             this.checkTelegram = !this.checkTelegram
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) * 12
@@ -527,6 +565,7 @@ export default {
         },
 
         closeTelegram(){
+            this.firstBlockCount -= this.info.pricelist.program_cost.TL
             this.checkTelegram = !this.checkTelegram
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) * 12
@@ -538,6 +577,7 @@ export default {
         },
 
         clickViber(){
+            this.firstBlockCount += this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) * 12
@@ -549,6 +589,7 @@ export default {
         },
 
         closeViber(){
+            this.firstBlockCount -= this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) * 12
@@ -561,6 +602,7 @@ export default {
 
 
         clickVk(){
+            this.firstBlockCount += this.info.pricelist.program_cost.VK
             this.checkVk = !this.checkVk
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) * 12
@@ -571,6 +613,7 @@ export default {
             }
         },
         closeVk(){
+            this.firstBlockCount -= this.info.pricelist.program_cost.VK
             this.checkVk = !this.checkVk
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) * 12
@@ -581,6 +624,7 @@ export default {
             }
         },
         clickChat(){
+            this.secondBlockCount += this.info.pricelist.chat_cost
             this.checkChat = !this.checkChat
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) * 12
@@ -591,6 +635,7 @@ export default {
             }
         },
         closeChat(){
+            this.secondBlockCount -= this.info.pricelist.chat_cost
             this.checkChat = !this.checkChat
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) * 12
@@ -601,6 +646,7 @@ export default {
             }
         },
         clickWriteFirst(){
+            this.secondBlockCount += this.info.pricelist.write_first_cost
             this.checkWrite = !this.checkWrite
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) * 12
@@ -611,6 +657,7 @@ export default {
             }
         },
         closeWriteFirst(){
+            this.secondBlockCount -= this.info.pricelist.write_first_cost
             this.checkWrite = !this.checkWrite
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) * 12
@@ -621,6 +668,7 @@ export default {
             }
         },
         clickEditor(){
+            this.thirdBlockCount += this.info.pricelist.bot
             this.checkEditor = !this.checkEditor
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) * 12
@@ -631,6 +679,7 @@ export default {
             }
         },
         closeEditor(){
+            this.thirdBlockCount -= this.info.pricelist.bot
             this.checkEditor = !this.checkEditor
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) * 12
@@ -641,6 +690,7 @@ export default {
             }
         },
         clickFunnel(){
+            this.thirdBlockCount += this.info.pricelist.deferred_exec
             this.checkFunnel = !this.checkFunnel
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) * 12
@@ -651,6 +701,7 @@ export default {
             }
         },
         closeFunnel(){
+            this.thirdBlockCount -= this.info.pricelist.deferred_exec
             this.checkFunnel = !this.checkFunnel
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) * 12
@@ -661,6 +712,7 @@ export default {
             }
         },
         clickBitrix(){
+            this.fourthBlockCount += this.info.pricelist.crm
             this.checkBitrix = !this.checkBitrix
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
@@ -671,6 +723,7 @@ export default {
             }
         },
         closeBitrix(){
+            this.fourthBlockCount -= this.info.pricelist.crm
             this.checkBitrix = !this.checkBitrix
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
@@ -681,6 +734,7 @@ export default {
             }
         },
         clickAmo(){
+            this.fourthBlockCount += this.info.pricelist.crm
             this.checkAmo = !this.checkAmo
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
@@ -691,6 +745,7 @@ export default {
             }
         },
         closeAmo(){
+            this.fourthBlockCount -= this.info.pricelist.crm
             this.checkAmo = !this.checkAmo
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
@@ -701,6 +756,7 @@ export default {
             }
         },
         clickMail(){
+            this.fifthBlockCount += this.info.pricelist.mailing
             this.checkMail = !this.checkMail
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) * 12
@@ -711,6 +767,7 @@ export default {
             }
         },
         closeMail(){
+            this.fifthBlockCount -= this.info.pricelist.mailing
             this.checkMail = !this.checkMail
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) * 12
@@ -721,6 +778,7 @@ export default {
             }
         },
         clickDiscount(event){
+            this.checkYear = !this.checkYear
             if(event.target.checked == true){
                 this.total = this.total * (1-this.info.pricelist.yearly_discount) * 12
                 this.total = parseInt(this.total.toFixed(0))
@@ -733,6 +791,7 @@ export default {
         
         },
         clickOperatorPlus(){
+            this.secondBlockCount += this.info.pricelist.op_cost
             this.countOperator += 1
             if(this.$refs.check.checked == true){
                 this.total = this.total + this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) * 12
@@ -743,6 +802,7 @@ export default {
             }
         },
         clickOperatorMinus(){
+            this.secondBlockCount -= this.info.pricelist.op_cost
             this.countOperator -= 1
             if(this.$refs.check.checked == true){
                 this.total = this.total - this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) * 12
@@ -753,6 +813,7 @@ export default {
             }
         },
         clickMemoryPlus(){
+            this.sixthBlockCount += this.info.pricelist.storage_per_gib
             this.countMemory += 1
             if(this.$refs.check.checked == true){
                 this.total = this.total + this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) * 12
@@ -763,6 +824,7 @@ export default {
             }
         },
         clickMemoryMinus(){
+            this.sixthBlockCount -= this.info.pricelist.storage_per_gib
             this.countMemory -= 1
             if(this.$refs.check.checked == true){
                 this.total = this.total - this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) * 12
@@ -772,14 +834,89 @@ export default {
                 this.total = this.total - this.info.pricelist.storage_per_gib
             }
         },
+    
 
         submitTarif(){
             const axios = require('axios');
+            
+            let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
+            let uri = a.substring(1)
+            let param = new URLSearchParams(uri)
+
+
+
+            let botid = param.get('user_token')
+            let annual = this.$refs.check.checked ? 1 : 0
+            let GS = 0
+            let TL = 0
+            let VB = 0
+            let VK = 0
+            let reg_waba = 0
+            let chat = 0
+            let write_first = 0
+            let bot = 0
+            let deferred_exec = 0
+            let crm = 0
+            let mailing = 0
+            let ops = this.countOperator + this.info.used_features.ops
+            let capacity_gib = this.countMemory + this.info.used_features.storage_usage_kib
+
+
+            if(this.info.used_features.features.includes('GS')){GS = 1}
+            else{GS = this.checkWhatsApp ? 1 : 0}
+
+            if(this.info.used_features.features.includes('TL')){TL = 1}
+            else{TL = this.checkTelegram ? 1 : 0}
+
+            if(this.info.used_features.features.includes('VB')){VB = 1}
+            else{VB = this.checkViber ? 1 : 0}
+
+            if(this.info.used_features.features.includes('VK')){VK = 1}
+            else{VK = this.checkVk ? 1 : 0}
+
+            if(this.info.used_features.features.includes('waba_registered')){reg_waba = 1}
+            else{reg_waba = this.$refs.businessapi.checked ? 1 : 0}
+
+            if(this.info.used_features.features.includes('chat')){chat = 1}
+            else{chat = this.checkChat ? 1 : 0}
+
+            if(this.info.used_features.features.includes('chat')){write_first = 1}
+            else{write_first = this.checkWrite ? 1 : 0}
+
+            if(this.info.used_features.features.includes('bot')){bot = 1}
+            else{bot = this.checkEditor ? 1 : 0}
+
+            if(this.info.used_features.features.includes('deferred_exec')){deferred_exec = 1}
+            else{deferred_exec = this.checkFunnel ? 1 : 0}
+
+            if(this.info.used_features.features.includes('crm' || 'bitrix24' || 'amocrm')){crm = 1}
+            else{crm = this.checkBitrix ? 1 : 0}
+            
+            if(crm == 0 && this.checkAmo){crm = 1}
+
+            if(this.info.used_features.features.includes('mailing')){mailing = 1}
+            else{mailing = this.checkMail ? 1 : 0}
+
+
+            
             const params = new URLSearchParams()
-            params.append('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
-            params.append('waba', event.target.parentNode.childNodes[1].value)
-            params.append('amount', event.target.parentNode.childNodes[0].value)
-        
+            params.append('botid', botid)
+            params.append('annual', annual)
+            params.append('reg_waba', reg_waba)
+            params.append('program[GS]', GS)
+            params.append('program[VK]', VK)
+            params.append('program[VB]', VB)
+            params.append('program[TL]', TL)
+            params.append('chat', chat)
+            params.append('write_first', write_first)
+            params.append('ops', ops)
+            params.append('bot', bot)
+            params.append('deferred_exec', deferred_exec)
+            params.append('mailing', mailing)
+            params.append('crm', crm)
+            params.append('capacity_gib', capacity_gib)
+
+            
 
             const config = {
                 headers: {
@@ -790,7 +927,7 @@ export default {
             axios.post('https://marketbot.biz/tariff/dopay', params, config)
                 .then(function (response) {
                     if(response.data.paid == true){
-                        alert("Транзакция успешна")
+                        alert("Транзакция успешна. Стоимость тарифа: " + response.data.cost)    
                     }
                     else{
                         alert(response.data.errmsg)
@@ -807,40 +944,46 @@ export default {
         let self = this
         axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
-                console.log(response.data.used_features.ops)
                 self.info = response.data
                 if(response.data.used_features.features.includes('bitrix24')){
                     self.total += response.data.pricelist.crm
+                    self.fourthBlockCount += response.data.pricelist.crm
                 }
                 if(response.data.used_features.features.includes('amocrm')){
                     self.total += response.data.pricelist.crm
+                    self.fourthBlockCount += response.data.pricelist.crm
                 }
                 if(response.data.used_features.features.includes('chat')){
                     self.total += response.data.pricelist.chat_cost
-                }
-                if(response.data.used_features.features.includes('chat')){
-                    self.total += response.data.pricelist.write_first_cost
+                    self.secondBlockCount += response.data.pricelist.chat_cost
                 }
                 if(response.data.used_features.features.includes('deferred_exec')){
                     self.total += response.data.pricelist.deferred_exec
+                    self.thirdBlockCount += response.data.pricelist.deferred_exec
                 }
                 if(response.data.used_features.features.includes('GS')){
                     self.total += response.data.pricelist.program_cost.GS
+                    self.firstBlockCount += response.data.pricelist.program_cost.GS
                 }
                 if(response.data.used_features.features.includes('TL')){
                     self.total += response.data.pricelist.program_cost.TL
+                    self.firstBlockCount += response.data.pricelist.program_cost.TL
                 }
                 if(response.data.used_features.features.includes('VK')){
                     self.total += response.data.pricelist.program_cost.VK
+                    self.firstBlockCount += response.data.pricelist.program_cost.VK
                 }
                 if(response.data.used_features.features.includes('VB')){
                     self.total += response.data.pricelist.program_cost.VB
+                    self.firstBlockCount += response.data.pricelist.program_cost.VB
                 }
                 if(response.data.used_features.ops){
                     self.total += (response.data.pricelist.op_cost * response.data.used_features.ops)
+                    self.secondBlockCount += (response.data.pricelist.op_cost * response.data.used_features.ops)
                 }
                 if(response.data.used_features.storage_usage_kib){
                     self.total += (response.data.pricelist.storage_per_gib * response.data.used_features.storage_usage_kib)
+                    self.sixthBlockCount += (response.data.pricelist.storage_per_gib * response.data.used_features.storage_usage_kib)
                 }
             })
 
