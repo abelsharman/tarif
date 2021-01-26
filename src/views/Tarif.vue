@@ -845,7 +845,7 @@ export default {
 
 
 
-            let botid = param.get('user_token')
+            let botid = param.get('bot_id')
             let annual = this.$refs.check.checked ? 1 : 0
             let GS = 0
             let TL = 0
