@@ -297,18 +297,30 @@ export default {
             console.log(event.target.parentNode.childNodes[0].value)
             console.log(event.target.parentNode.childNodes[1].value)
             const axios = require('axios');
+            const params = new URLSearchParams()
+            params.append('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
+            params.append('waba', event.target.parentNode.childNodes[1].value)
+            params.append('amount', event.target.parentNode.childNodes[0].value)
+        
 
-            axios.post('https://marketbot.biz/tariff/dopay', {
-                user_token: '9c329f7404f8d74f0cf841e35b7e4680',
-                waba: event.target.parentNode.childNodes[1].value,
-                amount: event.target.parentNode.childNodes[0].value
-            })
+            const config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+            axios.post('https://marketbot.biz/tariff/dopay', params, config)
                 .then(function (response) {
-                    console.log(response);
+                    console.log(response)
+                    if(response.data.paid == true){
+                        alert('Транзакция успешна')
+                    }
+                    else{
+                        alert(response.data.errmsg)
+                    }
+                    
+    
                 })
-                .catch(function (error) {
-                    console.log(error);
-                });
+                
 
         }
         

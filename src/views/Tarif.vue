@@ -200,9 +200,9 @@
 
 
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.ops">
-                                   
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1"  style="background-color:rgb(240,241,242)">-</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ this.info.used_features.ops }}</p>
+                                    <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" >-</p>
+                                    <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1"  style="background-color:rgb(240,241,242)">-</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ this.info.used_features.ops + countOperator }}</p>
                                     <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
                                 </div>
 
@@ -387,9 +387,9 @@
 
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.storage_usage_kib">
             
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
-                                    
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" style="width:20px;font-size:0.7em;vertical-align:middle;">{{this.info.used_features.storage_usage_kib}} <span style="color:rgb(140,40,110);font-size:0.7em;">гб</span></p>
+                                    <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
+                                    <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" style="width:20px;font-size:0.7em;vertical-align:middle;">{{this.info.used_features.storage_usage_kib + countMemory}} <span style="color:rgb(140,40,110);font-size:0.7em;">гб</span></p>
                                     <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" >+</p>
                                 </div>
 
@@ -775,13 +775,26 @@ export default {
 
         submitTarif(){
             const axios = require('axios');
+            const params = new URLSearchParams()
+            params.append('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
+            params.append('waba', event.target.parentNode.childNodes[1].value)
+            params.append('amount', event.target.parentNode.childNodes[0].value)
+        
 
-            axios.post('https://marketbot.biz/tariff/dopay', {
-                firstNam: 'Fred',
-                lastName: 'Flintstone'
-            })
+            const config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+
+            axios.post('https://marketbot.biz/tariff/dopay', params, config)
                 .then(function (response) {
-                    console.log(response);
+                    if(response.data.paid == true){
+                        alert("Транзакция успешна")
+                    }
+                    else{
+                        alert(response.data.errmsg)
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
