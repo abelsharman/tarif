@@ -5,15 +5,16 @@
         </router-link >
 
         <div class="left_block_inner">
-            <a href="#"><img src="../assets/sidebar_logo.png" alt="name"></a>
-            <a href="#"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
-            <a href="#"><img src="../assets/sidebar_menu_list.png" alt="list"></a>
-            <a href="#"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+            <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+            <small style="color:white;">{{ infoUser.username }}</small>
+            <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+            <router-link to="/tariff"><img src="../assets/sidebar_menu_list.png" alt="list"></router-link>
+            <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
         </div>
 
 
          <div class="left_block_inner left_block_inner2">
-            <a href="#"><img src="../assets/sidebar_help.png" alt="help"></a>
+            <a href="https://marketbot.biz/977"><img src="../assets/sidebar_help.png" alt="help"></a>
         </div>
     </div>
 
@@ -34,7 +35,7 @@
 
 
             <div class="right_block_inner_logout">
-                <img src="../assets/header_exit.png">
+                <a href="https://marketbot.biz/user/logout"><img src="../assets/header_exit.png"></a>
             </div>
         </div>
 
@@ -54,17 +55,19 @@
                     <td class="chat_block_inner_first_column">
                         <div class="chat_block_inner_margin1">
                             <div class="chat_block_id_1">
-                                <p class="chat_block_id_1_grey">ID {{ item.id }}</p>
+                                <p class="chat_block_id_1_grey">ID {{ item.id }} {{ item.owner }}</p>
                                 <p class="chat_block_id_1_big">{{ item.name }}</p>
-                                <p class="chat_block_id_1_green">Баланс WABA: $9,900</p>
-                                <p class="chat_block_id_1_darkgrey">3 мб</p>
-                                <p class="chat_block_id_1_grey">13 июня, 2019</p>
+                                <img v-if="item.ms_balance < 5" src="../assets/danger.png">
+                                <span  v-if="item.ms_balance < 5" class="chat_block_id_1_red">Баланс WABA: ${{ item.ms_balance }}</span>
+                                <p v-if="item.ms_balance > 5" class="chat_block_id_1_green">Баланс WABA: ${{ item.ms_balance }}</p>
+                                <p class="chat_block_id_1_darkgrey">{{ Math.ceil(item.capacity_usage.curr_usage/1024) }} мб</p>
+                                <p class="chat_block_id_1_grey">{{ formatDate(parseInt(item.created_at)) }}</p>
                             </div>
 
                             <div class="chat_block_id_2">
                                 <div style="margin-bottom: 2px;">
                                     <a href="https://marketbot.biz/bchannels/index/10150">
-                                    <img src="../assets/info.png" alt="info"><strong>Профиль</strong>
+                                    <img src="../assets/info.png" alt="info"><strong>Каналы</strong>
                                     </a>
                                  </div>
 
@@ -86,15 +89,33 @@
                                     </a>
                                 </div>
 
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/promocodes/index/10150">
+                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
+                                    <a href="https://marketbot.biz/hsm/index/10156">
+                                    <strong style="margin-left: 20px;">Промокоды</strong>
+                                    </a>
+                                </div>
+
+                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
+                                    <a href="https://marketbot.biz/promocodes/index/10156">
                                     <img src="../assets/links.png" alt="links"><strong>WABA профиль</strong>
                                     </a>
                                 </div>
 
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bchannels/index/10150">
+                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
+                                    <a href="https://marketbot.biz/hsm/index/10156">
                                     <img src="../assets/h.png" alt="h"><strong>HSM</strong>
+                                    </a>
+                                </div>
+
+                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
+                                    <a href="https://marketbot.biz/wb/index/10156">
+                                    <strong style="margin-left: 20px;">GSREG</strong>
+                                    </a>
+                                </div>
+
+                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
+                                    <a href="https://marketbot.biz/tariff/edit/10156">
+                                    <strong  style="margin-left: 20px;">Изм.тариф</strong>
                                     </a>
                                 </div>
                             </div>
@@ -135,25 +156,35 @@
                             
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.GS.connected">
                                 <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+{{ item.channel_status.GS.name }}</strong>
-                                <div class="chat_green_point"></div>
+                                <div v-if="item.channel_status.GS.paid" class="chat_green_point"></div><br>
+                                <div v-if="!item.channel_status.GS.paid" class="chat_red_point"></div><br>
                                 <br>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.TL.connected">
-                                <img src="../assets/telegram.png" alt="telegram"><strong>@{{ item.channel_status.TL.name }}</strong><div class="chat_green_point"></div><br>
+                                <img src="../assets/telegram.png" alt="telegram"><strong>@{{ item.channel_status.TL.name }}</strong>
+                                <div v-if="item.channel_status.TL.paid" class="chat_green_point"></div><br>
+                                <div v-if="!item.channel_status.TL.paid" class="chat_red_point"></div><br>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.VB.connected">
-                                <img src="../assets/viber.png" alt="viber"><strong>{{ item.channel_status.VB.name }}</strong><div class="chat_green_point"></div><br>
+                                <img src="../assets/viber.png" alt="viber"><strong>{{ item.channel_status.VB.name }}</strong>
+                                <div v-if="item.channel_status.VB.paid" class="chat_green_point"></div><br>
+                                <div v-if="!item.channel_status.VB.paid" class="chat_red_point"></div><br>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.VK.connected">
-                                <img src="../assets/vk.png" alt="vk"><strong>{{ item.channel_status.VK.name }}</strong><div class="chat_green_point"></div><br>
+                                <img src="../assets/vk.png" alt="vk"><strong>{{ item.channel_status.VK.name }}</strong>
+                                <div v-if="item.channel_status.VK.paid" class="chat_green_point"></div><br>
+                                <div v-if="!item.channel_status.VK.paid" class="chat_red_point"></div><br>
                             </div>
                           
                             <div class="chat_novye">
-                                <span style="color: rgb(100,100,100);font-size:14px;">Новые: </span>
-                                <img src="../assets/left_arrow.png" alt="">
-                                <span style="color: rgb(100,100,100);font-size:14px;">Сегодня</span>
-                                <span id="chat_novye_span">3236</span>
-                                <img src="../assets/right_arrow.png" alt="">
+                                <img src="../assets/left_arrow.png" alt="" style="margin-left: 14%;" @click="subPeer">
+                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">{{ peers[peer] }}</span>
+                                <span id="chat_novye_span" v-if="peer == 0">{{ item.peers_stats.n }}</span>
+                                <span id="chat_novye_span" v-if="peer == 1">{{ item.peers_stats.d }}</span>
+                                <span id="chat_novye_span" v-if="peer == 2">{{ item.peers_stats.w }}</span>
+                                <span id="chat_novye_span" v-if="peer == 3">{{ item.peers_stats.m }}</span>
+                                <span id="chat_novye_span" v-if="peer == 4">{{ item.peers_stats.t }}</span>
+                                <img src="../assets/right_arrow.png" alt="" @click="addPeer">
                             </div>
                         </div>
                     </td>
@@ -188,7 +219,7 @@
 
 
                     <td class="chat_block_inner_fifth_column">
-                        <img src="../assets/close.png" alt="close">
+                        <a href="https://marketbot.biz/bot/del/10151"><img src="../assets/close.png" alt="close"></a>
                     </td>
                 </tr>
 
@@ -478,8 +509,27 @@ export default {
      data() {
         return{
             info: [],
+            infoUser: [],
             unixtime: Math.round(new Date().getTime() / 1000),
+            peer: 0,
+            peers: ["Новые", "За день", "Неделя", "Месяц", "Все время"]
         }
+    },
+    methods: {
+        formatDate(date){
+            const moment = require('moment')
+            return moment(date).format("DD/MM/YYYY")
+        },
+        addPeer(){
+            if(this.peer < 4){
+                this.peer += 1
+            }
+        },
+        subPeer(){
+            if(this.peer > 0){
+                this.peer -= 1
+            }
+        },
     },
     created() {
         const axios = require('axios');
@@ -488,6 +538,12 @@ export default {
             .then(function(response){
                 self.info = response.data
             })
+
+        axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+            .then(function(response){
+                self.infoUser = response.data
+            })
+
 
     }
 }
@@ -777,6 +833,16 @@ export default {
         margin-left: 5px;
         margin-bottom: 2px;
     }
+    .chat_red_point {
+        width: 7px;
+        display: inline-block;
+        height: 7px;
+        background-color: red;
+        border-radius: 25px;
+        vertical-align: middle;
+        margin-left: 5px;
+        margin-bottom: 2px;
+    }
     .chat_novye{
         margin-top: 10%;
     }
@@ -815,5 +881,202 @@ export default {
         width: 55%;
         margin-left: 22%;
     }
-
+    @media (max-width: 1366px){
+        .chat_block_inner_margin1{
+            margin-left: 10px;
+        }
+        .chat_block_id_1 img{
+            width: 10px;
+        }
+        .chat_block_id_1 .chat_block_id_1_grey{
+            font-size: 10px;
+        }
+        .chat_block_id_1 .chat_block_id_1_big{
+            font-size: 14px;
+        }
+        .chat_block_id_1 .chat_block_id_1_green{
+            font-size: 12px;
+        }
+        .chat_block_id_1 .chat_block_id_1_darkgrey{
+            font-size: 12px;
+        }
+        .chat_block_id_1 .chat_block_id_1_red{
+            font-size: 12px;
+        }
+        .chat_block_id_2 img{
+            width: 13px;
+            margin-right: 4px;  
+        }
+        .chat_block_id_2 strong{
+            font-size: 12px;
+        }
+        .chat_block_id_3_border{
+            padding: 1px 12px;
+        }
+        .chat_block_id_3_border img{
+            width: 14px;
+            margin-right: 3px;
+        }
+        .chat_block_id_3_border p{
+            font-size: 10px;
+        }
+        .chat_block_id_3_border .chat_block_id_1_grey{
+            font-size: 10px;
+        }
+        .chat_block_inner_second_column img{
+            width: 16px;
+            margin-right: 7px;
+        }
+        .chat_block_inner_second_column strong{
+            font-size: 12px;
+        }
+        #chat_novye_span{
+            padding: 1px 4px;
+            margin: 0px 4px;
+            font-size: 12px;
+        }
+        .chat_novye img{
+            width: 9px;
+            margin-top: 5px;
+            margin-left: 1px;
+        }
+        .chat_block_inner_third_column p,a{
+            font-size: 12px !important;
+        }
+        .chat_block_inner_fourth_column p,a{
+            font-size: 12px !important;
+        }
+    }
+    @media (max-width: 1024px){
+        .chat_block_inner_margin1{
+            margin-left: 10px;
+        }
+        .chat_block_id_1 img{
+            width: 10px;
+        }
+        .chat_block_id_1 .chat_block_id_1_grey{
+            font-size: 10px;
+        }
+        .chat_block_id_1 .chat_block_id_1_big{
+            font-size: 14px;
+        }
+        .chat_block_id_1 .chat_block_id_1_green{
+            font-size: 12px;
+        }
+        .chat_block_id_1 .chat_block_id_1_darkgrey{
+            font-size: 12px;
+        }
+        .chat_block_id_1 .chat_block_id_1_red{
+            font-size: 12px;
+        }
+        .chat_block_id_2 img{
+            width: 13px;
+            margin-right: 4px;  
+        }
+        .chat_block_id_2 strong{
+            font-size: 12px;
+        }
+        .chat_block_id_3_border{
+            padding: 1px 1px;
+        }
+        .chat_block_id_3_border img{
+            width: 10px;
+            margin-right: 1px;
+        }
+        .chat_block_id_3_border p{
+            font-size: 10px;
+        }
+        .chat_block_id_3_border .chat_block_id_1_grey{
+            font-size: 10px;
+        }
+        .chat_block_inner_second_column img{
+            width: 16px;
+            margin-right: 7px;
+        }
+        .chat_block_inner_second_column strong{
+            font-size: 10px;
+        }
+        #chat_novye_span{
+            padding: 1px 4px;
+            margin: 0px 4px;
+            font-size: 10px;
+        }
+        .chat_novye img{
+            width: 9px;
+            margin-top: 5px;
+            margin-left: 1px;
+        }
+        .chat_block_inner_third_column p,a{
+            font-size: 11px !important;
+        }
+        .chat_block_inner_fourth_column p,a{
+            font-size: 11px !important;
+        }
+    }
+    @media (max-width: 800px){
+        .chat_block_inner_margin1{
+            margin-left: 5px;
+        }
+        .chat_block_id_1 img{
+            width: 8px;
+        }
+        .chat_block_id_1 .chat_block_id_1_grey{
+            font-size: 9px;
+        }
+        .chat_block_id_1 .chat_block_id_1_big{
+            font-size: 12px;
+        }
+        .chat_block_id_1 .chat_block_id_1_green{
+            font-size: 10px;
+        }
+        .chat_block_id_1 .chat_block_id_1_darkgrey{
+            font-size: 10px;
+        }
+        .chat_block_id_1 .chat_block_id_1_red{
+            font-size: 10px;
+        }
+        .chat_block_id_2 img{
+            width: 11px;
+            margin-right: 4px;  
+        }
+        .chat_block_id_2 strong{
+            font-size: 9px;
+        }
+        .chat_block_id_3_border{
+            padding: 1px 1px;
+        }
+        .chat_block_id_3_border img{
+            width: 9px;
+            margin-right: 1px;
+        }
+        .chat_block_id_3_border p{
+            font-size: 8px;
+        }
+        .chat_block_id_3_border .chat_block_id_1_grey{
+            font-size: 9px;
+        }
+        .chat_block_inner_second_column img{
+            width: 13px;
+            margin-right: 4px;
+        }
+        .chat_block_inner_second_column strong{
+            font-size: 9px;
+        }
+        #chat_novye_span{
+            padding: 1px 4px;
+            margin: 0px 4px;
+            font-size: 9px !important;
+        }
+        .chat_novye img{
+            width: 7px;
+            margin-top: 5px;
+            margin-left: 1px;
+        }
+        .chat_block_inner_third_column p,a{
+            font-size: 10px !important;
+        }
+        .chat_block_inner_fourth_column p,a{
+            font-size: 10px !important;
+        }
+    }
 </style>

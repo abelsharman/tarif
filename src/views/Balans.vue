@@ -5,15 +5,16 @@
         </router-link >
 
         <div class="left_block_inner">
-            <a href="#"><img src="../assets/sidebar_logo.png" alt="name"></a>
-            <a href="#"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
-            <a href="#"><img src="../assets/sidebar_menu_list.png" alt="list"></a>
-            <a href="#"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+            <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+            <small style="color:white;">{{ infoUser.username }}</small>
+            <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+            <router-link to="/tariff"><img src="../assets/sidebar_menu_list.png" alt="list"></router-link>
+            <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
         </div>
 
 
          <div class="left_block_inner left_block_inner2">
-            <a href="#"><img src="../assets/sidebar_help.png" alt="help"></a>
+            <a href="https://marketbot.biz/977"><img src="../assets/sidebar_help.png" alt="help"></a>
         </div>
     </div>
 
@@ -34,7 +35,7 @@
 
 
             <div class="right_block_inner_logout">
-                <img src="../assets/header_exit.png">
+                <a href="https://marketbot.biz/user/logout"><img src="../assets/header_exit.png"></a>
             </div>
         </div>
 
@@ -264,6 +265,7 @@ export default {
     data() {
         return{
             info: [],
+            infoUser: [],
             carta: true, 
             carta_info: false,
             addBalans: false,
@@ -385,6 +387,11 @@ export default {
         axios.get('http://marketbot.biz/balance/get_data?user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
                 self.info = response.data
+            })
+
+        axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+            .then(function(response){
+                self.infoUser = response.data
             })
 
     }

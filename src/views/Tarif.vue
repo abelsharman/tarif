@@ -5,15 +5,16 @@
         </router-link >
 
         <div class="left_block_inner">
-            <a href="#"><img src="../assets/sidebar_logo.png" alt="name"></a>
-            <a href="#"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
-            <a href="#"><img src="../assets/sidebar_menu_list.png" alt="list"></a>
-            <a href="#"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+            <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+            <small style="color:white;">{{ infoUser.username }}</small>
+            <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+            <router-link to="/tariff"><img src="../assets/sidebar_menu_list.png" alt="list"></router-link>
+            <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
         </div>
 
 
          <div class="left_block_inner left_block_inner2">
-            <a href="#"><img src="../assets/sidebar_help.png" alt="help"></a>
+            <a href="https://marketbot.biz/977"><img src="../assets/sidebar_help.png" alt="help"></a>
         </div>
     </div>
 
@@ -35,14 +36,14 @@
 
 
             <div class="right_block_inner_logout">
-                <img src="../assets/header_exit.png">
+                <a href="https://marketbot.biz/user/logout"><img src="../assets/header_exit.png"></a>
             </div>
         </div>
 
 
 
         <div class="right_tarif">
-            <h4>Настрой свой тариф для Бот_Валера_1</h4>
+            <h4>Настрой свой тариф для Вашего бота</h4>
 
             <div class="tarif_calculator">
                 <div class="tarif_calculator_scroll">
@@ -55,7 +56,7 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div v-if="this.info.used_features.features.includes('GS')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="this.checkBusi = !this.checkBusi" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                             </div>
 
@@ -128,7 +129,14 @@
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
                         </label>
+
+                         <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
+                                <input type="checkbox" ref="businessapi">
+                                <span class="slider round"></span>
+                                <img class="img1" src="../assets/tick.png" alt="">
+                        </label>
                         <span v-if="!this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
+                        <span v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
 
 
                         <div class="tarif_calculator_scroll_first_block_list">
@@ -464,7 +472,7 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ total / (1-this.info.pricelist.yearly_discount) / 12 }} </span> {{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
+                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ Math.round(total / (1-this.info.pricelist.yearly_discount)) }} </span> {{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
                     <div class="tarif_calculator_result_checkbox">
                         <span style="color:grey">Ежемесячно </span>
                         <label class="switch">
@@ -510,6 +518,7 @@ export default {
     data(){
         return{
             info: [],
+            infoUser: [],
             total: 0,
             countOperator: 0,
             countMemory: 0,
@@ -517,6 +526,7 @@ export default {
             checkTelegram: false,
             checkViber: false, 
             checkVk: false,
+            checkBusi: false,
             checkChat: false,
             checkWrite: false,
             checkEditor: false,
@@ -1005,6 +1015,11 @@ export default {
                     self.total += (response.data.pricelist.storage_per_gib * response.data.used_features.storage_usage_kib)
                     self.sixthBlockCount += (response.data.pricelist.storage_per_gib * response.data.used_features.storage_usage_kib)
                 }
+            })
+
+            axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+            .then(function(response){
+                self.infoUser = response.data
             })
 
     }
