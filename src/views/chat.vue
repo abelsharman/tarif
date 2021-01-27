@@ -297,6 +297,9 @@ export default {
 </script>
 
 <style scoped>
+    template{
+        font-family: 'Montserrat', sans-serif;
+    }
     .left_block{
         float: left;
         width: 6%;
