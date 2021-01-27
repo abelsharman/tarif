@@ -968,6 +968,14 @@ export default {
         }
     }
     @media (max-width: 1024px){
+        .right_block_inner h2{
+            width: 48%;
+            padding: 30px 40px;
+        
+        }
+        .right_block_inner_balans{
+            width: 25%;
+        }
         .chat_block_inner_margin1{
             margin-left: 10px;
         }
@@ -1034,6 +1042,13 @@ export default {
         }
     }
     @media (max-width: 800px){
+        .right_block_inner h2{
+            width: 40%;
+            padding: 30px 40px;
+        }
+        .right_block_inner_balans{
+            width: 35%;
+        }
         .chat_block_inner_margin1{
             margin-left: 5px;
         }
