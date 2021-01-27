@@ -899,7 +899,7 @@ export default {
         text-decoration: underline;
 
     }
-    @media (max-width: 1280px){
+    @media (max-width: 1040px){
         .right_balans_left{
             width: 44%;
         }
@@ -910,7 +910,7 @@ export default {
             font-size: 3em;
         }
     }
-    @media (max-width: 1280px){
+    @media (max-width: 1040px){
         .right_balans_left{
             width: 42%;
         }
@@ -940,7 +940,7 @@ export default {
     
         
     }
-     @media (max-width: 800px){
+     @media (max-width: 820px){
         .right_balans_left{
             width: 42%;
         }

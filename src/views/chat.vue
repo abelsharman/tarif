@@ -223,279 +223,6 @@
                     </td>
                 </tr>
 
-
-
-
-                <tr>
-                    <td class="chat_block_inner_first_column">
-                        <div class="chat_block_inner_margin1">
-                            <div class="chat_block_id_1">
-                                <p class="chat_block_id_1_grey">ID 22345</p>
-                                <p class="chat_block_id_1_big">Бот_Валера_1</p>
-                                 <img src="../assets/danger.png">
-                                <span class="chat_block_id_1_red">Баланс WABA: $0</span>
-                
-                                <p class="chat_block_id_1_grey" style="width: 90%">Пополните баланс на сумму от 100 ₽ для функции "Написать первым"</p>
-                                <p class="chat_block_id_1_darkgrey">3 мб</p>
-                                <p class="chat_block_id_1_grey">13 июня, 2019</p>
-                            </div>
-
-                            <div class="chat_block_id_2">
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bchannels/index/10150">
-                                    <img src="../assets/info.png" alt="info"><strong>Профиль</strong>
-                                    </a>
-                                 </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/link/index/10150">
-                                    <img src="../assets/links.png" alt="links"><strong>Ссылки</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/op/oplist/10150">
-                                    <img src="../assets/view.png" alt="view"><strong>Операторы</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bcrm/index/10150">
-                                    <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/promocodes/index/10150">
-                                    <img src="../assets/links.png" alt="links"><strong>WABA профиль</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bchannels/index/10150">
-                                    <img src="../assets/h.png" alt="h"><strong>HSM</strong>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="chat_block_id_3">
-                                <a href="https://marketbot.biz/chat_v2/?f=0&botid=10150">
-                                <div class="chat_block_id_3_border">
-                                    <img src="../assets/chat.png" alt="chat">
-                                    <p>ДИАЛОГИ NEW</p>
-                                </div>
-                                </a>
-
-                                 <a href="https://marketbot.biz/scripteditor/wizard/10150">
-                                <div class="chat_block_id_3_border">
-                                    <img src="../assets/layers.png" alt="layers">
-                                    <p>РЕДАКТОР СЦЕНАРИЯ</p>
-                                </div>
-                                </a>
-
-                                
-                                <div class="chat_block_id_3_border chat_block_id_3_bordergrey">
-                                    <img src="../assets/mailgrey.png" alt="mail">
-                                    <p>РАССЫЛКА</p>
-                                    <p class="chat_block_id_1_grey">Пополните баланс на сумму от 100₽ для тестирования Массовой рассылки</p>
-                        
-                                </div>
-                            
-
-                            </div>
-                        </div>
-                    </td>
-
-
-
-
-                    <td class="chat_block_inner_second_column">
-                        <div class="chat_block_inner_margin">
-                            
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+79665989033</strong><div class="chat_green_point"></div><br>
-                            </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/telegram.png" alt="telegram"><strong>@dsfddsddsflsd_bot</strong><div class="chat_green_point"></div><br>
-                            </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/viber.png" alt="viber"><strong>propusk</strong><div class="chat_green_point"></div><br>
-                            </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/vk.png" alt="vk"><strong>50932384</strong><div class="chat_green_point"></div><br>
-                            </div>
-                          
-                            <div class="chat_novye">
-                                <span style="color: rgb(100,100,100);font-size:14px;">Новые: </span>
-                                <img src="../assets/left_arrow.png" alt="">
-                                <span style="color: rgb(100,100,100);font-size:14px;">Сегодня</span>
-                                <span id="chat_novye_span">3236</span>
-                                <img src="../assets/right_arrow.png" alt="">
-                            </div>
-                        </div>
-                    </td>
-
-
-
-                    <td class="chat_block_inner_third_column">
-                        <div class="chat_block_inner_margin">
-                            <p>1235 лидов</p>
-                            <p>242 контакта</p>
-                            <a href="https://marketbot.biz/lead/index/10150">Подробнее</a>
-                        </div>
-                    </td>
-
-
-
-                    <td class="chat_block_inner_fourth_column">
-                        <div class="chat_block_inner_margin">
-                            <p>Модуль действителен еще:<span>93 дня</span></p>
-                            <router-link to="/tariff">Настроить тариф</router-link>
-                        </div>
-                    </td>
-
-
-
-                    <td class="chat_block_inner_fifth_column">
-                        <img src="../assets/close.png" alt="close">
-                    </td>
-                </tr>
-
-
-
-
-                <tr>
-                    <td class="chat_block_inner_first_column">
-                        <div class="chat_block_inner_margin1">
-                            <div class="chat_block_id_1">
-                                <p class="chat_block_id_1_grey">ID 22345</p>
-                                <p class="chat_block_id_1_big">Бот_Валера_1</p>
-                                <p class="chat_block_id_1_green">Баланс WABA: $9,900</p>
-                                <p class="chat_block_id_1_darkgrey">3 мб</p>
-                                <p class="chat_block_id_1_grey">13 июня, 2019</p>
-                            </div>
-
-                            <div class="chat_block_id_2">
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bchannels/index/10150">
-                                    <img src="../assets/info.png" alt="info"><strong>Профиль</strong>
-                                    </a>
-                                 </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/link/index/10150">
-                                    <img src="../assets/links.png" alt="links"><strong>Ссылки</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/op/oplist/10150">
-                                    <img src="../assets/view.png" alt="view"><strong>Операторы</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bcrm/index/10150">
-                                    <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/promocodes/index/10150">
-                                    <img src="../assets/links.png" alt="links"><strong>WABA профиль</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bchannels/index/10150">
-                                    <img src="../assets/h.png" alt="h"><strong>HSM</strong>
-                                    </a>
-                                </div>
-                            </div>
-                           
-
-                           <div class="chat_block_id_3">
-                                <a href="https://marketbot.biz/chat_v2/?f=0&botid=10150">
-                                <div class="chat_block_id_3_border">
-                                    <img src="../assets/chat.png" alt="chat">
-                                    <p>ДИАЛОГИ NEW</p>
-                                </div>
-                                </a>
-
-                                 <a href="https://marketbot.biz/scripteditor/wizard/10150">
-                                <div class="chat_block_id_3_border">
-                                    <img src="../assets/layers.png" alt="layers">
-                                    <p>РЕДАКТОР СЦЕНАРИЯ</p>
-                                </div>
-                                </a>
-
-                                
-                                <div class="chat_block_id_3_border">
-                                    <a href="https://marketbot.biz/spam/tasks/10150">
-                                    <img src="../assets/mail.png" alt="mail">
-                                    <p>РАССЫЛКА</p>
-                                    </a>
-                                </div>
-                            
-
-                            </div>
-                        </div>
-                    </td>
-
-
-
-
-                    <td class="chat_block_inner_second_column">
-                        <div class="chat_block_inner_margin">
-                            
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+79665989033</strong><div class="chat_green_point"></div><br>
-                            </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/telegram.png" alt="telegram"><strong>@dsfddsddsflsd_bot</strong><div class="chat_green_point"></div><br>
-                            </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/viber.png" alt="viber"><strong>propusk</strong><div class="chat_green_point"></div><br>
-                            </div>
-                            <div style="margin-bottom: 5px;">
-                                <img src="../assets/vk.png" alt="vk"><strong>50932384</strong><div class="chat_green_point"></div><br>
-                            </div>
-                          
-                            <div class="chat_novye">
-                                <span style="color: rgb(100,100,100);font-size:14px;">Новые: </span>
-                                <img src="../assets/left_arrow.png" alt="">
-                                <span style="color: rgb(100,100,100);font-size:14px;">Сегодня</span>
-                                <span id="chat_novye_span">3236</span>
-                                <img src="../assets/right_arrow.png" alt="">
-                            </div>
-                        </div>
-                    </td>
-
-
-
-                    <td class="chat_block_inner_third_column">
-                        <div class="chat_block_inner_margin">
-                            <p>1235 лидов</p>
-                            <p>242 контакта</p>
-                             <a href="https://marketbot.biz/lead/index/10150">Подробнее</a>
-                        </div>
-                    </td>
-
-
-
-                    <td class="chat_block_inner_fourth_column">
-                        <div class="chat_block_inner_margin">
-                            <p>Бесплатный период заканчивается через:<span class="chat_block_red">2 дня</span></p>
-                            <router-link to="/tariff">Настроить тариф</router-link>
-                        </div>
-                    </td>
-
-
-
-                    <td class="chat_block_inner_fifth_column">
-                        <img src="../assets/close.png" alt="close">
-                    </td>
-                </tr>
                 </table>
             </div>
         </div>
@@ -684,21 +411,20 @@ export default {
 
     .chat_block{
         margin: 0;
-        height: 400px;
         text-align: left;
         width: 95%;
         padding: 10px 30px;
     }
     .chat_block_inner{
         position: relative;
-        height: 400px;
         border: 1px solid rgb(229, 230, 231);
         border-radius: 9px;
+        padding-bottom: 40px;
         box-shadow: 0px 0px 10px 5px rgb(229, 230, 231);
     }
     .chat_block_inner table{
         width: 100%;
-        height: 100px;
+        padding-bottom: 20px;
         border-radius: 9px;
         border-collapse: collapse;
     }
@@ -901,7 +627,7 @@ export default {
         width: 55%;
         margin-left: 22%;
     }
-    @media (max-width: 1366px){
+    @media (max-width: 1100px){
         .chat_block_inner_margin1{
             margin-left: 10px;
         }
@@ -924,21 +650,21 @@ export default {
             font-size: 12px;
         }
         .chat_block_id_2 img{
-            width: 13px;
+            width: 12px;
             margin-right: 4px;  
         }
         .chat_block_id_2 strong{
-            font-size: 12px;
+            font-size: 10px;
         }
         .chat_block_id_3_border{
             padding: 1px 12px;
         }
         .chat_block_id_3_border img{
-            width: 14px;
+            width: 10px;
             margin-right: 3px;
         }
         .chat_block_id_3_border p{
-            font-size: 10px;
+            font-size: 9px;
         }
         .chat_block_id_3_border .chat_block_id_1_grey{
             font-size: 10px;
@@ -967,14 +693,14 @@ export default {
             font-size: 12px !important;
         }
     }
-    @media (max-width: 1024px){
+    @media (max-width: 1000px){
         .right_block_inner h2{
             width: 48%;
             padding: 30px 40px;
         
         }
         .right_block_inner_balans{
-            width: 25%;
+            width: 27%;
         }
         .chat_block_inner_margin1{
             margin-left: 10px;
@@ -1041,7 +767,7 @@ export default {
             font-size: 11px !important;
         }
     }
-    @media (max-width: 800px){
+    @media (max-width: 850px){
         .right_block_inner h2{
             width: 40%;
             padding: 30px 40px;

@@ -1414,7 +1414,7 @@ export default {
         -webkit-text-decoration-color:rgb(207,30,65);
         text-decoration-color:rgb(207,30,65);
     }
-    @media (max-width: 1024px){
+    @media (max-width: 1040px){
         .right_block_inner h2{
             width: 48%;
             padding: 30px 40px;
@@ -1492,7 +1492,7 @@ export default {
     
     
     }
-    @media (max-width: 800px){
+    @media (max-width: 850px){
         .right_block_inner h2{
             width: 40%;
             padding: 30px 40px;
