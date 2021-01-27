@@ -297,13 +297,9 @@ export default {
 </script>
 
 <style scoped>
-    template{
-        font-family: 'Montserrat', sans-serif;
-    }
     .left_block{
         float: left;
         width: 6%;
-        
         height: 100%;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
@@ -549,7 +545,7 @@ export default {
         display: inline-block;
         font-weight: 500;
         color: #2c3e50;
-        font-size: 12px;
+        font-size: 10px;
         margin-top: 5px;
         
     }
@@ -630,7 +626,7 @@ export default {
         width: 55%;
         margin-left: 22%;
     }
-    @media (max-width: 1100px){
+    @media (max-width: 1290px){
         .chat_block_inner_margin1{
             margin-left: 10px;
         }
@@ -667,7 +663,7 @@ export default {
             margin-right: 3px;
         }
         .chat_block_id_3_border p{
-            font-size: 9px;
+            font-size: 8px;
         }
         .chat_block_id_3_border .chat_block_id_1_grey{
             font-size: 10px;
@@ -696,7 +692,7 @@ export default {
             font-size: 12px !important;
         }
     }
-    @media (max-width: 1000px){
+    @media (max-width: 1040px){
         .right_block_inner h2{
             width: 48%;
             padding: 30px 40px;
@@ -814,7 +810,7 @@ export default {
             margin-right: 1px;
         }
         .chat_block_id_3_border p{
-            font-size: 8px;
+            font-size: 7px;
         }
         .chat_block_id_3_border .chat_block_id_1_grey{
             font-size: 9px;

@@ -899,18 +899,7 @@ export default {
         text-decoration: underline;
 
     }
-    @media (max-width: 1040px){
-        .right_balans_left{
-            width: 44%;
-        }
-        .right_balans_right{
-            width: 50%;
-        }
-        .right_balans_left_inner_summa h1{
-            font-size: 3em;
-        }
-    }
-    @media (max-width: 1040px){
+     @media (max-width: 1380px){
         .right_balans_left{
             width: 42%;
         }
@@ -940,6 +929,48 @@ export default {
     
         
     }
+    @media (max-width: 1040px){
+        .right_balans_left{
+            width: 44%;
+        }
+        .right_balans_right{
+            width: 50%;
+        }
+        .right_balans_left_inner_summa h1{
+            font-size: 3em;
+        }
+    }
+    @media (max-width: 1040px){
+        .right_balans_left{
+            width: 42%;
+        }
+        .right_balans_right{
+            width: 51%;
+        }
+        .right_balans_left_inner_summa h1, .right_balans_left_inner_summa h2{
+            font-size: 2.5em;
+        }
+     
+        .table_odd_row img{
+            width: 10px;
+            margin: 5px 10px 5px 10px;
+        }
+        .table_odd_row span{
+            font-size: 0.7em;
+        }
+        .table_odd_row_2 p{
+            font-size: 0.7em;
+            margin-left: 10px;
+        }
+        .table_odd_row_2_red p{
+            font-size: 0.7em;
+        }
+        .table_odd_row_3 p{
+            font-size: 0.7em;
+        }
+    
+        
+    }
      @media (max-width: 820px){
         .right_balans_left{
             width: 42%;
@@ -947,25 +978,25 @@ export default {
         .right_balans_right{
             width: 49%;
         }
-        .right_balans_left_inner_summa h1{
-            font-size: 2em;
+        .right_balans_left_inner_summa h1, .right_balans_left_inner_summa h2{
+            font-size: 1.5em;
         }
         .table_odd_row img{
             width: 10px;
             margin: 5px 10px 5px 10px;
         }
         .table_odd_row span{
-            font-size: 0.6em;
+            font-size: 0.5em;
         }
         .table_odd_row_2 p{
-            font-size: 0.6em;
+            font-size: 0.5em;
             margin-left: 0px;
         }
         .table_odd_row_2_red p{
-            font-size: 0.6em;
+            font-size: 0.5em;
         }
         .table_odd_row_3 p{
-            font-size: 0.6em;
+            font-size: 0.5em;
         }
         .right_balans_left_inner_add_cart_form{
         width: 90%;
@@ -982,11 +1013,11 @@ export default {
 
     }
     .right_balans_left_inner_add_cart_form input[type="text"]{
-        width: 80%;
+        width: 85%;
         border-radius: 10px;
         border: 1px solid grey;
-        padding: 10px;    
-        font-size: 0.9em;
+        padding: 6px;    
+        font-size: 0.6em;
     }
     .right_balans_left_inner_add_cart_form_1{
         width: 36%;
@@ -1010,7 +1041,7 @@ export default {
         font-size: 0.6em;
         border: 0px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
-        padding: 14px;
+        padding: 10px;
         border-radius: 30px;
         width: 50%;
         margin-left: 15%;
@@ -1018,11 +1049,97 @@ export default {
         transition: 0.8s all ease;
         display: inline-block;
     }
-    .right_balans_left_inner_add_cart_form a{
-        display: inline-block;
-        color: darkgrey;
-        margin-left: 10px;
+    .right_balans_right_count{
+        border-collapse: collapse;
+        width: 90%;
+        text-align: left;
+        margin: 30px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border: 1px solid rgb(229,230,231);
+        background-color: rgb(248,249,250);
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
     }
+
+    .right_balans_right_count h4{
+        margin: 0;
+        background-color: white;
+        font-weight: 500;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding: 13px 0 13px 20px;
+        font-size: 0.8em;
+    }
+    .right_balans_right_count_inner{
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+    }
+    .right_balans_right_count_inner img{
+        width: 3%;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+    .right_balans_right_count_inner p{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.6em;
+        color: darkgrey;
+    }
+    .right_balans_right_count_bill p{
+        font-size: 0.6em;
+        margin: 0;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+        
+    }
+    .right_balans_right_count_bill input[type="text"]{
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 6px;    
+        font-size: 0.6em;
+        width: 70%;
+        background-color: inherit;
+        outline: none;
+    }
+    .right_balans_right_count_bill_1{
+        margin-left: 4%;
+        width: 48%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_2{
+        width: 48%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_3{
+        margin-left: 4%;
+        width: 26%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_4{
+        width: 26%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_5{
+        width: 30%;
+        display: inline-block;
+    }
+    .right_balans_right_count_bill_6{
+        width: 44%;
+        margin-left: 4%;
+        display: inline-block;
+    }
+    .right_balans_right_count input[type="submit"]{
+        font-size: 0.6em;   
+        padding: 10px;
+    }
+    .right_balans_right_count_bill_7 img{
+        width: 12px;
+    }
+    
+    
     
         
     }
