@@ -151,12 +151,12 @@
                     <tr class="table_odd_row" v-for="(item,index) in this.info.botlist" :key="index">
                         
                         <td class="table_odd_row_1" style="background-color: rgb(248,249,250);" v-if="index % 2 == 0">
-                            <img src="../assets/whatsapp.png" alt=""><span>+{{ item.tel }}</span>
+                            <img src="../assets/logo_whatsapp.png" alt=""><span>+{{ item.tel }}</span>
                         </td>
 
 
                         <td class="table_odd_row_1" v-if="index % 2 == 1">
-                            <img src="../assets/whatsapp.png" alt=""><span>+{{ item.tel }}</span>
+                            <img src="../assets/logo_whatsapp.png" alt=""><span>+{{ item.tel }}</span>
                         </td>
 
                         <td class="table_odd_row_2" style="background-color: rgb(248,249,250);" v-if="index % 2 == 0"> 
@@ -337,6 +337,20 @@ export default {
                 })
                 
 
+        },
+        numpf(n) {
+            let f = 'день'
+            let s = 'дня'
+            let t = 'дней'
+            n = n % 100
+            let n10 = n % 10
+            if ( (n10 === 1) && ( (n === 1) || (n > 20) ) ) {
+                return f;
+            } else if ( (n10 > 1) && (n10 < 5) && ( (n > 20) || (n < 10) ) ) {
+                return s;
+            } else {
+                  return t;
+            }
         },
         submitBalance(event){
             const axios = require('axios');

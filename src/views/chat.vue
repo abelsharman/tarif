@@ -27,7 +27,7 @@
            
                
                <div class="right_block_inner_balans_right">
-                    <p>Ваш баланс: <span>0 ₽</span></p>
+                    <p>Ваш баланс: <span style="font-size:1em">{{ Math.round(infoBalance.user_balance) }} ₽</span></p>
                     <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
@@ -97,7 +97,7 @@
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
                                     <a href="https://marketbot.biz/promocodes/index/10156">
-                                    <img src="../assets/links.png" alt="links"><strong>WABA профиль</strong>
+                                    <img src="../assets/menu5.png" alt="links"><strong>WABA профиль</strong>
                                     </a>
                                 </div>
 
@@ -123,7 +123,7 @@
                             <div class="chat_block_id_3">
                                 <a href="https://marketbot.biz/chat_v2/?f=0&botid=10150">
                                 <div class="chat_block_id_3_border">
-                                    <img src="../assets/chat.png" alt="chat">
+                                    <img src="../assets/menu1.png" alt="chat">
                                     <p>ДИАЛОГИ NEW</p>
                                 </div>
                                 </a>
@@ -138,7 +138,7 @@
                                 
                                 <div class="chat_block_id_3_border">
                                     <a href="https://marketbot.biz/spam/tasks/10150">
-                                    <img src="../assets/mail.png" alt="mail">
+                                    <img src="../assets/menu3.png" alt="mail">
                                     <p>РАССЫЛКА</p>
                                     </a>
                                 </div>
@@ -155,23 +155,23 @@
                         <div class="chat_block_inner_margin">
                             
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.GS.connected">
-                                <img src="../assets/whatsapp.png" alt="whatsapp"><strong>+{{ item.channel_status.GS.name }}</strong>
+                                <img src="../assets/logo_whatsapp.png" alt="logo_whatsapp"><strong>+{{ item.channel_status.GS.name }}</strong>
                                 <div v-if="item.channel_status.GS.paid" class="chat_green_point"></div><br>
                                 <div v-if="!item.channel_status.GS.paid" class="chat_red_point"></div><br>
                                 <br>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.TL.connected">
-                                <img src="../assets/telegram.png" alt="telegram"><strong>@{{ item.channel_status.TL.name }}</strong>
+                                <img src="../assets/logo_telegram.png" alt="telegram"><strong>@{{ item.channel_status.TL.name }}</strong>
                                 <div v-if="item.channel_status.TL.paid" class="chat_green_point"></div><br>
                                 <div v-if="!item.channel_status.TL.paid" class="chat_red_point"></div><br>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.VB.connected">
-                                <img src="../assets/viber.png" alt="viber"><strong>{{ item.channel_status.VB.name }}</strong>
+                                <img src="../assets/logo_viber.png" alt="viber"><strong>{{ item.channel_status.VB.name }}</strong>
                                 <div v-if="item.channel_status.VB.paid" class="chat_green_point"></div><br>
                                 <div v-if="!item.channel_status.VB.paid" class="chat_red_point"></div><br>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.VK.connected">
-                                <img src="../assets/vk.png" alt="vk"><strong>{{ item.channel_status.VK.name }}</strong>
+                                <img src="../assets/logo_vk.png" alt="vk"><strong>{{ item.channel_status.VK.name }}</strong>
                                 <div v-if="item.channel_status.VK.paid" class="chat_green_point"></div><br>
                                 <div v-if="!item.channel_status.VK.paid" class="chat_red_point"></div><br>
                             </div>
@@ -203,7 +203,7 @@
 
                     <td class="chat_block_inner_fourth_column" v-if="item.tariff.trial_until < item.tariff.paid_until">
                         <div class="chat_block_inner_margin">
-                            <p>Модуль действителен еще:<span>{{ Math.round(item.tariff.paid_until)/1000/24/60/60 }} дня</span></p>
+                            <p>Модуль действителен еще:<span>{{ Math.round(item.tariff.paid_until)/1000/24/60/60 }} {{ numpf(Math.round(item.tariff.paid_until)/1000/24/60/60) }}</span></p>
                             <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
@@ -211,7 +211,7 @@
 
                     <td class="chat_block_inner_fourth_column" v-if="item.tariff.trial_until > item.tariff.paid_until">
                         <div class="chat_block_inner_margin">
-                            <p>Бесплатный период заканчивается через:<span class="chat_block_red">{{ Math.round((unixtime - item.tariff.paid_until)/1000/24/60/60) }} дня</span></p>
+                            <p>Бесплатный период заканчивается через:<span class="chat_block_red">{{ Math.round((unixtime - item.tariff.paid_until)/1000/24/60/60) }} {{ numpf(Math.round(item.tariff.paid_until)/1000/24/60/60) }}</span></p>
                             <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
@@ -510,6 +510,7 @@ export default {
         return{
             info: [],
             infoUser: [],
+            infoBalance: [],
             unixtime: Math.round(new Date().getTime() / 1000),
             peer: 0,
             peers: ["Новые", "За день", "Неделя", "Месяц", "Все время"]
@@ -530,6 +531,20 @@ export default {
                 this.peer -= 1
             }
         },
+        numpf(n) {
+            let f = 'день'
+            let s = 'дня'
+            let t = 'дней'
+            n = n % 100
+            let n10 = n % 10
+            if ( (n10 === 1) && ( (n === 1) || (n > 20) ) ) {
+                return f;
+            } else if ( (n10 > 1) && (n10 < 5) && ( (n > 20) || (n < 10) ) ) {
+                return s;
+            } else {
+                  return t;
+            }
+        }
     },
     created() {
         const axios = require('axios');
@@ -542,6 +557,11 @@ export default {
         axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
             .then(function(response){
                 self.infoUser = response.data
+            })
+    
+         axios.get('http://marketbot.biz/balance/get_data?user_token=9c329f7404f8d74f0cf841e35b7e4680')
+            .then(function(response){
+                self.infoBalance = response.data
             })
 
 

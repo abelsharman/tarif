@@ -28,7 +28,7 @@
            
                
                <div class="right_block_inner_balans_right">
-                    <p>Ваш баланс: <span>0 ₽</span></p>
+                    <p>Ваш баланс: <span style="font-size:1em">{{ Math.round(infoBalance.user_balance) }} ₽</span></p>
                     <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
@@ -83,7 +83,7 @@
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('TL') && !checkTelegram">
-                                <img @click="clickTelegram" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram3.png" alt="telegram">
+                                <img @click="clickTelegram" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/telegram3.png" alt="telegram">
                                 <p>Telegram</p>
                             </div>
 
@@ -99,7 +99,7 @@
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('VB') && !checkViber">
-                                <img @click="clickViber" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber3.png" alt="viber">
+                                <img @click="clickViber" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/viber3.png" alt="viber">
                                 <p>Viber</p>
                             </div>
 
@@ -117,7 +117,7 @@
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('VK') && !checkVk">
-                                <img @click="clickVk" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk3.png" alt="vk">
+                                <img @click="clickVk" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/vk3.png" alt="vk">
                                 <p>Vkontakte</p>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('chat') && !checkChat">
-                                <img @click="clickChat" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/chat3.png" alt="chat2">
+                                <img @click="clickChat" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/chat3.png" alt="chat2">
                                 <p>Чат</p>
                             </div>
 
@@ -190,7 +190,7 @@
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('bot') && !checkWrite">
-                                <img @click="clickWriteFirst" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/question3.png" alt="question">
+                                <img @click="clickWriteFirst" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/question3.png" alt="question">
                                 <p>Написать первым</p>
                             </div>
 
@@ -235,34 +235,34 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div v-if="this.info.used_features.features.includes('deferred_exec')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor">
                                 <p>Редактор сценария</p>
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('deferred_exec') && checkEditor">
-                                <img @click="closeEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor" style="padding:10px; background-color: rgb(140,40,110);width: 60%">
+                                <img @click="closeEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor">
                                 <p>Редактор сценария</p>
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('deferred_exec') && !checkEditor">
-                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor3.png" tyle="padding:10px;background-color:rgb(209,218,223);width: 60%" alt="editor">
+                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor3.png"  style="width: 85%;border:0;" alt="editor">
                                 <p>Редактор сценария</p>
                             </div>
 
 
 
                             <div v-if="this.info.used_features.features.includes('deferred_exec')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" style="padding:10px; background-color: rgb(140,40,110);width: 60%" alt="funnel">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel">
                                 <p>Автоворонки</p>
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('deferred_exec') && checkFunnel">
-                                <img @click="closeFunnel" class="tarif_calculator_scroll_first_block_greyicons" style="padding:10px; background-color: rgb(140,40,110);width: 60%" src="../assets/funnel.png" alt="funnel">
+                                <img @click="closeFunnel" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel">
                                 <p>Автоворонки</p>
                             </div>
 
                             <div v-if="!this.info.used_features.features.includes('deferred_exec') && !checkFunnel">
-                                <img @click="clickFunnel" class="tarif_calculator_scroll_first_block_greyicons" style="padding:10px;background-color:rgb(209,218,223);width: 60%" src="../assets/funnel3.png" alt="funnel">
+                                <img @click="clickFunnel" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/funnel3.png" alt="funnel">
                                 <p>Автоворонки</p>
                             </div>
                         </div>
@@ -292,7 +292,7 @@
                                 <p>Bitrix24</p>
                             </div>
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/amo3.png" alt="amo">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
                         </div>
@@ -302,7 +302,7 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('amocrm')">
                             <div>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix3.png" alt="bitrix">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
                             <div>
@@ -321,13 +321,13 @@
                                 <p>Bitrix24</p>
                             </div>
                             <div v-if="checkBitrix && !checkAmo">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo3.png" alt="amo">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
 
 
                             <div v-if="!checkBitrix && checkAmo">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/bitrix3.png" alt="bitrix">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
                              <div v-if="!checkBitrix && checkAmo">
@@ -337,11 +337,11 @@
 
 
                             <div v-if="!checkBitrix && !checkAmo">
-                                <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/bitrix3.png" alt="bitrix">
+                                <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
                             <div v-if="!checkBitrix && !checkAmo">
-                                <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo3.png" alt="amo">
+                                <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
 
@@ -369,18 +369,18 @@
                         <p class="tarif_calculator_scroll_first_block_cost" style="width: 60%;"><strong>{{ fifthBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div v-if="this.info.used_features.features.includes('bot')" style="width: 30%;margin-left: 0;">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;" alt="mail2">
+                            <div v-if="this.info.used_features.features.includes('bot')" >
+                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail2">
                                 <p>Массовая рассылка</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('bot') && checkMail" style="width: 30%;margin-left: 0;">
-                                <img @click="closeMail" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" style="padding: 10px;background-color:rgb(140,40,110);width: 27%;border-radius: 25px;" alt="mail2">
+                            <div v-if="!this.info.used_features.features.includes('bot') && checkMail" >
+                                <img @click="closeMail" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail2">
                                 <p>Массовая рассылка</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('bot') && !checkMail" style="width: 30%;margin-left: 0;">
-                                <img @click="clickMail" class="tarif_calculator_scroll_first_block_greyicons" style="padding: 10px;background-color:rgb(207,218,223);width: 27%;border-radius: 25px;" src="../assets/mail3.png" alt="mail2">
+                            <div v-if="!this.info.used_features.features.includes('bot') && !checkMail">
+                                <img @click="clickMail" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/mail3.png" alt="mail2">
                                 <p>Массовая рассылка</p>
                             </div>
 
@@ -448,13 +448,13 @@
                 <div class="tarif_calculator_result">
 
                     <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.trial_until < this.info.tariffdata.paid_until">
-                        <p>Модуль действителен еще: <span style="color: green">{{ Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)}} дней</span></p>
-                        <p v-if="this.info.tariffdata.write_first > 0">Функция "Написать первым" действительна еще: <span>8 дней</span></p>
+                        <p>Модуль действителен еще: <span style="color: green">{{ Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)}} {{ numpf(Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
+                        <p v-if="this.info.tariffdata.write_first > 0">Функция "Написать первым" действительна еще: <span>8 {{ numpf(Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
                     </div>
 
 
                     <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.trial_until > this.info.tariffdata.paid_until">
-                        <p>Бесплатный тестовый период завершится через <span style="color: rgb(207,30,65);">{{ Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60) }} дня</span></p>
+                        <p>Бесплатный тестовый период завершится через <span style="color: rgb(207,30,65);">{{ Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60) }} {{ numpf(Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
                     </div>
 
 
@@ -519,6 +519,7 @@ export default {
         return{
             info: [],
             infoUser: [],
+            infoBalance: [],
             total: 0,
             countOperator: 0,
             countMemory: 0,
@@ -546,6 +547,20 @@ export default {
         }
     },
     methods:{
+         numpf(n) {
+            let f = 'день'
+            let s = 'дня'
+            let t = 'дней'
+            n = n % 100
+            let n10 = n % 10
+            if ( (n10 === 1) && ( (n === 1) || (n > 20) ) ) {
+                return f;
+            } else if ( (n10 > 1) && (n10 < 5) && ( (n > 20) || (n < 10) ) ) {
+                return s;
+            } else {
+                  return t;
+            }
+        },
         clickWhatsApp(){
             this.firstBlockCount += this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
@@ -1021,6 +1036,10 @@ export default {
             .then(function(response){
                 self.infoUser = response.data
             })
+             axios.get('http://marketbot.biz/balance/get_data?user_token=9c329f7404f8d74f0cf841e35b7e4680')
+            .then(function(response){
+                self.infoBalance = response.data
+            })
 
     }
 }
@@ -1321,7 +1340,7 @@ export default {
         font-size: 0.8em;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_greyicons{
-        border: 8px solid rgb(241,242,243);
+        border: 2px solid rgb(247,248,249);
         border-radius: 40px;
         margin: 0 8% 0 1%;
     }
