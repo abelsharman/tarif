@@ -445,7 +445,7 @@ export default {
 
     .right_block{
         float: right;
-        min-width: calc(100% - 103px) !important;
+        width: calc(100% - 103px);
         margin: 0;
     }
     .right_block_inner{
@@ -504,7 +504,8 @@ export default {
         display: inline-block;
     }
     .right_block_inner_logout img{
-        width: 20%;
+        height: 31px;
+        width: auto;
         vertical-align: middle;
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
