@@ -1,15 +1,18 @@
 <template>
     <div class="left_block">
-         <router-link to="/">
+        <a href="http://marketbot.biz/">
         <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
-        </router-link >
+        </a>
 
         <div class="left_block_inner">
             <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
-            <small style="color:white;">{{ infoUser.username }}</small>
+            <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small style="color:white;">{{ infoUser.username }}</small></a>
             <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
-            <router-link to="/tariff"><img src="../assets/sidebar_menu_list.png" alt="list"></router-link>
+            <small style="color:white;font-size:0.7em;">Главная</small>
+            <router-link to="/"><img src="https://marketbot.biz/assets//Marketbot/img/sidebar-menu-list.png" alt="list"></router-link>
+            <small style="color:white;font-size:0.7em;">Боты</small>
             <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+            <small style="color:white;font-size:0.7em;">Создать бота</small>
         </div>
 
 
@@ -301,6 +304,7 @@ export default {
         float: left;
         width: 6%;
         height: 100%;
+        min-width: 103px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
@@ -323,7 +327,7 @@ export default {
 
     .right_block{
         float: right;
-        width: 94%;
+        min-width: calc(100% - 103px);
         margin: 0;
     }
     .right_block_inner{
@@ -334,18 +338,22 @@ export default {
         background-color: rgb(249,250,251);
     }
     .right_block_inner h2{
-        width: 65%;
-        padding: 30px 40px;
+        width: 20%;
+        padding: 30px 0 30px 3%;
         display: inline-block;
         margin: 0;
         font-size: 1.3em;
     }
     .right_block_inner_balans{
-        width: 17%;
+        padding-top: 1%;
+        width: 60%;
         display: inline-block;
+        text-align: right;
+        padding-right: 2%;
     }
     .right_block_inner_balans img{
-        width: 15%;
+        height: 30px;
+        width: auto;
         vertical-align: middle;
         display: inline-block;
     }
@@ -374,10 +382,11 @@ export default {
 
 
     .right_block_inner_logout{
+        width: 15%;
         display: inline-block;
     }
     .right_block_inner_logout img{
-        width: 40px;
+        width: 20%;
         vertical-align: middle;
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
@@ -694,12 +703,9 @@ export default {
     }
     @media (max-width: 1040px){
         .right_block_inner h2{
-            width: 48%;
-            padding: 30px 40px;
+            padding: 30px 0px 30px 2%;
+            font-size: 1.1em;
         
-        }
-        .right_block_inner_balans{
-            width: 27%;
         }
         .chat_block_inner_margin1{
             margin-left: 10px;
@@ -768,11 +774,7 @@ export default {
     }
     @media (max-width: 850px){
         .right_block_inner h2{
-            width: 40%;
-            padding: 30px 40px;
-        }
-        .right_block_inner_balans{
-            width: 35%;
+            font-size: 0.9em;
         }
         .chat_block_inner_margin1{
             margin-left: 5px;
