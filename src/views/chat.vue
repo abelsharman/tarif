@@ -214,7 +214,7 @@
 
                     <td class="chat_block_inner_fourth_column" v-if="item.tariff.trial_until > item.tariff.paid_until">
                         <div class="chat_block_inner_margin">
-                            <p>Бесплатный период заканчивается через:<span class="chat_block_red">{{ Math.round((unixtime - item.tariff.paid_until)/1000/24/60/60) }} {{ numpf(Math.round(item.tariff.paid_until)/1000/24/60/60) }}</span></p>
+                            <p>Бесплатный период заканчивается через:<span class="chat_block_red">{{ Math.round((item.tariff.trial_until)/1000/24/60/60) }} {{ numpf(Math.round(item.tariff.paid_until)/1000/24/60/60) }}</span></p>
                             <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
@@ -279,7 +279,7 @@ export default {
     created() {
         const axios = require('axios');
         let self = this
-        axios.get('https://marketbot.biz/bot/api_botlist?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+        axios.get('https://marketbot.biz/bot/api_botlist?user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
                 self.info = response.data
             })

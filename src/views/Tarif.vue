@@ -59,7 +59,9 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div v-if="this.info.used_features.features.includes('GS')">
+                                
                                 <img @click="this.checkBusi = !this.checkBusi" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                
                                 <p>WhatsApp</p>
                             </div>
 
@@ -76,19 +78,31 @@
 
 
                             <div v-if="this.info.used_features.features.includes('TL')">
+                            
                                 <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
+                                
                                 <p>Telegram</p>
                             </div>
-
+                            <transition name="fade">
                             <div v-if="!this.info.used_features.features.includes('TL') && checkTelegram">
+                                
                                 <img @click="closeTelegram" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
+                                
                                 <p>Telegram</p>
+                                
                             </div>
-
+                            </transition>
+                         
+                            <transition name="fade">
                             <div v-if="!this.info.used_features.features.includes('TL') && !checkTelegram">
+                                
                                 <img @click="clickTelegram" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/telegram3.png" alt="telegram">
+                                 
                                 <p>Telegram</p>
+                                
+                                
                             </div>
+                            </transition>
 
 
                             <div v-if="this.info.used_features.features.includes('VB')">
@@ -475,7 +489,7 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ Math.round(total / (1-this.info.pricelist.yearly_discount)) }} </span> {{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
+                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ Math.round(total / 12 / (1-this.info.pricelist.yearly_discount)) }} </span> {{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
                     <div class="tarif_calculator_result_checkbox">
                         <span style="color:grey">Ежемесячно </span>
                         <label class="switch">
@@ -1050,6 +1064,26 @@ export default {
 
 
 <style>
+.fade-enter-active{
+  transition: opacity 0.8s ease, width 0s ease;
+}
+
+.fade-enter-from,
+.fade-leave-active,
+.fade-leave-to {
+  opacity: 0;
+  width: 0;
+  
+}
+.fade1-enter-active,
+.fade1-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade1-enter-from,
+.fade1-leave-to {
+  opacity: 0;
+}
 .left_block{
         float: left;
         width: 6%;
