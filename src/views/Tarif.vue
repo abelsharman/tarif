@@ -58,85 +58,41 @@
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ firstBlockCount }}</strong> ₽/месяц + <span>тарификация WhatsApp</span></p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div v-if="this.info.used_features.features.includes('GS')">
-                                
-                                <img @click="this.checkBusi = !this.checkBusi" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
-                                
+
+                            <div @mouseover="checkWhatsAppSpan = true" @mouseleave="checkWhatsAppSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan">{{ info.pricelist.program_cost.GS }}₽</span>
+                                <img @click="this.checkBusi = !this.checkBusi" v-if="this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="closeWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="clickWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:102%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('GS') && checkWhatsApp">
-                                <img @click="closeWhatsApp" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
-                                <p>WhatsApp</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('GS') && !checkWhatsApp">
-                                <img @click="clickWhatsApp" class="tarif_calculator_scroll_first_block_greyicons" style="width:102%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
-                                <p>WhatsApp</p>
-                            </div>
-
-
-
-                            <div v-if="this.info.used_features.features.includes('TL')">
-                            
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
-                                
+                            <div @mouseover="checkTelegramSpan = true" @mouseleave="checkTelegramSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span2" v-if="checkTelegramSpan">{{ info.pricelist.program_cost.TL }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('TL')" src="../assets/telegram.png" alt="telegram">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkTelegram }" v-if="!this.info.used_features.features.includes('TL')" @click="closeTelegram"  src="../assets/telegram.png" alt="telegram">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkTelegram }" v-if="!this.info.used_features.features.includes('TL')" @click="clickTelegram" style="width: 85%;border:0;" src="../assets/telegram3.png" alt="telegram">
                                 <p>Telegram</p>
                             </div>
-                            <transition name="fade">
-                            <div v-if="!this.info.used_features.features.includes('TL') && checkTelegram">
-                                
-                                <img @click="closeTelegram" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/telegram.png" alt="telegram">
-                                
-                                <p>Telegram</p>
-                                
-                            </div>
-                            </transition>
-                         
-                            <transition name="fade">
-                            <div v-if="!this.info.used_features.features.includes('TL') && !checkTelegram">
-                                
-                                <img @click="clickTelegram" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/telegram3.png" alt="telegram">
-                                 
-                                <p>Telegram</p>
-                                
-                                
-                            </div>
-                            </transition>
 
 
-                            <div v-if="this.info.used_features.features.includes('VB')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
-                                <p>Viber</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('VB') && checkViber">
-                                <img @click="closeViber" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/viber.png" alt="viber">
-                                <p>Viber</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('VB') && !checkViber">
-                                <img @click="clickViber" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/viber3.png" alt="viber">
+                            <div @mouseover="checkViberSpan = true" @mouseleave="checkViberSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span3" v-if="checkViberSpan">{{ info.pricelist.program_cost.VB }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('VB')" src="../assets/viber.png" alt="viber">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkViber }" v-if="!this.info.used_features.features.includes('VB')" @click="closeViber"  src="../assets/viber.png" alt="viber">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkViber }" v-if="!this.info.used_features.features.includes('VB')" @click="clickViber" style="width: 85%;border:0;" src="../assets/viber3.png" alt="viber">
                                 <p>Viber</p>
                             </div>
 
 
-
-
-                            <div v-if="this.info.used_features.features.includes('VK')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
+                            <div @mouseover="checkVkSpan = true" @mouseleave="checkVkSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span4" v-if="checkVkSpan">{{ info.pricelist.program_cost.VK }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('VK')" src="../assets/vk.png" alt="vk">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkVk }" v-if="!this.info.used_features.features.includes('VK')" @click="closeVk"  src="../assets/vk.png" alt="vk">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkVk }" v-if="!this.info.used_features.features.includes('VK')" @click="clickVk" style="width: 85%;border:0;" src="../assets/vk3.png" alt="vk">
                                 <p>Vkontakte</p>
                             </div>
-
-                            <div v-if="!this.info.used_features.features.includes('VK') && checkVk">
-                                <img @click="closeVk" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/vk.png" alt="vk">
-                                <p>Vkontakte</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('VK') && !checkVk">
-                                <img @click="clickVk" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/vk3.png" alt="vk">
-                                <p>Vkontakte</p>
-                            </div>
+                           
                         </div>
 
 
@@ -158,10 +114,11 @@
 
                         <div class="tarif_calculator_scroll_first_block_list">
                             <p>В стоимость входит:</p>
-                            <p>1.Создание бизнес-аккаунта в Facebook.</p>
-                            <p>2.Авторизация + модерация аккаунта Facebook.</p>
-                            <p>3.Подключение к WhatsApp Business API.</p>
-                            <p>4.Подача заявки на получение авторизованного названия компании: </p>
+                            <p>1. Создание бизнес-аккаунта в Facebook.</p>
+                            <p>2. Авторизация + модерация аккаунта Facebook.</p>
+                            <p v-if="this.info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
+                            <p v-if="!this.info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
+                            <p v-if="this.info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании: </p>
                             <strong>Marketbot</strong>
                             <img src="../assets/check2.png" alt="check2">
                         </div>
@@ -178,38 +135,26 @@
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ secondBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div v-if="this.info.used_features.features.includes('chat')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
+
+
+                            <div @mouseover="checkChatSpan = true" @mouseleave="checkChatSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span5" v-if="checkChatSpan">{{ info.pricelist.chat_cost }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('chat')" src="../assets/chat2.png" alt="chat2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkChat }" v-if="!this.info.used_features.features.includes('chat')" @click="closeChat"  src="../assets/chat2.png" alt="chat2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkChat }" v-if="!this.info.used_features.features.includes('chat')" @click="clickChat" style="width: 85%;border:0;" src="../assets/chat3.png" alt="chat2">
                                 <p>Чат</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('chat') && checkChat">
-                                <img @click="closeChat" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/chat2.png" alt="chat2">
-                                <p>Чат</p>
-                            </div>
 
-                            <div v-if="!this.info.used_features.features.includes('chat') && !checkChat">
-                                <img @click="clickChat" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/chat3.png" alt="chat2">
-                                <p>Чат</p>
-                            </div>
-
-                            
-
-
-                            <div v-if="this.info.used_features.features.includes('bot')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
+                            <div @mouseover="checkWriteSpan = true" @mouseleave="checkWriteSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span6" v-if="checkWriteSpan">{{ info.pricelist.write_first_cost }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('bot')" src="../assets/question.png" alt="question">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWrite }" v-if="!this.info.used_features.features.includes('bot')" @click="closeWriteFirst"  src="../assets/question.png" alt="question">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWrite }" v-if="!this.info.used_features.features.includes('bot')" @click="clickWriteFirst" style="width: 85%;border:0;" src="../assets/question3.png" alt="question">
                                 <p>Написать первым</p>
                             </div>
 
-                            <div v-if="!this.info.used_features.features.includes('bot') && checkWrite">
-                                <img @click="closeWriteFirst" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/question.png" alt="question">
-                                <p>Написать первым</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('bot') && !checkWrite">
-                                <img @click="clickWriteFirst" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/question3.png" alt="question">
-                                <p>Написать первым</p>
-                            </div>
+                        
 
 
 
@@ -237,7 +182,10 @@
 
                             </div>
                             <div class="tarif_calculator_scroll_first_block_list">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                                <p>Через чат менеджеры общаются с клиентами и ведут полноценный диалог, отправляют файлы и аудио сообщения. Чтобы не прыгать между приложениями мессенджеров в смартфоне, подключите чат и общайтесь с клиентами в одном месте через удобный интерфейс.</p>                
+                                <p>Что бы написать клиенту в мессенджер первым, подключите функцию "Написать первым". </p>
+                                <p>*доступно только для WhatsApp</p>
+                                <p>Если в компании больше одного сотрудника, разделите права доступа к диалогам между ними. Теперь нет потребности заводить телефонные номера для каждого сотрудника, добавляйте оператора и распределяйте права доступа.</p>
                             </div>
                     </div>
 
@@ -248,38 +196,24 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Настройка чат-ботов: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width:60%"><strong>{{ thirdBlockCount }}</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ thirdBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div v-if="this.info.used_features.features.includes('deferred_exec')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor">
-                                <p>Редактор сценария</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && checkEditor">
-                                <img @click="closeEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor.png" alt="editor">
-                                <p>Редактор сценария</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && !checkEditor">
-                                <img @click="clickEditor" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/editor3.png"  style="width: 85%;border:0;" alt="editor">
+                            <div @mouseover="checkEditorSpan = true" @mouseleave="checkEditorSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span7"  v-if="checkEditorSpan">{{ info.pricelist.bot }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/editor.png" alt="editor">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkEditor }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="closeEditor"  src="../assets/editor.png" alt="editor">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkEditor }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="clickEditor" style="width: 85%;border:0;" src="../assets/editor3.png" alt="editor">
                                 <p>Редактор сценария</p>
                             </div>
 
 
 
-                            <div v-if="this.info.used_features.features.includes('deferred_exec')">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel">
-                                <p>Автоворонки</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && checkFunnel">
-                                <img @click="closeFunnel" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/funnel.png" alt="funnel">
-                                <p>Автоворонки</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('deferred_exec') && !checkFunnel">
-                                <img @click="clickFunnel" class="tarif_calculator_scroll_first_block_greyicons"  style="width: 85%;border:0;" src="../assets/funnel3.png" alt="funnel">
+                            <div @mouseover="checkFunnelSpan = true" @mouseleave="checkFunnelSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span8" v-if="checkFunnelSpan">{{ info.pricelist.deferred_exec }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/funnel.png" alt="funnel">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkFunnel }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="closeFunnel"  src="../assets/funnel.png" alt="funnel">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkFunnel }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="clickFunnel" style="width: 85%;border:0;" src="../assets/funnel3.png" alt="funnel">
                                 <p>Автоворонки</p>
                             </div>
                         </div>
@@ -289,7 +223,8 @@
 
 
                         <div class="tarif_calculator_scroll_first_block_list">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                            <p>Чат-бот это автоматизированный диалог с заранее заданным сценарием. Сценарий чат бота создается человеком. Подключив доступ к редактору, для вас станет доступен полный набор функций,  которого хватит создать ваш первый чат бот.</p>
+                            <p>Автоворонки или по другому отложенный сценарий диалога. В нужное для вас время чат бот самостоятельно начнет диалог с клиентом или напомнит о себе.</p>
                         </div>
 
                     </div>
@@ -301,9 +236,9 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Интеграция CRM: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 65%"><strong>{{ fourthBlockCount }}</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ fourthBlockCount }}</strong> ₽/месяц</p>
 
-                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('bitrix24')">
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="!this.info.used_features.features.includes('bitrix24')">
                             <div>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
@@ -332,7 +267,7 @@
 
 
 
-                        <div class="tarif_calculator_scroll_first_block_icons" v-if="!this.info.used_features.features.includes('bitrix24') && !this.info.used_features.features.includes('amocrm')">
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('bitrix24') && !this.info.used_features.features.includes('amocrm')">
                             <div v-if="checkBitrix && !checkAmo">
                                 <img @click="closeBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
@@ -341,7 +276,7 @@
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
-
+                            
 
                             <div v-if="!checkBitrix && checkAmo">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
@@ -370,7 +305,7 @@
 
 
                         <div class="tarif_calculator_scroll_first_block_list">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                            <p>Для полноценной работы с клиентами, встройте интерфейс сервиса Marketbot в вашу CRM</p>
                         </div>
 
                     </div>
@@ -383,35 +318,20 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Рассылка сообщений: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 60%;"><strong>{{ fifthBlockCount }}</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ fifthBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div v-if="this.info.used_features.features.includes('bot')" >
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail2">
+                            <div @mouseover="checkMailSpan = true" @mouseleave="checkMailSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span9" v-if="checkMailSpan">{{ info.pricelist.mailing }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('bot')" src="../assets/mail2.png" alt="mail2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkMail }" v-if="!this.info.used_features.features.includes('bot')" @click="closeMail"  src="../assets/mail2.png" alt="mail2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkMail }" v-if="!this.info.used_features.features.includes('bot')" @click="clickMail" style="width: 85%;border:0;" src="../assets/mail3.png" alt="mail2">
                                 <p>Массовая рассылка</p>
                             </div>
-
-                            <div v-if="!this.info.used_features.features.includes('bot') && checkMail" >
-                                <img @click="closeMail" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/mail2.png" alt="mail2">
-                                <p>Массовая рассылка</p>
-                            </div>
-
-                            <div v-if="!this.info.used_features.features.includes('bot') && !checkMail">
-                                <img @click="clickMail" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/mail3.png" alt="mail2">
-                                <p>Массовая рассылка</p>
-                            </div>
-
-
-
-                            
                         </div>
 
-
-                      
-
-
                         <div class="tarif_calculator_scroll_first_block_list">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                            <p>Для того чтобы клиенты узнали о вашем событии моментально, используйте массовые рассылки.</p>
                         </div>
 
                     </div>
@@ -423,7 +343,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Хостинг: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost" style="width: 75%"><strong>{{ sixthBlockCount }}</strong> ₽/месяц</p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ sixthBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
@@ -456,7 +376,7 @@
 
 
                         <div class="tarif_calculator_scroll_first_block_list">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to reps etc.</p>                
+                            <p>Чтобы хранить диалоги и повышать работоспособность сервиса, мы тратим место на серверах. А сервера которые не глючат, стоят не дешево.</p>
                         </div>
 
                     </div>
@@ -489,7 +409,7 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ Math.round(total / 12 / (1-this.info.pricelist.yearly_discount)) }} </span> {{ total }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
+                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ convertYear }} </span> {{ convertNumber }} ₽/<span v-if="!checkYear">месяц</span><span v-if="checkYear">год</span></h1>
                     <div class="tarif_calculator_result_checkbox">
                         <span style="color:grey">Ежемесячно </span>
                         <label class="switch">
@@ -517,7 +437,7 @@
                     </ul>
 
 
-                    <p class="tarif_calculator_result_end">Если на вашем балансе недостаточно средств для подключения набора функций к модулю, деньги спишутся с подключенной карты. Подключить карту можно в <a href="#">Личном кабинете</a></p>
+                    <p class="tarif_calculator_result_end">Если на вашем балансе недостаточно средств для подключения набора функций к модулю, деньги спишутся с подключенной карты. Подключить карту можно в <router-link to="/balance">Личном кабинете</router-link></p>
                 </div>
             </div>
         </div>
@@ -540,18 +460,18 @@ export default {
             total: 0,
             countOperator: 0,
             countMemory: 0,
-            checkWhatsApp: false,
-            checkTelegram: false,
-            checkViber: false, 
-            checkVk: false,
+            checkWhatsApp: false, checkWhatsAppSpan:false,
+            checkTelegram: false, checkTelegramSpan: false,
+            checkViber: false, checkViberSpan: false,
+            checkVk: false, checkVkSpan: false,
             checkBusi: false,
-            checkChat: false,
-            checkWrite: false,
-            checkEditor: false,
-            checkFunnel: false,
-            checkBitrix: false,
-            chechAmo: false,
-            checkMail: false,
+            checkChat: false, checkChatSpan: false,
+            checkWrite: false, checkWriteSpan: false,
+            checkEditor: false, checkEditorSpan: false,
+            checkFunnel: false, checkFunnelSpan: false,
+            checkBitrix: false, checkBitrixSpan: false,
+            chechAmo: false, chechAmoSpan: false,
+            checkMail: false, checkMailSpan: false,
             checkYear: false,
             firstBlockCount: 0,
             secondBlockCount: 0,
@@ -886,6 +806,7 @@ export default {
 
         submitTarif(){
             const axios = require('axios');
+
             
             let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
             let uri =a.split('?');
@@ -953,7 +874,6 @@ export default {
             if(this.info.used_features.features.includes('mailing')){mailing = 1}
             else{mailing = this.checkMail ? 1 : 0}
 
-            console.log(botid, annual)
 
             
             const params = new URLSearchParams()
@@ -995,13 +915,21 @@ export default {
         }
 
     },
+    computed: {
+      convertNumber() {
+        return this.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      },
+      convertYear(){
+          return Math.round(this.total / 12 / (1-this.info.pricelist.yearly_discount)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
+      
+    },
     created() {
         const axios = require('axios');
         let self = this
         axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
                 self.info = response.data
-                console.log(self.unixtime - response.data.tariffdata.trial_until)
                 if(response.data.used_features.features.includes('waba_registered')){
                     self.total += response.data.pricelist.waba_setup_fee
                     self.fourthBlockCount += response.data.pricelist.waba_setup_fee
@@ -1064,27 +992,7 @@ export default {
 
 
 <style>
-.fade-enter-active{
-  transition: opacity 0.8s ease, width 0s ease;
-}
-
-.fade-enter-from,
-.fade-leave-active,
-.fade-leave-to {
-  opacity: 0;
-  width: 0;
-  
-}
-.fade1-enter-active,
-.fade1-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade1-enter-from,
-.fade1-leave-to {
-  opacity: 0;
-}
-.left_block{
+    .left_block{
         float: left;
         width: 6%;
         height: 100%;
@@ -1119,7 +1027,7 @@ export default {
         margin: 0;
         text-align: left;
         height: 100px;
-        background-color: rgb(249,250,251);
+        background-color: #f6f6f6;
     }
     .right_block_inner h2{
         width: 20%;
@@ -1209,6 +1117,9 @@ export default {
         overflow: scroll;
     }
     .tarif_calculator_result{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #f6f6f6;
         width: 50%;
         display: inline-block;
         margin: 0;
@@ -1219,6 +1130,7 @@ export default {
         text-align: center;
     }
     .tarif_calculator_result h1{
+        font-size: 2.2vw;
         width: 100%;
         text-align: center;
         color: rgb(207,30,65);
@@ -1227,7 +1139,7 @@ export default {
     .tarif_calculator_result_checkbox{
         width: 100%;
         text-align: center;
-        font-size: 0.9em;
+        font-size: 1vw;
     }
     .switch {
         position: relative;
@@ -1320,8 +1232,9 @@ export default {
         color: white;
         outline: none;
         font-weight: 600;
-        font-size: 0.9em;
+        font-size: 0.9vw;
         border: 0px;
+        letter-spacing: 2px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
         padding: 16px;
         border-radius: 30px;
@@ -1329,8 +1242,10 @@ export default {
         margin-left: 25%;
         margin-top: 7%;
         transition: 0.8s all ease;
+        cursor: pointer;
     }
     .tarif_calculator_result_list{
+        font-size: 1.1vw;
         margin-top: 30px;
         width: 100%;
         text-align: center;
@@ -1342,7 +1257,7 @@ export default {
     .tarif_calculator_result li{
         font-weight: 300;
         margin-top: 4px;
-        font-size: 14px;
+        font-size: 1vw;
         margin-left: 33%;
         list-style: none;
     }
@@ -1358,7 +1273,7 @@ export default {
     .tarif_calculator_result_end{
         width: 80%;
         margin: 5% 10% 0 10%;
-        font-size: 0.9em;
+        font-size: 0.9vw;
         line-height: 20px;
         font-weight: 400;
     }
@@ -1370,7 +1285,7 @@ export default {
         width:100%;
         text-align: center;
         color:rgb(207,30,65);
-        font-size: 0.9em;
+        font-size: 0.9vw;
         margin: 20px 0;
         display: none;
     }
@@ -1380,7 +1295,7 @@ export default {
         background-color: rgb(227,228,229);
         text-align: center;
         padding: 10px 0;
-        font-size: 0.9em;
+        font-size: 0.9vw;
         margin-top: 10px;
     }
     .tarif_calculator_result_grey p{
@@ -1393,7 +1308,7 @@ export default {
         text-align: center;
         padding: 0;
         color: white;
-        font-size: 0.9em;
+        font-size: 0.9vw;
         margin-top: 15px;
     }
     .tarif_calculator_result_red1{
@@ -1424,7 +1339,7 @@ export default {
         margin: 0;
         font-size: 5em;
         height: 40px;
-        margin-left: -55px;
+        margin-left: -35px;
         color: rgb(241,242,243);
     }
     .tarif_calculator_scroll_first_block span{
@@ -1433,10 +1348,11 @@ export default {
     }
     .tarif_calculator_scroll_first_block_cost{
         display: inline-block;
-        width: 57%;
+        width: 54%;
+        padding-right: 1%;
         margin: 0;
         text-align: right;
-        font-size: 0.9em;
+        font-size: 1vw;
         color: rgb(127,128,129);
     }
     .tarif_calculator_scroll_first_block_cost span{
@@ -1444,12 +1360,16 @@ export default {
         border-bottom: 1px solid rgb(127,128,129);
     }
     .tarif_calculator_scroll_first_block_cost strong{
-        font-size: 1.1em;
+        font-size: 1vw;
     }
     .tarif_calculator_scroll_first_block_cost1{
-        font-size: 0.9em;
+        display: inline-block;
+        font-size: 1vw;
+        margin: 0;
+        width: 45%;
     }
     .tarif_calculator_scroll_first_block_icons{
+        position: relative;
         width: 80%;
         margin: 6% 10% 6% 8%;
         text-align: center;
@@ -1463,16 +1383,67 @@ export default {
     .tarif_calculator_scroll_first_block_icons img{
         width: 80%;
         margin: 0 10%;
+        z-index: 5;
     }
     .tarif_calculator_scroll_first_block_icons p{
         text-align: center;
         margin: 5px 0;
-        font-size: 0.8em;
+        font-size: 0.9vw;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_greyicons{
         border: 2px solid rgb(247,248,249);
+        width: 80%;
         border-radius: 40px;
         margin: 0 8% 0 1%;
+        transition: position,visibility,opacity 0.8s ease;
+    }
+    .tarif_calculator_scroll_first_block_icons span{
+        font-size: 0.7vw;
+        font-weight: 600;
+        color: white;
+        background-color: #d6496f;
+        padding: 1px 3px;
+        border-radius: 10px;
+        position: absolute;
+        z-index: 10;
+        top: 8px;
+        margin-left: 16%;
+        
+    }
+    .tarif_calculator_scroll_first_block_icons_span1{
+        left: 0%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span2{
+        left: 22%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span3{
+        left: 44%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span4{
+        left: 66%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span5{
+        left: 12%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span6{
+        left: 34%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span7{
+        left: 23%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span8{
+        left: 44%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span9{
+        left: 34%;
+    }
+    .tarif_calculator_scroll_first_block_greyicons_opacity{
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+        visibility: hidden;
+        position: absolute;
+
     }
     .tarif_calculator_scroll_first_block_list img{
         width: 18px;
@@ -1488,9 +1459,10 @@ export default {
         padding: 20px 0 20px 20px;
     }
     .tarif_calculator_scroll_first_block_list p{
-        font-size: 13px;
+        font-size: 0.9vw;
         color: rgb(57,58,59);
-        margin: 4px 0;
+        margin: 6px 0;
+        line-height: 17px;
         
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus {
@@ -1545,19 +1517,6 @@ export default {
         text-decoration-color:rgb(207,30,65);
     }
     @media (max-width: 1380px){
-        .tarif_calculator_scroll_first_block_cost1{
-            font-size: 0.8em;
-        }  
-        .tarif_calculator_scroll_first_block_cost{
-            width: 57%;
-            font-size: 0.8em;
-        }
-        .tarif_calculator_scroll_first_block_cost strong{
-            font-size: 1em;
-        }
-        .tarif_calculator_scroll_first_block_cost1{
-            font-size: 0.8em;
-        }  
         .tarif_calculator_scroll_first_block_list p{
             font-size: 13px;
         }   
@@ -1616,19 +1575,6 @@ export default {
     
     }
     @media (max-width: 1040px){
-        .tarif_calculator_scroll_first_block_cost1{
-            font-size: 0.5em;
-        }  
-        .tarif_calculator_scroll_first_block_cost{
-            width: 50%;
-            font-size: 0.6em;
-        }
-        .tarif_calculator_scroll_first_block_cost strong{
-            font-size: 0.9em;
-        }
-        .tarif_calculator_scroll_first_block_cost1{
-            font-size: 0.7em;
-        }  
         .tarif_calculator_scroll_first_block_list p{
             font-size: 11px;
         }   
@@ -1687,23 +1633,7 @@ export default {
     
     }
     @media (max-width: 850px){
-        .tarif_calculator_scroll_first_block_cost1{
-            font-size: 0.4em;
-        }  
-        .tarif_calculator_scroll_first_block_cost{
-            width: 40%;
-            font-size: 0.4em;
-        }
-        .tarif_calculator_scroll_first_block_icons div{
-            width: 13%;
-            margin: 0 10px; 
-        }
-        .tarif_calculator_scroll_first_block_cost strong{
-            font-size: 0.8em;
-        }
-        .tarif_calculator_scroll_first_block_cost1{
-            font-size: 0.6em;
-        }  
+
         .tarif_calculator_scroll_first_block_list p{
             font-size: 10px;
         }   

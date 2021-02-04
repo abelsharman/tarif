@@ -453,7 +453,7 @@ export default {
         margin: 0;
         text-align: left;
         height: 100px;
-        background-color: rgb(249,250,251);
+        background-color: #f6f6f6;
     }
     .right_block_inner h2{
         width: 20%;
