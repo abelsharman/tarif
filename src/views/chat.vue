@@ -204,17 +204,12 @@
 
 
 
-                    <td class="chat_block_inner_fourth_column" v-if="item.tariff.trial_until < item.tariff.paid_until">
+                    <td class="chat_block_inner_fourth_column">
                         <div class="chat_block_inner_margin">
-                            <p>Модуль действителен еще:<span>{{ Math.round(item.tariff.paid_until)/1000/24/60/60 }} {{ numpf(Math.round(item.tariff.paid_until)/1000/24/60/60) }}</span></p>
-                            <router-link to="/tariff">Настроить тариф</router-link>
-                        </div>
-                    </td>
-
-
-                    <td class="chat_block_inner_fourth_column" v-if="item.tariff.trial_until > item.tariff.paid_until">
-                        <div class="chat_block_inner_margin">
-                            <p>Бесплатный период заканчивается через:<span class="chat_block_red">{{ Math.round((item.tariff.trial_until)/1000/24/60/60) }} {{ numpf(Math.round(item.tariff.paid_until)/1000/24/60/60) }}</span></p>
+                            <p v-if="item.tariff.paid_until == 0 && item.tariff.trial_until >= unixtime">Бесплатный период действует еще <span style="color:green">{{ Math.round((item.tariff.trial_until - unixtime)/24/60/60) }}</span> {{ numpf(Math.round(item.tariff.trial_until - unixtime)/24/60/60) }} </p>
+                            <p v-else-if="item.tariff.paid_until > item.tariff.trial_until && item.tariff.paid_until > unixtime">Бот оплачен еще  <span style="color:green">{{ Math.round((item.tariff.paid_until - unixtime)/24/60/60) }}</span> {{ numpf(Math.round(item.tariff.paid_until - unixtime)/24/60/60) }} </p>
+                            <p v-else-if="item.tariff.trial_until < unixtime"><span class="chat_block_red">Бесплатный период закончился</span></p>
+                            <p v-else-if="item.tariff.paid_until < unixtime"><span class="chat_block_red">Оплаченный период закончился</span></p>
                             <router-link to="/tariff">Настроить тариф</router-link>
                         </div>
                     </td>
@@ -242,6 +237,7 @@ export default {
             infoUser: [],
             infoBalance: [],
             unixtime: Math.round(new Date().getTime() / 1000),
+            unixtimeSec:  Math.round(new Date().getTime()),
             peer: 0,
             peers: ["Новые", "За день", "Неделя", "Месяц", "Все время"]
         }
@@ -278,6 +274,7 @@ export default {
     },
     created() {
         const axios = require('axios');
+        console.log(this.unixtimeSec)
         let self = this
         axios.get('https://marketbot.biz/bot/api_botlist?user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
