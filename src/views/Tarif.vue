@@ -159,21 +159,21 @@
 
 
                             <div>      
-                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="!this.info.used_features.ops">
-                                    <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
-                                    <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1"  style="background-color:rgb(240,241,242)">-</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="!this.info.used_features.ops">
+                                    <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11">-</p>
+                                    <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
 
 
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ countOperator }}</p>
-                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22">{{ countOperator }}</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33">+</p>
                                 </div>
 
 
-                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.ops">
-                                    <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" >-</p>
-                                    <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1"  style="background-color:rgb(240,241,242)">-</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{ this.info.used_features.ops + countOperator }}</p>
-                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="this.info.used_features.ops">
+                                    <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11" >-</p>
+                                    <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22">{{ this.info.used_features.ops + countOperator }}</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33">+</p>
                                 </div>
 
 
@@ -238,12 +238,14 @@
                         <strong class="tarif_calculator_scroll_first_block_cost1">Интеграция CRM: </strong>
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ fourthBlockCount }}</strong> ₽/месяц</p>
 
-                        <div class="tarif_calculator_scroll_first_block_icons" v-if="!this.info.used_features.features.includes('bitrix24')">
-                            <div>
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('bitrix24')">
+                            <div @mouseover="checkBitrixSpan = true" @mouseleave="checkBitrixSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div>
+                            <div @mouseover="chechAmoSpan = true" @mouseleave="chechAmoSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
@@ -253,11 +255,13 @@
 
 
                         <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('amocrm')">
-                            <div>
+                            <div @mouseover="checkBitrixSpan1 = true" @mouseleave="checkBitrixSpan1 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan1">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div>
+                            <div @mouseover="chechAmoSpan1 = true" @mouseleave="chechAmoSpan1 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan1">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
@@ -267,32 +271,38 @@
 
 
 
-                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('bitrix24') && !this.info.used_features.features.includes('amocrm')">
-                            <div v-if="checkBitrix && !checkAmo">
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="!this.info.used_features.features.includes('bitrix24') && !this.info.used_features.features.includes('amocrm')">
+                            <div v-if="checkBitrix && !checkAmo" @mouseover="checkBitrixSpan2 = true" @mouseleave="checkBitrixSpan2 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan2">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="closeBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div v-if="checkBitrix && !checkAmo">
+                            <div v-if="checkBitrix && !checkAmo" @mouseover="chechAmoSpan2 = true" @mouseleave="chechAmoSpan2 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan2">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
                             
 
-                            <div v-if="!checkBitrix && checkAmo">
+                            <div v-if="!checkBitrix && checkAmo" @mouseover="checkBitrixSpan3 = true" @mouseleave="checkBitrixSpan3 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan3">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                             <div v-if="!checkBitrix && checkAmo">
+                             <div v-if="!checkBitrix && checkAmo" @mouseover="chechAmoSpan3 = true" @mouseleave="chechAmoSpan3 = false">
+                                 <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan3">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="closeAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
 
 
-                            <div v-if="!checkBitrix && !checkAmo">
+                            <div v-if="!checkBitrix && !checkAmo" @mouseover="checkBitrixSpan4 = true" @mouseleave="checkBitrixSpan4 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan4">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div v-if="!checkBitrix && !checkAmo">
+                            <div v-if="!checkBitrix && !checkAmo" @mouseover="chechAmoSpan4 = true" @mouseleave="chechAmoSpan4 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan4">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
@@ -351,7 +361,7 @@
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
                                     
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" style="width:20px;font-size:0.7em;margin:20px 0;">{{countMemory}} <span style="color:rgb(140,40,110);font-size:0.7em;">гб</span></p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{countMemory}} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
                                     <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
                                 </div>
 
@@ -361,7 +371,7 @@
             
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" style="width:20px;font-size:0.7em;vertical-align:middle;">{{this.info.used_features.storage_usage_kib + countMemory}} <span style="color:rgb(140,40,110);font-size:0.7em;">гб</span></p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{this.info.used_features.storage_usage_kib + countMemory}} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
                                     <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" >+</p>
                                 </div>
 
@@ -469,8 +479,8 @@ export default {
             checkWrite: false, checkWriteSpan: false,
             checkEditor: false, checkEditorSpan: false,
             checkFunnel: false, checkFunnelSpan: false,
-            checkBitrix: false, checkBitrixSpan: false,
-            chechAmo: false, chechAmoSpan: false,
+            checkBitrix: false, checkBitrixSpan1: false,checkBitrixSpan2: false,checkBitrixSpan3: false,checkBitrixSpan4: false,checkBitrixSpan:false,
+            chechAmo: false, chechAmoSpan1: false,chechAmoSpan2: false,chechAmoSpan3: false,chechAmoSpan4: false,chechAmoSpan: false,
             checkMail: false, checkMailSpan: false,
             checkYear: false,
             firstBlockCount: 0,
@@ -1437,6 +1447,12 @@ export default {
     .tarif_calculator_scroll_first_block_icons_span9{
         left: 34%;
     }
+    .tarif_calculator_scroll_first_block_icons_span10{
+        left: 24%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span11{
+        left: 45%;
+    }
     .tarif_calculator_scroll_first_block_greyicons_opacity{
         opacity: 0;
         width: 0px;
@@ -1473,11 +1489,23 @@ export default {
         width: 55px;
         margin: 10px 0;
     }
+    .tarif_calculator_scroll_first_block_icons_plus_minus .tarif_calculator_scroll_first_block_icons_plus_minus_span{
+        color:rgb(140,40,110);
+        font-size:0.4vw;
+        position: relative;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        width: 0px;
+        background-color: inherit;
+        margin: 0;
+    }
     .tarif_calculator_scroll_first_block_icons_plus_minus p{
         color: rgb(140,40,110);
         display: inline-block;
         margin-top: 13px; 
-        font-size: 1em;
+        font-size: 1vw;
+        margin: 0;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_1{
         margin: 0;
@@ -1486,21 +1514,21 @@ export default {
         background-color: rgb(140,40,110);
         border: 1px solid white;
         color: white;
-        width: 5px;
+        width: 4px;
         font-size: 0.8em;
         border-radius: 45px;
         padding: 0 5px;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
-        margin: 15px 0px;
-        font-size: 1.1em;
-        width: 13px;
+        margin: 18px 0px;
+        font-size: 0.9vw;
+        width: 23px;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
         margin: 0;
         position: relative;
         left: 11px;
-        width: 6px;
+        width: 4px;
         background-color: rgb(140,40,110);
         border: 1px solid white;
         color: white;
@@ -1516,36 +1544,37 @@ export default {
         -webkit-text-decoration-color:rgb(207,30,65);
         text-decoration-color:rgb(207,30,65);
     }
-    @media (max-width: 1380px){
+
+    @media (max-width: 1200px){
         .tarif_calculator_scroll_first_block_list p{
-            font-size: 13px;
+            font-size: 11px;
         }   
         .tarif_calculator_scroll_first_block_icons p{
-            font-size: 0.8em;
+            font-size: 0.6em;
         } 
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus {
-            height: 39px;
-            width: 39px;
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus1 {
+            height: 44px;
+            width: 44px;
             margin: 6px 0;
         }
-        .tarif_calculator_scroll_first_block_icons_plus_minus p{
+        .tarif_calculator_scroll_first_block_icons_plus_minus1 p{
             margin-top: 13px; 
             font-size: 0.3em;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_1{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_11{
             margin: 0;
-            left: -11px;
+            left: -14px;
             width: 1px;
             font-size: 0.5em;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
-            margin: 10px 0px !important;
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_22{
+            margin: 13px 0px !important;
             font-size: 0.6em !important;
             width: 2px !important;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_33{
             margin: 0;
-            left: 11px;
+            left: 14px;
             width: 1px;
             font-size: 0.5em;
         }
@@ -1570,9 +1599,7 @@ export default {
             line-height: 15px;
         }  
     
-  
-    
-    
+
     }
     @media (max-width: 1040px){
         .tarif_calculator_scroll_first_block_list p{
@@ -1581,27 +1608,27 @@ export default {
         .tarif_calculator_scroll_first_block_icons p{
             font-size: 0.6em;
         } 
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus {
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus1 {
             height: 28px;
             width: 28px;
             margin: 6px 0;
         }
-        .tarif_calculator_scroll_first_block_icons_plus_minus p{
+        .tarif_calculator_scroll_first_block_icons_plus_minus1 p{
             margin-top: 13px; 
             font-size: 0.3em;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_1{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_11{
             margin: 0;
             left: -7px;
             width: 1px;
             font-size: 0.5em;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_22{
             margin: 3px 0px !important;
             font-size: 0.6em !important;
             width: 2px !important;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_33{
             margin: 0;
             left: 7px;
             width: 1px;
@@ -1640,27 +1667,27 @@ export default {
         .tarif_calculator_scroll_first_block_icons p{
             font-size: 0.5em;
         } 
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus {
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus1 {
             height: 28px;
             width: 28px;
             margin: 6px 0;
         }
-        .tarif_calculator_scroll_first_block_icons_plus_minus p{
+        .tarif_calculator_scroll_first_block_icons_plus_minus1 p{
             margin-top: 13px; 
             font-size: 0.3em;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_1{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_11{
             margin: 0;
             left: -7px;
             width: 1px;
             font-size: 0.5em;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_22{
             margin: 3px 0px !important;
             font-size: 0.6em !important;
             width: 2px !important;
         }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
+        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_33{
             margin: 0;
             left: 7px;
             width: 1px;
