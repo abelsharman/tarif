@@ -44,11 +44,15 @@
 
 
 
+
+
+
+
         <div class="right_balans">
             <div class="right_balans_left">
                 <div class="right_balans_left_inner">
                     <div class="right_balans_left_inner_img">
-                        <img src="../assets/camera.png" alt="">
+                        <img src="../assets/wallet-big.png" alt="wallet">
                     </div>
                     <div class="right_balans_left_inner_summa">
                         <h2>Общий баланс аккаунта: </h2>
@@ -62,7 +66,7 @@
                             <input ref="submit_button" type="submit" @click="submitBalance" value="ПОПОЛНИТЬ">
                         </div>
                     
-
+                    <!--
                     <div class="right_balans_left_inner_add_cart_form" v-if="!carta">
                         <form>
                         <h3>Привязка карты к аккаунту</h3>
@@ -88,8 +92,9 @@
                         <a @click="showForm()">Отмена</a>
                         </form>
                     </div>
+                    -->
 
-                    <div class="right_balans_left_inner_add_cart_button" @click="showForm()" v-if="carta && !carta_info && !this.info.cc.saved" >
+                    <div class="right_balans_left_inner_add_cart_button" v-if="carta && !carta_info && !this.info.cc.saved" > <!-- @click="showForm()" -->
                         <img src="../assets/menu_add.png" alt="add">
                         <p>Привязать карту</p>
                     </div>
@@ -420,7 +425,7 @@ export default {
 <style>
     .left_block{
         float: left;
-        width: 6%;
+        width: 7%;
         height: 100%;
         min-width: 103px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
@@ -436,7 +441,7 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 280px;
+        margin-top: 180px;
         padding-bottom: 42px;
     }
 
@@ -445,7 +450,8 @@ export default {
 
     .right_block{
         float: right;
-        width: calc(100% - 103px);
+        width: 93%;
+        min-width: calc(100% - 103px);
         margin: 0;
     }
     .right_block_inner{
@@ -462,6 +468,11 @@ export default {
         margin: 0;
         font-size: 1.3em;
     }
+
+
+
+
+    
     .right_block_inner_balans{
         padding-top: 1%;
         width: 60%;
@@ -489,7 +500,7 @@ export default {
         font-size: 14px;
     }
     .right_block_inner_balans_right a, span{
-        color: rgb(207,30,65);
+        color: #d6496f;
     }
     .right_block_inner_balans_right span{
         font-size: 22px;
@@ -517,6 +528,10 @@ export default {
 
 
 
+
+
+
+
     .right_balans_left{
         float: left;
         width: 44%;
@@ -525,7 +540,7 @@ export default {
         background-color: rgb(248,249,250);
         border-radius: 8px;
         box-shadow: 0px 0px 10px 3px rgb(239,240,245);
-        margin: 30px;
+        margin: 2% 2%;
         text-align: right;
     }
     .right_balans_left_inner{
@@ -537,7 +552,8 @@ export default {
         width: 39%;
     } 
     .right_balans_left_inner_img img{
-        width: 100%;
+        width: 80%;
+        margin: 10% 20% 10% 0;
     }
     .right_balans_left_inner_summa{
         display: inline-block;
@@ -546,29 +562,34 @@ export default {
     }
     .right_balans_left_inner_summa h2{
         padding-top: 20%;
+        font-size: 1.3vw;
+        font-weight: 600;
         margin:0;
+        margin-bottom: 3%;
     }
     .right_balans_left_inner_summa h1{
         margin: 0;
-        font-size: 4em;
-        color: rgb(207,30,65)
+        font-size: 4vw;
+        color: #d6496f;
     }
+
     .right_balans_left_inner_input{
+        margin-top: 5%;
         width: 100%;
     }
     .right_balans_left_inner_input input[type="text"]{
         background-image: url('../assets/money.png');
-        background-size: 5%;
+        background-size: 4%;
         background-position: left;
-        background-position-x: 10px;
-        background-position-y: 3px;
+        background-position-x: 2%;
+        background-position-y: 2px;
         background-repeat: no-repeat;
         width: 90%;
         margin-right: 5%;
-        font-size: 1em;
+        font-size: 1vw;
         border: 0px;
         border-bottom: 1px solid grey;
-        padding: 7px 0 7px 50px;
+        padding: 7px 0 7px 8%;
         background-color: rgb(249,250,252);
         outline: none;
         color: black;
@@ -579,15 +600,16 @@ export default {
     .right_balans_left_inner_input input[type="submit"]{
         color: white;
         font-weight: 600;
-        font-size: 0.9em;
+        font-size: 1vw;
         border: 0px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
-        padding: 14px;
+        padding: 3% 0;
         border-radius: 30px;
         width: 50%;
         margin-right: 25%;
         margin-top: 7%;
         transition: 0.8s all ease;
+        cursor: pointer;
     }
     .right_balans_left_inner_input input[type="submit"]:hover{
         color: yellow;
@@ -667,7 +689,7 @@ export default {
         margin-top: 100px;
     }
     .right_balans_left_inner_add_cart_button img{
-        width: 3%;
+        width: 2%;
         display: inline-block;
         vertical-align: middle;
         margin-right: 8px;
@@ -675,7 +697,7 @@ export default {
     .right_balans_left_inner_add_cart_button p{
         display: inline-block;
         vertical-align: middle;
-        font-size: 0.9em;
+        font-size: 1vw;
         color: darkgrey;
     }
     .right_balans_left_inner_carts{
@@ -716,6 +738,19 @@ export default {
         width: 20px;
         margin-right: 0px;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
     .right_balans_right{
         width: 51%;
         display: inline-block;
@@ -724,17 +759,18 @@ export default {
         border-collapse: collapse;
         width: 90%;
         text-align: left;
-        margin: 30px;
+        margin: 4%;
         border: 1px solid rgb(229,230,231);
         background-color: rgb(248,249,250);
         border-radius: 8px;
         box-shadow: 0px 0px 10px 3px rgb(239,240,245);
     }
     .right_balans_right th{
-        border-radius: 15px;
+        border-radius: 14px;
+        font-size: 1.2vw;
         background-color: white;
         font-weight: 500;
-        padding: 13px 0 13px 30px;
+        padding: 13px 0 13px 6%;
     }
     .table_odd_row{
         background-color: rgb(239,240,242)
@@ -743,13 +779,13 @@ export default {
         border-right: 1px solid rgb(229,230,231);
     }
     .table_odd_row img{
-        width: 20px;
+        width: 10%;
         vertical-align: middle;
-        margin: 5px 10px 5px 30px;
+        margin: 5px 2% 5px 12%;
     }
     .table_odd_row span{
         color: black;
-        font-size: 0.9em;
+        font-size: 1vw;
         font-weight: 500;
     }
     .table_odd_row_1{
@@ -763,8 +799,8 @@ export default {
     }
     .table_odd_row_2 p{
         font-weight: 500;
-        font-size: 0.9em;
-        margin-left: 30px;
+        font-size: 1vw;
+        margin-left: 8%;
         color: green;
     }
     .table_odd_row_2_red{
@@ -772,9 +808,9 @@ export default {
     }
     .table_odd_row_2_red p{
         font-weight: 500;
-        font-size: 0.9em;
+        font-size: 1vw;
         margin-left: 0px;
-        color: rgb(207,30,65);
+        color: #d6496f;
         display: inline-block;
     }
     .table_odd_row_2_red img{
@@ -782,9 +818,9 @@ export default {
         display: inline-block;
     }
     .table_odd_row_3 p{
-        color: rgb(207,30,65);
-        font-size: 0.9em;
-        border-bottom: 1px solid rgb(207,30,65);
+        color: #d6496f;
+        font-size: 1vw;
+        border-bottom: 1px solid #d6496f;
         width: 60%;
         margin-left: 10%;
         cursor: pointer;
@@ -814,7 +850,7 @@ export default {
         border-collapse: collapse;
         width: 90%;
         text-align: left;
-        margin: 30px;
+        margin: 4%;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         border: 1px solid rgb(229,230,231);
@@ -828,7 +864,8 @@ export default {
         font-weight: 500;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
-        padding: 13px 0 13px 30px;
+        padding: 13px 0 13px 6%;
+        font-size: 1.2vw;
     }
     .right_balans_right_count_inner{
         width: 100%;
@@ -836,7 +873,7 @@ export default {
         text-align: center;
     }
     .right_balans_right_count_inner img{
-        width: 3%;
+        width: 2%;
         display: inline-block;
         vertical-align: middle;
         margin-right: 8px;
@@ -844,7 +881,7 @@ export default {
     .right_balans_right_count_inner p{
         display: inline-block;
         vertical-align: middle;
-        font-size: 1em;
+        font-size: 1vw;
         color: darkgrey;
     }
     .right_balans_right_count_bill p{
@@ -919,254 +956,10 @@ export default {
         text-decoration: underline;
 
     }
-     @media (max-width: 1380px){
-        .right_balans_left{
-            width: 42%;
-        }
-        .right_balans_right{
-            width: 51%;
-        }
-        .right_balans_left_inner_summa h1{
-            font-size: 2.5em;
-        }
-        .table_odd_row img{
-            width: 10px;
-            margin: 5px 10px 5px 10px;
-        }
-        .table_odd_row span{
-            font-size: 0.7em;
-        }
-        .table_odd_row_2 p{
-            font-size: 0.7em;
-            margin-left: 10px;
-        }
-        .table_odd_row_2_red p{
-            font-size: 0.7em;
-        }
-        .table_odd_row_3 p{
-            font-size: 0.7em;
-        }
-    
-        
-    }
-    @media (max-width: 1040px){
-        .right_balans_left{
-            width: 44%;
-        }
-        .right_balans_right{
-            width: 50%;
-        }
-        .right_balans_left_inner_summa h1{
-            font-size: 3em;
-        }
-    }
-    @media (max-width: 1040px){
-        .right_balans_left{
-            width: 42%;
-        }
-        .right_balans_right{
-            width: 51%;
-        }
-        .right_balans_left_inner_summa h1, .right_balans_left_inner_summa h2{
-            font-size: 2.5em;
-        }
+    @media (max-width: 1380px){
      
-        .table_odd_row img{
-            width: 10px;
-            margin: 5px 10px 5px 10px;
-        }
-        .table_odd_row span{
-            font-size: 0.7em;
-        }
-        .table_odd_row_2 p{
-            font-size: 0.7em;
-            margin-left: 10px;
-        }
-        .table_odd_row_2_red p{
-            font-size: 0.7em;
-        }
-        .table_odd_row_3 p{
-            font-size: 0.7em;
-        }
-    
         
     }
-     @media (max-width: 820px){
-        .right_balans_left{
-            width: 42%;
-        }
-        .right_balans_right{
-            width: 49%;
-        }
-        .right_balans_left_inner_summa h1, .right_balans_left_inner_summa h2{
-            font-size: 1.5em;
-        }
-        .table_odd_row img{
-            width: 10px;
-            margin: 5px 10px 5px 10px;
-        }
-        .table_odd_row span{
-            font-size: 0.5em;
-        }
-        .table_odd_row_2 p{
-            font-size: 0.5em;
-            margin-left: 0px;
-        }
-        .table_odd_row_2_red p{
-            font-size: 0.5em;
-        }
-        .table_odd_row_3 p{
-            font-size: 0.5em;
-        }
-        .right_balans_left_inner_add_cart_form{
-        width: 90%;
-        text-align: left;
-        background-color: white;
-        margin-top: 10px;
-        padding: 10px;
-        padding-top: 5px;
-        border-radius: 8px;
-    }
-    .right_balans_left_inner_add_cart_form p{
-        font-size: 0.6em;
-        margin: 5px 0 5px 10px;
-
-    }
-    .right_balans_left_inner_add_cart_form input[type="text"]{
-        width: 85%;
-        border-radius: 10px;
-        border: 1px solid grey;
-        padding: 6px;    
-        font-size: 0.6em;
-    }
-    .right_balans_left_inner_add_cart_form_1{
-        width: 36%;
-        display:inline-block;
-        margin-top: 10px;
-        margin-right: 5px;
-    }
-    .right_balans_left_inner_add_cart_form_2{
-        width: 15%;
-        display:inline-block;
-        margin-right: 20px;
-    }
-    .right_balans_left_inner_add_cart_form_3{
-        width: 15%;
-        display:inline-block;
-        margin-right: 5px;
-    }
-    .right_balans_left_inner_add_cart_form input[type="submit"]{
-        color: white;
-        font-weight: 600;
-        font-size: 0.6em;
-        border: 0px;
-        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
-        padding: 10px;
-        border-radius: 30px;
-        width: 50%;
-        margin-left: 15%;
-        margin-top: 7%;
-        transition: 0.8s all ease;
-        display: inline-block;
-    }
-    .right_balans_right_count{
-        border-collapse: collapse;
-        width: 90%;
-        text-align: left;
-        margin: 30px;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        border: 1px solid rgb(229,230,231);
-        background-color: rgb(248,249,250);
-        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
-    }
-
-    .right_balans_right_count h4{
-        margin: 0;
-        background-color: white;
-        font-weight: 500;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        padding: 13px 0 13px 20px;
-        font-size: 0.8em;
-    }
-    .right_balans_right_count_inner{
-        width: 100%;
-        padding: 10px 0;
-        text-align: center;
-    }
-    .right_balans_right_count_inner img{
-        width: 3%;
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 8px;
-    }
-    .right_balans_right_count_inner p{
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 0.6em;
-        color: darkgrey;
-    }
-    .right_balans_right_count_bill p{
-        font-size: 0.6em;
-        margin: 0;
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-bottom: 5px;
-        
-    }
-    .right_balans_right_count_bill input[type="text"]{
-        border-radius: 10px;
-        border: 1px solid grey;
-        padding: 6px;    
-        font-size: 0.6em;
-        width: 70%;
-        background-color: inherit;
-        outline: none;
-    }
-    .right_balans_right_count_bill_1{
-        margin-left: 4%;
-        width: 48%;
-        display: inline-block;
-    }
-    .right_balans_right_count_bill_2{
-        width: 48%;
-        display: inline-block;
-    }
-    .right_balans_right_count_bill_3{
-        margin-left: 4%;
-        width: 26%;
-        display: inline-block;
-    }
-    .right_balans_right_count_bill_4{
-        width: 26%;
-        display: inline-block;
-    }
-    .right_balans_right_count_bill_5{
-        width: 30%;
-        display: inline-block;
-    }
-    .right_balans_right_count_bill_6{
-        width: 44%;
-        margin-left: 4%;
-        display: inline-block;
-    }
-    .right_balans_right_count input[type="submit"]{
-        font-size: 0.6em;   
-        padding: 10px;
-    }
-    .right_balans_right_count_bill_7 img{
-        width: 12px;
-    }
-    
-    
-    
-        
-    }
-
-
-
-
 
 
 
