@@ -159,24 +159,24 @@
                             
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.GS.connected">
                                 <img src="../assets/logo_whatsapp.png" alt="logo_whatsapp"><strong>+{{ item.channel_status.GS.name }}</strong>
-                                <div v-if="item.channel_status.GS.paid" class="chat_green_point"></div><br>
-                                <div v-if="!item.channel_status.GS.paid" class="chat_red_point"></div><br>
+                                <div v-if="item.channel_status.GS.paid" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.GS.paid" class="chat_red_point"></div>
                                 <br>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.TL.connected">
                                 <img src="../assets/logo_telegram.png" alt="telegram"><strong>@{{ item.channel_status.TL.name }}</strong>
-                                <div v-if="item.channel_status.TL.paid" class="chat_green_point"></div><br>
-                                <div v-if="!item.channel_status.TL.paid" class="chat_red_point"></div><br>
+                                <div v-if="item.channel_status.TL.paid" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.TL.paid" class="chat_red_point"></div>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.VB.connected">
                                 <img src="../assets/logo_viber.png" alt="viber"><strong>{{ item.channel_status.VB.name }}</strong>
-                                <div v-if="item.channel_status.VB.paid" class="chat_green_point"></div><br>
-                                <div v-if="!item.channel_status.VB.paid" class="chat_red_point"></div><br>
+                                <div v-if="item.channel_status.VB.paid" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.VB.paid" class="chat_red_point"></div>
                             </div>
                             <div style="margin-bottom: 5px;" v-if="item.channel_status.VK.connected">
                                 <img src="../assets/logo_vk.png" alt="vk"><strong>{{ item.channel_status.VK.name }}</strong>
-                                <div v-if="item.channel_status.VK.paid" class="chat_green_point"></div><br>
-                                <div v-if="!item.channel_status.VK.paid" class="chat_red_point"></div><br>
+                                <div v-if="item.channel_status.VK.paid" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.VK.paid" class="chat_red_point"></div>
                             </div>
                           
                             <div class="chat_novye">
@@ -365,13 +365,13 @@ export default {
     }
     .right_block_inner_balans_right p,a{
         display: block;
-        font-size: 14px;
+        font-size: 1vw;
     }
     .right_block_inner_balans_right a, span{
         color: rgb(207,30,65);
     }
     .right_block_inner_balans_right span{
-        font-size: 22px;
+        font-size: 1.2vw;
         font-weight: 600;
     }
  
@@ -395,18 +395,21 @@ export default {
 
 
 
+
+
+
     .chat_block_inner_margin{
-        width: 85%;
-        margin-left: 20px;
+        width: 88%;
+        margin-left: 5%;
     }
     .chat_block_inner_margin p{
         margin: 0;
-        font-size: 15px;
+        font-size: 1vw;
         font-weight: 500;
     }
     .chat_block_inner_margin a{
         color: rgb(180, 46, 120);
-        font-size: 15px;
+        font-size: 1.1vw;
     }
     .chat_block_inner_margin span{
         color: rgb(51,125,25);
@@ -418,8 +421,8 @@ export default {
     .chat_block{
         margin: 0;
         text-align: left;
-        width: 95%;
-        padding: 10px 30px;
+        width: 96%;
+        padding: 10px 2%;
     }
     .chat_block_inner{
         position: relative;
@@ -430,6 +433,7 @@ export default {
     }
     .chat_block_inner table{
         width: 100%;
+        min-width: 800px;
         padding-bottom: 20px;
         border-radius: 9px;
         border-collapse: collapse;
@@ -448,7 +452,7 @@ export default {
         text-transform: uppercase;
         height: 50px;
         font-weight: 500;
-        padding-left: 20px;
+        padding-left: 2%;
     }
     .chat_block_inner_table_special_th{
         color: rgb(128, 156, 174);
@@ -461,7 +465,7 @@ export default {
     }
     .chat_block_inner_margin1{
         width: 95%;
-        margin-left: 20px;
+        margin-left: 2%;
         height: auto;
     }
     .chat_block_inner_first_column{
@@ -480,27 +484,27 @@ export default {
     }
     .chat_block_id_1 .chat_block_id_1_grey{
         color: rgb(181,182,183);
-        font-size: 12px;
+        font-size: 0.8vw;
         margin: 2px 0;
     }
     .chat_block_id_1 .chat_block_id_1_big{
-        font-size: 17px;
+        font-size: 1.1vw;
         margin: 7px 0 3px 0;
         color: rgb(40,12,68)
     }
     .chat_block_id_1 .chat_block_id_1_green{
         color: rgb(51,125,25);
-        font-size: 14px;
+        font-size: 1vw;
         margin: 3px 0;
     }
     .chat_block_id_1 .chat_block_id_1_darkgrey{
         color: rgb(99,100,101);
-        font-size: 14px;
+        font-size: 1vw;
         margin: 3px 0;
     }
     .chat_block_id_1 .chat_block_id_1_red{
         color: rgb(207,30,65);
-        font-size: 14px;
+        font-size: 1vw;
         margin: 3px 0;
     }
 
@@ -511,7 +515,7 @@ export default {
         margin-top: 20px;
     }
     .chat_block_id_2 img{
-        width: 15px;
+        width: 10%;
         vertical-align: middle;  
         margin-right: 7px;  
     }
@@ -519,7 +523,7 @@ export default {
         color: rgb(180,46,117);
         text-decoration: underline;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 1vw;
     }
 
 
@@ -530,7 +534,7 @@ export default {
         margin-top: 3%;
     }
     .chat_block_id_3_border{
-        padding: 1px 18px;
+        padding: 1px 2px;
         height: 28px;
         text-align: center;
         border: 1px solid rgb(180,46,117);
@@ -543,22 +547,23 @@ export default {
         color: rgb(103,104,105);
     }
     .chat_block_id_3_border img{
-        width: 16px;
+        width: 8%;
         vertical-align: middle;
-        margin-right: 7px;
+        margin-right: 3%;
 
     }
     .chat_block_id_3_border p{
         display: inline-block;
         font-weight: 500;
         color: #2c3e50;
-        font-size: 10px;
+        font-size: 0.7vw !important;
+        margin: 0;
         margin-top: 5px;
         
     }
     .chat_block_id_3_border .chat_block_id_1_grey{
         color: rgb(181,182,183);
-        font-size: 12px;
+        font-size: 0.8vw;
         margin: 0;
     }
 
@@ -567,13 +572,14 @@ export default {
         width: 19%;
     }
     .chat_block_inner_second_column img{
-        width: 22px;
-        vertical-align: top;
-        margin-right: 10px;
+        width: 10%;
+        vertical-align: middle;
+        margin-right: 3%;
     }
     .chat_block_inner_second_column strong{
         font-weight: 500;
-        font-size: 15px;
+        font-size: 0.8vw;
+        display: inline-block;
     }
     .chat_green_point {
         width: 7px;
@@ -582,8 +588,7 @@ export default {
         background-color: rgb(51,125,25);
         border-radius: 25px;
         vertical-align: middle;
-        margin-left: 5px;
-        margin-bottom: 2px;
+        margin-left: 2%;
     }
     .chat_red_point {
         width: 7px;
@@ -592,8 +597,8 @@ export default {
         background-color: red;
         border-radius: 25px;
         vertical-align: middle;
-        margin-left: 5px;
-        margin-bottom: 2px;
+        margin-left: 2%;
+  
     }
     .chat_novye{
         margin-top: 10%;
@@ -601,14 +606,14 @@ export default {
     #chat_novye_span{
         color: rgb(100,100,100);
         background-color: rgb(206,215,221);
-        padding: 1px 7px;
+        padding: 1px 2%;
         border-radius: 15px;
-        margin: 0px 4px;
-        font-size: 14px;
+        margin: 0px 1%;
+        font-size: 1vw;
         font-weight: 500;
     }
     .chat_novye img{
-        width: 11px;
+        width: 5%;
         margin-top: 5px;
         margin-left: 1px;
     }
@@ -633,210 +638,15 @@ export default {
         width: 55%;
         margin-left: 22%;
     }
-    @media (max-width: 1290px){
-        .chat_block_inner_margin1{
-            margin-left: 10px;
-        }
-        .chat_block_id_1 img{
-            width: 10px;
-        }
-        .chat_block_id_1 .chat_block_id_1_grey{
-            font-size: 10px;
-        }
-        .chat_block_id_1 .chat_block_id_1_big{
-            font-size: 14px;
-        }
-        .chat_block_id_1 .chat_block_id_1_green{
-            font-size: 12px;
-        }
-        .chat_block_id_1 .chat_block_id_1_darkgrey{
-            font-size: 12px;
-        }
-        .chat_block_id_1 .chat_block_id_1_red{
-            font-size: 12px;
-        }
-        .chat_block_id_2 img{
-            width: 12px;
-            margin-right: 4px;  
-        }
-        .chat_block_id_2 strong{
-            font-size: 10px;
-        }
-        .chat_block_id_3_border{
-            padding: 1px 12px;
-        }
-        .chat_block_id_3_border img{
-            width: 10px;
-            margin-right: 3px;
-        }
-        .chat_block_id_3_border p{
-            font-size: 8px;
-        }
-        .chat_block_id_3_border .chat_block_id_1_grey{
-            font-size: 10px;
-        }
-        .chat_block_inner_second_column img{
-            width: 16px;
-            margin-right: 7px;
-        }
-        .chat_block_inner_second_column strong{
-            font-size: 12px;
-        }
-        #chat_novye_span{
-            padding: 1px 4px;
-            margin: 0px 4px;
-            font-size: 12px;
-        }
-        .chat_novye img{
-            width: 9px;
-            margin-top: 5px;
-            margin-left: 1px;
-        }
-        .chat_block_inner_third_column p,a{
-            font-size: 12px !important;
-        }
-        .chat_block_inner_fourth_column p,a{
-            font-size: 12px !important;
-        }
+    @media screen and (max-width: 1300px) {
+        .chat_green_point {
+        width: 5px;
+        height: 5px;
     }
-    @media (max-width: 1040px){
-        .right_block_inner h2{
-            padding: 30px 0px 30px 2%;
-            font-size: 1.1em;
-        
-        }
-        .chat_block_inner_margin1{
-            margin-left: 10px;
-        }
-        .chat_block_id_1 img{
-            width: 10px;
-        }
-        .chat_block_id_1 .chat_block_id_1_grey{
-            font-size: 10px;
-        }
-        .chat_block_id_1 .chat_block_id_1_big{
-            font-size: 14px;
-        }
-        .chat_block_id_1 .chat_block_id_1_green{
-            font-size: 12px;
-        }
-        .chat_block_id_1 .chat_block_id_1_darkgrey{
-            font-size: 12px;
-        }
-        .chat_block_id_1 .chat_block_id_1_red{
-            font-size: 12px;
-        }
-        .chat_block_id_2 img{
-            width: 13px;
-            margin-right: 4px;  
-        }
-        .chat_block_id_2 strong{
-            font-size: 12px;
-        }
-        .chat_block_id_3_border{
-            padding: 1px 1px;
-        }
-        .chat_block_id_3_border img{
-            width: 10px;
-            margin-right: 1px;
-        }
-        .chat_block_id_3_border p{
-            font-size: 10px;
-        }
-        .chat_block_id_3_border .chat_block_id_1_grey{
-            font-size: 10px;
-        }
-        .chat_block_inner_second_column img{
-            width: 16px;
-            margin-right: 7px;
-        }
-        .chat_block_inner_second_column strong{
-            font-size: 10px;
-        }
-        #chat_novye_span{
-            padding: 1px 4px;
-            margin: 0px 4px;
-            font-size: 10px;
-        }
-        .chat_novye img{
-            width: 9px;
-            margin-top: 5px;
-            margin-left: 1px;
-        }
-        .chat_block_inner_third_column p,a{
-            font-size: 11px !important;
-        }
-        .chat_block_inner_fourth_column p,a{
-            font-size: 11px !important;
-        }
+    .chat_red_point {
+        width: 5px;
+        height: 5px;
     }
-    @media (max-width: 850px){
-        .right_block_inner h2{
-            font-size: 0.9em;
-        }
-        .chat_block_inner_margin1{
-            margin-left: 5px;
-        }
-        .chat_block_id_1 img{
-            width: 8px;
-        }
-        .chat_block_id_1 .chat_block_id_1_grey{
-            font-size: 9px;
-        }
-        .chat_block_id_1 .chat_block_id_1_big{
-            font-size: 12px;
-        }
-        .chat_block_id_1 .chat_block_id_1_green{
-            font-size: 10px;
-        }
-        .chat_block_id_1 .chat_block_id_1_darkgrey{
-            font-size: 10px;
-        }
-        .chat_block_id_1 .chat_block_id_1_red{
-            font-size: 10px;
-        }
-        .chat_block_id_2 img{
-            width: 11px;
-            margin-right: 4px;  
-        }
-        .chat_block_id_2 strong{
-            font-size: 9px;
-        }
-        .chat_block_id_3_border{
-            padding: 1px 1px;
-        }
-        .chat_block_id_3_border img{
-            width: 9px;
-            margin-right: 1px;
-        }
-        .chat_block_id_3_border p{
-            font-size: 7px;
-        }
-        .chat_block_id_3_border .chat_block_id_1_grey{
-            font-size: 9px;
-        }
-        .chat_block_inner_second_column img{
-            width: 13px;
-            margin-right: 4px;
-        }
-        .chat_block_inner_second_column strong{
-            font-size: 9px;
-        }
-        #chat_novye_span{
-            padding: 1px 4px;
-            margin: 0px 4px;
-            font-size: 9px !important;
-        }
-        .chat_novye img{
-            width: 7px;
-            margin-top: 5px;
-            margin-left: 1px;
-        }
-        .chat_block_inner_third_column p,a{
-            font-size: 10px !important;
-        }
-        .chat_block_inner_fourth_column p,a{
-            font-size: 10px !important;
-        }
     }
+    
 </style>
