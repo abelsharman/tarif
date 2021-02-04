@@ -1694,6 +1694,22 @@ export default {
     
     
     }
+    @media (max-width: 800px){
+        .right_balans_left{
+           width: 90%;
+        }
+        .right_balans_right{
+            width: 90%;
+        }
+        .right_block_inner h2{
+            width: 30%;
+            font-size: 1em;
+        }
+        .right_block_inner_balans{
+            width: 50%;
+        }
+        
+    }
 
 
 </style>

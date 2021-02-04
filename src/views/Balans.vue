@@ -465,7 +465,7 @@ export default {
         padding: 30px 0 30px 3%;
         display: inline-block;
         margin: 0;
-        font-size: 1.3em;
+        font-size: 1.3vw;
     }
 
 
@@ -820,7 +820,7 @@ export default {
         color: #d6496f;
         font-size: 1vw;
         border-bottom: 1px solid #d6496f;
-        width: 60%;
+        width: max-content;
         margin-left: 10%;
         cursor: pointer;
     }
@@ -955,8 +955,20 @@ export default {
         text-decoration: underline;
 
     }
-    @media (max-width: 1380px){
-     
+    @media (max-width: 800px){
+        .right_balans_left{
+           width: 90%;
+        }
+        .right_balans_right{
+            width: 90%;
+        }
+        .right_block_inner h2{
+            width: 30%;
+            font-size: 1em;
+        }
+        .right_block_inner_balans{
+            width: 50%;
+        }
         
     }
 
