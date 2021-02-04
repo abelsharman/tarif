@@ -324,7 +324,7 @@ export default {
 
     .right_block{
         float: right;
-        min-width: calc(100% - 103px);
+        width: calc(100% - 103px);
         margin: 0;
     }
     .right_block_inner{

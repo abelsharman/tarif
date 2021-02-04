@@ -425,7 +425,7 @@ export default {
 <style>
     .left_block{
         float: left;
-        width: 7%;
+        width: 6%;
         height: 100%;
         min-width: 103px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
@@ -450,8 +450,7 @@ export default {
 
     .right_block{
         float: right;
-        width: 93%;
-        min-width: calc(100% - 103px);
+        width: calc(100% - 103px);
         margin: 0;
     }
     .right_block_inner{

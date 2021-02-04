@@ -992,21 +992,11 @@ export default {
 
 
 <style>
-    @media screen  and (max-width: 1920px){
-        .left_block{
-            width: 7% !important;
-            min-width: 103px;
-        }
-        .right_block{
-            width: 90% !important;
-            min-width: 93% !important;
-        }
-    }
     .left_block{
         float: left;
         width: 6%;
         height: 100%;
-        min-width: 100px;
+        min-width: 103px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
