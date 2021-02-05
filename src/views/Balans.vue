@@ -809,14 +809,15 @@ export default {
         border: 1px solid lightgrey;
         text-align: center;
         outline: none;
-        padding: 3px 10px;
+        padding: 3px 5%;
         border-radius: 5px;
-        margin: 0px 5px 0px 10px;
+        margin: 0px 5px 0px 5%;
     }
     .table_add_balans button{
-        width: 20px;
-        vertical-align: top;
+        width: 18%;
+        background-color: inherit;
         height: 20px;
+        vertical-align: top;
         background-image: url('../assets/check.png');
         background-position: center;
         background-size: cover;
@@ -932,6 +933,18 @@ export default {
         text-decoration: underline;
 
     }
+    @media (max-width: 1100px){
+        .table_add_balans button{
+            width: 17%;
+            height: 17px;
+        }
+    }
+    @media (max-width: 1100px){
+        .table_add_balans button{
+            width: 14%;
+            height: 14px;
+        }
+    }
     @media (max-width: 800px){
         .right_balans_left{
            width: 90%;
@@ -945,6 +958,10 @@ export default {
         }
         .right_block_inner_balans{
             width: 50%;
+        }
+        .table_add_balans button{
+            width: 14%;
+            height: 18px;
         }
         
     }
