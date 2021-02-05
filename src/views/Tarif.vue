@@ -96,14 +96,14 @@
                         </div>
 
 
-                        <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
+                        <label class="switch" v-if="this.info.used_features.features.includes('waba_registered')">
                                 <input type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
                         </label>
 
-                         <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
+                         <label class="switch" v-if="checkBusi && !this.info.used_features.features.includes('waba_registered')">
                                 <input type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/tick.png" alt="">
@@ -875,8 +875,9 @@ export default {
             else{mailing = this.checkMail ? 1 : 0}
 
             
-            console.log(botid, user_token)
+        
             const params = new URLSearchParams()
+            params.append('user_token', user_token)
             params.append('botid', botid)
             params.append('annual', annual)
             params.append('reg_waba', reg_waba)

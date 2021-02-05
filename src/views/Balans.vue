@@ -196,7 +196,7 @@
                         <td class="table_odd_row_3" v-if="index % 2 == 1">
                             <div class="table_add_balans" v-show="addBalans">
                                 <input type="text">
-                                <input type="hidden" value="{{ item.id }}">
+                                <input type="hidden" v-bind:value="item.id">
                                 <button type="submit" @click="submitAmountToFill"></button>
                             </div>
                             <p @click="addBalansForm">Пополнить</p>
@@ -307,13 +307,13 @@ export default {
             event.target.parentNode.style.display = 'none'
             
 
-
+            const a = event.target.parentNode.childNodes[1].value
             const axios = require('axios');
             const params = new URLSearchParams()
             params.append('user_token', this.user_token)
-            params.append('waba', event.target.parentNode.childNodes[1].value)
+            params.append('waba', a)
             params.append('amount', event.target.parentNode.childNodes[0].value)
-        
+    
 
             const config = {
                 headers: {
@@ -357,7 +357,7 @@ export default {
             params.append('user_token', this.user_token)
             params.append('waba', 0)
             params.append('amount', event.target.parentNode.childNodes[0].value)
-        
+    
 
             const config = {
                 headers: {
@@ -371,7 +371,7 @@ export default {
                         window.location.href = response.data.url
                     }
                     else{
-                        alert(response.data.errmsg, response.data.url, response.data.paid)
+                        window.location.href = response.data.url
                     }
                     
     
