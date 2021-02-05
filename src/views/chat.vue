@@ -277,17 +277,17 @@ export default {
         const axios = require('axios');
         
         let self = this
-        axios.get('https://marketbot.biz/bot/api_botlist?user_token='+user_token)
+        axios.get('https://marketbot.biz/bot/api_botlist?user_token='+this.user_token)
             .then(function(response){
                 self.info = response.data
             })
 
-        axios.get('https://marketbot.biz/user/current?user_token='+user_token)
+        axios.get('https://marketbot.biz/user/current?user_token='+this.user_token)
             .then(function(response){
                 self.infoUser = response.data
             })
     
-         axios.get('http://marketbot.biz/balance/get_data?user_token='+user_token)
+         axios.get('http://marketbot.biz/balance/get_data?user_token='+this.user_token)
             .then(function(response){
                 self.infoBalance = response.data
             })
