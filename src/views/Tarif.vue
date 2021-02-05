@@ -393,25 +393,36 @@
                 </div>
 
                 <div class="tarif_calculator_result">
+                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.paid_until == 0 && this.info.tariffdata.trial_until >= unixtime">
+                        <p>Бесплатный тестовый период завершится через <span style="color: rgb(207,30,65);">{{ Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60) }} {{ numpf(Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
+                    </div>
 
-                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.trial_until < this.info.tariffdata.paid_until">
+                    <div class="tarif_calculator_result_grey" v-else-if="this.info.tariffdata.paid_until > this.info.tariffdata.trial_until && this.info.tariffdata.paid_until > unixtime">
                         <p>Модуль действителен еще: <span style="color: green">{{ Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)}} {{ numpf(Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
                         <p v-if="this.info.tariffdata.write_first > 0">Функция "Написать первым" действительна еще: <span>8 {{ numpf(Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
                     </div>
 
 
-                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.trial_until > this.info.tariffdata.paid_until">
-                        <p>Бесплатный тестовый период завершится через <span style="color: rgb(207,30,65);">{{ Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60) }} {{ numpf(Math.round((this.unixtime - this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
-                    </div>
-
-
-                    <div class="tarif_calculator_result_red" v-if="this.unixtime > this.info.tariffdata.trial_until">
+                    <div class="tarif_calculator_result_red" v-else-if="this.info.tariffdata.trial_until < unixtime">
                         <div class="tarif_calculator_result_red1">
                             <img src="../assets/clock.png" alt="">
                         </div>
                         
                         <div class="tarif_calculator_result_red2">
                             <p><strong>Бесплатный пробный период закончился!</strong></p>
+                            <p>Выберите тариф и пополните ваш баланс.</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="tarif_calculator_result_red" v-else-if="this.info.tariffdata.paid_until < unixtime">
+                        <div class="tarif_calculator_result_red1">
+                            <img src="../assets/clock.png" alt="">
+                        </div>
+                        
+                        <div class="tarif_calculator_result_red2">
+                            <p><strong>Оплаченный период закончился!</strong></p>
                             <p>Выберите тариф и пополните ваш баланс.</p>
                         </div>
                     </div>
