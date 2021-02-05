@@ -96,14 +96,14 @@
                         </div>
 
 
-                        <label class="switch" v-if="this.info.used_features.features.includes('waba_registered')">
+                        <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
                                 <input type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
                         </label>
 
-                         <label class="switch" v-if="checkBusi && !this.info.used_features.features.includes('waba_registered')">
+                         <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
                                 <input type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/tick.png" alt="">
@@ -496,7 +496,18 @@ export default {
         }
     },
     methods:{
-         numpf(n) {
+        clickBusinessApi(){
+            this.firstBlockCount += this.info.pricelist.program_cost.GS
+            this.checkWhatsApp = !this.checkWhatsApp
+            if(this.$refs.check.checked == true){
+                this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = parseInt(this.total.toFixed(0))
+            }
+            else{
+                 this.total += this.info.pricelist.program_cost.GS
+            }
+        },
+        numpf(n) {
             let f = 'день'
             let s = 'дня'
             let t = 'дней'
