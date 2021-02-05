@@ -97,7 +97,7 @@
 
 
                         <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
-                                <input type="checkbox" ref="businessapi">
+                                <input @click="clickBusinessApi" type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
@@ -496,16 +496,28 @@ export default {
         }
     },
     methods:{
-        clickBusinessApi(){
-            this.firstBlockCount += this.info.pricelist.program_cost.GS
-            this.checkWhatsApp = !this.checkWhatsApp
-            if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
-                this.total = parseInt(this.total.toFixed(0))
+        clickBusinessApi(event){
+            if(event.target.checked){
+                this.firstBlockCount += this.info.pricelist.waba_setup_fee
+                if(this.$refs.check.checked == true){
+                    this.total += this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) * 12
+                    this.total = parseInt(this.total.toFixed(0))
+                }
+                else{
+                     this.total += this.info.pricelist.waba_setup_fee
+                }
             }
             else{
-                 this.total += this.info.pricelist.program_cost.GS
+                this.firstBlockCount -= this.info.pricelist.waba_setup_fee
+                if(this.$refs.check.checked == true){
+                    this.total -= this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) * 12
+                    this.total = parseInt(this.total.toFixed(0))
+                }
+                else{
+                    this.total -= this.info.pricelist.waba_setup_fee
+                }
             }
+            
         },
         numpf(n) {
             let f = 'день'
