@@ -814,9 +814,9 @@ export default {
         margin: 0px 5px 0px 5%;
     }
     .table_add_balans button{
-        width: 18%;
+        width: 16%;
         background-color: inherit;
-        height: 20px;
+        height: 22px;
         vertical-align: top;
         background-image: url('../assets/check.png');
         background-position: center;
