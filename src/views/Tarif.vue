@@ -60,7 +60,7 @@
                         <div class="tarif_calculator_scroll_first_block_icons">
 
                             <div @mouseover="checkWhatsAppSpan = true" @mouseleave="checkWhatsAppSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan">{{ info.pricelist.program_cost.GS }}₽</span>
+                                <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan">{{ this.info.pricelist.program_cost.GS }}₽</span>
                                 <img @click="this.checkBusi = !this.checkBusi" v-if="this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <img @click="closeWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
                                 <img @click="clickWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:102%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
@@ -1002,6 +1002,12 @@ export default {
 
 
 <style>
+    @media screen and (max-width: 1920px){
+        .right_block{
+            width: 94%;
+
+        }
+    
     .left_block{
         float: left;
         width: 6%;
@@ -1029,7 +1035,6 @@ export default {
 
     .right_block{
         float: right;
-        min-width: calc(100% - 103px);
         margin: 0;
     }
     .right_block_inner{
@@ -1124,7 +1129,8 @@ export default {
         height:73vh;
         background-color: white;
         margin: 0;
-        overflow: scroll;
+        overflow: auto;
+        overflow-x:hidden;
     }
     .tarif_calculator_result{
         padding-top: 10px;
@@ -1340,7 +1346,7 @@ export default {
         margin-left: 40%;
     }
     .tarif_calculator_scroll_first_block {
-        width: 95%;
+        width: 96%;
         padding: 0px 0px 0px 20px;
         margin: 0;
         border-bottom: 1px dashed rgb(207,208,209);
@@ -1388,7 +1394,7 @@ export default {
         width: 15%;
         display: inline-block;
         vertical-align: top;
-        margin: 0 15px; 
+        margin: 0 4%; 
     }
     .tarif_calculator_scroll_first_block_icons img{
         width: 80%;
@@ -1544,8 +1550,22 @@ export default {
         -webkit-text-decoration-color:rgb(207,30,65);
         text-decoration-color:rgb(207,30,65);
     }
+    }
+     @media screen and (max-width: 1440px){
+        .right_block{
+            width: calc(100% - 103px);
 
-    @media (max-width: 1200px){
+        }
+        .tarif_calculator_scroll_first_block {
+            width: 95%;
+        }
+    }
+    @media screen and (max-width: 1366px){
+        .tarif_calculator_scroll_first_block {
+            width: 94%;
+        }
+    }
+    @media screen and (max-width: 1200px){
         .tarif_calculator_scroll_first_block_list p{
             font-size: 11px;
         }   
@@ -1601,7 +1621,7 @@ export default {
     
 
     }
-    @media (max-width: 1040px){
+    @media screen and (max-width: 1040px){
         .tarif_calculator_scroll_first_block_list p{
             font-size: 11px;
         }   
@@ -1659,84 +1679,51 @@ export default {
     
     
     }
-    @media (max-width: 850px){
-
+     @media screen and (max-width: 1024px){
+        .tarif_calculator_scroll_first_block {
+            width: 92%;
+        }
         .tarif_calculator_scroll_first_block_list p{
-            font-size: 10px;
-        }   
-        .tarif_calculator_scroll_first_block_icons p{
-            font-size: 0.5em;
-        } 
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus1 {
-            height: 28px;
-            width: 28px;
+            font-size: 0.9vw;
+            color: rgb(57,58,59);
             margin: 6px 0;
-        }
-        .tarif_calculator_scroll_first_block_icons_plus_minus1 p{
-            margin-top: 13px; 
-            font-size: 0.3em;
-        }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_11{
-            margin: 0;
-            left: -7px;
-            width: 1px;
-            font-size: 0.5em;
-        }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_22{
-            margin: 3px 0px !important;
-            font-size: 0.6em !important;
-            width: 2px !important;
-        }
-        .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_33{
-            margin: 0;
-            left: 7px;
-            width: 1px;
-            font-size: 0.5em;
-        }
-        .tarif_calculator_result_grey{
-            width: 70%;
-            margin: 0px 15% 0px 15%;
-            font-size: 0.7em;
-        }
-        
-        .tarif_calculator_result_red{
-            font-size: 0.7em;
-        }
-        .tarif_calculator_result_list{
-            margin-top: 20px;
-        }
-        .tarif_calculator_result li{
-            font-size: 11px;
-            margin-left: 20%;
+            line-height: 12px;
         }
         .tarif_calculator_result_end{
-            font-size: 0.6em;
             line-height: 15px;
-        }  
-        .tarif_calculator_result_end a{
-            font-size: 0.9em;
+            margin: 2% 10% 0 10%;
         }
-    
-  
-    
-    
+         .tarif_calculator_scroll_first_block_icons{
+            width: 90%;
+            margin: 6% 5% 6% 4%;
+        }
     }
-    @media (max-width: 800px){
-        .right_balans_left{
-           width: 90%;
+    @media screen and (max-width: 910px){
+        .tarif_calculator_scroll_first_block_icons{
+            width: 100%;
+            margin: 6% 0% 6% 0%;
         }
-        .right_balans_right{
+    }
+    @media screen and (max-width: 800px){
+        .tarif_calculator_scroll_first_block {
             width: 90%;
         }
-        .right_block_inner h2{
-            width: 30%;
-            font-size: 1em;
+        .tarif_calculator_result_end{
+            line-height: 15px;
+            margin: 2% 10% 0 10%;
         }
-        .right_block_inner_balans{
-            width: 50%;
+        .tarif_calculator_scroll_first_block_list p{
+            font-size: 0.9vw;
+            color: rgb(57,58,59);
+            margin: 5px 0;
+            line-height: 9px;
         }
         
+    
+    
+        
     }
+
 
 
 </style>

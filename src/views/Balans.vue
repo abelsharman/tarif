@@ -333,7 +333,6 @@ export default {
             }
             axios.post('http://marketbot.biz/balance/refill', params, config)
                 .then(function (response) {
-                    console.log(response)
                     if(response.data.paid == true){
                         alert('Транзакция успешна')
                     }

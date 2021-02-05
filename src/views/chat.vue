@@ -274,7 +274,6 @@ export default {
     },
     created() {
         const axios = require('axios');
-        console.log(this.unixtimeSec)
         let self = this
         axios.get('https://marketbot.biz/bot/api_botlist?user_token=9c329f7404f8d74f0cf841e35b7e4680')
             .then(function(response){
@@ -297,6 +296,11 @@ export default {
 </script>
 
 <style scoped>
+    @media screen and (max-width: 1920px){
+        .right_block{
+            width: 94%;
+        }
+    
     .left_block{
         float: left;
         width: 6%;
@@ -324,7 +328,7 @@ export default {
 
     .right_block{
         float: right;
-        width: calc(100% - 103px);
+
         margin: 0;
     }
     .right_block_inner{
@@ -637,6 +641,12 @@ export default {
     .chat_block_inner_fifth_column img:hover{
         width: 55%;
         margin-left: 22%;
+    }
+    }
+    @media screen and (max-width: 1440px){
+        .right_block{
+            width: calc(100% - 103px);
+        }
     }
     @media screen and (max-width: 1300px) {
         .chat_green_point {
