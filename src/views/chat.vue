@@ -69,69 +69,69 @@
 
                             <div class="chat_block_id_2">
                                 <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bchannels/index/10150">
+                                    <a :href="'https://marketbot.biz/bchannels/index/'+ item.id">
                                     <img src="../assets/info.png" alt="info"><strong>Каналы</strong>
                                     </a>
                                  </div>
 
                                 <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/link/index/10150">
+                                    <a :href="'https://marketbot.biz/link/index/'+item.id">
                                     <img src="../assets/links.png" alt="links"><strong>Ссылки</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/op/oplist/10150">
+                                    <a :href="'https://marketbot.biz/op/oplist/' + item.id">
                                     <img src="../assets/view.png" alt="view"><strong>Операторы</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;">
-                                    <a href="https://marketbot.biz/bcrm/index/10150">
+                                    <a :href="'https://marketbot.biz/bcrm/index/'+item.id">
                                     <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
-                                    <a href="https://marketbot.biz/hsm/index/10156">
+                                    <a :href="'https://marketbot.biz/hsm/index/'+item.id">
                                     <strong style="margin-left: 20px;">Промокоды</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
-                                    <a href="https://marketbot.biz/promocodes/index/10156">
+                                    <a :href="'https://marketbot.biz/promocodes/index/'+item.id">
                                     <img src="../assets/menu5.png" alt="links"><strong>WABA профиль</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
-                                    <a href="https://marketbot.biz/hsm/index/10156">
+                                    <a :href="'https://marketbot.biz/hsm/index/'+item.id">
                                     <img src="../assets/h.png" alt="h"><strong>HSM</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
-                                    <a href="https://marketbot.biz/wb/index/10156">
+                                    <a :href="'https://marketbot.biz/wb/index/'+item.id">
                                     <strong style="margin-left: 20px;">GSREG</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
-                                    <a href="https://marketbot.biz/tariff/edit/10156">
+                                    <a :href="'https://marketbot.biz/tariff/edit/'+item.id">
                                     <strong  style="margin-left: 20px;">Изм.тариф</strong>
                                     </a>
                                 </div>
                             </div>
 
                             <div class="chat_block_id_3">
-                                <a href="https://marketbot.biz/chat_v2/?f=0&botid=10150">
+                                <a :href="'https://marketbot.biz/chat_v2/?f=0&botid='+item.id">
                                 <div class="chat_block_id_3_border">
                                     <img src="../assets/menu1.png" alt="chat">
                                     <p>ДИАЛОГИ NEW</p>
                                 </div>
                                 </a>
 
-                                 <a href="https://marketbot.biz/scripteditor/wizard/10150">
+                                 <a :href="'https://marketbot.biz/scripteditor/wizard/'+item.id">
                                 <div class="chat_block_id_3_border">
                                     <img src="../assets/layers.png" alt="layers">
                                     <p>РЕДАКТОР СЦЕНАРИЯ</p>
@@ -140,7 +140,7 @@
 
                                 
                                 <div class="chat_block_id_3_border">
-                                    <a href="https://marketbot.biz/spam/tasks/10150">
+                                    <a :href="'https://marketbot.biz/spam/tasks/'+item.id">
                                     <img src="../assets/menu3.png" alt="mail">
                                     <p>РАССЫЛКА</p>
                                     </a>
