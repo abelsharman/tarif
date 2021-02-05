@@ -490,6 +490,8 @@ export default {
             fifthBlockCount: 0,
             sixthBlockCount: 0,
             unixtime: Math.round(new Date().getTime() / 1000),
+            botId: this.$route.params.bot,
+            user_token: this.$cookie.getCookie('user_token')
 
         }
     },
@@ -818,22 +820,10 @@ export default {
             const axios = require('axios');
 
             
-            let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
-            let uri =a.split('?');
-            if (uri.length == 2){
-                let vars = uri[1].split('&');
-                var getVars = {};
-                let tmp = '';
-                vars.forEach(function(v){
-                    tmp = v.split('=');
-                    if(tmp.length == 2)
-                        getVars[tmp[0]] = tmp[1];
-                    });
-            
-            }
+        
 
-          
-            let botid = getVars.botid
+            let user_token = this.user_token
+            let botid = this.botId
             let annual = this.$refs.check.checked ? 1 : 0
             let GS = 0
             let TL = 0
@@ -884,8 +874,8 @@ export default {
             if(this.info.used_features.features.includes('mailing')){mailing = 1}
             else{mailing = this.checkMail ? 1 : 0}
 
-
             
+            console.log(botid, user_token)
             const params = new URLSearchParams()
             params.append('botid', botid)
             params.append('annual', annual)
@@ -937,7 +927,9 @@ export default {
     created() {
         const axios = require('axios');
         let self = this
-        axios.get('https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680')
+        //this.$cookie.setCookie('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
+        console.log(this.$route.params.bot)
+        axios.get('https://marketbot.biz/tariff/get_data/?botid='+this.botId+'&user_token='+this.user_token)
             .then(function(response){
                 self.info = response.data
                 if(response.data.used_features.features.includes('waba_registered')){
@@ -987,11 +979,11 @@ export default {
                 }
             })
 
-            axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+            axios.get('https://marketbot.biz/user/current?user_token='+this.user_token)
             .then(function(response){
                 self.infoUser = response.data
             })
-             axios.get('http://marketbot.biz/balance/get_data?user_token=9c329f7404f8d74f0cf841e35b7e4680')
+             axios.get('http://marketbot.biz/balance/get_data?user_token='+this.user_token)
             .then(function(response){
                 self.infoBalance = response.data
             })

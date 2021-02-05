@@ -277,7 +277,8 @@ export default {
             carta: true, 
             carta_info: false,
             addBalans: false,
-            billForm: true
+            billForm: true,
+            user_token: this.$cookie.getCookie('user_token')
         }
     },
     methods: {
@@ -304,24 +305,12 @@ export default {
         submitAmountToFill(event){
             event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
             event.target.parentNode.style.display = 'none'
-            let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
-            let uri =a.split('?');
-            if (uri.length == 2){
-                let vars = uri[1].split('&');
-                var getVars = {};
-                let tmp = '';
-                vars.forEach(function(v){
-                    tmp = v.split('=');
-                    if(tmp.length == 2)
-                        getVars[tmp[0]] = tmp[1];
-                    });
             
-            }
 
 
             const axios = require('axios');
             const params = new URLSearchParams()
-            params.append('user_token', getVars.user_token)
+            params.append('user_token', this.user_token)
             params.append('waba', event.target.parentNode.childNodes[1].value)
             params.append('amount', event.target.parentNode.childNodes[0].value)
         
@@ -342,6 +331,7 @@ export default {
                     
     
                 })
+            this.$router.go(this.$router.currentRoute)
                 
 
         },
@@ -362,22 +352,9 @@ export default {
         submitBalance(event){
             const axios = require('axios');
             const params = new URLSearchParams()
-            let a = 'https://marketbot.biz/tariff/get_data/?botid=10140&user_token=9c329f7404f8d74f0cf841e35b7e4680'
-            let uri =a.split('?');
-            if (uri.length == 2){
-                let vars = uri[1].split('&');
-                var getVars = {};
-                let tmp = '';
-                vars.forEach(function(v){
-                    tmp = v.split('=');
-                    if(tmp.length == 2)
-                        getVars[tmp[0]] = tmp[1];
-                    });
-            
-            }
 
 
-            params.append('user_token', getVars.user_token)
+            params.append('user_token', this.user_token)
             params.append('waba', 0)
             params.append('amount', event.target.parentNode.childNodes[0].value)
         
@@ -391,6 +368,7 @@ export default {
                 .then(function (response) {
                     if(response.data.paid == true){
                         alert('Транзакция успешна')
+                        window.location.href = response.data.url
                     }
                     else{
                         alert(response.data.errmsg, response.data.url, response.data.paid)
@@ -405,12 +383,12 @@ export default {
     created() {
         const axios = require('axios');
         let self = this
-        axios.get('http://marketbot.biz/balance/get_data?user_token=9c329f7404f8d74f0cf841e35b7e4680')
+        axios.get('http://marketbot.biz/balance/get_data?user_token='+this.user_token)
             .then(function(response){
                 self.info = response.data
             })
 
-        axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+        axios.get('https://marketbot.biz/user/current?user_token='+this.user_token)
             .then(function(response){
                 self.infoUser = response.data
             })

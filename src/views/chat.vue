@@ -210,7 +210,7 @@
                             <p v-else-if="item.tariff.paid_until > item.tariff.trial_until && item.tariff.paid_until > unixtime">Бот оплачен еще  <span style="color:green">{{ Math.round((item.tariff.paid_until - unixtime)/24/60/60) }}</span> {{ numpf(Math.round(item.tariff.paid_until - unixtime)/24/60/60) }} </p>
                             <p v-else-if="item.tariff.trial_until < unixtime"><span class="chat_block_red">Бесплатный период закончился</span></p>
                             <p v-else-if="item.tariff.paid_until < unixtime"><span class="chat_block_red">Оплаченный период закончился</span></p>
-                            <router-link to="/tariff">Настроить тариф</router-link>
+                            <router-link :to="{ name: 'Tarif', params: { bot: item.id }}">Настроить тариф</router-link>
                         </div>
                     </td>
 
@@ -239,7 +239,8 @@ export default {
             unixtime: Math.round(new Date().getTime() / 1000),
             unixtimeSec:  Math.round(new Date().getTime()),
             peer: 0,
-            peers: ["Новые", "За день", "Неделя", "Месяц", "Все время"]
+            peers: ["Новые", "За день", "Неделя", "Месяц", "Все время"],
+            user_token: this.$cookie.getCookie('user_token')
         }
     },
     methods: {
@@ -274,18 +275,19 @@ export default {
     },
     created() {
         const axios = require('axios');
+        
         let self = this
-        axios.get('https://marketbot.biz/bot/api_botlist?user_token=9c329f7404f8d74f0cf841e35b7e4680')
+        axios.get('https://marketbot.biz/bot/api_botlist?user_token='+user_token)
             .then(function(response){
                 self.info = response.data
             })
 
-        axios.get('https://marketbot.biz/user/current?user_token=74e1c39c2d74b0a4dd99447b64b808b3')
+        axios.get('https://marketbot.biz/user/current?user_token='+user_token)
             .then(function(response){
                 self.infoUser = response.data
             })
     
-         axios.get('http://marketbot.biz/balance/get_data?user_token=9c329f7404f8d74f0cf841e35b7e4680')
+         axios.get('http://marketbot.biz/balance/get_data?user_token='+user_token)
             .then(function(response){
                 self.infoBalance = response.data
             })

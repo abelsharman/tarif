@@ -21,7 +21,7 @@ const routes = [
     }
   },
   {
-    path: '/tariff',
+    path: '/tariff/:bot',
     name: 'Tarif',
     component: Tarif,
     meta: {
