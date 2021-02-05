@@ -63,7 +63,7 @@
                                 <img v-if="item.ms_balance < 5" src="../assets/danger.png">
                                 <span  v-if="item.ms_balance < 5" class="chat_block_id_1_red">Баланс WABA: ${{ item.ms_balance }}</span>
                                 <p v-if="item.ms_balance > 5" class="chat_block_id_1_green">Баланс WABA: ${{ item.ms_balance }}</p>
-                                <p class="chat_block_id_1_darkgrey">{{ Math.ceil(item.capacity_usage.curr_usage/1024) }} мб</p>
+                                <p v-if="item.capacity_usage != null && item.capacity_usage.curr_usage != null" class="chat_block_id_1_darkgrey">{{ Math.ceil(item.capacity_usage.curr_usage/1024) }} мб</p>
                                 <p class="chat_block_id_1_grey">{{ formatDate(parseInt(item.created_at)) }}</p>
                             </div>
 
