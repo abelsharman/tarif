@@ -466,6 +466,12 @@
     </div>
 
 
+    <div class="block_for_phones">
+        <p>Извините, просим перейти на сайт через компьютер</p>
+    </div>
+  
+
+
 
    
 </template>
@@ -963,7 +969,7 @@ export default {
     created() {
         const axios = require('axios');
         let self = this
-        //this.$cookie.setCookie('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
+        ///this.$cookie.setCookie('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
         console.log(this.$route.params.bot)
         axios.get('https://marketbot.biz/tariff/get_data/?botid='+this.botId+'&user_token='+this.user_token)
             .then(function(response){
@@ -1035,7 +1041,9 @@ export default {
             width: 94%;
 
         }
-    
+     .block_for_phones{
+        display: none;
+    }
     .left_block{
         float: left;
         width: 6%;
@@ -1750,6 +1758,32 @@ export default {
     
     
         
+    }
+    @media (max-width: 440px){
+        .block_for_phones{
+            display: block;
+            position: fixed;
+            background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+            width: calc(89%);
+            color: white;
+            top: 30%;   
+            font-size: 1.5em;
+            left: 3%;
+            padding: 15% 3% 18% 3%;
+            margin: 0;
+        }
+
+        .block_for_phones p{
+            margin: 0;
+        }
+        .chat_block_inner table{
+            min-width: 100%;
+            opacity: 0.3;
+        }
+        .left_block, .right_block{
+            opacity: 0.2;
+        }
+
     }
 
 
