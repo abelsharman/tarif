@@ -30,7 +30,7 @@
            
                
                <div class="right_block_inner_balans_right">
-                    <p>Ваш баланс: <span style="font-size:1.1em;">{{ Math.round(this.info.user_balance) }} ₽</span></p>
+                    <p>Ваш баланс: <span>{{ convertBalance1 }} ₽</span></p>
                     <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
@@ -56,7 +56,7 @@
                     </div>
                     <div class="right_balans_left_inner_summa">
                         <h2>Общий баланс аккаунта: </h2>
-                        <h1>{{ Math.round(this.info.user_balance) }} ₽</h1>
+                        <h1>{{ convertBalance2 }} ₽</h1>
                     </div>
 
 
@@ -384,6 +384,15 @@ export default {
 
         
     },
+    computed:{
+        convertBalance1() {
+            return Math.round(this.infoUser.balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        },
+        convertBalance2() {
+            return Math.round(this.infoUser.balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        },
+
+    },
     created() {
         const axios = require('axios');
         let self = this
@@ -434,7 +443,7 @@ export default {
 
     .right_block{
         float: right;
-        width: calc(100% - 103px);
+
         margin: 0;
     }
     .right_block_inner{
@@ -449,16 +458,11 @@ export default {
         padding: 30px 0 30px 3%;
         display: inline-block;
         margin: 0;
-        font-size: 1.3vw;
+        font-size: 1.2vw;
     }
-
-
-
-
-    
     .right_block_inner_balans{
         padding-top: 1%;
-        width: 60%;
+        width: 67%;
         display: inline-block;
         text-align: right;
         padding-right: 2%;
@@ -480,21 +484,22 @@ export default {
     }
     .right_block_inner_balans_right p,a{
         display: block;
-        font-size: 14px;
+        font-size: 0.9vw;
     }
     .right_block_inner_balans_right a, span{
-        color: #d6496f;
+        color: rgb(207,30,65);
+        text-align: left;
     }
     .right_block_inner_balans_right span{
-        font-size: 22px;
-        font-weight: 600;
+        font-size: 1.5vw;
+        font-weight: 500;
     }
  
 
 
 
     .right_block_inner_logout{
-        width: 15%;
+        width: 8%;
         display: inline-block;
     }
     .right_block_inner_logout img{
@@ -503,7 +508,7 @@ export default {
         vertical-align: middle;
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
-        padding: 15px 0 15px 50px;
+        padding: 15px 0 15px 30px;
     }
 
 
@@ -750,7 +755,7 @@ export default {
     }
     .right_balans_right th{
         border-radius: 14px;
-        font-size: 1.2vw;
+        font-size: 1.1vw;
         background-color: white;
         font-weight: 500;
         padding: 13px 0 13px 6%;
@@ -821,13 +826,13 @@ export default {
         margin: 0px 5px 0px 5%;
     }
     .table_add_balans button{
-        width: 16%;
+        width: 23px;
         background-color: inherit;
-        height: 22px;
+        height: 23px;
         vertical-align: top;
         background-image: url('../assets/check.png');
         background-position: center;
-        background-size: cover;
+        background-size: 100% 100%;
         border: 0px;
     }
     .right_balans_right_count{
@@ -849,7 +854,7 @@ export default {
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         padding: 13px 0 13px 6%;
-        font-size: 1.2vw;
+        font-size: 1.1vw;
     }
     .right_balans_right_count_inner{
         width: 100%;
@@ -942,14 +947,8 @@ export default {
     }
     @media (max-width: 1100px){
         .table_add_balans button{
-            width: 17%;
-            height: 17px;
-        }
-    }
-    @media (max-width: 1100px){
-        .table_add_balans button{
-            width: 14%;
-            height: 14px;
+            width: 20px;
+            height: 20px;
         }
     }
     @media (max-width: 800px){
@@ -967,7 +966,7 @@ export default {
             width: 50%;
         }
         .table_add_balans button{
-            width: 14%;
+            width: 18px;
             height: 18px;
         }
         

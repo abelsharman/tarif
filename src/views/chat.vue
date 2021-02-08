@@ -30,7 +30,7 @@
            
                
                <div class="right_block_inner_balans_right">
-                    <p>Ваш баланс: <span style="font-size:1em">{{ Math.round(infoBalance.user_balance) }} ₽</span></p>
+                    <p>Ваш баланс: <span>{{ convertBalance }} ₽</span></p>
                     <router-link to="/balance">Пополнить баланс</router-link>
                </div>
                 
@@ -180,7 +180,7 @@
                             </div>
                           
                             <div class="chat_novye">
-                                <img src="../assets/left_arrow.png" alt="" style="margin-left: 14%;" @click="subPeer">
+                                <img src="../assets/left_arrow.png" alt="" style="margin-left: 20%;" @click="subPeer">
                                 <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">{{ peers[peer] }}</span>
                                 <span id="chat_novye_span" v-if="peer == 0">{{ item.peers_stats.n }}</span>
                                 <span id="chat_novye_span" v-if="peer == 1">{{ item.peers_stats.d }}</span>
@@ -277,6 +277,11 @@ export default {
             }
         }
     },
+    computed:{
+        convertBalance() {
+            return Math.round(this.infoBalance.user_balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        },
+    },
     created() {
         //this.$cookie.setCookie('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
         const axios = require('axios');
@@ -298,7 +303,8 @@ export default {
             })
 
 
-    }
+    },
+
 }
 </script>
 
@@ -352,11 +358,11 @@ export default {
         padding: 30px 0 30px 3%;
         display: inline-block;
         margin: 0;
-        font-size: 1.3em;
+        font-size: 1.2vw;
     }
     .right_block_inner_balans{
         padding-top: 1%;
-        width: 60%;
+        width: 67%;
         display: inline-block;
         text-align: right;
         padding-right: 2%;
@@ -378,21 +384,22 @@ export default {
     }
     .right_block_inner_balans_right p,a{
         display: block;
-        font-size: 1vw;
+        font-size: 0.9vw;
     }
     .right_block_inner_balans_right a, span{
         color: rgb(207,30,65);
+        text-align: left;
     }
     .right_block_inner_balans_right span{
-        font-size: 1.2vw;
-        font-weight: 600;
+        font-size: 1.5vw;
+        font-weight: 500;
     }
  
 
 
 
     .right_block_inner_logout{
-        width: 15%;
+        width: 8%;
         display: inline-block;
     }
     .right_block_inner_logout img{
@@ -401,7 +408,7 @@ export default {
         vertical-align: middle;
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
-        padding: 15px 0 15px 50px;
+        padding: 15px 0 15px 30px;
     }
 
 
@@ -412,17 +419,17 @@ export default {
 
 
     .chat_block_inner_margin{
-        width: 88%;
-        margin-left: 5%;
+        width: 85%;
+        margin-left: 10%;
     }
     .chat_block_inner_margin p{
         margin: 0;
-        font-size: 1vw;
+        font-size: 0.9vw;
         font-weight: 500;
     }
     .chat_block_inner_margin a{
         color: rgb(180, 46, 120);
-        font-size: 1.1vw;
+        font-size: 1vw;
     }
     .chat_block_inner_margin span{
         color: rgb(51,125,25);
@@ -466,6 +473,7 @@ export default {
         height: 50px;
         font-weight: 500;
         padding-left: 2%;
+        font-size: 1.1vw;
     }
     .chat_block_inner_table_special_th{
         color: rgb(128, 156, 174);
@@ -497,27 +505,27 @@ export default {
     }
     .chat_block_id_1 .chat_block_id_1_grey{
         color: rgb(181,182,183);
-        font-size: 0.8vw;
+        font-size: 0.7vw;
         margin: 2px 0;
     }
     .chat_block_id_1 .chat_block_id_1_big{
-        font-size: 1.1vw;
+        font-size: 1vw;
         margin: 7px 0 3px 0;
         color: rgb(40,12,68)
     }
     .chat_block_id_1 .chat_block_id_1_green{
         color: rgb(51,125,25);
-        font-size: 1vw;
+        font-size: 0.9vw;
         margin: 3px 0;
     }
     .chat_block_id_1 .chat_block_id_1_darkgrey{
         color: rgb(99,100,101);
-        font-size: 1vw;
+        font-size: 0.9vw;
         margin: 3px 0;
     }
     .chat_block_id_1 .chat_block_id_1_red{
         color: rgb(207,30,65);
-        font-size: 1vw;
+        font-size: 0.9vw;
         margin: 3px 0;
     }
 
@@ -528,7 +536,6 @@ export default {
         margin-top: 20px;
     }
     .chat_block_id_2 img{
-        width: 10%;
         vertical-align: middle;  
         margin-right: 7px;  
     }
@@ -536,7 +543,7 @@ export default {
         color: rgb(180,46,117);
         text-decoration: underline;
         font-weight: 500;
-        font-size: 1vw;
+        font-size: 0.9vw;
     }
 
 
@@ -560,7 +567,6 @@ export default {
         color: rgb(103,104,105);
     }
     .chat_block_id_3_border img{
-        width: 8%;
         vertical-align: middle;
         margin-right: 3%;
 
@@ -569,14 +575,14 @@ export default {
         display: inline-block;
         font-weight: 500;
         color: #2c3e50;
-        font-size: 0.7vw !important;
+        font-size: 0.6vw !important;
         margin: 0;
         margin-top: 5px;
         
     }
     .chat_block_id_3_border .chat_block_id_1_grey{
         color: rgb(181,182,183);
-        font-size: 0.8vw;
+        font-size: 0.7vw;
         margin: 0;
     }
 
@@ -591,7 +597,7 @@ export default {
     }
     .chat_block_inner_second_column strong{
         font-weight: 500;
-        font-size: 0.8vw;
+        font-size: 0.7vw;
         display: inline-block;
     }
     .chat_green_point {
@@ -622,13 +628,14 @@ export default {
         padding: 1px 2%;
         border-radius: 15px;
         margin: 0px 1%;
-        font-size: 1vw;
+        font-size: 0.9vw;
         font-weight: 500;
     }
     .chat_novye img{
         width: 5%;
         margin-top: 5px;
         margin-left: 1px;
+        vertical-align: top;
     }
     .chat_block_inner_third_column{
         width: 12%;
@@ -643,13 +650,13 @@ export default {
         width: 5%;
     }
     .chat_block_inner_fifth_column img{
-        width: 50%;
-        margin-left: 25%;
+        width: 40%;
+        margin-left: 30%;
         transition: 0.3s all ease;
     }
     .chat_block_inner_fifth_column img:hover{
-        width: 55%;
-        margin-left: 22%;
+        width: 45%;
+        margin-left: 28%;
     }
     }
     @media screen and (max-width: 1440px){
@@ -676,7 +683,7 @@ export default {
         }
         .right_block_inner h2{
             width: 30%;
-            font-size: 1em;
+            font-size: 0.9em;
         }
         .right_block_inner_balans{
             width: 50%;
@@ -692,7 +699,7 @@ export default {
         }
         .right_block_inner h2{
             width: 30%;
-            font-size: 1em;
+            font-size: 0.9em;
         }
         .right_block_inner_balans{
             width: 50%;
