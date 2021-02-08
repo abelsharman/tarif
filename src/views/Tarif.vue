@@ -431,15 +431,15 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ convertYear }} </span> {{ convertNumber }} <span class="tarif_calculator_result_itogo_less"> ₽/ </span> <span v-if="!checkYear" class="tarif_calculator_result_itogo_less">месяц</span><span v-if="checkYear" class="tarif_calculator_result_itogo_less">год</span></h1>
+                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ convertYear }} </span> {{ convertNumber }} <span class="tarif_calculator_result_itogo_less"> ₽/ </span> <span class="tarif_calculator_result_itogo_less">месяц</span></h1>
                     <div class="tarif_calculator_result_checkbox">
-                        <span style="color:grey">Ежемесячно </span>
+                        <span class="tarif_calculator_result_checkbox_1" style="color:#bdbdbd;">Ежемесячно </span>
                         <label class="switch">
                             <input type="checkbox" ref="check" @click="clickDiscount">
                             <span class="slider round" ></span>
                         </label>
-                        <span style="color:black;"> Ежегодно</span>
-                        <span> -{{ info.pricelist.yearly_discount * 100 }}%</span>
+                        <span class="tarif_calculator_result_checkbox_1" style="color:#222;"> Ежегодно</span>
+                        <span class="tarif_calculator_result_checkbox_1" style="color:#d6496f;"> -{{ info.pricelist.yearly_discount * 100 }}%</span>
                     </div>
 
                     <input type="submit" @click="submitTarif" value="ПОДКЛЮЧИТЬ">
@@ -450,7 +450,7 @@
                         <p><span style="border-bottom: 1px solid rgb(207,30,65)">Привяжите карту</span> к аккаунту для подключения функций модуля</p>
                     </div>
 
-                    <p class="tarif_calculator_result_list"><strong>Бесплатный</strong> функционал</p>
+                    <p class="tarif_calculator_result_list"><strong>Бесплатный</strong><span style="color:#370954;font-weight:500"> функционал</span></p>
                     <ul>
                         <li><div></div>Уведомления о лидах</li>
                         <li><div></div>Техническая поддержка</li>
@@ -518,7 +518,7 @@ export default {
             if(event.target.checked){
                 this.firstBlockCount += this.info.pricelist.waba_setup_fee
                 if(this.$refs.check.checked == true){
-                    this.total += this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) * 12
+                    this.total += this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) 
                     this.total = parseInt(this.total.toFixed(0))
                 }
                 else{
@@ -528,7 +528,7 @@ export default {
             else{
                 this.firstBlockCount -= this.info.pricelist.waba_setup_fee
                 if(this.$refs.check.checked == true){
-                    this.total -= this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) * 12
+                    this.total -= this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) 
                     this.total = parseInt(this.total.toFixed(0))
                 }
                 else{
@@ -555,7 +555,7 @@ export default {
             this.firstBlockCount += this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -566,7 +566,7 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -577,7 +577,7 @@ export default {
             this.firstBlockCount += this.info.pricelist.program_cost.TL
             this.checkTelegram = !this.checkTelegram
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -589,7 +589,7 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.TL
             this.checkTelegram = !this.checkTelegram
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -601,7 +601,7 @@ export default {
             this.firstBlockCount += this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -613,7 +613,7 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -626,7 +626,7 @@ export default {
             this.firstBlockCount += this.info.pricelist.program_cost.VK
             this.checkVk = !this.checkVk
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -637,7 +637,7 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.VK
             this.checkVk = !this.checkVk
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -648,7 +648,7 @@ export default {
             this.secondBlockCount += this.info.pricelist.chat_cost
             this.checkChat = !this.checkChat
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -659,7 +659,7 @@ export default {
             this.secondBlockCount -= this.info.pricelist.chat_cost
             this.checkChat = !this.checkChat
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -670,7 +670,7 @@ export default {
             this.secondBlockCount += this.info.pricelist.write_first_cost
             this.checkWrite = !this.checkWrite
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -681,7 +681,7 @@ export default {
             this.secondBlockCount -= this.info.pricelist.write_first_cost
             this.checkWrite = !this.checkWrite
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -692,7 +692,7 @@ export default {
             this.thirdBlockCount += this.info.pricelist.bot
             this.checkEditor = !this.checkEditor
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -703,7 +703,7 @@ export default {
             this.thirdBlockCount -= this.info.pricelist.bot
             this.checkEditor = !this.checkEditor
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -714,7 +714,7 @@ export default {
             this.thirdBlockCount += this.info.pricelist.deferred_exec
             this.checkFunnel = !this.checkFunnel
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -725,7 +725,7 @@ export default {
             this.thirdBlockCount -= this.info.pricelist.deferred_exec
             this.checkFunnel = !this.checkFunnel
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -736,7 +736,7 @@ export default {
             this.fourthBlockCount += this.info.pricelist.crm
             this.checkBitrix = !this.checkBitrix
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -747,7 +747,7 @@ export default {
             this.fourthBlockCount -= this.info.pricelist.crm
             this.checkBitrix = !this.checkBitrix
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -758,7 +758,7 @@ export default {
             this.fourthBlockCount += this.info.pricelist.crm
             this.checkAmo = !this.checkAmo
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -769,7 +769,7 @@ export default {
             this.fourthBlockCount -= this.info.pricelist.crm
             this.checkAmo = !this.checkAmo
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -780,7 +780,7 @@ export default {
             this.fifthBlockCount += this.info.pricelist.mailing
             this.checkMail = !this.checkMail
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) * 12
+                this.total += this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -791,7 +791,7 @@ export default {
             this.fifthBlockCount -= this.info.pricelist.mailing
             this.checkMail = !this.checkMail
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) * 12
+                this.total -= this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -801,12 +801,12 @@ export default {
         clickDiscount(event){
             this.checkYear = !this.checkYear
             if(event.target.checked == true){
-                this.total = this.total * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = this.total * (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
              
             }
             else{
-                this.total = this.total / (1-this.info.pricelist.yearly_discount) / 12
+                this.total = this.total / (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
         
@@ -815,7 +815,7 @@ export default {
             this.secondBlockCount += this.info.pricelist.op_cost
             this.countOperator += 1
             if(this.$refs.check.checked == true){
-                this.total = this.total + this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = this.total + this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -826,7 +826,7 @@ export default {
             this.secondBlockCount -= this.info.pricelist.op_cost
             this.countOperator -= 1
             if(this.$refs.check.checked == true){
-                this.total = this.total - this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = this.total - this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -837,7 +837,7 @@ export default {
             this.sixthBlockCount += this.info.pricelist.storage_per_gib
             this.countMemory += 1
             if(this.$refs.check.checked == true){
-                this.total = this.total + this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = this.total + this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -848,7 +848,7 @@ export default {
             this.sixthBlockCount -= this.info.pricelist.storage_per_gib
             this.countMemory -= 1
             if(this.$refs.check.checked == true){
-                this.total = this.total - this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) * 12
+                this.total = this.total - this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -962,7 +962,7 @@ export default {
         return this.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       },
       convertYear(){
-          return Math.round(this.total / 12 / (1-this.info.pricelist.yearly_discount)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          return Math.round(this.total / (1-this.info.pricelist.yearly_discount)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       },
       convertBalance2() {
         return Math.round(this.infoBalance.user_balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -1042,9 +1042,8 @@ export default {
     @media screen and (max-width: 1920px){
         .right_block{
             width: 94%;
-
         }
-     .block_for_phones{
+    .block_for_phones{
         display: none;
     }
     .left_block{
@@ -1072,7 +1071,6 @@ export default {
 
 
 
-    
     .right_block{
         float: right;
 
@@ -1090,7 +1088,10 @@ export default {
         padding: 30px 0 30px 3%;
         display: inline-block;
         margin: 0;
-        font-size: 1.2vw;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        color: #370954;
+        font-size: 18px;
     }
     .right_block_inner_balans{
         padding-top: 1%;
@@ -1114,17 +1115,25 @@ export default {
         display: inline-block;
         line-height: 10px;
     }
-    .right_block_inner_balans_right p,a{
+    .right_block_inner_balans_right p{
+        font-weight: 500;
+        font-size: 13px;
+        color: #370954;
         display: block;
-        font-size: 0.9vw;
     }
-    .right_block_inner_balans_right a, span{
-        color: rgb(207,30,65);
+    .right_block_inner_balans_right a{
+        line-height: 10px;
+        font-size: 13px;
+        color: #d6496f;
+        display: block;
         text-align: left;
     }
     .right_block_inner_balans_right span{
-        font-size: 1.5vw;
-        font-weight: 500;
+        font-size: 26px;
+        font-weight: 600;
+        color: #d6496f;
+        
+        
     }
  
 
@@ -1147,6 +1156,14 @@ export default {
 
 
 
+
+
+
+
+
+
+
+
     .right_tarif{
         width: 90%;
         text-align: left;
@@ -1160,7 +1177,7 @@ export default {
         margin: 0;
         background-color: white;
         font-weight: 600;
-        font-size: 1.1vw;
+        font-size: 14px;
         box-shadow: 0px 0px 10px 3px rgb(239,240,245);
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
@@ -1191,17 +1208,20 @@ export default {
     .tarif_calculator_result_itogo{
         margin-top: 40px;
         width: 100%;
+        font-size: 13px;
+        font-weight: 500;
+        color: #370954;
         text-align: center;
     }
     .tarif_calculator_result h1{
-        font-size: 2.1vw;
+        font-size: 38px;
         width: 100%;
         text-align: center;
-        color: rgb(207,30,65);
+        color: #d6496f;
         margin-top: 0px;
     }
     .tarif_calculator_result_itogo_less{
-        font-size: 1vw;
+        font-size: 20px;
     }
     .tarif_calculator_result_checkbox{
         width: 100%;
@@ -1246,7 +1266,10 @@ export default {
         -webkit-transition: .4s;
         transition: .4s;
     }
-
+    .tarif_calculator_result_checkbox_1{
+        font-weight: 500;
+        font-size: 13px;
+    }
     .tarif_calculator_result_checkbox input:checked + .slider {
         background-color: #2196F3;
     }
@@ -1317,14 +1340,20 @@ export default {
         width: 100%;
         text-align: center;
     }
+    .tarif_calculator_result_list strong{
+        font-weight: 700;
+        font-size: 16px;
+        color: #370954;
+    }
     .tarif_calculator_result ul{
         margin: 0;
         margin-top: 3%;
     }
     .tarif_calculator_result li{
-        font-weight: 300;
+        font-weight: 400;
         margin-top: 4px;
-        font-size: 0.9vw;
+        font-size: 14px;
+        color: #333;
         margin-left: 33%;
         list-style: none;
     }
@@ -1340,8 +1369,9 @@ export default {
     .tarif_calculator_result_end{
         width: 80%;
         margin: 5% 10% 0 10%;
-        font-size: 0.8vw;
+        font-size:13px;
         line-height: 20px;
+        color: #222;
         font-weight: 400;
     }
     .tarif_calculator_result_end a{
@@ -1375,7 +1405,8 @@ export default {
         text-align: center;
         padding: 0;
         color: white;
-        font-size: 0.8vw;
+        font-size: 14px;
+        line-height: 20px;
         margin-top: 15px;
     }
     .tarif_calculator_result_red1{
@@ -1410,8 +1441,9 @@ export default {
         color: rgb(241,242,243);
     }
     .tarif_calculator_scroll_first_block span{
-        color: rgb(127,128,129);
-        font-size: 0.8em;
+        color:#222;
+        font-weight: 400;
+        font-size: 13px;
     }
     .tarif_calculator_scroll_first_block_cost{
         display: inline-block;
@@ -1419,19 +1451,21 @@ export default {
         padding-right: 1%;
         margin: 0;
         text-align: right;
-        font-size: 0.9vw;
-        color: rgb(127,128,129);
+        font-size: 13px;
+        color: #999;
     }
     .tarif_calculator_scroll_first_block_cost span{
-        color: rgb(127,128,129);
-        border-bottom: 1px solid rgb(127,128,129);
+        color: #999;
+        border-bottom: 1px solid #999;
     }
     .tarif_calculator_scroll_first_block_cost strong{
-        font-size: 0.9vw;
+        font-size: 18px;
+        font-weight: 500;
     }
     .tarif_calculator_scroll_first_block_cost1{
         display: inline-block;
-        font-size: 0.9vw;
+        font-size: 14px;
+        color: #370954;
         margin: 0;
         width: 45%;
     }
@@ -1456,7 +1490,9 @@ export default {
         width: 100%;
         text-align: center;
         margin: 5px 0;
-        font-size: 0.7vw;
+        font-size: 12px;
+        font-weight: 500;
+        color: #777;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_greyicons{
         border: 2px solid rgb(247,248,249);
@@ -1533,11 +1569,635 @@ export default {
         padding: 20px 0 20px 20px;
     }
     .tarif_calculator_scroll_first_block_list p{
-        font-size: 0.8vw;
-        color: rgb(57,58,59);
-        margin: 6px 0;
-        line-height: 17px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #222;
+        margin: 0;
+        line-height: 21px;
         
+    }
+    .tarif_calculator_scroll_first_block_list strong{
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 26px;
+        color: #222;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus {
+        border: 1px solid rgb(140,40,110);
+        border-radius: 35px;
+        background-color: rgb(248,249,250);
+        height: 55px;
+        width: 55px;
+        margin: 10px 0;
+    }
+    .tarif_calculator_scroll_first_block_icons_plus_minus .tarif_calculator_scroll_first_block_icons_plus_minus_span{
+        color:rgb(140,40,110);
+        font-size:0.7vw;
+        position: relative;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        width: 0px;
+        background-color: inherit;
+        margin: 0;
+    }
+    .tarif_calculator_scroll_first_block_icons_plus_minus p{
+        color: rgb(140,40,110);
+        display: inline-block;
+        margin-top: 13px; 
+        font-size: 1.3vw;
+        margin: 0;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_1{
+        margin: 0;
+        position: relative;
+        left: -11px;
+        background-color: rgb(140,40,110);
+        border: 1px solid white;
+        color: white;
+        width: 4px;
+        font-size: 0.7em;
+        border-radius: 45px;
+        padding: 0 5px;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
+        margin: 18px 0px;
+        font-size: 1.4vw;
+        width: 23px;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
+        margin: 0;
+        position: relative;
+        left: 11px;
+        width: 4px;
+        background-color: rgb(140,40,110);
+        border: 1px solid white;
+        color: white;
+        font-size: 0.7em;
+        border-radius: 45px;
+        padding:  0 5px;
+    }
+    .tarif_calculator_result_itogo_red_year{
+        color:grey;
+        font-size:0.5em;
+        font-weight:400;
+        text-decoration:line-through;
+        -webkit-text-decoration-color:rgb(207,30,65);
+        text-decoration-color:rgb(207,30,65);
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+    @media screen and (max-width: 1440px){
+        .right_block{
+            width: 94%;
+        }
+    .block_for_phones{
+        display: none;
+    }
+    .left_block{
+        float: left;
+        width: 6%;
+        height: 100%;
+        min-width: 103px;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+    }
+    .left_block_inner{
+        margin-top: 200px;
+    }
+    .left_block_inner img{
+        margin-top: 30px;
+        display: block;
+        margin-left: 35%;
+        width: 30%;
+        
+    }
+    .left_block_inner2{
+        margin-top: 280px;
+        padding-bottom: 42px;
+    }
+
+
+
+
+    .right_block{
+        float: right;
+
+        margin: 0;
+    }
+    .right_block_inner{
+        width: 100%;
+        margin: 0;
+        text-align: left;
+        height: 100px;
+        background-color: #f6f6f6;
+    }
+    .right_block_inner h2{
+        width: 20%;
+        padding: 30px 0 30px 3%;
+        display: inline-block;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        color: #370954;
+        font-size: 1.25VW
+    }
+    .right_block_inner_balans{
+        padding-top: 1%;
+        width: 67%;
+        display: inline-block;
+        text-align: right;
+        padding-right: 2%;
+    }
+    .right_block_inner_balans img{
+        height: 30px;
+        width: auto;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    .right_block_inner_balans p{
+        display: inline-block;
+    }
+    .right_block_inner_balans_right{
+        vertical-align: bottom;
+        margin-left: 15px;
+        display: inline-block;
+        line-height: 10px;
+    }
+    .right_block_inner_balans_right p{
+        font-weight: 500;
+        font-size: 0.90vw;
+        color: #370954;
+        display: block;
+    }
+    .right_block_inner_balans_right a{
+        line-height: 10px;
+        font-size: 0.90vw;
+        color: #d6496f;
+        display: block;
+        text-align: left;
+    }
+    .right_block_inner_balans_right span{
+        font-size: 1.80vw;
+        font-weight: 600;
+        color: #d6496f;
+        
+        
+    }
+ 
+
+
+
+    .right_block_inner_logout{
+        width: 8%;
+        display: inline-block;
+    }
+    .right_block_inner_logout img{
+        height: 31px;
+        width: auto;
+        vertical-align: middle;
+        border-left: 1px solid rgb(209,218,223);
+        padding-left: 10px;
+        padding: 15px 0 15px 30px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .right_tarif{
+        width: 90%;
+        text-align: left;
+        margin: 30px;
+        border: 1px solid rgb(229,230,231);
+        background-color: rgb(248,249,250);
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
+    }
+    .right_tarif h4{
+        margin: 0;
+        background-color: white;
+        font-weight: 600;
+        font-size: 0.97vw;
+        box-shadow: 0px 0px 10px 3px rgb(239,240,245);
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding: 13px 0 13px 30px;
+    }
+    .tarif_calculator{
+        width: 100%;
+        margin: 0px;
+    }
+    .tarif_calculator_scroll{
+        width: 50%;
+        vertical-align: top;
+        display: inline-block;
+        height:73vh;
+        background-color: white;
+        margin: 0;
+        overflow: auto;
+        overflow-x:hidden;
+    }
+    .tarif_calculator_result{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #f6f6f6;
+        width: 50%;
+        display: inline-block;
+        margin: 0;
+    }
+    .tarif_calculator_result_itogo{
+        margin-top: 40px;
+        width: 100%;
+        font-size: 0.902vw;
+        font-weight: 500;
+        color: #370954;
+        text-align: center;
+    }
+    .tarif_calculator_result h1{
+        font-size: 2.6388vw;
+        width: 100%;
+        text-align: center;
+        color: #d6496f;
+        margin-top: 0px;
+    }
+    .tarif_calculator_result_itogo_less{
+        font-size: 1.38vw;
+    }
+    .tarif_calculator_result_checkbox{
+        width: 100%;
+        text-align: center;
+        font-size: 0.9vw;
+    }
+    .switch {
+        position: relative;
+        margin: 0px 15px;
+        display: inline-block;
+        width: 46px;
+        height: 20px;
+    }
+
+    .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }   
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 1px;
+        bottom: 0px;
+        background-color: white;
+        z-index: 99;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    .tarif_calculator_result_checkbox_1{
+        font-weight: 500;
+        font-size: 0.902vw;
+    }
+    .tarif_calculator_result_checkbox input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    .tarif_calculator_result_checkbox input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    .tarif_calculator_result_checkbox input:checked + .slider:before {
+        -webkit-transform: translateX(24px);
+        -ms-transform: translateX(24px);
+        transform: translateX(24px);
+    }
+
+
+    .tarif_calculator_result_checkbox .slider.round {
+        border-radius: 34px;
+    }
+
+    .tarif_calculator_result_checkbox .slider.round:before {
+        border-radius: 50%;
+    }
+    .tarif_calculator_scroll_first_block .switch img{
+        position: relative;
+        width: 8px;
+        left: 23px;
+        top: -2px; 
+    }
+    .tarif_calculator_scroll_first_block .switch .img2{
+        left: -7px;
+
+    }
+
+    .tarif_calculator_scroll_first_block input:checked + .slider:before {
+        -webkit-transform: translateX(24px);
+        -ms-transform: translateX(24px);
+        transform: translateX(24px);
+    }
+
+
+    .tarif_calculator_scroll_first_block .slider.round {
+        border-radius: 34px;
+    }
+
+    .tarif_calculator_scroll_first_block .slider.round:before {
+        border-radius: 50%;
+    }
+
+    .tarif_calculator_result input[type="submit"]{
+        color: white;
+        outline: none;
+        font-weight: 600;
+        font-size: 0.8vw;
+        border: 0px;
+        letter-spacing: 2px;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+        padding: 16px;
+        border-radius: 30px;
+        width: 50%;
+        margin-left: 25%;
+        margin-top: 7%;
+        transition: 0.8s all ease;
+        cursor: pointer;
+    }
+    .tarif_calculator_result_list{
+        font-size: 1vw;
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+    }
+    .tarif_calculator_result_list strong{
+        font-weight: 700;
+        font-size: 1.111vw;
+        color: #370954;
+    }
+    .tarif_calculator_result ul{
+        margin: 0;
+        margin-top: 3%;
+    }
+    .tarif_calculator_result li{
+        font-weight: 400;
+        margin-top: 4px;
+        font-size: 0.972vw;
+        color: #333;
+        margin-left: 33%;
+        list-style: none;
+    }
+    .tarif_calculator_result li div{
+        background-color: rgb(207,30,65);
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        vertical-align: middle;
+        margin-right: 10px;
+        border-radius: 50px;
+    }
+    .tarif_calculator_result_end{
+        width: 80%;
+        margin: 5% 10% 0 10%;
+        font-size:0.902vw;
+        line-height: 20px;
+        color: #222;
+        font-weight: 400;
+    }
+    .tarif_calculator_result_end a{
+        display: inline-block;
+        color:rgb(207,30,65);
+    }
+    .tarif_calculator_result_modul {
+        width:100%;
+        text-align: center;
+        color:rgb(207,30,65);
+        font-size: 0.9vw;
+        margin: 20px 0;
+        display: none;
+    }
+    .tarif_calculator_result_grey{
+        width: 70%;
+        margin: 0px 15% 0px 15%;
+        background-color: rgb(227,228,229);
+        text-align: center;
+        padding: 10px 0;
+        font-size: 0.9vw;
+        margin-top: 10px;
+    }
+    .tarif_calculator_result_grey p{
+        margin: 5px 0;
+    }
+    .tarif_calculator_result_red{
+        width: 70%;
+        margin: 0px 15% 0px 15%;
+        background-color: rgba(214,73,111,1);
+        text-align: center;
+        padding: 0;
+        color: white;
+        font-size: 0.972vw;
+        line-height: 20px;
+        margin-top: 15px;
+    }
+    .tarif_calculator_result_red1{
+        width: 10%;
+    }
+    .tarif_calculator_result_red1, .tarif_calculator_result_red2{
+        display: inline-block;
+    }
+    .tarif_calculator_result_red2{
+        width: 85%;
+        padding: 15px 0;
+    }
+    .tarif_calculator_result_red2 p{
+        margin: 0;
+    }
+    .tarif_calculator_result_red1 img{
+        width: 70%;
+        margin: 0;
+        margin-left: 40%;
+    }
+    .tarif_calculator_scroll_first_block {
+        width: 96%;
+        padding: 0px 0px 0px 20px;
+        margin: 0;
+        border-bottom: 1px dashed rgb(207,208,209);
+    }
+    .tarif_calculator_scroll_first_block h1{
+        margin: 0;
+        font-size: 4.9em;
+        height: 40px;
+        margin-left: -35px;
+        color: rgb(241,242,243);
+    }
+    .tarif_calculator_scroll_first_block span{
+        color:#222;
+        font-weight: 400;
+        font-size: 0.90277vw;
+    }
+    .tarif_calculator_scroll_first_block_cost{
+        display: inline-block;
+        width: 54%;
+        padding-right: 1%;
+        margin: 0;
+        text-align: right;
+        font-size: 0.90277vw;
+        color: #999;
+    }
+    .tarif_calculator_scroll_first_block_cost span{
+        color: #999;
+        border-bottom: 1px solid #999;
+    }
+    .tarif_calculator_scroll_first_block_cost strong{
+        font-size:1.25VW;
+        font-weight: 500;
+    }
+    .tarif_calculator_scroll_first_block_cost1{
+        display: inline-block;
+        font-size: 0.972vw;
+        color: #370954;
+        margin: 0;
+        width: 45%;
+    }
+    .tarif_calculator_scroll_first_block_icons{
+        position: relative;
+        width: 80%;
+        margin: 6% 10% 6% 8%;
+        text-align: center;
+    }
+    .tarif_calculator_scroll_first_block_icons div{
+        width: 15%;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 4%; 
+    }
+    .tarif_calculator_scroll_first_block_icons img{
+        width: 80%;
+        margin: 0 0 0 18%;
+        z-index: 5;
+    }
+    .tarif_calculator_scroll_first_block_icons p{
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+        font-size: 0.833vw;
+        font-weight: 500;
+        color: #777;
+    }
+    .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_greyicons{
+        border: 2px solid rgb(247,248,249);
+        width: 80%;
+        border-radius: 40px;
+        margin: 0 8% 0 1%;
+        transition: position,visibility,opacity 0.8s ease;
+    }
+    .tarif_calculator_scroll_first_block_icons span{
+        font-size: 0.6vw;
+        font-weight: 600;
+        color: white;
+        background-color: #d6496f;
+        padding: 1px 3px;
+        border-radius: 10px;
+        position: absolute;
+        z-index: 10;
+        top: 8px;
+        margin-left: 16%;
+        
+    }
+    .tarif_calculator_scroll_first_block_icons_span1{
+        left: 0%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span2{
+        left: 22%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span3{
+        left: 44%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span4{
+        left: 66%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span5{
+        left: 12%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span6{
+        left: 34%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span7{
+        left: 23%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span8{
+        left: 44%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span9{
+        left: 34%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span10{
+        left: 24%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span11{
+        left: 45%;
+    }
+    .tarif_calculator_scroll_first_block_greyicons_opacity{
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+        visibility: hidden;
+        position: absolute;
+
+    }
+    .tarif_calculator_scroll_first_block_list img{
+        width: 18px;
+        vertical-align: middle;
+        margin-left: 4px;
+        
+    }
+    .tarif_calculator_scroll_first_block_list {
+        width: 90%;
+        background-color: #f6f6f6;
+        border-radius: 10px;
+        margin: 5% 0;
+        padding: 20px 0 20px 20px;
+    }
+    .tarif_calculator_scroll_first_block_list p{
+        font-size: 0.902vw;
+        font-weight: 400;
+        color: #222;
+        margin: 0;
+        line-height: 21px;
+        
+    }
+    .tarif_calculator_scroll_first_block_list strong{
+        font-weight: 600;
+        font-size: 0.97vw;
+        line-height: 26px;
+        color: #222;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus {
         border: 1px solid rgb(140,40,110);
@@ -1602,8 +2262,6 @@ export default {
         -webkit-text-decoration-color:rgb(207,30,65);
         text-decoration-color:rgb(207,30,65);
     }
-    }
-     @media screen and (max-width: 1440px){
         .right_block{
             width: calc(100% - 103px);
 
@@ -1611,6 +2269,7 @@ export default {
         .tarif_calculator_scroll_first_block {
             width: 95%;
         }
+        
     }
     @media screen and (max-width: 1366px){
         .tarif_calculator_scroll_first_block {
