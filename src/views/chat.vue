@@ -446,7 +446,7 @@ export default {
     }
     .chat_block_inner table{
         width: 100%;
-        min-width: 800px;
+        min-width: 600px;
         padding-bottom: 20px;
         border-radius: 9px;
         border-collapse: collapse;
@@ -666,6 +666,22 @@ export default {
         width: 5px;
         height: 5px;
     }
+    }
+    @media (max-width: 960px){
+        .right_balans_left{
+           width: 90%;
+        }
+        .right_balans_right{
+            width: 90%;
+        }
+        .right_block_inner h2{
+            width: 30%;
+            font-size: 1em;
+        }
+        .right_block_inner_balans{
+            width: 50%;
+        }
+        
     }
     @media (max-width: 800px){
         .right_balans_left{
