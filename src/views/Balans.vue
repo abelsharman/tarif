@@ -423,12 +423,12 @@ export default {
     .left_block{
         float: left;
         width: 6%;
-        height: 100%;
+        height: 100vh;
         min-width: 103px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 200px;
+        margin-top: 300px;
     }
     .left_block_inner img{
         margin-top: 30px;
@@ -438,7 +438,7 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 280px;
+        margin-top: 300px;
         padding-bottom: 42px;
     }
 

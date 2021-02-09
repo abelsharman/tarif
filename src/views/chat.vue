@@ -54,8 +54,8 @@
                 
                 </tr>
 
-                <tr v-for="(item, index) in info.bots" :key="index">
-                    <td class="chat_block_inner_first_column">
+                <tr v-for="(item, index) in info.bots" :key="index" :class="{ box_shadow: index == 0 }">
+                    <td class="chat_block_inner_first_column" >
                         <div class="chat_block_inner_margin1">
                             <div class="chat_block_id_1">
                                 <p class="chat_block_id_1_grey">ID {{ item.id }} {{ item.owner }}</p>
@@ -94,7 +94,7 @@
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
                                     <a :href="'https://marketbot.biz/hsm/index/'+item.id">
-                                    <strong style="margin-left: 20px;">Промокоды</strong>
+                                    <strong style="margin-left: 25px;">Промокоды</strong>
                                     </a>
                                 </div>
 
@@ -112,13 +112,13 @@
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
                                     <a :href="'https://marketbot.biz/wb/index/'+item.id">
-                                    <strong style="margin-left: 20px;">GSREG</strong>
+                                    <strong style="margin-left: 25px;">GSREG</strong>
                                     </a>
                                 </div>
 
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
                                     <a :href="'https://marketbot.biz/tariff/edit/'+item.id">
-                                    <strong  style="margin-left: 20px;">Изм.тариф</strong>
+                                    <strong  style="margin-left: 25px;">Изм.тариф</strong>
                                     </a>
                                 </div>
                             </div>
@@ -157,30 +157,35 @@
                     <td class="chat_block_inner_second_column">
                         <div class="chat_block_inner_margin">
                             
-                            <div style="margin-bottom: 5px;" v-if="item.channel_status.GS.connected">
-                                <img src="../assets/logo_whatsapp.png" alt="logo_whatsapp"><strong>+{{ item.channel_status.GS.name }}</strong>
-                                <div v-if="item.channel_status.GS.paid" class="chat_green_point"></div>
-                                <div v-if="!item.channel_status.GS.paid" class="chat_red_point"></div>
+                            <div style="margin-bottom: 5px;margin-top:10px;">
+                                <img src="../assets/logo_whatsapp.png" v-if="item.channel_status.GS.connected" alt="logo_whatsapp"><strong v-if="item.channel_status.GS.connected">+{{ item.channel_status.GS.name }}</strong>
+                                <img src="../assets/logo_whatsapp.png"  v-if="!item.channel_status.GS.connected" alt="logo_whatsapp"><span v-if="!item.channel_status.GS.connected">Не подключен</span>
+                                <div v-if="item.channel_status.GS.paid && item.channel_status.GS.connected" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.GS.paid && item.channel_status.GS.connected" class="chat_red_point"></div>
                                 <br>
                             </div>
-                            <div style="margin-bottom: 5px;" v-if="item.channel_status.TL.connected">
-                                <img src="../assets/logo_telegram.png" alt="telegram"><strong>@{{ item.channel_status.TL.name }}</strong>
-                                <div v-if="item.channel_status.TL.paid" class="chat_green_point"></div>
-                                <div v-if="!item.channel_status.TL.paid" class="chat_red_point"></div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/logo_telegram.png" v-if="item.channel_status.TL.connected" alt="telegram"><strong v-if="item.channel_status.TL.connected">@{{ item.channel_status.TL.name }}</strong>
+                                <img src="../assets/logo_telegram.png"  v-if="!item.channel_status.TL.connected" alt="telegram"><span v-if="!item.channel_status.TL.connected">Не подключен</span>
+                                <div v-if="item.channel_status.TL.paid && item.channel_status.TL.connected" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.TL.paid && item.channel_status.TL.connected" class="chat_red_point"></div>
                             </div>
-                            <div style="margin-bottom: 5px;" v-if="item.channel_status.VB.connected">
-                                <img src="../assets/logo_viber.png" alt="viber"><strong>{{ item.channel_status.VB.name }}</strong>
-                                <div v-if="item.channel_status.VB.paid" class="chat_green_point"></div>
-                                <div v-if="!item.channel_status.VB.paid" class="chat_red_point"></div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/logo_viber.png" v-if="item.channel_status.VB.connected" alt="VB"><strong v-if="item.channel_status.VB.connected">{{ item.channel_status.VB.name }}</strong>
+                                <img src="../assets/logo_viber.png"  v-if="!item.channel_status.VB.connected" alt="VB"><span v-if="!item.channel_status.VB.connected">Не подключен</span>
+                                <div v-if="item.channel_status.VB.paid && item.channel_status.VB.connected" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.VB.paid && item.channel_status.VB.connected" class="chat_red_point"></div>
                             </div>
-                            <div style="margin-bottom: 5px;" v-if="item.channel_status.VK.connected">
-                                <img src="../assets/logo_vk.png" alt="vk"><strong>{{ item.channel_status.VK.name }}</strong>
-                                <div v-if="item.channel_status.VK.paid" class="chat_green_point"></div>
-                                <div v-if="!item.channel_status.VK.paid" class="chat_red_point"></div>
+                            <div style="margin-bottom: 5px;">
+                                <img src="../assets/logo_vk.png" v-if="item.channel_status.VK.connected" alt="VK"><strong v-if="item.channel_status.VK.connected">{{ item.channel_status.VK.name }}</strong>
+                                <img src="../assets/logo_vk.png"  v-if="!item.channel_status.VK.connected" alt="VK"><span v-if="!item.channel_status.VK.connected">Не подключен</span>
+                                <div v-if="item.channel_status.VK.paid && item.channel_status.VK.connected" class="chat_green_point"></div>
+                                <div v-if="!item.channel_status.VK.paid && item.channel_status.VK.connected" class="chat_red_point"></div>
                             </div>
                           
                             <div class="chat_novye">
-                                <img src="../assets/left_arrow.png" alt="" style="margin-left: 20%;" @click="subPeer">
+                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">Новые</span>
+                                <img src="../assets/left_arrow.png" alt="" @click="subPeer">
                                 <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">{{ peers[peer] }}</span>
                                 <span id="chat_novye_span" v-if="peer == 0">{{ item.peers_stats.n }}</span>
                                 <span id="chat_novye_span" v-if="peer == 1">{{ item.peers_stats.d }}</span>
@@ -243,7 +248,7 @@ export default {
             unixtime: Math.round(new Date().getTime() / 1000),
             unixtimeSec:  Math.round(new Date().getTime()),
             peer: 0,
-            peers: ["Новые", "За день", "Неделя", "Месяц", "Все время"],
+            peers: ["Сегодня", "За день", "Неделя", "Месяц", "Все время"],
             user_token: this.$cookie.getCookie('user_token')
         }
     },
@@ -318,13 +323,14 @@ export default {
     }
     .left_block{
         float: left;
+        position: fixed;
         width: 6%;
         height: 100vh;
         min-width: 103px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 200px;
+        margin-top: 300px;
     }
     .left_block_inner img{
         margin-top: 30px;
@@ -334,8 +340,11 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 20px;
+        margin-top: 300px;
         padding-bottom: 42px;
+    }
+    .box_shadow{
+        box-shadow: 0 5px 10px -1px rgb(239,240,245) inset;
     }
 
 
@@ -452,7 +461,7 @@ export default {
         margin: 0;
         text-align: left;
         width: 96%;
-        padding: 10px 2%;
+        padding: 18px 2%;
     }
     .chat_block_inner{
         position: relative;
@@ -461,6 +470,7 @@ export default {
         padding-bottom: 20px;
         margin-top: 10px;
         overflow: scroll;
+        overflow-x: none;
         height: calc(100vh - 180px);
         box-shadow: 0px 0px 10px 5px rgb(229, 230, 231);
     }
@@ -476,6 +486,7 @@ export default {
         border-left: 10px solid rgb(207,219,224);
         background-color: rgb(249,250,251);
         transition: 0.5s all ease;
+        
     }
     .chat_block_inner tr:hover{
         border-left: 10px solid rgb(163,23,98);
@@ -487,13 +498,15 @@ export default {
         font-weight: 500;
         padding-left: 2%;
         font-size: 14px;
+        
     }
     .chat_block_inner_table_special_th{
         color: #96acbc;
         border-radius: 9px;
+        
     }
     .chat_block_inner td{
-        height: 180px;
+        height: 165px;
         border-left: 1px solid rgb(229, 230, 231);
         justify-content: center;
     }
@@ -555,7 +568,7 @@ export default {
         display: inline-block;
         width: 28%;
         vertical-align: top;
-        margin-top: 20px;
+        margin-top: 3%;
     }
     .chat_block_id_2 img{
         vertical-align: middle;  
@@ -625,6 +638,11 @@ export default {
         display: inline-block;
         color: #370954;
     }
+    .chat_block_inner_second_column span{
+        font-size: 13px;
+        font-weight: 500;
+        color: #777;
+    }
     .chat_green_point {
         width: 7px;
         display: inline-block;
@@ -645,12 +663,14 @@ export default {
   
     }
     .chat_novye{
-        margin-top: 10%;
+        margin-top: 5%;
+        width: 100%;
     }
     #chat_novye_span{
         color: #777;
+        display: inline-block;
         background-color: rgb(206,215,221);
-        padding: 1px 2%;
+        padding: 1px 1%;
         border-radius: 15px;
         margin: 0px 1%;
         font-size: 13px;
@@ -658,9 +678,9 @@ export default {
     }
     .chat_novye img{
         width: 5%;
-        margin-top: 5px;
+        display: inline-block;
         margin-left: 1px;
-        vertical-align: top;
+        vertical-align: middle;
     }
     .chat_block_inner_third_column{
         width: 12%;
@@ -700,6 +720,20 @@ export default {
         .right_block{
             width: calc(100% - 103px);
         }
+        .left_block_inner{
+        margin-top: 200px;
+    }
+    .left_block_inner img{
+        margin-top: 30px;
+        display: block;
+        margin-left: 35%;
+        width: 30%;
+        
+    }
+    .left_block_inner2{
+        margin-top: 170px;
+        padding-bottom: 42px;
+    }
     }
 
     @media screen and (max-width: 1366px){
@@ -714,7 +748,7 @@ export default {
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 200px;
+        margin-top: 160px;
     }
     .left_block_inner img{
         margin-top: 30px;
@@ -724,7 +758,7 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 280px;
+        margin-top: 180px;
         padding-bottom: 42px;
     }
 
@@ -1040,14 +1074,13 @@ export default {
         padding: 1px 2%;
         border-radius: 15px;
         margin: 0px 1%;
-        font-size: 0.95vw;
+        font-size: 0.75vw;
         font-weight: 500;
     }
     .chat_novye img{
         width: 5%;
-        margin-top: 5px;
         margin-left: 1px;
-        vertical-align: top;
+        vertical-align: middle;
     }
     .chat_block_inner_third_column{
         width: 12%;
@@ -1125,6 +1158,20 @@ export default {
         .right_block_inner_balans{
             width: 50%;
         }
+        .left_block_inner{
+        margin-top: 100px;
+    }
+    .left_block_inner img{
+        margin-top: 30px;
+        display: block;
+        margin-left: 37%;
+        width: 25%;
+        
+    }
+    .left_block_inner2{
+        margin-top: 100px;
+        padding-bottom: 42px;
+    }
         
     }
      @media (max-width: 440px){
