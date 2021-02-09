@@ -1592,7 +1592,7 @@ export default {
     }
     .tarif_calculator_scroll_first_block_icons_plus_minus .tarif_calculator_scroll_first_block_icons_plus_minus_span{
         color:rgb(140,40,110);
-        font-size:0.7vw;
+        font-size:0.6vw !important;
         position: relative;
         display: inline-block;
         top: 0;
