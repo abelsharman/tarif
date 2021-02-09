@@ -23,9 +23,9 @@
 
     <div class="right_block">
         <div class="right_block_inner">
-            <h2>Ваш баланс</h2>
+            <h2 style="margin-left:3%;width: 20%;">Ваш баланс</h2>
 
-            <div class="right_block_inner_balans">
+            <div class="right_block_inner_balans" style="width: 63%;">
                 <img src="../assets/photo.png" alt="">
            
                
