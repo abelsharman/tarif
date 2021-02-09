@@ -428,17 +428,16 @@ export default {
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 300px;
+        margin-top: 10px;
     }
     .left_block_inner img{
         margin-top: 30px;
         display: block;
         margin-left: 35%;
-        width: 30%;
         
     }
     .left_block_inner2{
-        margin-top: 300px;
+        margin-top: 180px;
         padding-bottom: 42px;
     }
 
@@ -587,7 +586,6 @@ export default {
     }
     .right_balans_left_inner_input input[type="text"]{
         background-image: url('../assets/money.png');
-        background-size: 4%;
         background-position: left;
         background-position-x: 2%;
         background-position-y: 2px;
@@ -609,7 +607,7 @@ export default {
     .right_balans_left_inner_input input[type="submit"]{
         color: white;
         font-weight: 500;
-        font-size: 12px;
+        font-size: 14px;
         letter-spacing: 3px;
         border: 0px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
@@ -699,7 +697,6 @@ export default {
         margin-top: 100px;
     }
     .right_balans_left_inner_add_cart_button img{
-        width: 2%;
         display: inline-block;
         vertical-align: middle;
         margin-right: 8px;
@@ -782,7 +779,7 @@ export default {
         font-size: 14px;
         background-color: white;
         font-weight: 500;
-        padding: 13px 0 13px 6%;
+        padding: 13px 0 13px calc(6% - 20px);
     }
     .table_odd_row{
         background-color: rgb(239,240,242)
@@ -843,7 +840,8 @@ export default {
         font-weight: 500;
         border-bottom: 1px solid #d6496f;
         width: max-content;
-        margin-left: 10%;
+        margin-left: 30%;
+        text-align: center;
         cursor: pointer;
     }
     .table_even_row{
@@ -886,7 +884,7 @@ export default {
         font-weight: 500;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
-        padding: 13px 0 13px 6%;
+        padding: 13px 0 13px calc(6% - 20px);
         font-size: 14px;
         color: #222;
     }
@@ -896,7 +894,6 @@ export default {
         text-align: center;
     }
     .right_balans_right_count_inner img{
-        width: 2%;
         display: inline-block;
         vertical-align: middle;
         margin-right: 8px;
@@ -997,15 +994,18 @@ export default {
 
 
 
+    @media (max-width: 1440px){
+        .table_odd_row_3 p{
+            margin-left: 20%;
+        }
+    }
 
 
 
 
 
 
-
-
-     @media (max-width: 1366px){
+    @media (max-width: 1366px){
          .right_block{
             width: 94%;
         }
@@ -1434,7 +1434,7 @@ export default {
         font-weight: 500;
         border-bottom: 1px solid #d6496f;
         width: max-content;
-        margin-left: 10%;
+        margin-left: 20%;
         cursor: pointer;
     }
     .table_even_row{

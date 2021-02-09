@@ -24,6 +24,10 @@
 
     <div class="right_block">
         <div class="right_block_inner">
+            <div class="right_block_inner_back" @click="this.$router.go(-1)">
+                <img src="../assets/back2.png" alt="back">
+            </div>
+        
             <h2>Тарифы</h2>
 
             <div class="right_block_inner_balans">
@@ -979,7 +983,7 @@ export default {
                 self.info = response.data
                 if(response.data.used_features.features.includes('waba_registered')){
                     self.total += response.data.pricelist.waba_setup_fee
-                    self.fourthBlockCount += response.data.pricelist.waba_setup_fee
+                    self.firstBlockCount += response.data.pricelist.waba_setup_fee
                 }
                 if(response.data.used_features.features.includes('bitrix24')){
                     self.total += response.data.pricelist.crm
@@ -1073,7 +1077,6 @@ export default {
 
     .right_block{
         float: right;
-
         margin: 0;
     }
     .right_block_inner{
@@ -1083,23 +1086,30 @@ export default {
         height: 100px;
         background-color: #f6f6f6;
     }
+    .right_block_inner_back{
+        display: inline-block;
+        width: 2%;
+        margin-left: 3%;
+        vertical-align: middle;
+    }
     .right_block_inner h2{
         width: 20%;
-        padding: 30px 0 30px 3%;
+        padding: 30px 0 30px 10px;
         display: inline-block;
         margin: 0;
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         color: #370954;
-        font-size: 18px;
+        font-size: 1.25VW
     }
     .right_block_inner_balans{
         padding-top: 1%;
-        width: 67%;
+        width: 62%;
         display: inline-block;
         text-align: right;
         padding-right: 2%;
     }
+
     .right_block_inner_balans img{
         height: 30px;
         width: auto;
@@ -1188,6 +1198,7 @@ export default {
         margin: 0px;
     }
     .tarif_calculator_scroll{
+        box-shadow: 0 5px 10px -1px rgb(239,240,245) inset;
         width: 50%;
         vertical-align: top;
         display: inline-block;
@@ -1206,7 +1217,7 @@ export default {
         margin: 0;
     }
     .tarif_calculator_result_itogo{
-        margin-top: 40px;
+        margin-top: 60px;
         width: 100%;
         font-size: 13px;
         font-weight: 500;
@@ -1218,7 +1229,7 @@ export default {
         width: 100%;
         text-align: center;
         color: #d6496f;
-        margin-top: 0px;
+        margin-top: 20px;
     }
     .tarif_calculator_result_itogo_less{
         font-size: 20px;
@@ -1392,8 +1403,9 @@ export default {
         background-color: rgb(227,228,229);
         text-align: center;
         padding: 10px 0;
-        font-size: 0.9vw;
-        margin-top: 10px;
+        font-size: 0.8vw;
+        margin-top: 40px;
+        font-weight: 500;
     }
     .tarif_calculator_result_grey p{
         margin: 5px 0;
@@ -1405,7 +1417,8 @@ export default {
         text-align: center;
         padding: 0;
         color: white;
-        font-size: 14px;
+        font-size: 14
+        px;
         line-height: 20px;
         margin-top: 15px;
     }
@@ -1719,9 +1732,15 @@ export default {
         height: 100px;
         background-color: #f6f6f6;
     }
+    .right_block_inner_back{
+        display: inline-block;
+        width: 3%;
+        margin-left: 3%;
+        vertical-align: middle;
+    }
     .right_block_inner h2{
         width: 20%;
-        padding: 30px 0 30px 3%;
+        padding: 30px 0 30px 1%;
         display: inline-block;
         margin: 0;
         font-family: 'Montserrat', sans-serif;
@@ -1731,7 +1750,7 @@ export default {
     }
     .right_block_inner_balans{
         padding-top: 1%;
-        width: 67%;
+        width: 62%;
         display: inline-block;
         text-align: right;
         padding-right: 2%;
@@ -2028,8 +2047,9 @@ export default {
         background-color: rgb(227,228,229);
         text-align: center;
         padding: 10px 0;
-        font-size: 0.9vw;
+        font-size: 0.8vw;
         margin-top: 10px;
+        font-weight: 500;
     }
     .tarif_calculator_result_grey p{
         margin: 5px 0;
