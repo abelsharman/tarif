@@ -1354,7 +1354,7 @@ export default {
         margin-top: 4px;
         font-size: 14px;
         color: #333;
-        margin-left: 33%;
+        margin-left: 30%;
         list-style: none;
     }
     .tarif_calculator_result li div{
@@ -1971,7 +1971,7 @@ export default {
         margin-top: 4px;
         font-size: 0.972vw;
         color: #333;
-        margin-left: 33%;
+        margin-left: 30%;
         list-style: none;
     }
     .tarif_calculator_result li div{
@@ -2323,7 +2323,7 @@ export default {
         }
         .tarif_calculator_result li{
             font-size: 12px;
-            margin-left: 20%;
+            margin-left: 10%;
         }
         .tarif_calculator_result_end{
             font-size: 0.7em;
@@ -2377,12 +2377,7 @@ export default {
         .tarif_calculator_result_list{
             margin-top: 20px;
         }
-        .tarif_calculator_result li{
-            font-size: 12px;
-            margin-left: 20%;
-        }
         .tarif_calculator_result_end{
-            font-size: 0.7em;
             line-height: 15px;
         }  
     
