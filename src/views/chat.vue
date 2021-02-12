@@ -13,6 +13,8 @@
             <small style="color:white;font-size:0.7em;">Боты</small>
             <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
             <small style="color:white;font-size:0.7em;">Создать бота</small>
+            <a v-if="infoUser.is_integrator == true" href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
+            <small v-if="infoUser.is_integrator == true" style="color:white;font-size:0.7em;">Контакты</small>
         </div>
 
 
@@ -21,7 +23,7 @@
         </div>
     </div>
 
-    <div class="right_block">
+    <div class="right_block"> 
         <div class="right_block_inner">
             <h2>Ваши чат-боты</h2>
 
@@ -56,7 +58,7 @@
 
                 <tr v-for="(item, index) in info.bots" :key="index" :class="{ box_shadow: index == 0 }">
                     <td class="chat_block_inner_first_column" >
-                        <div class="chat_block_inner_margin1">
+                        <div class="chat_block_inner_margin1 chat_block_inner_margin1_for_2_columns">
                             <div class="chat_block_id_1">
                                 <p class="chat_block_id_1_grey">ID {{ item.id }} {{ item.owner }}</p>
                                 <p class="chat_block_id_1_big">{{ item.name }}</p>
@@ -87,38 +89,49 @@
                                 </div>
 
                                 <div style="margin-bottom: 2px;">
-                                    <a :href="'https://marketbot.biz/bcrm/index/'+item.id">
-                                    <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
+                                    <a :href="'https://marketbot.biz/bpayments/index/' + item.id">
+                                    <img src="../assets/view.png" alt="view"><strong>Платежи</strong>
                                     </a>
                                 </div>
 
+
+
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
+                                    <a :href="'https://marketbot.biz/wb/index/'+item.id">
+                                    <img src="../assets/menu8.png" alt="h"><strong>GSREG</strong>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                            <div class="chat_block_id_2">
+                                <div style="margin-bottom: 2px;">
                                     <a :href="'https://marketbot.biz/hsm/index/'+item.id">
-                                    <strong style="margin-left: 25px;">Промокоды</strong>
+                                    <img src="../assets/menu7.png" alt="h"><strong>Промокоды</strong>
                                     </a>
                                 </div>
 
-                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
-                                    <a :href="'https://marketbot.biz/promocodes/index/'+item.id">
-                                    <img src="../assets/menu5.png" alt="links"><strong>WABA профиль</strong>
-                                    </a>
-                                </div>
-
-                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
+                                <div style="margin-bottom: 2px;">
                                     <a :href="'https://marketbot.biz/hsm/index/'+item.id">
                                     <img src="../assets/h.png" alt="h"><strong>HSM</strong>
                                     </a>
                                 </div>
 
-                                <div style="margin-bottom: 2px;" v-if="info.is_superuser">
-                                    <a :href="'https://marketbot.biz/wb/index/'+item.id">
-                                    <strong style="margin-left: 25px;">GSREG</strong>
+                                <div style="margin-bottom: 2px;">
+                                    <a :href="'https://marketbot.biz/bcrm/index/'+item.id">
+                                    <img src="../assets/graphic.png" alt="graphic"><strong>CRM</strong>
+                                    </a>
+                                </div>
+                            
+                                <div style="margin-bottom: 2px;width: 120%;">
+                                    <a :href="'https://marketbot.biz/promocodes/index/'+item.id">
+                                    <img src="../assets/menu5.png" alt="links"><strong>WABA профиль</strong>
                                     </a>
                                 </div>
 
+
                                 <div style="margin-bottom: 2px;" v-if="info.is_superuser">
                                     <a :href="'https://marketbot.biz/tariff/edit/'+item.id">
-                                    <strong  style="margin-left: 25px;">Изм.тариф</strong>
+                                    <img src="../assets/menu9.png" alt="h"><strong>Изм.тариф</strong>
                                     </a>
                                 </div>
                             </div>
@@ -149,6 +162,8 @@
 
                             </div>
                         </div>
+
+
                     </td>
 
 
@@ -184,15 +199,14 @@
                             </div>
                           
                             <div class="chat_novye">
-                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">Новые</span>
-                                <img src="../assets/left_arrow.png" alt="" @click="subPeer">
+                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">Абоненты</span>
+                                <img src="../assets/left_arrow.png" alt="left_arrow" @click="subPeer">
                                 <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">{{ peers[peer] }}</span>
-                                <span id="chat_novye_span" v-if="peer == 0">{{ item.peers_stats.n }}</span>
-                                <span id="chat_novye_span" v-if="peer == 1">{{ item.peers_stats.d }}</span>
-                                <span id="chat_novye_span" v-if="peer == 2">{{ item.peers_stats.w }}</span>
-                                <span id="chat_novye_span" v-if="peer == 3">{{ item.peers_stats.m }}</span>
-                                <span id="chat_novye_span" v-if="peer == 4">{{ item.peers_stats.t }}</span>
-                                <img src="../assets/right_arrow.png" alt="" @click="addPeer">
+                                <span id="chat_novye_span" v-if="peer == 0">{{ item.peers_stats.d }}</span>
+                                <span id="chat_novye_span" v-if="peer == 1">{{ item.peers_stats.w }}</span>
+                                <span id="chat_novye_span" v-if="peer == 2">{{ item.peers_stats.m }}</span>
+                                <span id="chat_novye_span" v-if="peer == 3">{{ item.peers_stats.t }}</span>
+                                <img src="../assets/right_arrow.png" alt="right_arrow" @click="addPeer">
                             </div>
                         </div>
                     </td>
@@ -201,8 +215,8 @@
 
                     <td class="chat_block_inner_third_column">
                         <div class="chat_block_inner_margin">
-                            <p>{{ item.lead_count }} лидов</p>
-                            <p>{{ item.contact_count }} контакта</p>
+                            <p>{{ item.lead_count }} {{ numplid(item.lead_count) }}</p>
+                            <p>{{ item.contact_count }} {{ numpcontact(item.contact_count) }}</p>
                             <a href="https://marketbot.biz/lead/index/10150">Подробнее</a>
                         </div>
                     </td>
@@ -248,7 +262,7 @@ export default {
             unixtime: Math.round(new Date().getTime() / 1000),
             unixtimeSec:  Math.round(new Date().getTime()),
             peer: 0,
-            peers: ["Сегодня", "За день", "Неделя", "Месяц", "Все время"],
+            peers: ["День", "Неделя", "Месяц", "Все время"],
             user_token: this.$cookie.getCookie('user_token')
         }
     },
@@ -258,7 +272,7 @@ export default {
             return moment.unix(date).format("DD.MM.YYYY")
         },
         addPeer(){
-            if(this.peer < 4){
+            if(this.peer < 3){
                 this.peer += 1
             }
         },
@@ -271,6 +285,34 @@ export default {
             let f = 'день'
             let s = 'дня'
             let t = 'дней'
+            n = n % 100
+            let n10 = n % 10
+            if ( (n10 === 1) && ( (n === 1) || (n > 20) ) ) {
+                return f;
+            } else if ( (n10 > 1) && (n10 < 5) && ( (n > 20) || (n < 10) ) ) {
+                return s;
+            } else {
+                  return t;
+            }
+        },
+        numplid(n) {
+            let f = 'лид'
+            let s = 'лида'
+            let t = 'лидов'
+            n = n % 100
+            let n10 = n % 10
+            if ( (n10 === 1) && ( (n === 1) || (n > 20) ) ) {
+                return f;
+            } else if ( (n10 > 1) && (n10 < 5) && ( (n > 20) || (n < 10) ) ) {
+                return s;
+            } else {
+                  return t;
+            }
+        },
+        numpcontact(n) {
+            let f = 'контакт'
+            let s = 'контакта'
+            let t = 'контактов'
             n = n % 100
             let n10 = n % 10
             if ( (n10 === 1) && ( (n === 1) || (n > 20) ) ) {
@@ -316,7 +358,7 @@ export default {
 <style scoped>
     @media screen and (max-width: 1920px){
         .right_block{
-            width: 94%;
+            width: calc(100% - 78px);
         }
     .block_for_phones{
         display: none;
@@ -324,9 +366,8 @@ export default {
     .left_block{
         float: left;
         position: fixed;
-        width: 6%;
         height: 100vh;
-        min-width: 103px;
+        width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
@@ -359,12 +400,13 @@ export default {
         width: 100%;
         margin: 0;
         text-align: left;
-        height: 100px;
+        height: 70px;
         background-color: #f6f6f6;
     }
     .right_block_inner h2{
         width: 20%;
-        padding: 30px 0 30px 3%;
+        padding: 25px 0 0 3%;
+        vertical-align: top;
         display: inline-block;
         margin: 0;
         font-family: 'Montserrat', sans-serif;
@@ -373,7 +415,7 @@ export default {
         font-size: 18px;
     }
     .right_block_inner_balans{
-        padding-top: 1%;
+        padding-top: 0.3%;
         width: 67%;
         display: inline-block;
         text-align: right;
@@ -453,6 +495,7 @@ export default {
     .chat_block_inner_margin span{
         color: rgb(51,125,25);
     }
+    
     .chat_block_inner_margin .chat_block_red{
         color: rgb(207,30,65);
     }
@@ -476,10 +519,11 @@ export default {
     }
     .chat_block_inner table{
         width: 100%;
-        min-width: 600px;
+        min-width: 700px;
         padding-bottom: 20px;
         border-radius: 9px;
         border-collapse: collapse;
+        overflow-x: hidden;
     }
     .chat_block_inner tr{
         border-bottom: 1px dashed rgb(207,219,224);
@@ -517,6 +561,16 @@ export default {
     }
     .chat_block_inner_first_column{
         width: 51%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
+         width: 32%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2{
+        width: 17%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3{
+        margin-left: 4%;
+        width: 27%;
     }
     .chat_block_id_1{
         display: inline-block;
@@ -571,6 +625,7 @@ export default {
         margin-top: 3%;
     }
     .chat_block_id_2 img{
+        width: 14px;
         vertical-align: middle;  
         margin-right: 7px;  
     }
@@ -664,15 +719,15 @@ export default {
     }
     .chat_novye{
         margin-top: 5%;
-        width: 100%;
+        width: 110%;
     }
     #chat_novye_span{
         color: #777;
         display: inline-block;
         background-color: rgb(206,215,221);
-        padding: 1px 1%;
+        padding: 1px 0.5%;
         border-radius: 15px;
-        margin: 0px 1%;
+        margin: 0px 0.5%;
         font-size: 13px;
         font-weight: 500;
     }
@@ -690,12 +745,14 @@ export default {
         font-size: 13px;
         font-weight: 500;
         line-height: 20px;
+        margin: 0;
         color: #370954;
     }
     .chat_block_inner_third_column .chat_block_inner_margin a, .chat_block_inner_fourth_column .chat_block_inner_margin a{
         font-size: 13px;
         font-weight: 500;
         line-height: 20px;
+        margin: 0;
         color: #c34688;
     }
     
@@ -718,8 +775,15 @@ export default {
     }
     @media screen and (max-width: 1440px){
         .right_block{
-            width: calc(100% - 103px);
+            width: calc(100% - 78px);
         }
+         .left_block{
+        float: left;
+        position: fixed;
+        height: 100vh;
+        width: 78px;
+        background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
+    }
         .left_block_inner{
         margin-top: 200px;
     }
@@ -731,8 +795,23 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 170px;
+        margin-top: 160px;
         padding-bottom: 42px;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
+         width: 32%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2{
+        width: 18%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3{
+        margin-left: 2%;
+        width: 30%;
+    }
+    .chat_block_inner_second_column span{
+        font-size: 0.9vw;
+        font-weight: 500;
+        color: #777;
     }
     }
 
@@ -742,9 +821,8 @@ export default {
     }
     .left_block{
         float: left;
-        width: 6%;
         height: 100%;
-        min-width: 103px;
+        width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
@@ -767,7 +845,7 @@ export default {
 
     .right_block{
         float: right;
-
+        width: calc(100% - 78px);
         margin: 0;
     }
     .right_block_inner{
@@ -825,7 +903,7 @@ export default {
         color: #d6496f;
         
     }
- 
+    
 
 
 
@@ -862,8 +940,12 @@ export default {
         color: rgb(180, 46, 120);
         font-size: 1vw;
     }
+    
     .chat_block_inner_margin span{
         color: rgb(51,125,25);
+    }
+    .chat_block_inner_second_column span{
+        color: #777;
     }
     .chat_block_inner_margin .chat_block_red{
         color: rgb(207,30,65);
@@ -873,7 +955,8 @@ export default {
         margin: 0;
         text-align: left;
         width: 96%;
-        padding: 10px 2%;
+        padding: 10px 0%;
+        margin-left: 3%;
     }
     .chat_block_inner{
         position: relative;
@@ -886,8 +969,9 @@ export default {
         box-shadow: 0px 0px 10px 5px rgb(229, 230, 231);
     }
     .chat_block_inner table{
+        overflow-x: hidden;
         width: 100%;
-        min-width: 600px;
+        min-width: 700px;
         padding-bottom: 20px;
         border-radius: 9px;
         border-collapse: collapse;
@@ -1065,7 +1149,7 @@ export default {
         margin-left: 2%;
   
     }
-    .chat_novye{
+    .chat_novye {
         margin-top: 10%;
     }
     #chat_novye_span{
@@ -1115,6 +1199,23 @@ export default {
         width: 45%;
         margin-left: 28%;
     }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
+         width: 32%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2{
+        margin-top: 2%;
+        width: 20%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2 img{
+        width: 10%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3 img{ 
+        width: 10%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3{
+        margin-left: 1%;
+        width: 27%;
+    }
     }
 
 
@@ -1126,6 +1227,23 @@ export default {
     .chat_red_point {
         width: 5px;
         height: 5px;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
+         width: 32%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2{
+        margin-top: 2%;
+        width: 20%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2 img, .chat_block_inner_margin1_for_2_columns .chat_block_id_3 img{
+        width: 13px;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3 img{ 
+        width: 10%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3{
+        margin-left: 1%;
+        width: 27%;
     }
     }
     @media (max-width: 960px){
@@ -1171,6 +1289,23 @@ export default {
     .left_block_inner2{
         margin-top: 100px;
         padding-bottom: 42px;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
+         width: 32%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2{
+        margin-top: 2%;
+        width: 20%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_2 img, .chat_block_inner_margin1_for_2_columns .chat_block_id_3 img{
+        width: 20%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3 img{ 
+        width: 10%;
+    }
+    .chat_block_inner_margin1_for_2_columns .chat_block_id_3{
+        margin-left: 1%;
+        width: 27%;
     }
         
     }

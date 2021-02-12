@@ -13,6 +13,8 @@
             <small style="color:white;font-size:0.7em;">Боты</small>
             <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
             <small style="color:white;font-size:0.7em;">Создать бота</small>
+            <a v-if="infoUser.is_integrator == true" href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
+            <small v-if="infoUser.is_integrator == true" style="color:white;font-size:0.7em;">Контакты</small>
         </div>
 
 
@@ -59,7 +61,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Подключение мессенджеров: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ firstBlockCount }}</strong> ₽/месяц + <span>тарификация WhatsApp</span></p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ firstBlockCount }}</strong> ₽/месяц + <a href="https://developers.facebook.com/docs/whatsapp/pricing/?translation" style="text-decoration: none;"><span>тарификация WhatsApp</span></a></p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
 
@@ -67,7 +69,7 @@
                                 <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan">{{ this.info.pricelist.program_cost.GS }}₽</span>
                                 <img @click="this.checkBusi = !this.checkBusi" v-if="this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <img @click="closeWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
-                                <img @click="clickWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:102%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
+                                <img @click="clickWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:85%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                             </div>
 
@@ -1045,7 +1047,7 @@ export default {
 <style>
     @media screen and (max-width: 1920px){
         .right_block{
-            width: 94%;
+            width: calc(100% - 78px);
         }
     .block_for_phones{
         display: none;
@@ -1054,7 +1056,7 @@ export default {
         float: left;
         width: 6%;
         height: 100vh;
-        min-width: 103px;
+        width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
@@ -1083,7 +1085,7 @@ export default {
         width: 100%;
         margin: 0;
         text-align: left;
-        height: 100px;
+        height: 70px;
         background-color: #f6f6f6;
     }
     .right_block_inner_back{
@@ -1094,7 +1096,8 @@ export default {
     }
     .right_block_inner h2{
         width: 20%;
-        padding: 30px 0 30px 10px;
+        vertical-align: top;
+        padding: 25px 0 0 10px;
         display: inline-block;
         margin: 0;
         font-family: 'Montserrat', sans-serif;
@@ -1103,7 +1106,7 @@ export default {
         font-size: 1.25VW
     }
     .right_block_inner_balans{
-        padding-top: 1%;
+        padding-top: 0.3%;
         width: 62%;
         display: inline-block;
         text-align: right;
@@ -1194,6 +1197,7 @@ export default {
         padding: 13px 0 13px 30px;
     }
     .tarif_calculator{
+        height: 80vh;
         width: 100%;
         margin: 0px;
     }
@@ -1210,7 +1214,7 @@ export default {
     }
     .tarif_calculator_result{
         padding-top: 10px;
-        padding-bottom: 10px;
+        height: 98.8%;
         background-color: #f6f6f6;
         width: 50%;
         display: inline-block;
@@ -1511,7 +1515,7 @@ export default {
         border: 2px solid rgb(247,248,249);
         width: 80%;
         border-radius: 40px;
-        margin: 0 8% 0 1%;
+        margin: 0 4% 0 5%;
         transition: position,visibility,opacity 0.8s ease;
     }
     .tarif_calculator_scroll_first_block_icons span{
@@ -1689,7 +1693,7 @@ export default {
 
     @media screen and (max-width: 1440px){
         .right_block{
-            width: 94%;
+            width: calc(100% - 78px);
         }
     .block_for_phones{
         display: none;
@@ -1697,9 +1701,8 @@ export default {
     .left_block{
         position: fixed;
         float: left;
-        width: 6%;
         height: 100%;
-        min-width: 103px;
+        width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
@@ -1713,7 +1716,7 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 180px;
+        margin-top: 170px;
         padding-bottom: 42px;
     }
 
@@ -1729,7 +1732,7 @@ export default {
         width: 100%;
         margin: 0;
         text-align: left;
-        height: 100px;
+        height: 70px;
         background-color: #f6f6f6;
     }
     .right_block_inner_back{
@@ -1739,8 +1742,9 @@ export default {
         vertical-align: middle;
     }
     .right_block_inner h2{
+        vertical-align: top;
         width: 20%;
-        padding: 30px 0 30px 1%;
+        padding: 25px 0 0 1%;
         display: inline-block;
         margin: 0;
         font-family: 'Montserrat', sans-serif;
@@ -1749,7 +1753,7 @@ export default {
         font-size: 1.25VW
     }
     .right_block_inner_balans{
-        padding-top: 1%;
+        padding-top: 0.3%;
         width: 62%;
         display: inline-block;
         text-align: right;
@@ -1840,6 +1844,7 @@ export default {
     }
     .tarif_calculator{
         width: 100%;
+        height: 80vh;
         margin: 0px;
     }
     .tarif_calculator_scroll{
@@ -1854,6 +1859,7 @@ export default {
     }
     .tarif_calculator_result{
         padding-top: 10px;
+        height: 97.2%;
         padding-bottom: 10px;
         background-color: #f6f6f6;
         width: 50%;
@@ -2154,7 +2160,7 @@ export default {
         border: 2px solid rgb(247,248,249);
         width: 80%;
         border-radius: 40px;
-        margin: 0 8% 0 1%;
+        margin: 0 4% 0 5%;
         transition: position,visibility,opacity 0.8s ease;
     }
     .tarif_calculator_scroll_first_block_icons span{
@@ -2329,7 +2335,7 @@ export default {
         text-decoration-color:rgb(207,30,65);
     }
         .right_block{
-            width: calc(100% - 103px);
+            width: calc(100% - 78px);
 
         }
         .tarif_calculator_scroll_first_block {
@@ -2341,6 +2347,13 @@ export default {
         .tarif_calculator_scroll_first_block {
             width: 94%;
         }
+        .left_block_inner2{
+        margin-top: 150px;
+        padding-bottom: 42px;
+    }
+        .tarif_calculator_result{
+            height: 96.5%;
+        }    
     }
     @media screen and (max-width: 1200px){
         .tarif_calculator_scroll_first_block_list p{
@@ -2501,7 +2514,7 @@ export default {
         
         }
         .left_block_inner2{
-            margin-top: 150px;
+            margin-top: 130px;
             padding-bottom: 42px;
         }
         

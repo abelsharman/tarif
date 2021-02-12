@@ -13,6 +13,8 @@
             <small style="color:white;font-size:0.7em;">Боты</small>
             <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
             <small style="color:white;font-size:0.7em;">Создать бота</small>
+            <a v-if="infoUser.is_integrator == true" href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
+            <small v-if="infoUser.is_integrator == true" style="color:white;font-size:0.7em;">Контакты</small>
         </div>
 
 
@@ -415,16 +417,15 @@ export default {
 <style>
     @media screen and (max-width: 1920px){
         .right_block{
-            width: 94%;
+            width: calc(100% - 78px);
         }
     .block_for_phones{
         display: none;
     }
     .left_block{
         float: left;
-        width: 6%;
         height: 100vh;
-        min-width: 103px;
+        width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
@@ -437,7 +438,7 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 180px;
+        margin-top: 170px;
         padding-bottom: 42px;
     }
 
@@ -453,12 +454,13 @@ export default {
         width: 100%;
         margin: 0;
         text-align: left;
-        height: 100px;
+        height: 70px;
         background-color: #f6f6f6;
     }
     .right_block_inner h2{
         width: 20%;
-        padding: 30px 0 30px 3%;
+        vertical-align: top;
+        padding: 25px 0 0 3%;
         display: inline-block;
         margin: 0;
         font-family: 'Montserrat', sans-serif;
@@ -467,7 +469,7 @@ export default {
         font-size: 18px;
     }
     .right_block_inner_balans{
-        padding-top: 1%;
+        padding-top: 0.3%;
         width: 67%;
         display: inline-block;
         text-align: right;
@@ -588,7 +590,7 @@ export default {
         background-image: url('../assets/money.png');
         background-position: left;
         background-position-x: 2%;
-        background-position-y: 2px;
+        background-position-y: 50%;
         background-repeat: no-repeat;
         width: 80%;
         margin-right: 7%;
@@ -618,10 +620,9 @@ export default {
         margin-top: 10%;
         transition: 0.8s all ease;
         cursor: pointer;
+        outline: none;
     }
-    .right_balans_left_inner_input input[type="submit"]:hover{
-        color: yellow;
-    }
+
     .right_balans_left_inner_add_cart{
         margin-top: 100px;
     }
@@ -1016,7 +1017,7 @@ export default {
         float: left;
         width: 6%;
         height: 100%;
-        min-width: 103px;
+        width: 103px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
