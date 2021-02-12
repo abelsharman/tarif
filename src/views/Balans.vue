@@ -5,16 +5,32 @@
         </a>
 
         <div class="left_block_inner">
-            <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
-            <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small style="color:white;">{{ infoUser.username }}</small></a>
-            <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
-            <small style="color:white;font-size:0.7em;">Главная</small>
-            <router-link to="/"><img src="https://marketbot.biz/assets//Marketbot/img/sidebar-menu-list.png" alt="list"></router-link>
-            <small style="color:white;font-size:0.7em;">Боты</small>
-            <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
-            <small style="color:white;font-size:0.7em;">Создать бота</small>
-            <a v-if="infoUser.is_integrator == true" href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
-            <small v-if="infoUser.is_integrator == true" style="color:white;font-size:0.7em;">Контакты</small>
+            <div>
+                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+                <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small>{{ infoUser.username }}</small></a>
+            </div>
+            
+            <div>
+                <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+                <small>Главная</small>
+            </div>
+        
+            <div>
+                <router-link to="/"><img src="https://marketbot.biz/assets//Marketbot/img/sidebar-menu-list.png" alt="list"></router-link>
+                <small>Боты</small>
+            </div>
+
+            <div>
+                <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+                <small>Создать бота</small>
+            </div>
+            
+            
+            <div v-if="infoUser.is_integrator == true">
+                <a href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
+                <small>Контакты</small>
+            </div>
+            
         </div>
 
 
@@ -326,18 +342,29 @@ export default {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }
-            axios.post('http://marketbot.biz/balance/refill', params, config)
+            if(event.target.parentNode.childNodes[0].value.length != 0){
+                axios.post('http://marketbot.biz/balance/refill', params, config)
                 .then(function (response) {
                     if(response.data.paid == true){
-                        alert('Транзакция успешна')
+                        if(confirm('Транзакция успешна')) {
+                            window.location.reload();  
+                        }
+                        
                     }
                     else{
-                        alert(response.data.errmsg)
+                        if(confirm(response.data.errmsg)) {
+                            window.location.reload();  
+                        }
                     }
                     
     
                 })
-            this.$router.go(this.$router.currentRoute)
+            }
+            else{
+                alert('Введите в поле сумму')
+            }
+
+            
                 
 
         },
@@ -377,6 +404,7 @@ export default {
                         window.location.href = response.data.url
                     }
                     else{
+                        alert('Транзакция не прошла')
                         window.location.href = response.data.url
                     }
                     
@@ -424,22 +452,40 @@ export default {
     }
     .left_block{
         float: left;
+        position: fixed;
         height: 100vh;
         width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 10px;
+        margin-top: 300px;
+    }
+    .left_block_inner div{
+        height: 70px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner div:hover{
+        background: rgba(0,0,0,.1);
+    }
+    .left_block_inner small{
+        color: white;
+        font-size: 10px;
+        letter-spacing: 0;
     }
     .left_block_inner img{
-        margin-top: 30px;
         display: block;
+        padding-top: 15px;
         margin-left: 35%;
+        width: 30%;
         
     }
     .left_block_inner2{
-        margin-top: 170px;
-        padding-bottom: 42px;
+        margin-top: 300px;
+        margin-bottom: 42px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner2:hover{
+        background: rgba(0,0,0,.1);
     }
 
 

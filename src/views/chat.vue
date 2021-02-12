@@ -5,16 +5,31 @@
         </a>
 
         <div class="left_block_inner">
-            <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
-            <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small style="color:white;">{{ infoUser.username }}</small></a>
-            <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
-            <small style="color:white;font-size:0.7em;">Главная</small>
-            <router-link to="/"><img src="https://marketbot.biz/assets//Marketbot/img/sidebar-menu-list.png" alt="list"></router-link>
-            <small style="color:white;font-size:0.7em;">Боты</small>
-            <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
-            <small style="color:white;font-size:0.7em;">Создать бота</small>
-            <a v-if="infoUser.is_integrator == true" href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
-            <small v-if="infoUser.is_integrator == true" style="color:white;font-size:0.7em;">Контакты</small>
+            <div>
+                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+                <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small>{{ infoUser.username }}</small></a>
+            </div>
+
+            <div>
+                <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+                <small>Главная</small>
+            </div>
+
+            <div>
+                <router-link to="/"><img src="https://marketbot.biz/assets//Marketbot/img/sidebar-menu-list.png" alt="list"></router-link>
+                <small>Боты</small>
+            </div>
+
+            <div>
+                <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+                <small>Создать бота</small>
+            </div>
+           
+            <div v-if="infoUser.is_integrator == true">
+                <a href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
+                <small>Контакты</small>
+            </div>
+           
         </div>
 
 
@@ -55,7 +70,6 @@
                     <th class="chat_block_inner_table_special_th" colspan = 2 style="width: 18%">Срок</th>
                 
                 </tr>
-
                 <tr v-for="(item, index) in info.bots" :key="index" :class="{ box_shadow: index == 0 }">
                     <td class="chat_block_inner_first_column" >
                         <div class="chat_block_inner_margin1 chat_block_inner_margin1_for_2_columns">
@@ -373,16 +387,32 @@ export default {
     .left_block_inner{
         margin-top: 300px;
     }
+    .left_block_inner div{
+        height: 70px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner div:hover{
+        background: rgba(0,0,0,.1);
+    }
+    .left_block_inner small{
+        color: white;
+        font-size: 10px;
+        letter-spacing: 0;
+    }
     .left_block_inner img{
-        margin-top: 30px;
         display: block;
+        padding-top: 15px;
         margin-left: 35%;
         width: 30%;
         
     }
     .left_block_inner2{
         margin-top: 300px;
-        padding-bottom: 42px;
+        margin-bottom: 42px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner2:hover{
+        background: rgba(0,0,0,.1);
     }
     .box_shadow{
         box-shadow: 0 5px 10px -1px rgb(239,240,245) inset;
@@ -514,7 +544,8 @@ export default {
         margin-top: 10px;
         overflow: scroll;
         overflow-x: none;
-        height: calc(100vh - 180px);
+        max-height: calc(100vh - 150px);
+        height: max-content;
         box-shadow: 0px 0px 10px 5px rgb(229, 230, 231);
     }
     .chat_block_inner table{
@@ -788,15 +819,15 @@ export default {
         margin-top: 200px;
     }
     .left_block_inner img{
-        margin-top: 30px;
         display: block;
+        margin: 0;
+        padding-top: 10px;
         margin-left: 35%;
         width: 30%;
-        
     }
     .left_block_inner2{
         margin-top: 160px;
-        padding-bottom: 42px;
+        margin-bottom: 42px;
     }
     .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
          width: 32%;
@@ -837,7 +868,7 @@ export default {
     }
     .left_block_inner2{
         margin-top: 180px;
-        padding-bottom: 42px;
+
     }
 
 
@@ -1288,7 +1319,7 @@ export default {
     }
     .left_block_inner2{
         margin-top: 100px;
-        padding-bottom: 42px;
+
     }
     .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
          width: 32%;

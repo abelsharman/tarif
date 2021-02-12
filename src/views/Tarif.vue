@@ -5,16 +5,33 @@
         </a>
 
         <div class="left_block_inner">
-            <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
-            <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small style="color:white;">{{ infoUser.username }}</small></a>
-            <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
-            <small style="color:white;font-size:0.7em;">Главная</small>
-            <router-link to="/"><img src="https://marketbot.biz/assets//Marketbot/img/sidebar-menu-list.png" alt="list"></router-link>
-            <small style="color:white;font-size:0.7em;">Боты</small>
-            <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
-            <small style="color:white;font-size:0.7em;">Создать бота</small>
-            <a v-if="infoUser.is_integrator == true" href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
-            <small v-if="infoUser.is_integrator == true" style="color:white;font-size:0.7em;">Контакты</small>
+            <div>
+                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+                <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small>{{ infoUser.username }}</small></a>
+            </div>
+
+            <div>
+                <a href="https://marketbot.biz/page/show/main"><img src="../assets/sidebar_menu_home.png" alt="home"></a>
+                <small>Главная</small>
+            </div>
+
+            <div>
+                <router-link to="/"><img src="https://marketbot.biz/assets//Marketbot/img/sidebar-menu-list.png" alt="list"></router-link>
+                <small>Боты</small>
+            </div>
+
+            <div>
+                <a href="https://marketbot.biz/bot/create"><img src="../assets/sidebar_menu_add.png" alt="add"></a>
+                <small>Создать бота</small>
+            </div>
+            
+    
+            
+            <div v-if="infoUser.is_integrator == true">
+                <a href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
+                <small>Контакты</small>
+            </div>
+            
         </div>
 
 
@@ -52,7 +69,7 @@
 
 
         <div class="right_tarif">
-            <h4>Настрой свой тариф для Вашего бота</h4>
+            <h4>Настройте тариф</h4>
 
             <div class="tarif_calculator">
                 <div class="tarif_calculator_scroll">
@@ -126,7 +143,8 @@
                             </label>
 
                             <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
-                                <img class="img1" style="width: 35px;vertical-align:middle;padding-top: 10px;" @click="clickBusiDiv" src="../assets/btn_on.png" alt="">
+                                <img class="img1" style="width: 35px;vertical-align:middle;padding-top: 10px;" @click="clickBusiDiv" src="../assets/btn_on.png" alt="" @mouseover="checkBusiSpan = true" @mouseleave="checkBusiSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span111" v-if="checkBusiSpan">{{ info.pricelist.waba_setup_fee }}₽</span>
                             </label>
                             <span v-if="!this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
                             <span v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
@@ -544,7 +562,7 @@ export default {
             checkTelegram: false, checkTelegramSpan: false,
             checkViber: false, checkViberSpan: false,
             checkVk: false, checkVkSpan: false,
-            checkBusi: false,
+            checkBusi: false, checkBusiSpan:false, 
             checkChat: false, checkChatSpan: false,
             checkWrite: false, checkWriteSpan: false,
             checkEditor: false, checkEditorSpan: false,
@@ -1131,7 +1149,7 @@ export default {
     }
     .left_block{
         float: left;
-        width: 6%;
+        position: fixed;
         height: 100vh;
         width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
@@ -1139,16 +1157,32 @@ export default {
     .left_block_inner{
         margin-top: 300px;
     }
+    .left_block_inner div{
+        height: 70px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner div:hover{
+        background: rgba(0,0,0,.1);
+    }
+    .left_block_inner small{
+        color: white;
+        font-size: 10px;
+        letter-spacing: 0;
+    }
     .left_block_inner img{
-        margin-top: 30px;
         display: block;
+        padding-top: 15px;
         margin-left: 35%;
         width: 30%;
         
     }
     .left_block_inner2{
         margin-top: 300px;
-        padding-bottom: 42px;
+        margin-bottom: 42px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner2:hover{
+        background: rgba(0,0,0,.1);
     }
 
 
@@ -1693,6 +1727,20 @@ export default {
     .tarif_calculator_scroll_first_block_icons_span11{
         left: 45%;
     }
+    .switch .tarif_calculator_scroll_first_block_icons_span111{
+        font-size: 0.6vw;
+        font-weight: 600;
+        color: white;
+        background-color: #d6496f;
+        padding: 1px 3px;
+        border-radius: 10px;
+        position: absolute;
+        z-index: 10;
+        top: 8px;
+        margin-left: 80%;
+        left: 0%;
+        top: 10%;
+    }
     .tarif_calculator_scroll_first_block_greyicons_opacity{
         opacity: 0;
         width: 0px;
@@ -1828,25 +1876,41 @@ export default {
         display: none;
     }
     .left_block{
-        position: fixed;
         float: left;
-        height: 100%;
+        position: fixed;
+        height: 100vh;
         width: 78px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
         margin-top: 200px;
     }
+    .left_block_inner div{
+        height: 70px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner div:hover{
+        background: rgba(0,0,0,.1);
+    }
+    .left_block_inner small{
+        color: white;
+        font-size: 10px;
+        letter-spacing: 0;
+    }
     .left_block_inner img{
-        margin-top: 30px;
         display: block;
+        padding-top: 15px;
         margin-left: 35%;
         width: 30%;
         
     }
     .left_block_inner2{
-        margin-top: 170px;
-        padding-bottom: 42px;
+        margin-top: 200px;
+        margin-bottom: 42px;
+        transition: 0.2s all ease;
+    }
+    .left_block_inner2:hover{
+        background: rgba(0,0,0,.1);
     }
 
 
