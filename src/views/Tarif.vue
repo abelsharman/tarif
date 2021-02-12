@@ -166,20 +166,22 @@
 
                             <div>      
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="!this.info.used_features.ops">
+                                    <span class="tarif_calculator_scroll_first_block_icons_span66" v-if="checkOperator">{{ info.pricelist.op_cost }}₽</span>
                                     <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11">-</p>
                                     <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
 
 
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22">{{ countOperator }}</p>
-                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33">+</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33" @mouseover="checkOperator = true" @mouseleave="checkOperator = false">+</p>
                                 </div>
 
 
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="this.info.used_features.ops">
+                                    <span class="tarif_calculator_scroll_first_block_icons_span66" v-if="checkOperator">{{ info.pricelist.op_cost }}₽</span>
                                     <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11" >-</p>
                                     <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22">{{ this.info.used_features.ops + countOperator }}</p>
-                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33">+</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33" @mouseover="checkOperator = true" @mouseleave="checkOperator = false">+</p>
                                 </div>
 
 
@@ -364,21 +366,22 @@
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
                                  <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="!this.info.used_features.storage_usage_kib">
+                                    <span class="tarif_calculator_scroll_first_block_icons_span99" v-if="checkGb">{{ info.pricelist.storage_per_gib }}₽</span>
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
                                     
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{countMemory}} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
-                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3">+</p>
+                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" @mouseover="checkGb = true" @mouseleave="checkGb = false">+</p>
                                 </div>
 
 
 
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.storage_usage_kib">
-            
+                                    <span class="tarif_calculator_scroll_first_block_icons_span99" v-if="checkGb">{{ info.pricelist.storage_per_gib }}₽</span>
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{this.info.used_features.storage_usage_kib + countMemory}} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
-                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" >+</p>
+                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" @mouseover="checkGb = true" @mouseleave="checkGb = false">+</p>
                                 </div>
 
 
@@ -506,7 +509,7 @@ export default {
             checkBitrix: false, checkBitrixSpan1: false,checkBitrixSpan2: false,checkBitrixSpan3: false,checkBitrixSpan4: false,checkBitrixSpan:false,
             chechAmo: false, chechAmoSpan1: false,chechAmoSpan2: false,chechAmoSpan3: false,chechAmoSpan4: false,chechAmoSpan: false,
             checkMail: false, checkMailSpan: false,
-            checkYear: false,
+            checkYear: false, checkOperator: false, checkGb: false, 
             firstBlockCount: 0,
             secondBlockCount: 0,
             thirdBlockCount: 0,
@@ -1206,7 +1209,7 @@ export default {
         width: 50%;
         vertical-align: top;
         display: inline-block;
-        height:73vh;
+        height: 80vh;
         background-color: white;
         margin: 0;
         overflow: auto;
@@ -1549,6 +1552,9 @@ export default {
     .tarif_calculator_scroll_first_block_icons_span6{
         left: 34%;
     }
+    .tarif_calculator_scroll_first_block_icons_span66{
+        left: 57%;
+    }
     .tarif_calculator_scroll_first_block_icons_span7{
         left: 23%;
     }
@@ -1556,6 +1562,9 @@ export default {
         left: 44%;
     }
     .tarif_calculator_scroll_first_block_icons_span9{
+        left: 34%;
+    }
+    .tarif_calculator_scroll_first_block_icons_span99{
         left: 34%;
     }
     .tarif_calculator_scroll_first_block_icons_span10{
@@ -1851,7 +1860,7 @@ export default {
         width: 50%;
         vertical-align: top;
         display: inline-block;
-        height:73vh;
+        height:80vh;
         background-color: white;
         margin: 0;
         overflow: auto;

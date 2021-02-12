@@ -90,7 +90,7 @@
 
                                 <div style="margin-bottom: 2px;">
                                     <a :href="'https://marketbot.biz/bpayments/index/' + item.id">
-                                    <img src="../assets/view.png" alt="view"><strong>Платежи</strong>
+                                    <img src="../assets/menu10.png" alt="view"><strong>Платежи</strong>
                                     </a>
                                 </div>
 
