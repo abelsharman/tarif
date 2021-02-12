@@ -67,55 +67,74 @@
 
                             <div @mouseover="checkWhatsAppSpan = true" @mouseleave="checkWhatsAppSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan">{{ this.info.pricelist.program_cost.GS }}₽</span>
-                                <img @click="this.checkBusi = !this.checkBusi" v-if="this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img v-if="this.info.used_features.features.includes('GS')" @click="clickWhatsAppDiv" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <img @click="closeWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
                                 <img @click="clickWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:85%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
                                 <p>WhatsApp</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div1">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Удалить номер из раздела “каналы”.</p> 
+                                </div>
                             </div>
 
                             <div @mouseover="checkTelegramSpan = true" @mouseleave="checkTelegramSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span2" v-if="checkTelegramSpan">{{ info.pricelist.program_cost.TL }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('TL')" src="../assets/telegram.png" alt="telegram">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('TL')" src="../assets/telegram.png" alt="telegram">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkTelegram }" v-if="!this.info.used_features.features.includes('TL')" @click="closeTelegram"  src="../assets/telegram.png" alt="telegram">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkTelegram }" v-if="!this.info.used_features.features.includes('TL')" @click="clickTelegram" style="width: 85%;border:0;" src="../assets/telegram3.png" alt="telegram">
                                 <p>Telegram</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div2">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Удалить бота из раздела “каналы”.</p> 
+                                </div>
                             </div>
 
 
                             <div @mouseover="checkViberSpan = true" @mouseleave="checkViberSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span3" v-if="checkViberSpan">{{ info.pricelist.program_cost.VB }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('VB')" src="../assets/viber.png" alt="viber">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('VB')" src="../assets/viber.png" alt="viber">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkViber }" v-if="!this.info.used_features.features.includes('VB')" @click="closeViber"  src="../assets/viber.png" alt="viber">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkViber }" v-if="!this.info.used_features.features.includes('VB')" @click="clickViber" style="width: 85%;border:0;" src="../assets/viber3.png" alt="viber">
                                 <p>Viber</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div3">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Удалить бота из раздела “каналы”.</p> 
+                                </div>
                             </div>
 
 
                             <div @mouseover="checkVkSpan = true" @mouseleave="checkVkSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span4" v-if="checkVkSpan">{{ info.pricelist.program_cost.VK }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('VK')" src="../assets/vk.png" alt="vk">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('VK')" src="../assets/vk.png" alt="vk">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkVk }" v-if="!this.info.used_features.features.includes('VK')" @click="closeVk"  src="../assets/vk.png" alt="vk">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkVk }" v-if="!this.info.used_features.features.includes('VK')" @click="clickVk" style="width: 85%;border:0;" src="../assets/vk3.png" alt="vk">
                                 <p>Vkontakte</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div4">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Удалить из раздела “каналы”.</p> 
+                                </div>
                             </div>
                            
                         </div>
 
-
-                        <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
+                        <div>
+                            <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
                                 <input @click="clickBusinessApi" type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
-                        </label>
+                            </label>
 
-                         <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
-                                <input type="checkbox" ref="businessapi">
-                                <span class="slider round"></span>
-                                <img class="img1" src="../assets/tick.png" alt="">
-                        </label>
-                        <span v-if="!this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
-                        <span v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
+                            <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
+                                <img class="img1" style="width: 35px;vertical-align:middle;padding-top: 10px;" @click="clickBusiDiv" src="../assets/btn_on.png" alt="">
+                            </label>
+                            <span v-if="!this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
+                            <span v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
+                            <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div1">
+                                <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                <p><strong>Как отключить?</strong> Удалить номер из раздела “каналы”.</p> 
+                            </div>
+                        </div>
 
 
                         <div class="tarif_calculator_scroll_first_block_list">
@@ -145,19 +164,27 @@
 
                             <div @mouseover="checkChatSpan = true" @mouseleave="checkChatSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span5" v-if="checkChatSpan">{{ info.pricelist.chat_cost }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('chat')" src="../assets/chat2.png" alt="chat2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('chat')" src="../assets/chat2.png" alt="chat2">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkChat }" v-if="!this.info.used_features.features.includes('chat')" @click="closeChat"  src="../assets/chat2.png" alt="chat2">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkChat }" v-if="!this.info.used_features.features.includes('chat')" @click="clickChat" style="width: 85%;border:0;" src="../assets/chat3.png" alt="chat2">
                                 <p>Чат</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div5">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Убрать блоки “подключение оператора” из сценария И удалить ВСЕХ операторов.</p> 
+                                </div>
                             </div>
 
 
                             <div @mouseover="checkWriteSpan = true" @mouseleave="checkWriteSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span6" v-if="checkWriteSpan">{{ info.pricelist.write_first_cost }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('bot')" src="../assets/question.png" alt="question">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('bot')" src="../assets/question.png" alt="question">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWrite }" v-if="!this.info.used_features.features.includes('bot')" @click="closeWriteFirst"  src="../assets/question.png" alt="question">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWrite }" v-if="!this.info.used_features.features.includes('bot')" @click="clickWriteFirst" style="width: 85%;border:0;" src="../assets/question3.png" alt="question">
                                 <p>Написать первым</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div6">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Убрать блок “меню” и “приветствие” из сценария.</p> 
+                                </div>
                             </div>
 
                         
@@ -209,20 +236,28 @@
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div @mouseover="checkEditorSpan = true" @mouseleave="checkEditorSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span7"  v-if="checkEditorSpan">{{ info.pricelist.bot }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/editor.png" alt="editor">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/editor.png" alt="editor">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkEditor }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="closeEditor"  src="../assets/editor.png" alt="editor">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkEditor }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="clickEditor" style="width: 85%;border:0;" src="../assets/editor3.png" alt="editor">
                                 <p>Редактор сценария</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div7">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Убрать блок “отложенное выполнение“ из сценария.</p> 
+                                </div>
                             </div>
 
 
 
                             <div @mouseover="checkFunnelSpan = true" @mouseleave="checkFunnelSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span8" v-if="checkFunnelSpan">{{ info.pricelist.deferred_exec }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/funnel.png" alt="funnel">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/funnel.png" alt="funnel">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkFunnel }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="closeFunnel"  src="../assets/funnel.png" alt="funnel">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkFunnel }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="clickFunnel" style="width: 85%;border:0;" src="../assets/funnel3.png" alt="funnel">
                                 <p>Автоворонки</p>
+                                <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div8">
+                                    <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                    <p><strong>Как отключить?</strong> Убрать блок “отложенное выполнение“ из сценария.</p> 
+                                </div>
                             </div>
                         </div>
 
@@ -249,13 +284,17 @@
                         <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('bitrix24')">
                             <div @mouseover="checkBitrixSpan = true" @mouseleave="checkBitrixSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan">{{ info.pricelist.mailing }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
+                                <img @click="clickDivCrm" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
                             <div @mouseover="chechAmoSpan = true" @mouseleave="chechAmoSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
+                            </div>
+                            <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div7">
+                                <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                <p><strong>Как отключить?</strong> Отключить в разделе CRM.</p> 
                             </div>
                         </div>
 
@@ -270,8 +309,12 @@
                             </div>
                             <div @mouseover="chechAmoSpan1 = true" @mouseleave="chechAmoSpan1 = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan1">{{ info.pricelist.mailing }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
+                                <img @click="clickDivCrm" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
+                            </div>
+                            <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div8">
+                                <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                <p><strong>Как отключить?</strong> Отключить в разделе CRM.</p> 
                             </div>
                         </div>
 
@@ -497,7 +540,7 @@ export default {
             total: 0,
             countOperator: 0,
             countMemory: 0,
-            checkWhatsApp: false, checkWhatsAppSpan:false,
+            checkWhatsApp: false, checkWhatsAppSpan:false, 
             checkTelegram: false, checkTelegramSpan: false,
             checkViber: false, checkViberSpan: false,
             checkVk: false, checkVkSpan: false,
@@ -593,7 +636,6 @@ export default {
                  this.total += this.info.pricelist.program_cost.TL
             }
         },
-
         closeTelegram(){
             this.firstBlockCount -= this.info.pricelist.program_cost.TL
             this.checkTelegram = !this.checkTelegram
@@ -605,7 +647,6 @@ export default {
                  this.total -= this.info.pricelist.program_cost.TL
             }
         },
-
         clickViber(){
             this.firstBlockCount += this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
@@ -617,7 +658,6 @@ export default {
                  this.total += this.info.pricelist.program_cost.VB
             }
         },
-
         closeViber(){
             this.firstBlockCount -= this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
@@ -629,8 +669,6 @@ export default {
                  this.total -= this.info.pricelist.program_cost.VB
             }
         },
-
-
         clickVk(){
             this.firstBlockCount += this.info.pricelist.program_cost.VK
             this.checkVk = !this.checkVk
@@ -864,6 +902,41 @@ export default {
                 this.total = this.total - this.info.pricelist.storage_per_gib
             }
         },
+        clickWhatsAppDiv(event){
+            this.checkBusi = !this.checkBusi
+            event.target.parentNode.childNodes[5].style.opacity = 1
+            event.target.parentNode.childNodes[5].style.visibility = 'visible'
+            setTimeout(function () {
+                event.target.parentNode.childNodes[5].style.opacity = 0
+                event.target.parentNode.childNodes[5].style.visibility = 'hidden'
+            }, 5000);
+        },
+        clickDiv(event){
+            event.target.parentNode.childNodes[5].style.top = event.screenY + 'px'
+            event.target.parentNode.childNodes[5].style.opacity = 1
+            event.target.parentNode.childNodes[5].style.visibility = 'visible'
+            setTimeout(function () {
+                event.target.parentNode.childNodes[5].style.opacity = 0
+                event.target.parentNode.childNodes[5].style.visibility = 'hidden'
+            }, 5000);
+        },
+        clickBusiDiv(event){
+            event.target.parentNode.parentNode.childNodes[4].style.opacity = 1
+            event.target.parentNode.parentNode.childNodes[4].style.visibility = 'visible'
+            setTimeout(function () {
+                event.target.parentNode.parentNode.childNodes[4].style.opacity = 0
+                event.target.parentNode.parentNode.childNodes[4].style.visibility = 'hidden'
+            }, 5000);
+        },
+        clickDivCrm(event){
+            event.target.parentNode.parentNode.childNodes[2].style.top = event.screenY + 'px'
+            event.target.parentNode.parentNode.childNodes[2].style.opacity = 1
+            event.target.parentNode.parentNode.childNodes[2].style.visibility = 'visible'
+            setTimeout(function () {
+                event.target.parentNode.parentNode.childNodes[2].style.opacity = 0
+                event.target.parentNode.parentNode.childNodes[2].style.visibility = 'hidden'
+            }, 5000);
+        },
     
 
         submitTarif(){
@@ -964,6 +1037,7 @@ export default {
                     console.log(error);
                 });
         }
+
 
     },
     computed: {
@@ -1215,6 +1289,7 @@ export default {
         overflow: auto;
         overflow-x:hidden;
     }
+    
     .tarif_calculator_result{
         padding-top: 10px;
         height: 98.8%;
@@ -1424,8 +1499,7 @@ export default {
         text-align: center;
         padding: 0;
         color: white;
-        font-size: 14
-        px;
+        font-size: 14px;
         line-height: 20px;
         margin-top: 15px;
     }
@@ -1452,6 +1526,52 @@ export default {
         padding: 0px 0px 0px 20px;
         margin: 0;
         border-bottom: 1px dashed rgb(207,208,209);
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div{
+        position: fixed;
+        left: 0px;
+        background-color: rgba(214,73,111,1);
+        width: 330px;
+        text-align: left;
+        visibility: hidden;
+        padding: 10px 20px;
+        transition: 0.5s all ease;
+        opacity: 0;
+        z-index: 100;
+    }
+    .tarif_calculator_scroll_first_block_icons_div1{
+        left: 0px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div2{
+        left: 120px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div3{
+        left: 240px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div4{
+        left: 360px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div5{
+        left: 70px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div6{
+        left: 190px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div7{
+        left: 100px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div8{
+        left: 220px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div p{
+        color: white;
+        margin: 0;
+        font-size: 13px;
+        font-weight: 500;
+        margin: 5px 0;
+        width: 100%;
+        line-height: 17px;
+        text-align: left;
     }
     .tarif_calculator_scroll_first_block h1{
         margin: 0;
