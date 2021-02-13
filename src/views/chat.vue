@@ -591,7 +591,7 @@ export default {
         height: auto;
     }
     .chat_block_inner_first_column{
-        width: 51%;
+        width: 52%;
     }
     .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
          width: 32%;
@@ -600,8 +600,8 @@ export default {
         width: 17%;
     }
     .chat_block_inner_margin1_for_2_columns .chat_block_id_3{
-        margin-left: 4%;
-        width: 27%;
+        margin-left: 5%;
+        width: 26%;
     }
     .chat_block_id_1{
         display: inline-block;
@@ -671,7 +671,7 @@ export default {
 
     .chat_block_id_3{
         display: inline-block;
-        width: 33%;
+        width: 26%;
         vertical-align: top;
         margin-top: 3%;
     }
@@ -792,16 +792,16 @@ export default {
         width: 13%;
     } 
     .chat_block_inner_fifth_column{
-        width: 5%;
+        width: 4%;
     }
     .chat_block_inner_fifth_column img{
-        width: 40%;
-        margin-left: 30%;
+        width: 50%;
+        margin-left: 25%;
         transition: 0.3s all ease;
     }
     .chat_block_inner_fifth_column img:hover{
-        width: 45%;
-        margin-left: 28%;
+        width: 55%;
+        margin-left: 23%;
     }
     }
     @media screen and (max-width: 1440px){
@@ -836,8 +836,9 @@ export default {
         width: 18%;
     }
     .chat_block_inner_margin1_for_2_columns .chat_block_id_3{
-        margin-left: 2%;
-        width: 30%;
+        margin-left: 4%;
+        margin-right: 0;
+        width: 28%;
     }
     .chat_block_inner_second_column span{
         font-size: 0.9vw;
@@ -846,7 +847,7 @@ export default {
     }
     }
 
-    @media screen and (max-width: 1366px){
+    @media screen and (max-width: 1366px){ 
     .block_for_phones{
         display: none;
     }
