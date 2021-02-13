@@ -484,9 +484,6 @@ export default {
         margin-bottom: 42px;
         transition: 0.2s all ease;
     }
-    .left_block_inner2:hover{
-        background: rgba(0,0,0,.1);
-    }
 
 
 
@@ -512,7 +509,7 @@ export default {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         color: #370954;
-        font-size: 18px;
+        font-size: 16px;
     }
     .right_block_inner_balans{
         padding-top: 0.3%;
@@ -585,7 +582,7 @@ export default {
     .right_balans_left{
         float: left;
         width: 44%;
-        height: auto;
+        height: calc(100% - 70px);
         border: 1px solid rgb(229,230,231);
         background-color: rgb(248,249,250);
         border-radius: 8px;
@@ -1177,7 +1174,7 @@ export default {
     .right_balans_left{
         float: left;
         width: 44%;
-        height: auto;
+        height: calc(100% - 70px);
         border: 1px solid rgb(229,230,231);
         background-color: rgb(248,249,250);
         border-radius: 8px;

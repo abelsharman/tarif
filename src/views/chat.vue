@@ -442,7 +442,7 @@ export default {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         color: #370954;
-        font-size: 18px;
+        font-size: 16px;
     }
     .right_block_inner_balans{
         padding-top: 0.3%;

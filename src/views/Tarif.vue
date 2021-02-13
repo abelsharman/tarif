@@ -1181,9 +1181,7 @@ export default {
         margin-bottom: 42px;
         transition: 0.2s all ease;
     }
-    .left_block_inner2:hover{
-        background: rgba(0,0,0,.1);
-    }
+
 
 
 
@@ -1214,7 +1212,7 @@ export default {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         color: #370954;
-        font-size: 1.25VW
+        font-size: 1.1VW
     }
     .right_block_inner_balans{
         padding-top: 0.3%;
@@ -1291,6 +1289,7 @@ export default {
     .right_tarif{
         width: 90%;
         text-align: left;
+        height: calc(100% - 120px);
         margin: 30px;
         border: 1px solid rgb(229,230,231);
         background-color: rgb(248,249,250);
@@ -1317,7 +1316,7 @@ export default {
         width: 50%;
         vertical-align: top;
         display: inline-block;
-        height: 80vh;
+        height: 100%;
         background-color: white;
         margin: 0;
         overflow: auto;
@@ -1909,9 +1908,7 @@ export default {
         margin-bottom: 42px;
         transition: 0.2s all ease;
     }
-    .left_block_inner2:hover{
-        background: rgba(0,0,0,.1);
-    }
+
 
 
 
@@ -1943,7 +1940,7 @@ export default {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         color: #370954;
-        font-size: 1.25VW
+        font-size: 1.1VW
     }
     .right_block_inner_balans{
         padding-top: 0.3%;
@@ -2019,7 +2016,8 @@ export default {
     .right_tarif{
         width: 90%;
         text-align: left;
-        margin: 30px;
+        margin: 30px 30px 0 30px;
+        height: calc(100vh - 130px);
         border: 1px solid rgb(229,230,231);
         background-color: rgb(248,249,250);
         border-radius: 8px;
@@ -2037,14 +2035,14 @@ export default {
     }
     .tarif_calculator{
         width: 100%;
-        height: 80vh;
+        height: calc(100vh - 170px);
         margin: 0px;
     }
     .tarif_calculator_scroll{
         width: 50%;
         vertical-align: top;
         display: inline-block;
-        height:80vh;
+        height: 99%;
         background-color: white;
         margin: 0;
         overflow: auto;
@@ -2052,7 +2050,7 @@ export default {
     }
     .tarif_calculator_result{
         padding-top: 10px;
-        height: 97.2%;
+        height: 96.5%;
         padding-bottom: 10px;
         background-color: #f6f6f6;
         width: 50%;
