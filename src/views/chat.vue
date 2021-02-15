@@ -213,9 +213,9 @@
                             </div>
                           
                             <div class="chat_novye">
-                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">Абоненты</span>
+                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit;padding:0;">Абоненты</span>
                                 <img src="../assets/left_arrow.png" alt="left_arrow" @click="subPeer">
-                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit">{{ peers[peer] }}</span>
+                                <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit;padding:0;">{{ peers[peer] }}</span>
                                 <span id="chat_novye_span" v-if="peer == 0">{{ item.peers_stats.d }}</span>
                                 <span id="chat_novye_span" v-if="peer == 1">{{ item.peers_stats.w }}</span>
                                 <span id="chat_novye_span" v-if="peer == 2">{{ item.peers_stats.m }}</span>
@@ -478,11 +478,13 @@ export default {
         color: #d6496f;
         text-align: left;
         display: block;
+        font-weight: 500;
     }
     .right_block_inner_balans_right span{
         font-size: 26px;
         font-weight: 600;
         color: #d6496f;
+        font-weight: 500;
         
     }
  
@@ -492,14 +494,17 @@ export default {
     .right_block_inner_logout{
         width: 8%;
         display: inline-block;
+        vertical-align: top;
+        padding-top: 10px;
     }
     .right_block_inner_logout img{
         height: 31px;
         width: auto;
-        vertical-align: middle;
+        vertical-align: top;
+        
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
-        padding: 15px 0 15px 30px;
+        padding: 10px 0 10px 30px;
     }
 
 
@@ -543,7 +548,7 @@ export default {
         padding-bottom: 20px;
         margin-top: 10px;
         overflow: scroll;
-        overflow-x: none;
+        overflow-x: hidden !important;
         max-height: calc(100vh - 150px);
         height: max-content;
         box-shadow: 0px 0px 10px 5px rgb(229, 230, 231);
@@ -749,23 +754,26 @@ export default {
   
     }
     .chat_novye{
-        margin-top: 5%;
+        margin-top: 3%;
+        margin-bottom: 3%;
         width: 110%;
     }
     #chat_novye_span{
         color: #777;
         display: inline-block;
         background-color: rgb(206,215,221);
-        padding: 1px 0.5%;
+        padding: 3px 2.5%;
         border-radius: 15px;
-        margin: 0px 0.5%;
+        letter-spacing: 0.5px;
+        margin: 0px 0%;
         font-size: 13px;
         font-weight: 500;
     }
     .chat_novye img{
         width: 5%;
         display: inline-block;
-        margin-left: 1px;
+        margin: 0;
+        margin: 0 2px;
         vertical-align: middle;
     }
     .chat_block_inner_third_column{
@@ -884,7 +892,7 @@ export default {
         width: 100%;
         margin: 0;
         text-align: left;
-        height: 100px;
+        height: 70px;
         background-color: #f6f6f6;
     }
     .right_block_inner h2{
@@ -928,11 +936,12 @@ export default {
         line-height: 10px;
         font-size: 0.95vw;
         color: #d6496f;
+        font-weight: 500;
     }
     .right_block_inner_balans_right span{
         font-size: 1.90vw;
-        font-weight: 600;
         color: #d6496f;
+         font-weight: 500;
         
     }
     
@@ -942,6 +951,7 @@ export default {
     .right_block_inner_logout{
         width: 8%;
         display: inline-block;
+        vertical-align: top;
     }
     .right_block_inner_logout img{
         height: 31px;
@@ -949,7 +959,7 @@ export default {
         vertical-align: middle;
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
-        padding: 15px 0 15px 30px;
+        padding: 8px 0 8px 30px;
     }
 
 

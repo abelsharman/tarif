@@ -1249,10 +1249,11 @@ export default {
         color: #d6496f;
         display: block;
         text-align: left;
+        font-weight: 500;
     }
     .right_block_inner_balans_right span{
         font-size: 26px;
-        font-weight: 600;
+        font-weight: 500;
         color: #d6496f;
         
         
@@ -1449,6 +1450,7 @@ export default {
         outline: none;
         font-weight: 600;
         font-size: 0.8vw;
+        font-family: 'Montserrat', sans-serif;
         border: 0px;
         letter-spacing: 2px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
@@ -1779,13 +1781,13 @@ export default {
         border: 1px solid rgb(140,40,110);
         border-radius: 35px;
         background-color: rgb(248,249,250);
-        height: 55px;
-        width: 55px;
+        height:65px;
+        width: 65px;
         margin: 10px 0;
     }
     .tarif_calculator_scroll_first_block_icons_plus_minus .tarif_calculator_scroll_first_block_icons_plus_minus_span{
         color:rgb(140,40,110);
-        font-size:0.4vw !important;
+        font-size:0.3vw !important;
         position: relative;
         display: inline-block;
         top: 0;
@@ -1814,9 +1816,9 @@ export default {
         padding: 0 5px;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
-        margin: 20px 0px;
-        font-size: 0.5vw;
-        width: 20px;
+        margin: 24px 0px;
+        font-size: 0.43vw;
+        width: 24px;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
         margin: 0;
@@ -1833,18 +1835,18 @@ export default {
 
         .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_11{
             margin: 0;
-            left: -18px;
+            left: -22px;
             width: 1px;
             font-size: 0.6em;
         }
         .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_22{
-            margin: 18px 0px !important;
+            margin: 22px 0px !important;
             font-size: 0.8em !important;
             width: 10px !important;
         }
         .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_33{
             margin: 0;
-            left: 18px;
+            left: 22px;
             width: 1px;
             font-size: 0.6em;
         }
@@ -1965,11 +1967,12 @@ export default {
         font-size: 13px;
         color: #d6496f;
         display: block;
+        font-weight: 500;
         text-align: left;
     }
     .right_block_inner_balans_right span{
         font-size: 26px;
-        font-weight: 600;
+        font-weight: 500;
         color: #d6496f;
         
         
@@ -1981,14 +1984,17 @@ export default {
     .right_block_inner_logout{
         width: 8%;
         display: inline-block;
+        vertical-align: top;
+        padding-top: 10px;
     }
     .right_block_inner_logout img{
         height: 31px;
         width: auto;
-        vertical-align: middle;
+        vertical-align: top;
+        
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
-        padding: 15px 0 15px 30px;
+        padding: 10px 0 10px 30px;
     }
 
 
@@ -2176,6 +2182,7 @@ export default {
         margin-top: 7%;
         transition: 0.8s all ease;
         cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
     }
     .tarif_calculator_result_list{
         font-size: 1vw;
@@ -2521,7 +2528,7 @@ export default {
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_1{
         margin: 0;
         position: relative;
-        left: -14px;
+        left: -12px;
         background-color: rgb(140,40,110);
         border: 1px solid white;
         color: white;
@@ -2532,13 +2539,13 @@ export default {
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_2{
         margin: 20px 0px;
-        font-size: 0.5vw;
-        width: 20px;
+        font-size: 0.55vw;
+        width: 22px;
     }
     .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus_3{
         margin: 0;
         position: relative;
-        left: 14px;
+        left: 12px;
         width: 4px;
         background-color: rgb(140,40,110);
         border: 1px solid white;
@@ -2692,11 +2699,12 @@ export default {
         font-size: 0.90vw;
         color: #d6496f;
         display: block;
+        font-weight: 500;
         text-align: left;
     }
     .right_block_inner_balans_right span{
         font-size: 1.80vw;
-        font-weight: 600;
+        font-weight: 500;
         color: #d6496f;
         
         
@@ -2708,6 +2716,7 @@ export default {
     .right_block_inner_logout{
         width: 8%;
         display: inline-block;
+        vertical-align: top;
     }
     .right_block_inner_logout img{
         height: 31px;
@@ -2715,7 +2724,7 @@ export default {
         vertical-align: middle;
         border-left: 1px solid rgb(209,218,223);
         padding-left: 10px;
-        padding: 15px 0 15px 30px;
+        padding: 8px 0 8px 30px;
     }
 
 
@@ -2902,6 +2911,7 @@ export default {
         margin-top: 7%;
         transition: 0.8s all ease;
         cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
     }
     .tarif_calculator_result_list{
         font-size: 1vw;

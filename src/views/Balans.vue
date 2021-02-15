@@ -542,10 +542,11 @@ export default {
         line-height: 10px;
         font-size: 13px;
         color: #d6496f;
+        font-weight: 500;
     }
     .right_block_inner_balans_right span{
         font-size: 26px;
-        font-weight: 600;
+        font-weight: 500;
         color: #d6496f;
         
     }
@@ -639,6 +640,7 @@ export default {
         margin-right: 7%;
         font-size: 1vw;
         font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
         border: 0px;
         border-bottom: 1px solid grey;
         padding: 7px 0 7px 8%;
@@ -648,12 +650,13 @@ export default {
     }
     .right_balans_left_inner_input input[type="text"]::placeholder{
         color: #222;
+        font-family: 'Montserrat', sans-serif;
     }
     .right_balans_left_inner_input input[type="submit"]{
         color: white;
         font-weight: 500;
         font-size: 14px;
-        letter-spacing: 3px;
+        letter-spacing: 1px;
         border: 0px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
         padding: 3% 0;
@@ -664,6 +667,7 @@ export default {
         transition: 0.8s all ease;
         cursor: pointer;
         outline: none;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .right_balans_left_inner_add_cart{
@@ -1133,10 +1137,11 @@ export default {
         line-height: 10px;
         font-size: 13px;
         color: #d6496f;
+        font-weight: 500;
     }
     .right_block_inner_balans_right span{
         font-size: 26px;
-        font-weight: 600;
+        font-weight: 500;
         color: #d6496f;
         
     }
@@ -1226,6 +1231,7 @@ export default {
         background-position-x: 2%;
         background-position-y: 50%;
         background-repeat: no-repeat;
+        font-family: 'Montserrat', sans-serif;
         width: 80%;
         margin-right: 7%;
         font-size: 1vw;
@@ -1238,13 +1244,14 @@ export default {
         color: black;
     }
     .right_balans_left_inner_input input[type="text"]::placeholder{
+        font-family: 'Montserrat', sans-serif;
         color: #222;
     }
     .right_balans_left_inner_input input[type="submit"]{
         color: white;
         font-weight: 500;
         font-size: 14px;
-        letter-spacing: 3px;
+        letter-spacing: 1px;
         border: 0px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
         padding: 3% 0;
@@ -1255,6 +1262,7 @@ export default {
         transition: 0.8s all ease;
         cursor: pointer;
         outline: none;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .right_balans_left_inner_add_cart{
@@ -1725,10 +1733,11 @@ export default {
         line-height: 10px;
         font-size: 0.951vw;
         color: #d6496f;
+        font-weight: 500;
     }
     .right_block_inner_balans_right span{
         font-size: 1.90vw;
-        font-weight: 600;
+        font-weight: 500;
         color: #d6496f;
         
     }
@@ -1817,6 +1826,7 @@ export default {
         background-size: 4%;
         background-position: left;
         background-position-x: 2%;
+        font-family: 'Montserrat', sans-serif;
         background-position-y: 2px;
         background-repeat: no-repeat;
         width: 90%;
@@ -1830,13 +1840,14 @@ export default {
         color: black;
     }
     .right_balans_left_inner_input input[type="text"]::placeholder{
+        font-family: 'Montserrat', sans-serif;
         color: grey;
     }
     .right_balans_left_inner_input input[type="submit"]{
         color: white;
         font-weight: 500;
         font-size: 0.878vw;
-        letter-spacing: 3px;
+        letter-spacing: 1px;
         border: 0px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
         padding: 3% 0;
@@ -1846,10 +1857,9 @@ export default {
         margin-top: 7%;
         transition: 0.8s all ease;
         cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
     }
-    .right_balans_left_inner_input input[type="submit"]:hover{
-        color: yellow;
-    }
+
     .right_balans_left_inner_add_cart{
         margin-top: 100px;
     }
