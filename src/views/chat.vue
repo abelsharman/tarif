@@ -385,7 +385,7 @@ export default {
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 300px;
+        margin-top: 25vh;
     }
     .left_block_inner div{
         height: 70px;
@@ -407,7 +407,7 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 300px;
+        margin-top: 20vh;
         margin-bottom: 42px;
         transition: 0.2s all ease;
     }
@@ -824,7 +824,7 @@ export default {
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
         .left_block_inner{
-        margin-top: 200px;
+        margin-top: 25vh;
     }
     .left_block_inner img{
         display: block;
@@ -834,7 +834,7 @@ export default {
         width: 30%;
     }
     .left_block_inner2{
-        margin-top: 160px;
+        margin-top: 20vh;
         margin-bottom: 42px;
     }
     .chat_block_inner_margin1_for_2_columns .chat_block_id_1{
@@ -866,17 +866,17 @@ export default {
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 160px;
+        margin-top: 25vh;
     }
     .left_block_inner img{
-        margin-top: 30px;
+        margin-top: 10px;
         display: block;
         margin-left: 35%;
         width: 30%;
         
     }
     .left_block_inner2{
-        margin-top: 180px;
+        margin-top: 15vh;
 
     }
 

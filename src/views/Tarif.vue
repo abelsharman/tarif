@@ -2606,7 +2606,7 @@ export default {
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
     }
     .left_block_inner{
-        margin-top: 200px;
+        margin-top: 25vh
     }
     .left_block_inner div{
         height: 70px;
@@ -2628,7 +2628,7 @@ export default {
         
     }
     .left_block_inner2{
-        margin-top: 200px;
+        margin-top: 20vh;
         margin-bottom: 42px;
         transition: 0.2s all ease;
     }
@@ -3265,8 +3265,19 @@ export default {
         .tarif_calculator_scroll_first_block {
             width: 94%;
         }
+        .left_block_inner div{
+        height: 50px;
+        transition: 0.2s all ease;
+    }
+        .left_block_inner img{
+        display: block;
+        padding-top: 5px;
+        margin-left: 35%;
+        width: 30%;
+        
+    }
         .left_block_inner2{
-        margin-top: 150px;
+        margin-top: 15vh;
         padding-bottom: 42px;
     }
         .tarif_calculator_result{
