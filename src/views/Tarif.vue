@@ -78,7 +78,7 @@
 
 
                         <strong class="tarif_calculator_scroll_first_block_cost1">Подключение мессенджеров: </strong>
-                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ firstBlockCount }}</strong> ₽/месяц + <a href="https://developers.facebook.com/docs/whatsapp/pricing/?translation" style="text-decoration: none;"><span>тарификация WhatsApp</span></a></p>
+                        <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ firstBlockCount }}</strong> ₽/месяц + <a href="https://developers.facebook.com/docs/whatsapp/pricing/?translation" target="_blank" style="text-decoration: none;"><span>тарификация WhatsApp</span></a></p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
 
@@ -1201,7 +1201,12 @@ export default {
         display: inline-block;
         width: 2%;
         margin-left: 3%;
-        vertical-align: middle;
+        vertical-align: top;
+        padding-top: 23px;
+    }
+    .right_block_inner_back img{
+        width: 60%;
+        cursor: pointer;
     }
     .right_block_inner h2{
         width: 20%;
@@ -1212,7 +1217,7 @@ export default {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         color: #370954;
-        font-size: 1.1VW
+        font-size: 1.1VW;
     }
     .right_block_inner_balans{
         padding-top: 0.3%;
@@ -2653,12 +2658,13 @@ export default {
         display: inline-block;
         width: 3%;
         margin-left: 3%;
-        vertical-align: middle;
+        vertical-align: top;
+        padding-top: 23px;
     }
     .right_block_inner h2{
         vertical-align: top;
         width: 20%;
-        padding: 25px 0 0 1%;
+        padding: 25px 0 0 0%;
         display: inline-block;
         margin: 0;
         font-family: 'Montserrat', sans-serif;
