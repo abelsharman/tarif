@@ -501,7 +501,7 @@
 
                     <p class="tarif_calculator_result_itogo">Итого:</p>
 
-                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ convertYear }} </span> {{ convertNumber }} <span class="tarif_calculator_result_itogo_less"> ₽/ </span> <span class="tarif_calculator_result_itogo_less">месяц</span></h1>
+                    <h1><span v-if="checkYear" class="tarif_calculator_result_itogo_red_year">{{ convertNumber }} </span> {{ convertYear }} <span class="tarif_calculator_result_itogo_less"> ₽/ </span> <span class="tarif_calculator_result_itogo_less">месяц</span></h1>
                     <div class="tarif_calculator_result_checkbox">
                         <span class="tarif_calculator_result_checkbox_1" style="color:#bdbdbd;">Ежемесячно </span>
                         <label class="switch">
@@ -570,7 +570,7 @@ export default {
             checkBitrix: false, checkBitrixSpan1: false,checkBitrixSpan2: false,checkBitrixSpan3: false,checkBitrixSpan4: false,checkBitrixSpan:false,
             chechAmo: false, chechAmoSpan1: false,chechAmoSpan2: false,chechAmoSpan3: false,chechAmoSpan4: false,chechAmoSpan: false,
             checkMail: false, checkMailSpan: false,
-            checkYear: false, checkOperator: false, checkGb: false, 
+            checkYear: true, checkOperator: false, checkGb: false, 
             firstBlockCount: 0,
             secondBlockCount: 0,
             thirdBlockCount: 0,
@@ -625,7 +625,7 @@ export default {
             this.firstBlockCount += this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.program_cost.GS / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -636,7 +636,7 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.GS * (1-this.info.pricelist.yearly_discount)
+                this.total -= this.info.pricelist.program_cost.GS / (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -647,29 +647,29 @@ export default {
             this.firstBlockCount += this.info.pricelist.program_cost.TL
             this.checkTelegram = !this.checkTelegram
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount)
+                this.total += this.info.pricelist.program_cost.TL / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
-                 this.total += this.info.pricelist.program_cost.TL
+                 this.total += this.info.pricelist.program_cost.TL 
             }
         },
         closeTelegram(){
             this.firstBlockCount -= this.info.pricelist.program_cost.TL
             this.checkTelegram = !this.checkTelegram
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.TL * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.program_cost.TL / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
-                 this.total -= this.info.pricelist.program_cost.TL
+                 this.total -= this.info.pricelist.program_cost.TL  
             }
         },
         clickViber(){
             this.firstBlockCount += this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount)
+                this.total += this.info.pricelist.program_cost.VB / (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -680,7 +680,7 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.VB
             this.checkViber = !this.checkViber
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.VB * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.program_cost.VB / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -691,7 +691,7 @@ export default {
             this.firstBlockCount += this.info.pricelist.program_cost.VK
             this.checkVk = !this.checkVk
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.program_cost.VK / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -702,7 +702,7 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.VK
             this.checkVk = !this.checkVk
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.program_cost.VK * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.program_cost.VK / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -713,7 +713,7 @@ export default {
             this.secondBlockCount += this.info.pricelist.chat_cost
             this.checkChat = !this.checkChat
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.chat_cost / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -724,7 +724,7 @@ export default {
             this.secondBlockCount -= this.info.pricelist.chat_cost
             this.checkChat = !this.checkChat
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.chat_cost * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.chat_cost / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -735,7 +735,7 @@ export default {
             this.secondBlockCount += this.info.pricelist.write_first_cost
             this.checkWrite = !this.checkWrite
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.write_first_cost / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -746,7 +746,7 @@ export default {
             this.secondBlockCount -= this.info.pricelist.write_first_cost
             this.checkWrite = !this.checkWrite
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.write_first_cost * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.write_first_cost / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -757,7 +757,7 @@ export default {
             this.thirdBlockCount += this.info.pricelist.bot
             this.checkEditor = !this.checkEditor
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.bot / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -768,7 +768,7 @@ export default {
             this.thirdBlockCount -= this.info.pricelist.bot
             this.checkEditor = !this.checkEditor
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.bot * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.bot / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -779,7 +779,7 @@ export default {
             this.thirdBlockCount += this.info.pricelist.deferred_exec
             this.checkFunnel = !this.checkFunnel
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.deferred_exec / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -790,7 +790,7 @@ export default {
             this.thirdBlockCount -= this.info.pricelist.deferred_exec
             this.checkFunnel = !this.checkFunnel
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.deferred_exec * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.deferred_exec / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -801,7 +801,7 @@ export default {
             this.fourthBlockCount += this.info.pricelist.crm
             this.checkBitrix = !this.checkBitrix
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.crm / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -812,7 +812,7 @@ export default {
             this.fourthBlockCount -= this.info.pricelist.crm
             this.checkBitrix = !this.checkBitrix
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.crm / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -823,7 +823,7 @@ export default {
             this.fourthBlockCount += this.info.pricelist.crm
             this.checkAmo = !this.checkAmo
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.crm / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -834,7 +834,7 @@ export default {
             this.fourthBlockCount -= this.info.pricelist.crm
             this.checkAmo = !this.checkAmo
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.crm * (1-this.info.pricelist.yearly_discount)
+                this.total -= this.info.pricelist.crm / (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -845,7 +845,7 @@ export default {
             this.fifthBlockCount += this.info.pricelist.mailing
             this.checkMail = !this.checkMail
             if(this.$refs.check.checked == true){
-                this.total += this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) 
+                this.total += this.info.pricelist.mailing / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -856,7 +856,7 @@ export default {
             this.fifthBlockCount -= this.info.pricelist.mailing
             this.checkMail = !this.checkMail
             if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.mailing * (1-this.info.pricelist.yearly_discount) 
+                this.total -= this.info.pricelist.mailing / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -866,12 +866,12 @@ export default {
         clickDiscount(event){
             this.checkYear = !this.checkYear
             if(event.target.checked == true){
-                this.total = this.total * (1-this.info.pricelist.yearly_discount)
+                this.total = this.total / (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
              
             }
             else{
-                this.total = this.total / (1-this.info.pricelist.yearly_discount)
+                this.total = this.total * (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
             }
         
@@ -880,7 +880,7 @@ export default {
             this.secondBlockCount += this.info.pricelist.op_cost
             this.countOperator += 1
             if(this.$refs.check.checked == true){
-                this.total = this.total + this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) 
+                this.total = this.total + this.info.pricelist.op_cost / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -891,7 +891,7 @@ export default {
             this.secondBlockCount -= this.info.pricelist.op_cost
             this.countOperator -= 1
             if(this.$refs.check.checked == true){
-                this.total = this.total - this.info.pricelist.op_cost * (1-this.info.pricelist.yearly_discount) 
+                this.total = this.total - this.info.pricelist.op_cost / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -902,7 +902,7 @@ export default {
             this.sixthBlockCount += this.info.pricelist.storage_per_gib
             this.countMemory += 1
             if(this.$refs.check.checked == true){
-                this.total = this.total + this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) 
+                this.total = this.total + this.info.pricelist.storage_per_gib / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -913,7 +913,7 @@ export default {
             this.sixthBlockCount -= this.info.pricelist.storage_per_gib
             this.countMemory -= 1
             if(this.$refs.check.checked == true){
-                this.total = this.total - this.info.pricelist.storage_per_gib * (1-this.info.pricelist.yearly_discount) 
+                this.total = this.total - this.info.pricelist.storage_per_gib / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
             }
             else{
@@ -1063,7 +1063,7 @@ export default {
         return this.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       },
       convertYear(){
-          return Math.round(this.total / (1-this.info.pricelist.yearly_discount)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          return Math.round(this.total * (1-this.info.pricelist.yearly_discount)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       },
       convertBalance2() {
         return Math.round(this.infoBalance.user_balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -2775,16 +2775,16 @@ export default {
         overflow-x:hidden;
     }
     .tarif_calculator_result{
-        padding-top: 10px;
-        height: 96.5%;
-        padding-bottom: 10px;
+        padding-top: 1%;
+        height: 95.5%;
+        padding-bottom: 0.7%;
         background-color: #f6f6f6;
         width: 50%;
         display: inline-block;
         margin: 0;
     }
     .tarif_calculator_result_itogo{
-        margin-top: 40px;
+        margin-top: 5.3%;
         width: 100%;
         font-size: 0.902vw;
         font-weight: 500;
@@ -2831,6 +2831,9 @@ export default {
         -webkit-transition: .4s;
         transition: .4s;
     }   
+    .tarif_calculator_result_checkbox .slider{
+        background-color: #2196F3;
+    }
 
     .slider:before {
         position: absolute;
@@ -2844,12 +2847,15 @@ export default {
         -webkit-transition: .4s;
         transition: .4s;
     }
+    .tarif_calculator_result_checkbox .slider:before {
+        left: 24px;
+    }
     .tarif_calculator_result_checkbox_1{
         font-weight: 500;
         font-size: 0.902vw;
     }
     .tarif_calculator_result_checkbox input:checked + .slider {
-        background-color: #2196F3;
+        background-color: #ccc;
     }
 
     .tarif_calculator_result_checkbox input:focus + .slider {
@@ -2857,9 +2863,9 @@ export default {
     }
 
     .tarif_calculator_result_checkbox input:checked + .slider:before {
-        -webkit-transform: translateX(24px);
-        -ms-transform: translateX(24px);
-        transform: translateX(24px);
+        -webkit-transform: translateX(-24px);
+        -ms-transform: translateX(-24px);
+        transform: translateX(-24px);
     }
 
 
@@ -2904,7 +2910,7 @@ export default {
         border: 0px;
         letter-spacing: 2px;
         background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
-        padding: 16px;
+        padding:3% 7%;
         border-radius: 30px;
         width: 50%;
         margin-left: 25%;
@@ -2915,7 +2921,7 @@ export default {
     }
     .tarif_calculator_result_list{
         font-size: 1vw;
-        margin-top: 30px;
+        margin-top: 3%;
         width: 100%;
         text-align: center;
     }
@@ -2930,7 +2936,7 @@ export default {
     }
     .tarif_calculator_result li{
         font-weight: 400;
-        margin-top: 4px;
+        margin-top: 1%;
         font-size: 0.972vw;
         color: #333;
         margin-left: 30%;
@@ -2962,7 +2968,7 @@ export default {
         text-align: center;
         color:rgb(207,30,65);
         font-size: 0.9vw;
-        margin: 20px 0;
+        margin: 3% 0;
         display: none;
     }
     .tarif_calculator_result_grey{
@@ -2970,13 +2976,13 @@ export default {
         margin: 0px 15% 0px 15%;
         background-color: rgb(227,228,229);
         text-align: center;
-        padding: 10px 0;
+        padding: 2% 0;
         font-size: 0.8vw;
-        margin-top: 10px;
+        margin-top: 3%;
         font-weight: 500;
     }
     .tarif_calculator_result_grey p{
-        margin: 5px 0;
+        margin: 2% 0;
     }
     .tarif_calculator_result_red{
         width: 70%;

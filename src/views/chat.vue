@@ -765,7 +765,7 @@ export default {
         padding: 3px 2.5%;
         border-radius: 15px;
         letter-spacing: 0.5px;
-        margin: 0px 0%;
+        margin: 0px 1.5%;
         font-size: 13px;
         font-weight: 500;
     }
@@ -852,6 +852,29 @@ export default {
         font-size: 0.9vw;
         font-weight: 500;
         color: #777;
+    }
+    .chat_novye{
+        margin-top: 3%;
+        margin-bottom: 3%;
+        width: 110%;
+    }
+    #chat_novye_span{
+        color: #777;
+        display: inline-block;
+        background-color: rgb(206,215,221);
+        padding: 3px 2.5%;
+        border-radius: 15px;
+        letter-spacing: 0.5px;
+        margin: 0px 0.3%;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .chat_novye img{
+        width: 5%;
+        display: inline-block;
+        margin: 0;
+        margin: 0 2px;
+        vertical-align: middle;
     }
     }
 
