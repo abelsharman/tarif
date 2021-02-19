@@ -1,6 +1,6 @@
 <template>
     <div class="left_block">
-        <a href="http://marketbot.biz/">
+        <a href="https://marketbot.biz/">
         <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
         </a>
 
@@ -358,7 +358,7 @@ export default {
                 self.infoUser = response.data
             })
     
-         axios.get('http://marketbot.biz/balance/get_data?user_token='+this.user_token)
+         axios.get('https://marketbot.biz/balance/get_data?user_token='+this.user_token)
             .then(function(response){
                 self.infoBalance = response.data
             })
@@ -1399,5 +1399,5 @@ export default {
             opacity: 0.2;
         }
     }
-    
+
 </style>

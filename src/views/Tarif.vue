@@ -1,6 +1,6 @@
 <template>
     <div class="left_block">
-        <a href="http://marketbot.biz/">
+        <a href="https://marketbot.biz/">
         <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
         </a>
 
@@ -1129,7 +1129,7 @@ export default {
             .then(function(response){
                 self.infoUser = response.data
             })
-             axios.get('http://marketbot.biz/balance/get_data?user_token='+this.user_token)
+             axios.get('https://marketbot.biz/balance/get_data?user_token='+this.user_token)
             .then(function(response){
                 self.infoBalance = response.data
             })
@@ -1524,7 +1524,7 @@ export default {
         margin: 0px 15% 0px 15%;
         background-color: rgb(227,228,229);
         text-align: center;
-        padding: 10px 0;
+        padding: 8px 0;
         font-size: 0.8vw;
         margin-top: 40px;
         font-weight: 500;
@@ -2246,7 +2246,7 @@ export default {
         margin: 0px 15% 0px 15%;
         background-color: rgb(227,228,229);
         text-align: center;
-        padding: 10px 0;
+        padding: 8px 0;
         font-size: 0.8vw;
         margin-top: 40px;
         font-weight: 500;
@@ -2982,7 +2982,7 @@ export default {
         margin: 0px 15% 0px 15%;
         background-color: rgb(227,228,229);
         text-align: center;
-        padding: 2% 0;
+        padding: 1.6% 0;
         font-size: 0.8vw;
         margin-top: 3%;
         font-weight: 500;
@@ -3489,7 +3489,136 @@ export default {
         }
 
     }
+    @media screen and (max-height: 750px){
+    
+    .tarif_calculator_result{
+        padding-top: 5px;
+    }
+    .tarif_calculator_result_itogo{
+        margin-top: 5px;
+    }
+    .tarif_calculator_result h1{
+        margin-top: 10px;
+    }
+    .tarif_calculator_result input[type="submit"]{
+        margin-top: 4%;
+    }
+    .tarif_calculator_result_list{
+        margin-top: 15px;
+    }
+    .tarif_calculator_result ul{
+        margin-top: 2%;
+    }
+    .tarif_calculator_result_end{
+        margin: 2% 10% 0 10%;
+    }
+    .tarif_calculator_result_modul {
+        margin: 10px 0;
+    }
+    .tarif_calculator_result_grey{
+        padding: 8px 0;
+        margin-top: 15px;
+    }
+    .tarif_calculator_result_grey p{
+        margin: 5px 0;
+    }
+    .tarif_calculator_result_red{
+        margin-top: 15px;
+    }
+    .tarif_calculator_result_red2{
+        width: 85%;
+        padding: 10px 0;
+    } 
 
+
+    }
+
+    @media screen and (max-height: 650px){
+    
+    .tarif_calculator_result{
+        padding-top: 5px;
+    }
+    .tarif_calculator_result_itogo{
+        margin-top: 5px;
+    }
+    .tarif_calculator_result h1{
+        margin-top: 5px;
+    }
+    .tarif_calculator_result input[type="submit"]{
+        margin-top: 2%;
+    }
+    .tarif_calculator_result_list{
+        margin-top: 5px;
+    }
+    .tarif_calculator_result ul{
+        margin-top: 1%;
+    }
+    .tarif_calculator_result_end{
+        margin: 1% 10% 0 10%;
+    }
+    .tarif_calculator_result_modul {
+        margin: 5px 0;
+    }
+    .tarif_calculator_result_grey{
+        padding: 8px 0;
+        margin-top: 5px;
+    }
+    .tarif_calculator_result_grey p{
+        margin: 5px 0;
+    }
+    .tarif_calculator_result_red{
+        margin-top: 5px;
+    }
+    .tarif_calculator_result_red2{
+        width: 85%;
+        padding: 10px 0;
+    } 
+
+
+    }
+
+    @media screen and (max-height: 600px){
+    
+    .tarif_calculator_result{
+        padding-top: 2px;
+    }
+    .tarif_calculator_result_itogo{
+        margin-top: 2px;
+    }
+    .tarif_calculator_result h1{
+        margin-top: 2px;
+    }
+    .tarif_calculator_result input[type="submit"]{
+        margin-top: 1%;
+    }
+    .tarif_calculator_result_list{
+        margin-top: 2px;
+    }
+    .tarif_calculator_result ul{
+        margin-top: 1%;
+    }
+    .tarif_calculator_result_end{
+        margin: 1% 10% 0 10%;
+    }
+    .tarif_calculator_result_modul {
+        margin: 2px 0;
+    }
+    .tarif_calculator_result_grey{
+        padding: 7px 0;
+        margin-top: 2px;
+    }
+    .tarif_calculator_result_grey p{
+        margin: 2px 0;
+    }
+    .tarif_calculator_result_red{
+        margin-top: 2px;
+    }
+    .tarif_calculator_result_red2{
+        padding: 8px 0;
+    } 
+
+
+    }
 
 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="left_block">
-        <a href="http://marketbot.biz/">
+        <a href="https://marketbot.biz/">
         <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
         </a>
 
@@ -343,7 +343,7 @@ export default {
                 }
             }
             if(event.target.parentNode.childNodes[0].value.length != 0){
-                axios.post('http://marketbot.biz/balance/refill', params, config)
+                axios.post('https://marketbot.biz/balance/refill', params, config)
                 .then(function (response) {
                     if(response.data.paid == true){
                         if(confirm('Транзакция успешна')) {
@@ -397,7 +397,7 @@ export default {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }
-            axios.post('http://marketbot.biz/balance/refill', params, config)
+            axios.post('https://marketbot.biz/balance/refill', params, config)
                 .then(function (response) {
                     if(response.data.paid == true){
                         alert('Транзакция успешна')
@@ -426,7 +426,7 @@ export default {
     created() {
         const axios = require('axios');
         let self = this
-        axios.get('http://marketbot.biz/balance/get_data?user_token='+this.user_token)
+        axios.get('https://marketbot.biz/balance/get_data?user_token='+this.user_token)
             .then(function(response){
                 self.info = response.data
             })
