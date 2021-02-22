@@ -404,7 +404,6 @@ export default {
                         window.location.href = response.data.url
                     }
                     else{
-                        alert('Транзакция не прошла')
                         window.location.href = response.data.url
                     }
                     

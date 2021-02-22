@@ -119,7 +119,7 @@
                             </div>
                             <div class="chat_block_id_2">
                                 <div style="margin-bottom: 2px;">
-                                    <a :href="'https://marketbot.biz/hsm/index/'+item.id">
+                                    <a :href="'https://marketbot.biz/promocodes/index/'+item.id">
                                     <img src="../assets/menu7.png" alt="h"><strong>Промокоды</strong>
                                     </a>
                                 </div>
@@ -137,7 +137,7 @@
                                 </div>
                             
                                 <div style="margin-bottom: 2px;width: 120%;">
-                                    <a :href="'https://marketbot.biz/promocodes/index/'+item.id">
+                                    <a :href="'https://marketbot.biz/wa_profile/waba_profile_show/'+item.id">
                                     <img src="../assets/menu5.png" alt="links"><strong>WABA профиль</strong>
                                     </a>
                                 </div>

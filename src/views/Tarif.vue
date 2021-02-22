@@ -224,9 +224,13 @@
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="this.info.used_features.ops">
                                     <span class="tarif_calculator_scroll_first_block_icons_span66" v-if="checkOperator">{{ info.pricelist.op_cost }}₽</span>
                                     <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11" >-</p>
-                                    <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
+                                    <p v-if="countOperator == 0" @click="clickDiv" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22">{{ this.info.used_features.ops + countOperator }}</p>
                                     <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33" @mouseover="checkOperator = true" @mouseleave="checkOperator = false">+</p>
+                                    <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div66">
+                                        <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                        <p><strong>Как отключить?</strong> Перейдите в раздел операторов и удалите оттуда не нужные аккаунты.</p> 
+                                    </div>
                                 </div>
 
 
@@ -440,9 +444,13 @@
                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.storage_usage_kib">
                                     <span class="tarif_calculator_scroll_first_block_icons_span99" v-if="checkGb">{{ info.pricelist.storage_per_gib }}₽</span>
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
-                                    <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
+                                    <p v-if="countMemory == 0" @click="clickDiv" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{this.info.used_features.storage_usage_kib + countMemory}} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
                                     <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" @mouseover="checkGb = true" @mouseleave="checkGb = false">+</p>
+                                    <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div66">
+                                        <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
+                                        <p><strong>Как отключить?</strong> Мы храним все диалоги на наших серверах, включая файлы, фото и видео, которые не удаляем для вашего удобства. По мере использования бота эта цифра будет расти.</p> 
+                                    </div>
                                 </div>
 
 
@@ -1599,6 +1607,11 @@ export default {
     }
     .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div7{
         left: 100px;
+    }
+    .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div66{
+        left: 100px;
+        margin-top: -50px;
+        margin-left: 300px;
     }
     .tarif_calculator_scroll_first_block .tarif_calculator_scroll_first_block_icons_div8{
         left: 220px;
