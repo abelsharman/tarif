@@ -6,7 +6,7 @@
 
         <div class="left_block_inner">
             <div>
-                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar"></a>
                 <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small>{{ infoUser.username }}</small></a>
             </div>
 
@@ -268,11 +268,13 @@
 <script>
 export default {
     name: 'chat',
-     data() {
+    data() {
         return{
             info: [],
             infoUser: [],
-            infoBalance: [],
+            infoBalance: {
+                user_balance: 0
+            },
             unixtime: Math.round(new Date().getTime() / 1000),
             unixtimeSec:  Math.round(new Date().getTime()),
             peer: 0,

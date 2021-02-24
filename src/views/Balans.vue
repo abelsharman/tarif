@@ -6,7 +6,7 @@
 
         <div class="left_block_inner">
             <div>
-                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar"></a>
                 <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small>{{ infoUser.username }}</small></a>
             </div>
             
@@ -295,7 +295,9 @@ export default {
     data() {
         return{
             info: [],
-            infoUser: [],
+            infoUser: {
+                balance: 0
+            },
             carta: true, 
             carta_info: false,
             addBalans: false,

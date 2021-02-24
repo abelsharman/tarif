@@ -135,7 +135,7 @@
                         </div>
 
                         <div>
-                            <label class="switch" v-if="!this.info.used_features.features.includes('waba_registered')">
+                            <label class="switch" v-if="info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')">
                                 <input @click="clickBusinessApi" type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
@@ -143,15 +143,15 @@
                             </label>
 
 
-                            <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
-                                <img class="img1" style="width: 35px;vertical-align:middle;padding-top: 10px;" @click="clickBusiDiv" src="../assets/btn_on.png" alt="" @mouseover="checkBusiSpan = true" @mouseleave="checkBusiSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span111" v-if="checkBusiSpan">{{ info.pricelist.waba_setup_fee }}₽</span>
+                            <label class="switch" v-if="checkBusi && info.used_features && info.used_features.features && info.used_features.features.includes('waba_registered')">
+                                <img class="img1" style="width: 35px;vertical-align:middle;padding-top: 10px;" @click="clickBusiDiv" src="../assets/btn_on.png" @mouseover="this.checkBusiSpan = true" @mouseleave="this.checkBusiSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span111" v-if="checkBusiSpan && info.pricelist && info.used_features.features">{{ info.pricelist.waba_setup_fee }}₽</span>
                             </label>
 
 
-                            <span v-if="!this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
+                            <span v-if="info.used_features && !info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
 
-                            <span v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">Подключено</span>
+                            <span v-if="checkBusi && info.used_features && info.used_features.features.includes('waba_registered')">Подключено</span>
                             <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div1">
                                 <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
                                 <p><strong>Как отключить?</strong> Удалить номер из раздела “каналы”.</p> 
@@ -163,9 +163,9 @@
                             <p>В стоимость входит:</p>
                             <p>1. Создание бизнес-аккаунта в Facebook.</p>
                             <p>2. Авторизация + модерация аккаунта Facebook.</p>
-                            <p v-if="this.info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
-                            <p v-if="!this.info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
-                            <p v-if="this.info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании: </p>
+                            <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
+                            <p v-if="info.used_features && !info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
+                            <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании: </p>
                             <strong>Marketbot</strong>
                             <img src="../assets/check2.png" alt="check2">
                         </div>
@@ -184,11 +184,11 @@
                         <div class="tarif_calculator_scroll_first_block_icons">
 
 
-                            <div @mouseover="checkChatSpan = true" @mouseleave="checkChatSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span5" v-if="checkChatSpan">{{ info.pricelist.chat_cost }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('chat')" src="../assets/chat2.png" alt="chat2">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkChat }" v-if="!this.info.used_features.features.includes('chat')" @click="closeChat"  src="../assets/chat2.png" alt="chat2">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkChat }" v-if="!this.info.used_features.features.includes('chat')" @click="clickChat" style="width: 85%;border:0;" src="../assets/chat3.png" alt="chat2">
+                            <div @mouseover="this.checkChatSpan = true" @mouseleave="this.checkChatSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span5" v-if="checkChatSpan && info.pricelist">{{ info.pricelist.chat_cost }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="info.used_features && info.used_features.features.includes('chat')" src="../assets/chat2.png" alt="chat2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkChat }" v-if="info.used_features && !info.used_features.features.includes('chat')" @click="closeChat"  src="../assets/chat2.png" alt="chat2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkChat }" v-if="info.used_features && !info.used_features.features.includes('chat')" @click="clickChat" style="width: 85%;border:0;" src="../assets/chat3.png" alt="chat2">
                                 <p>Чат</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div5">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -197,11 +197,11 @@
                             </div>
 
 
-                            <div @mouseover="checkWriteSpan = true" @mouseleave="checkWriteSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span6" v-if="checkWriteSpan">{{ info.pricelist.write_first_cost }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('bot')" src="../assets/question.png" alt="question">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWrite }" v-if="!this.info.used_features.features.includes('bot')" @click="closeWriteFirst"  src="../assets/question.png" alt="question">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWrite }" v-if="!this.info.used_features.features.includes('bot')" @click="clickWriteFirst" style="width: 85%;border:0;" src="../assets/question3.png" alt="question">
+                            <div @mouseover="this.checkWriteSpan = true" @mouseleave="this.checkWriteSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span6" v-if="checkWriteSpan && info.pricelist">{{ info.pricelist.write_first_cost }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="info.used_features && info.used_features.features.includes('bot')" src="../assets/question.png" alt="question">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWrite }" v-if="info.used_features && !info.used_features.features.includes('bot')" @click="closeWriteFirst"  src="../assets/question.png" alt="question">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWrite }" v-if="info.used_features && !info.used_features.features.includes('bot')" @click="clickWriteFirst" style="width: 85%;border:0;" src="../assets/question3.png" alt="question">
                                 <p>Написать первым</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div6">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -214,23 +214,23 @@
 
 
                             <div>      
-                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="!this.info.used_features.ops">
-                                    <span class="tarif_calculator_scroll_first_block_icons_span66" v-if="checkOperator">{{ info.pricelist.op_cost }}₽</span>
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="info.used_features && !info.used_features.ops">
+                                    <span class="tarif_calculator_scroll_first_block_icons_span66" v-if="checkOperator && info.pricelist">{{ info.pricelist.op_cost }}₽</span>
                                     <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11">-</p>
                                     <p v-if="countOperator == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
 
 
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22">{{ countOperator }}</p>
-                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33" @mouseover="checkOperator = true" @mouseleave="checkOperator = false">+</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33" @mouseover="this.checkOperator = true" @mouseleave="this.checkOperator = false">+</p>
                                 </div>
 
 
-                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="this.info.used_features.ops">
-                                    <span class="tarif_calculator_scroll_first_block_icons_span66" v-if="checkOperator">{{ info.pricelist.op_cost }}₽</span>
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus tarif_calculator_scroll_first_block_icons_plus_minus1" v-if="info.used_features && info.used_features.ops">
+                                    <span class="tarif_calculator_scroll_first_block_icons_span66" v-if="checkOperator && info.pricelist">{{ info.pricelist.op_cost }}₽</span>
                                     <p v-if="countOperator > 0" @click="clickOperatorMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11" >-</p>
                                     <p v-if="countOperator == 0" @click="clickDiv" class="tarif_calculator_scroll_first_block_icons_plus_minus_1 tarif_calculator_scroll_first_block_icons_plus_minus_11"  style="background-color:rgb(240,241,242)">-</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22">{{ this.info.used_features.ops + countOperator }}</p>
-                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33" @mouseover="checkOperator = true" @mouseleave="checkOperator = false">+</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2 tarif_calculator_scroll_first_block_icons_plus_minus_22" v-if="info.used_features">{{ info.used_features.ops + countOperator }}</p>
+                                    <p @click="clickOperatorPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3 tarif_calculator_scroll_first_block_icons_plus_minus_33" @mouseover="this.checkOperator = true" @mouseleave="this.checkOperator = false">+</p>
                                     <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div66">
                                         <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
                                         <p><strong>Как отключить?</strong> Перейдите в раздел операторов и удалите оттуда не нужные аккаунты.</p> 
@@ -260,11 +260,11 @@
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ thirdBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div @mouseover="checkEditorSpan = true" @mouseleave="checkEditorSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span7"  v-if="checkEditorSpan">{{ info.pricelist.bot }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/editor.png" alt="editor">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkEditor }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="closeEditor"  src="../assets/editor.png" alt="editor">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkEditor }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="clickEditor" style="width: 85%;border:0;" src="../assets/editor3.png" alt="editor">
+                            <div @mouseover="this.checkEditorSpan = true" @mouseleave="this.checkEditorSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span7"  v-if="checkEditorSpan && info.pricelist">{{ info.pricelist.bot }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="info.used_features && info.used_features.features.includes('deferred_exec')" src="../assets/editor.png" alt="editor">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkEditor }" v-if="info.used_features && !info.used_features.features.includes('deferred_exec')" @click="closeEditor"  src="../assets/editor.png" alt="editor">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkEditor }" v-if="info.used_features && !info.used_features.features.includes('deferred_exec')" @click="clickEditor" style="width: 85%;border:0;" src="../assets/editor3.png" alt="editor">
                                 <p>Редактор сценария</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div7">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -274,11 +274,11 @@
 
 
 
-                            <div @mouseover="checkFunnelSpan = true" @mouseleave="checkFunnelSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span8" v-if="checkFunnelSpan">{{ info.pricelist.deferred_exec }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('deferred_exec')" src="../assets/funnel.png" alt="funnel">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkFunnel }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="closeFunnel"  src="../assets/funnel.png" alt="funnel">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkFunnel }" v-if="!this.info.used_features.features.includes('deferred_exec')" @click="clickFunnel" style="width: 85%;border:0;" src="../assets/funnel3.png" alt="funnel">
+                            <div @mouseover="this.checkFunnelSpan = true" @mouseleave="this.checkFunnelSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span8" v-if="checkFunnelSpan && info.pricelist">{{ info.pricelist.deferred_exec }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="info.used_features && info.used_features.features.includes('deferred_exec')" src="../assets/funnel.png" alt="funnel">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkFunnel }" v-if="info.used_features && !info.used_features.features.includes('deferred_exec')" @click="closeFunnel"  src="../assets/funnel.png" alt="funnel">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkFunnel }" v-if="info.used_features && !info.used_features.features.includes('deferred_exec')" @click="clickFunnel" style="width: 85%;border:0;" src="../assets/funnel3.png" alt="funnel">
                                 <p>Автоворонки</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div8">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -307,14 +307,14 @@
                         <strong class="tarif_calculator_scroll_first_block_cost1">Интеграция CRM: </strong>
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ fourthBlockCount }}</strong> ₽/месяц</p>
 
-                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('bitrix24')">
-                            <div @mouseover="checkBitrixSpan = true" @mouseleave="checkBitrixSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan">{{ info.pricelist.mailing }}₽</span>
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="info.used_features && info.used_features.features.includes('bitrix24')">
+                            <div @mouseover="this.checkBitrixSpan = true" @mouseleave="this.checkBitrixSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="clickDivCrm" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div @mouseover="chechAmoSpan = true" @mouseleave="chechAmoSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan">{{ info.pricelist.mailing }}₽</span>
+                            <div @mouseover="this.chechAmoSpan = true" @mouseleave="this.chechAmoSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
@@ -327,14 +327,14 @@
 
 
 
-                        <div class="tarif_calculator_scroll_first_block_icons" v-if="this.info.used_features.features.includes('amocrm')">
-                            <div @mouseover="checkBitrixSpan1 = true" @mouseleave="checkBitrixSpan1 = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan1">{{ info.pricelist.mailing }}₽</span>
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="info.used_features && info.used_features.features.includes('amocrm')">
+                            <div @mouseover="this.checkBitrixSpan1 = true" @mouseleave="this.checkBitrixSpan1 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan1 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div @mouseover="chechAmoSpan1 = true" @mouseleave="chechAmoSpan1 = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan1">{{ info.pricelist.mailing }}₽</span>
+                            <div @mouseover="this.chechAmoSpan1 = true" @mouseleave="this.chechAmoSpan1 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan1 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="clickDivCrm" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
@@ -348,38 +348,38 @@
 
 
 
-                        <div class="tarif_calculator_scroll_first_block_icons" v-if="!this.info.used_features.features.includes('bitrix24') && !this.info.used_features.features.includes('amocrm')">
-                            <div v-if="checkBitrix && !checkAmo" @mouseover="checkBitrixSpan2 = true" @mouseleave="checkBitrixSpan2 = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan2">{{ info.pricelist.mailing }}₽</span>
+                        <div class="tarif_calculator_scroll_first_block_icons" v-if="info.used_features && !info.used_features.features.includes('bitrix24') && !info.used_features.features.includes('amocrm')">
+                            <div v-if="checkBitrix && !checkAmo" @mouseover="this.checkBitrixSpan2 = true" @mouseleave="this.checkBitrixSpan2 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan2 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="closeBitrix" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/bitrix.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div v-if="checkBitrix && !checkAmo" @mouseover="chechAmoSpan2 = true" @mouseleave="chechAmoSpan2 = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan2">{{ info.pricelist.mailing }}₽</span>
+                            <div v-if="checkBitrix && !checkAmo" @mouseover="this.chechAmoSpan2 = true" @mouseleave="this.chechAmoSpan2 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan2 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
                             
 
-                            <div v-if="!checkBitrix && checkAmo" @mouseover="checkBitrixSpan3 = true" @mouseleave="checkBitrixSpan3 = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan3">{{ info.pricelist.mailing }}₽</span>
+                            <div v-if="!checkBitrix && checkAmo" @mouseover="this.checkBitrixSpan3 = true" @mouseleave="this.checkBitrixSpan3 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan3 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                             <div v-if="!checkBitrix && checkAmo" @mouseover="chechAmoSpan3 = true" @mouseleave="chechAmoSpan3 = false">
-                                 <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan3">{{ info.pricelist.mailing }}₽</span>
+                             <div v-if="!checkBitrix && checkAmo" @mouseover="this.chechAmoSpan3 = true" @mouseleave="this.chechAmoSpan3 = false">
+                                 <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan3 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="closeAmo" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/amo.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
 
 
-                            <div v-if="!checkBitrix && !checkAmo" @mouseover="checkBitrixSpan4 = true" @mouseleave="checkBitrixSpan4 = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan4">{{ info.pricelist.mailing }}₽</span>
+                            <div v-if="!checkBitrix && !checkAmo" @mouseover="this.checkBitrixSpan4 = true" @mouseleave="this.checkBitrixSpan4 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span10" v-if="checkBitrixSpan4 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="clickBitrix" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/bitrix3.png" alt="bitrix">
                                 <p>Bitrix24</p>
                             </div>
-                            <div v-if="!checkBitrix && !checkAmo" @mouseover="chechAmoSpan4 = true" @mouseleave="chechAmoSpan4 = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan4">{{ info.pricelist.mailing }}₽</span>
+                            <div v-if="!checkBitrix && !checkAmo" @mouseover="this.chechAmoSpan4 = true" @mouseleave="this.chechAmoSpan4 = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span11" v-if="chechAmoSpan4 && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img @click="clickAmo" class="tarif_calculator_scroll_first_block_greyicons" style="width: 85%;border:0;" src="../assets/amo3.png" alt="amo">
                                 <p>amoCRM</p>
                             </div>
@@ -408,11 +408,11 @@
                         <p class="tarif_calculator_scroll_first_block_cost"><strong>{{ fifthBlockCount }}</strong> ₽/месяц</p>
 
                         <div class="tarif_calculator_scroll_first_block_icons">
-                            <div @mouseover="checkMailSpan = true" @mouseleave="checkMailSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span9" v-if="checkMailSpan">{{ info.pricelist.mailing }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="this.info.used_features.features.includes('bot')" src="../assets/mail2.png" alt="mail2">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkMail }" v-if="!this.info.used_features.features.includes('bot')" @click="closeMail"  src="../assets/mail2.png" alt="mail2">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkMail }" v-if="!this.info.used_features.features.includes('bot')" @click="clickMail" style="width: 85%;border:0;" src="../assets/mail3.png" alt="mail2">
+                            <div @mouseover="this.checkMailSpan = true" @mouseleave="this.checkMailSpan = false">
+                                <span class="tarif_calculator_scroll_first_block_icons_span9" v-if="checkMailSpan && info.pricelist">{{ info.pricelist.mailing }}₽</span>
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-if="info.used_features && info.used_features.features.includes('bot')" src="../assets/mail2.png" alt="mail2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkMail }" v-if="info.used_feature && !info.used_features.features.includes('bot')" @click="closeMail"  src="../assets/mail2.png" alt="mail2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkMail }" v-if="info.used_features && !info.used_features.features.includes('bot')" @click="clickMail" style="width: 85%;border:0;" src="../assets/mail3.png" alt="mail2">
                                 <p>Массовая рассылка</p>
                             </div>
                         </div>
@@ -434,23 +434,23 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
                             <div style="width: 30%;margin-left: 0;">
-                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="!this.info.used_features.storage_usage_kib">
-                                    <span class="tarif_calculator_scroll_first_block_icons_span99" v-if="checkGb">{{ info.pricelist.storage_per_gib }}₽</span>
+                                 <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="info.used_features && !info.used_features.storage_usage_kib">
+                                    <span class="tarif_calculator_scroll_first_block_icons_span99" v-if="checkGb && info.pricelist">{{ info.pricelist.storage_per_gib }}₽</span>
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countMemory == 0" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
                                     
                                     <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{countMemory}} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
-                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" @mouseover="checkGb = true" @mouseleave="checkGb = false">+</p>
+                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" @mouseover="this.checkGb = true" @mouseleave="this.checkGb = false">+</p>
                                 </div>
 
 
 
-                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="this.info.used_features.storage_usage_kib">
-                                    <span class="tarif_calculator_scroll_first_block_icons_span99" v-if="checkGb">{{ info.pricelist.storage_per_gib }}₽</span>
+                                <div class="tarif_calculator_scroll_first_block_icons_plus_minus" v-if="info.used_features && info.used_features.storage_usage_kib">
+                                    <span class="tarif_calculator_scroll_first_block_icons_span99" v-if="checkGb && info.pricelist">{{ info.pricelist.storage_per_gib }}₽</span>
                                     <p v-if="countMemory > 0" @click="clickMemoryMinus" class="tarif_calculator_scroll_first_block_icons_plus_minus_1">-</p>
                                     <p v-if="countMemory == 0" @click="clickDiv" class="tarif_calculator_scroll_first_block_icons_plus_minus_1" style="background-color:rgb(240,241,242)">-</p>
-                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2">{{this.info.used_features.storage_usage_kib + countMemory}} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
-                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" @mouseover="checkGb = true" @mouseleave="checkGb = false">+</p>
+                                    <p class="tarif_calculator_scroll_first_block_icons_plus_minus_2" v-if="info.used_features">{{ info.used_features.storage_usage_kib + countMemory }} <span class="tarif_calculator_scroll_first_block_icons_plus_minus_span">гб</span></p>
+                                    <p @click="clickMemoryPlus" class="tarif_calculator_scroll_first_block_icons_plus_minus_3" @mouseover="this.checkGb = true" @mouseleave="this.checkGb = false">+</p>
                                     <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div66">
                                         <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
                                         <p><strong>Как отключить?</strong> Мы храним все диалоги на наших серверах, включая файлы, фото и видео, которые не удаляем для вашего удобства. По мере использования бота эта цифра будет расти.</p> 
@@ -475,18 +475,18 @@
                 </div>
 
                 <div class="tarif_calculator_result">
-                    <div class="tarif_calculator_result_grey" v-if="this.info.tariffdata.paid_until == 0 && this.info.tariffdata.trial_until >= unixtime">
-                        <p>Бесплатный тестовый период завершится через <span style="color: rgb(207,30,65);">{{ Math.round((this.info.tariffdata.trial_until - unixtime)/24/60/60) }} {{ numpf( Math.round((this.info.tariffdata.trial_until - unixtime)/24/60/60)) }}</span></p>
+                    <div class="tarif_calculator_result_grey" v-if="info.tariffdata && info.tariffdata.paid_until == 0 && info.tariffdata.trial_until >= unixtime">
+                        <p>Бесплатный тестовый период завершится через <span style="color: rgb(207,30,65);" v-if="info.tariffdata">{{ Math.round((info.tariffdata.trial_until - unixtime)/24/60/60) }} {{ numpf( Math.round((info.tariffdata.trial_until - unixtime)/24/60/60)) }}</span></p>
                     </div>
 
-                    <div class="tarif_calculator_result_grey" v-else-if="this.info.tariffdata.paid_until > this.info.tariffdata.trial_until && this.info.tariffdata.paid_until > unixtime">
-                        <p>Модуль действителен еще: <span style="color: green">{{ Math.round((this.info.tariffdata.paid_until - unixtime)/24/60/60) }} {{ numpf((this.info.tariffdata.paid_until - unixtime)/24/60/60) }}</span></p>
-                        <p v-if="this.info.tariffdata.write_first > 0">Функция "Написать первым" действительна еще: <span>8 {{ numpf(Math.round((this.info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
+                    <div class="tarif_calculator_result_grey" v-else-if="info.tariffdata && info.tariffdata.paid_until > info.tariffdata.trial_until && info.tariffdata.paid_until > unixtime">
+                        <p>Модуль действителен еще: <span style="color: green" v-if="info.tariffdata">{{ Math.round((info.tariffdata.paid_until - unixtime)/24/60/60) }} {{ numpf((info.tariffdata.paid_until - unixtime)/24/60/60) }}</span></p>
+                        <p v-if="info.tariffdata && info.tariffdata.write_first > 0">Функция "Написать первым" действительна еще: <span>8 {{ numpf(Math.round((info.tariffdata.paid_until)/1000/24/60/60)) }}</span></p>
                     </div>
 
 
 
-                    <div class="tarif_calculator_result_red" v-else-if="this.info.tariffdata.trial_until < unixtime">
+                    <div class="tarif_calculator_result_red" v-else-if="info.tariffdata && info.tariffdata.trial_until < unixtime">
                         <div class="tarif_calculator_result_red1">
                             <img src="../assets/clock.png" alt="">
                         </div>
@@ -499,7 +499,7 @@
 
 
 
-                    <div class="tarif_calculator_result_red" v-else-if="this.info.tariffdata.paid_until < unixtime">
+                    <div class="tarif_calculator_result_red" v-else-if="info.tariffdata && info.tariffdata.paid_until < unixtime">
                         <div class="tarif_calculator_result_red1">
                             <img src="../assets/clock.png" alt="">
                         </div>
@@ -521,7 +521,7 @@
                             <span class="slider round" ></span>
                         </label>
                         <span class="tarif_calculator_result_checkbox_1" style="color:#222;"> Ежегодно</span>
-                        <span class="tarif_calculator_result_checkbox_1" style="color:#d6496f;"> -{{ info.pricelist.yearly_discount * 100 }}%</span>
+                        <span class="tarif_calculator_result_checkbox_1" style="color:#d6496f;" v-if="info.pricelist"> -{{ info.pricelist.yearly_discount * 100 }}%</span>
                     </div>
 
                     <input type="submit" @click="submitTarif" value="ПОДКЛЮЧИТЬ">
@@ -1079,7 +1079,12 @@ export default {
         return this.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       },
       convertYear(){
-          return Math.round(this.total * (1-this.info.pricelist.yearly_discount)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          if(this.info.pricelist && this.info.pricelist.yearly_discount){
+            return Math.round(this.total * (1-this.info.pricelist.yearly_discount)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }
+          else{
+              return ''
+          }
       },
       convertBalance2() {
         return Math.round(this.infoBalance.user_balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -1090,7 +1095,6 @@ export default {
         const axios = require('axios');
         let self = this
         ///this.$cookie.setCookie('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
-        console.log(this.$route.params.bot)
         axios.get('https://marketbot.biz/tariff/get_data/?botid='+this.botId+'&user_token='+this.user_token)
             .then(function(response){
                 self.info = response.data
