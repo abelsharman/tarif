@@ -84,9 +84,9 @@
 
                             <div @mouseover="this.checkWhatsAppSpan = true" @mouseleave="this.checkWhatsAppSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan && info.pricelist.program_cost && info.pricelist.program_cost.GS">{{ info.pricelist.program_cost.GS }}₽</span>
-                                <img v-if="info.used_features.features && info.used_features.features.includes('GS')" @click="clickWhatsAppDiv" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
-                                <img @click="closeWhatsApp" v-if="info.used_features.features && !info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
-                                <img @click="clickWhatsApp" v-if="info.used_features.features && !info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:85%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
+                                <img v-if="info.used_features && info.used_features.features && info.used_features.features.includes('GS')" @click="clickWhatsAppDiv" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="closeWhatsApp" v-if="info.used_features && info.used_features.features && !info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="clickWhatsApp" v-if="info.used_features && info.used_features.features && !info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:85%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div1">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -94,11 +94,11 @@
                                 </div>
                             </div>
 
-                            <div @mouseover="checkTelegramSpan = true" @mouseleave="checkTelegramSpan = false">
+                            <div @mouseover="this.checkTelegramSpan = true" @mouseleave="this.checkTelegramSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span2" v-if="checkTelegramSpan">{{ info.pricelist.program_cost.TL }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('TL')" src="../assets/telegram.png" alt="telegram">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkTelegram }" v-if="!this.info.used_features.features.includes('TL')" @click="closeTelegram"  src="../assets/telegram.png" alt="telegram">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkTelegram }" v-if="!this.info.used_features.features.includes('TL')" @click="clickTelegram" style="width: 85%;border:0;" src="../assets/telegram3.png" alt="telegram">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="info.used_features && info.used_features.features.includes('TL')" src="../assets/telegram.png" alt="telegram">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkTelegram }" v-if="info.used_features && !info.used_features.features.includes('TL')" @click="closeTelegram"  src="../assets/telegram.png" alt="telegram">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkTelegram }" v-if="info.used_features && !info.used_features.features.includes('TL')" @click="clickTelegram" style="width: 85%;border:0;" src="../assets/telegram3.png" alt="telegram">
                                 <p>Telegram</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div2">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -107,11 +107,11 @@
                             </div>
 
 
-                            <div @mouseover="checkViberSpan = true" @mouseleave="checkViberSpan = false">
+                            <div @mouseover="this.checkViberSpan = true" @mouseleave="this.checkViberSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span3" v-if="checkViberSpan">{{ info.pricelist.program_cost.VB }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('VB')" src="../assets/viber.png" alt="viber">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkViber }" v-if="!this.info.used_features.features.includes('VB')" @click="closeViber"  src="../assets/viber.png" alt="viber">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkViber }" v-if="!this.info.used_features.features.includes('VB')" @click="clickViber" style="width: 85%;border:0;" src="../assets/viber3.png" alt="viber">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="info.used_features && info.used_features.features.includes('VB')" src="../assets/viber.png" alt="viber">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkViber }" v-if="info.used_features && !info.used_features.features.includes('VB')" @click="closeViber"  src="../assets/viber.png" alt="viber">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkViber }" v-if="info.used_features && !info.used_features.features.includes('VB')" @click="clickViber" style="width: 85%;border:0;" src="../assets/viber3.png" alt="viber">
                                 <p>Viber</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div3">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -120,11 +120,11 @@
                             </div>
 
 
-                            <div @mouseover="checkVkSpan = true" @mouseleave="checkVkSpan = false">
+                            <div @mouseover="this.checkVkSpan = true" @mouseleave="this.checkVkSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span4" v-if="checkVkSpan">{{ info.pricelist.program_cost.VK }}₽</span>
-                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="this.info.used_features.features.includes('VK')" src="../assets/vk.png" alt="vk">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkVk }" v-if="!this.info.used_features.features.includes('VK')" @click="closeVk"  src="../assets/vk.png" alt="vk">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkVk }" v-if="!this.info.used_features.features.includes('VK')" @click="clickVk" style="width: 85%;border:0;" src="../assets/vk3.png" alt="vk">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" @click="clickDiv" v-if="info.used_features && info.used_features.features.includes('VK')" src="../assets/vk.png" alt="vk">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkVk }" v-if="info.used_features && !info.used_features.features.includes('VK')" @click="closeVk"  src="../assets/vk.png" alt="vk">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkVk }" v-if="info.used_features && !info.used_features.features.includes('VK')" @click="clickVk" style="width: 85%;border:0;" src="../assets/vk3.png" alt="vk">
                                 <p>Vkontakte</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div4">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
