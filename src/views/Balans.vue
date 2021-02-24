@@ -26,9 +26,9 @@
             </div>
             
             
-            <div v-if="infoUser.is_integrator == true">
-                <a href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
-                <small>Контакты</small>
+             <div v-if="infoUser.is_integrator">
+                <a href="https://marketbot.biz/integrator/my_users"><img src="../assets/left_clients.png" alt="left_clients"></a>
+                <small>Клиенты</small>
             </div>
             
         </div>
@@ -112,17 +112,17 @@
                     </div>
                     -->
 
-                    <div class="right_balans_left_inner_add_cart_button" v-if="carta && !carta_info && !this.info.cc.saved" > <!-- @click="showForm()" -->
+                    <div class="right_balans_left_inner_add_cart_button" v-if="carta && !carta_info && info.cc && !info.cc.saved" > <!-- @click="showForm()" -->
                         <img src="../assets/menu_add.png" alt="add">
                         <p>Привязать карту</p>
                     </div>
 
 
-                    <div class="right_balans_left_inner_carts" v-if="this.info.cc.saved" @click="showAnotherForm()">
+                    <div class="right_balans_left_inner_carts" v-if="info.cc && info.cc.saved" @click="showAnotherForm()">
                         <p>Ваши карты</p>
                         <div class="right_balans_left_inner_carts_cart">   
-                            <img src="../assets/money.png" alt="{{ this.info.cc.type }}">
-                            <p>{{ this.info.cc.masked_num }}<span>x</span></p>
+                            <img src="../assets/money.png" alt="{{ info.cc.type }}">
+                            <p>{{ info.cc.masked_num }}<span>x</span></p>
                         </div>
                     </div>
 

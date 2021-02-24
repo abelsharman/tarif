@@ -1,7 +1,7 @@
 <template>
     <div class="left_block">
         <a href="https://marketbot.biz/">
-        <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
+        <img style="padding-top: 10%;" src="../assets/sidebar_logo.png" alt="logo">
         </a>
 
         <div class="left_block_inner">
@@ -25,9 +25,9 @@
                 <small>Создать бота</small>
             </div>
            
-            <div v-if="infoUser.is_integrator == true">
-                <a href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
-                <small>Контакты</small>
+            <div v-if="infoUser.is_integrator">
+                <a href="https://marketbot.biz/integrator/my_users"><img src="../assets/left_clients.png" alt="left_clients"></a>
+                <small>Клиенты</small>
             </div>
            
         </div>

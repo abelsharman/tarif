@@ -1,12 +1,12 @@
 <template>
     <div class="left_block">
         <a href="https://marketbot.biz/">
-        <img style="padding-top: 20px;" src="../assets/sidebar_logo.png" alt="logo">
+        <img style="padding-top: 10%" src="../assets/sidebar_logo.png" alt="logo">
         </a>
 
         <div class="left_block_inner">
             <div>
-                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar" alt="name"></a>
+                <a href="https://marketbot.biz/user/home"><img v-bind:src="infoUser.avatar"></a>
                 <a href="https://marketbot.biz/user/home" style="text-decoration:none"><small>{{ infoUser.username }}</small></a>
             </div>
 
@@ -27,9 +27,9 @@
             
     
             
-            <div v-if="infoUser.is_integrator == true">
-                <a href="https://marketbot.biz/bot/create"><img src="../assets/left_clients.png" alt="left_clients"></a>
-                <small>Контакты</small>
+            <div v-if="infoUser.is_integrator">
+                <a href="https://marketbot.biz/integrator/my_users"><img src="../assets/left_clients.png" alt="left_clients"></a>
+                <small>Клиенты</small>
             </div>
             
         </div>
@@ -83,10 +83,10 @@
                         <div class="tarif_calculator_scroll_first_block_icons">
 
                             <div @mouseover="checkWhatsAppSpan = true" @mouseleave="checkWhatsAppSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan">{{ this.info.pricelist.program_cost.GS }}₽</span>
-                                <img v-if="this.info.used_features.features.includes('GS')" @click="clickWhatsAppDiv" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
-                                <img @click="closeWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
-                                <img @click="clickWhatsApp" v-if="!this.info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:85%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
+                                <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan && info.pricelist.program_cost && info.pricelist.program_cost.GS">{{ info.pricelist.program_cost.GS }}₽</span>
+                                <img v-if="info.used_features.features && info.used_features.features.includes('GS')" @click="clickWhatsAppDiv" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="closeWhatsApp" v-if="info.used_features.features && !info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
+                                <img @click="clickWhatsApp" v-if="info.used_features.features && !info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkWhatsApp }" style="width:85%;border:0px;" src="../assets/whatsapp3.png" alt="whatsapp">
                                 <p>WhatsApp</p>
                                 <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div1">
                                     <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -142,12 +142,16 @@
                                 <img class="img2" src="../assets/tick.png" alt="">
                             </label>
 
+
                             <label class="switch" v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">
                                 <img class="img1" style="width: 35px;vertical-align:middle;padding-top: 10px;" @click="clickBusiDiv" src="../assets/btn_on.png" alt="" @mouseover="checkBusiSpan = true" @mouseleave="checkBusiSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span111" v-if="checkBusiSpan">{{ info.pricelist.waba_setup_fee }}₽</span>
                             </label>
+
+
                             <span v-if="!this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
-                            <span v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
+
+                            <span v-if="checkBusi && this.info.used_features.features.includes('waba_registered')">Подключено</span>
                             <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div1">
                                 <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
                                 <p><strong>Как отключить?</strong> Удалить номер из раздела “каналы”.</p> 
@@ -561,8 +565,12 @@ export default {
     data(){
         return{
             info: [],
-            infoUser: [],
-            infoBalance: [],
+            infoUser: {
+                username: ''
+            },
+            infoBalance: {
+                user_balance: 0
+            },
             total: 0,
             countOperator: 0,
             countMemory: 0,
@@ -1137,7 +1145,7 @@ export default {
             .then(function(response){
                 self.infoUser = response.data
             })
-             axios.get('https://marketbot.biz/balance/get_data?user_token='+this.user_token)
+            axios.get('https://marketbot.biz/balance/get_data?user_token='+this.user_token)
             .then(function(response){
                 self.infoBalance = response.data
             })
