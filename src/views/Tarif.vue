@@ -82,7 +82,7 @@
 
                         <div class="tarif_calculator_scroll_first_block_icons">
 
-                            <div @mouseover="checkWhatsAppSpan = true" @mouseleave="checkWhatsAppSpan = false">
+                            <div @mouseover="this.checkWhatsAppSpan = true" @mouseleave="this.checkWhatsAppSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span1" v-if="checkWhatsAppSpan && info.pricelist.program_cost && info.pricelist.program_cost.GS">{{ info.pricelist.program_cost.GS }}₽</span>
                                 <img v-if="info.used_features.features && info.used_features.features.includes('GS')" @click="clickWhatsAppDiv" class="tarif_calculator_scroll_first_block_greyicons" src="../assets/whatsapp.png" alt="whatsapp">
                                 <img @click="closeWhatsApp" v-if="info.used_features.features && !info.used_features.features.includes('GS')" class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkWhatsApp }" src="../assets/whatsapp.png" alt="whatsapp">
@@ -1401,6 +1401,9 @@ export default {
         -webkit-transition: .4s;
         transition: .4s;
     }   
+    .tarif_calculator_result_checkbox .slider{
+        background-color: #2196F3;
+    }
 
     .slider:before {
         position: absolute;
@@ -1414,12 +1417,15 @@ export default {
         -webkit-transition: .4s;
         transition: .4s;
     }
+    .tarif_calculator_result_checkbox .slider:before {
+        left: 24px;
+    }
     .tarif_calculator_result_checkbox_1{
         font-weight: 500;
-        font-size: 13px;
+        font-size: 0.902vw;
     }
     .tarif_calculator_result_checkbox input:checked + .slider {
-        background-color: #2196F3;
+        background-color: #ccc;
     }
 
     .tarif_calculator_result_checkbox input:focus + .slider {
@@ -1427,9 +1433,9 @@ export default {
     }
 
     .tarif_calculator_result_checkbox input:checked + .slider:before {
-        -webkit-transform: translateX(24px);
-        -ms-transform: translateX(24px);
-        transform: translateX(24px);
+        -webkit-transform: translateX(-24px);
+        -ms-transform: translateX(-24px);
+        transform: translateX(-24px);
     }
 
 
@@ -2128,6 +2134,9 @@ export default {
         -webkit-transition: .4s;
         transition: .4s;
     }   
+    .tarif_calculator_result_checkbox .slider{
+        background-color: #2196F3;
+    }
 
     .slider:before {
         position: absolute;
@@ -2141,12 +2150,15 @@ export default {
         -webkit-transition: .4s;
         transition: .4s;
     }
+    .tarif_calculator_result_checkbox .slider:before {
+        left: 24px;
+    }
     .tarif_calculator_result_checkbox_1{
         font-weight: 500;
-        font-size: 13px;
+        font-size: 0.902vw;
     }
     .tarif_calculator_result_checkbox input:checked + .slider {
-        background-color: #2196F3;
+        background-color: #ccc;
     }
 
     .tarif_calculator_result_checkbox input:focus + .slider {
@@ -2154,9 +2166,9 @@ export default {
     }
 
     .tarif_calculator_result_checkbox input:checked + .slider:before {
-        -webkit-transform: translateX(24px);
-        -ms-transform: translateX(24px);
-        transform: translateX(24px);
+        -webkit-transform: translateX(-24px);
+        -ms-transform: translateX(-24px);
+        transform: translateX(-24px);
     }
 
 
