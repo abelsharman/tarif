@@ -135,7 +135,7 @@
                         </div>
 
                         <div>
-                            <label class="switch" v-if="checkBusi &&info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')">
+                            <label class="switch" v-if="checkBusi &&info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')" style="margin-bottom: 20px;">
                                 <input @click="clickBusinessApi" type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
@@ -153,17 +153,12 @@
                         </div>
 
 
-                        <div class="tarif_calculator_scroll_first_block_list">
+                        <div class="tarif_calculator_scroll_first_block_list" v-if="checkBusiCost && !info.used_features.features.includes('waba_registered') || info.used_features && info.used_features.features.includes('waba_registered')">
                             <p>В стоимость входит:</p>
                             <p>1. Создание бизнес-аккаунта в Facebook.</p>
                             <p>2. Авторизация + модерация аккаунта Facebook.</p>
-                            <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
-                            <p v-if="!checkBusiCost && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
-
-                            <p v-if="checkBusiCost && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
-                            <p v-if="checkBusiCost && info.used_features && !info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании:</p>
-                            
-                            <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании: </p>
+                            <p>3. Подключение к WhatsApp Business API.</p>
+                            <p>4. Подача заявки на получение авторизованного названия компании:</p>
                             <strong>Marketbot</strong>
                             <img src="../assets/check2.png" alt="check2">
                         </div>
