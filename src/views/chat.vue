@@ -346,7 +346,7 @@ export default {
         },
     },
     created() {
-        //this.$cookie.setCookie('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
+        this.$cookie.setCookie('user_token', '9c329f7404f8d74f0cf841e35b7e4680')
         const axios = require('axios');
         
         let self = this

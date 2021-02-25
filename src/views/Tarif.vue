@@ -136,7 +136,7 @@
 
                         <div>
                             <label class="switch" v-if="checkBusi &&info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')" style="margin-bottom: 20px;">
-                                <input @click="clickBusinessApi" type="checkbox" ref="businessapi">
+                                <input @click="clickBusinessApi" type="checkbox" ref="businessapi" v-model="businessapiModel">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
                                 <img class="img2" src="../assets/tick.png" alt="">
@@ -587,6 +587,7 @@ export default {
             fourthBlockCount: 0,
             fifthBlockCount: 0,
             sixthBlockCount: 0,
+            businessapiModel: 0,
             unixtime: Math.round(new Date().getTime() / 1000),
             botId: this.$route.params.bot,
             user_token: this.$cookie.getCookie('user_token')
@@ -1018,9 +1019,9 @@ export default {
 
             if(this.info.used_features.features.includes('VK')){VK = 1}
             else{VK = this.checkVk ? 1 : 0}
-
+            console.log(this.businessapiModel)
             if(this.info.used_features.features.includes('waba_registered')){reg_waba = 1}
-            else{reg_waba = this.$refs.businessapi.checked ? 1 : 0}
+            else{reg_waba = this.businessapiModel ? 1 : 0}
 
             if(this.info.used_features.features.includes('chat')){chat = 1}
             else{chat = this.checkChat ? 1 : 0}
