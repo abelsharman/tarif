@@ -650,6 +650,7 @@ export default {
         closeWhatsApp(){
             this.firstBlockCount -= this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
+             this.checkBusi = false
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.program_cost.GS / (1-this.info.pricelist.yearly_discount)
                 this.total = parseInt(this.total.toFixed(0))
