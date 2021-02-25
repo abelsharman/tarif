@@ -158,7 +158,11 @@
                             <p>1. Создание бизнес-аккаунта в Facebook.</p>
                             <p>2. Авторизация + модерация аккаунта Facebook.</p>
                             <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
-                            <p v-if="info.used_features && !info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
+                            <p v-if="!checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
+
+                            <p v-if="checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
+                            <p v-if="checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании:</p>
+                            
                             <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании: </p>
                             <strong>Marketbot</strong>
                             <img src="../assets/check2.png" alt="check2">
