@@ -135,7 +135,7 @@
                         </div>
 
                         <div>
-                            <label class="switch" v-if="info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')">
+                            <label class="switch" v-if="checkBusi &&info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')">
                                 <input @click="clickBusinessApi" type="checkbox" ref="businessapi">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
@@ -143,15 +143,9 @@
                             </label>
 
 
-                            <label class="switch" v-if="checkBusi && info.used_features && info.used_features.features && info.used_features.features.includes('waba_registered')">
-                                <img class="img1" style="width: 35px;vertical-align:middle;padding-top: 10px;" @click="clickBusiDiv" src="../assets/btn_on.png" @mouseover="this.checkBusiSpan = true" @mouseleave="this.checkBusiSpan = false">
-                                <span class="tarif_calculator_scroll_first_block_icons_span111" v-if="checkBusiSpan && info.pricelist && info.used_features.features">{{ info.pricelist.waba_setup_fee }}₽</span>
-                            </label>
 
+                            <span v-if="checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
 
-                            <span v-if="info.used_features && !info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
-
-                            <span v-if="checkBusi && info.used_features && info.used_features.features.includes('waba_registered')">Подключено</span>
                             <div class="tarif_calculator_scroll_first_block_icons_div tarif_calculator_scroll_first_block_icons_div1">
                                 <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
                                 <p><strong>Как отключить?</strong> Удалить номер из раздела “каналы”.</p> 
@@ -640,6 +634,7 @@ export default {
         clickWhatsApp(){
             this.firstBlockCount += this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
+            this.checkBusi = true
             if(this.$refs.check.checked == true){
                 this.total += this.info.pricelist.program_cost.GS / (1-this.info.pricelist.yearly_discount) 
                 this.total = parseInt(this.total.toFixed(0))
