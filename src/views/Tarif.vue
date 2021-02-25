@@ -158,10 +158,10 @@
                             <p>1. Создание бизнес-аккаунта в Facebook.</p>
                             <p>2. Авторизация + модерация аккаунта Facebook.</p>
                             <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
-                            <p v-if="!checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
+                            <p v-if="!checkBusiCost && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подача заявки на получение авторизованного названия компании:</p>
 
-                            <p v-if="checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
-                            <p v-if="checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании:</p>
+                            <p v-if="checkBusiCost && info.used_features && !info.used_features.features.includes('waba_registered')">3. Подключение к WhatsApp Business API.</p>
+                            <p v-if="checkBusiCost && info.used_features && !info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании:</p>
                             
                             <p v-if="info.used_features && info.used_features.features.includes('waba_registered')">4. Подача заявки на получение авторизованного названия компании: </p>
                             <strong>Marketbot</strong>
@@ -585,6 +585,7 @@ export default {
             chechAmo: false, chechAmoSpan1: false,chechAmoSpan2: false,chechAmoSpan3: false,chechAmoSpan4: false,chechAmoSpan: false,
             checkMail: false, checkMailSpan: false,
             checkYear: true, checkOperator: false, checkGb: false, 
+            checkBusiCost: false, 
             firstBlockCount: 0,
             secondBlockCount: 0,
             thirdBlockCount: 0,
@@ -601,7 +602,9 @@ export default {
         clickBusinessApi(event){
             if(event.target.checked){
                 this.firstBlockCount += this.info.pricelist.waba_setup_fee
+                this.checkBusiCost = true
                 if(this.$refs.check.checked == true){
+                    
                     this.total += this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) 
                     this.total = parseInt(this.total.toFixed(0))
                 }
@@ -610,6 +613,7 @@ export default {
                 }
             }
             else{
+                this.checkBusiCost = false
                 this.firstBlockCount -= this.info.pricelist.waba_setup_fee
                 if(this.$refs.check.checked == true){
                     this.total -= this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) 
@@ -651,13 +655,16 @@ export default {
             this.firstBlockCount -= this.info.pricelist.program_cost.GS
             this.checkWhatsApp = !this.checkWhatsApp
             this.checkBusi = false
-            this.firstBlockCount -= this.info.pricelist.waba_setup_fee
-            if(this.$refs.check.checked == true){
-                this.total -= this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) 
-                this.total = parseInt(this.total.toFixed(0))
-            }
-            else{
-                this.total -= this.info.pricelist.waba_setup_fee
+            this.checkBusiCost = false
+            if(this.$refs.businessapi.checked){
+                this.firstBlockCount -= this.info.pricelist.waba_setup_fee
+                if(this.$refs.check.checked == true){
+                    this.total -= this.info.pricelist.waba_setup_fee * (1-this.info.pricelist.yearly_discount) 
+                    this.total = parseInt(this.total.toFixed(0))
+                }
+                else{
+                    this.total -= this.info.pricelist.waba_setup_fee
+                }
             }
             if(this.$refs.check.checked == true){
                 this.total -= this.info.pricelist.program_cost.GS / (1-this.info.pricelist.yearly_discount)
@@ -1107,6 +1114,7 @@ export default {
             .then(function(response){
                 self.info = response.data
                 if(response.data.used_features.features.includes('waba_registered')){
+                    self.checkBusiCost = true
                     self.total += response.data.pricelist.waba_setup_fee
                     self.firstBlockCount += response.data.pricelist.waba_setup_fee
                 }
