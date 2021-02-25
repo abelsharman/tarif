@@ -652,6 +652,7 @@ export default {
             this.checkWhatsApp = !this.checkWhatsApp
             this.checkBusi = false
             this.checkBusiCost = false
+            this.businessapiModel = false
             if(this.$refs.businessapi.checked){
                 this.firstBlockCount -= this.info.pricelist.waba_setup_fee
                 if(this.$refs.check.checked == true){
@@ -1019,7 +1020,7 @@ export default {
 
             if(this.info.used_features.features.includes('VK')){VK = 1}
             else{VK = this.checkVk ? 1 : 0}
-            console.log(this.businessapiModel)
+
             if(this.info.used_features.features.includes('waba_registered')){reg_waba = 1}
             else{reg_waba = this.businessapiModel ? 1 : 0}
 
