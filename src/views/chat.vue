@@ -216,10 +216,10 @@
                                 <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit;padding:0;">Абоненты</span>
                                 <img src="../assets/left_arrow.png" alt="left_arrow" @click="subPeer">
                                 <span id="chat_novye_span" style="color: rgb(100,100,100);background-color:inherit;padding:0;">{{ peers[peer] }}</span>
-                                <span id="chat_novye_span" v-if="peer == 0">{{ item.peers_stats.d }}</span>
-                                <span id="chat_novye_span" v-if="peer == 1">{{ item.peers_stats.w }}</span>
-                                <span id="chat_novye_span" v-if="peer == 2">{{ item.peers_stats.m }}</span>
-                                <span id="chat_novye_span" v-if="peer == 3">{{ item.peers_stats.t }}</span>
+                                <span id="chat_novye_span" v-if="item.peers_stats && peer == 0">{{ item.peers_stats.d }}</span>
+                                <span id="chat_novye_span" v-if="item.peers_stats && peer == 1">{{ item.peers_stats.w }}</span>
+                                <span id="chat_novye_span" v-if="item.peers_stats && peer == 2">{{ item.peers_stats.m }}</span>
+                                <span id="chat_novye_span" v-if="item.peers_stats && peer == 3">{{ item.peers_stats.t }}</span>
                                 <img src="../assets/right_arrow.png" alt="right_arrow" @click="addPeer">
                             </div>
                         </div>
@@ -250,7 +250,7 @@
 
 
                     <td class="chat_block_inner_fifth_column">
-                        <a href="https://marketbot.biz/bot/del/10151"><img src="../assets/close.png" alt="close"></a>
+                        <a :href="'https://marketbot.biz/bot/del/'+item.id"><img src="../assets/close.png" alt="close"></a>
                     </td>
                 </tr>
 

@@ -2,7 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import chat from '../views/chat.vue'
 import Balans from '../views/Balans.vue'
 import Tarif from '../views/Tarif.vue'
-import First from '../views/First.vue'
 
 const routes = [
   {
@@ -29,14 +28,6 @@ const routes = [
       title: 'Тарифы'
     }
   },
-  {
-    path: '/first',
-    name: 'First',
-    component: First,
-    meta: {
-      title: 'Главная страница'
-    }
-  }
 ]
 
 const router = createRouter({
