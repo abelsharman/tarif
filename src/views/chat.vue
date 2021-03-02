@@ -231,7 +231,7 @@
                         <div class="chat_block_inner_margin">
                             <p>{{ item.lead_count }} {{ numplid(item.lead_count) }}</p>
                             <p>{{ item.contact_count }} {{ numpcontact(item.contact_count) }}</p>
-                            <a href="https://marketbot.biz/lead/index/10150">Подробнее</a>
+                            <a :href="'https://marketbot.biz/lead/index/'+item.id">Подробнее</a>
                         </div>
                     </td>
 
