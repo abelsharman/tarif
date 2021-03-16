@@ -151,14 +151,14 @@
                             </div>
 
                             <div class="chat_block_id_3">
-                                <a :href="'https://marketbot.biz/chat_v2/?f=0&botid='+item.id" target=_blank>
+                                <a :href="'https://marketbot.biz/chat_v2/?f=0&botid='+item.id" target="_blank">
                                 <div class="chat_block_id_3_border">
                                     <img src="../assets/menu1.png" alt="chat">
                                     <p>ДИАЛОГИ NEW</p>
                                 </div>
                                 </a>
 
-                                 <a :href="'https://marketbot.biz/scripteditor/wizard/'+item.id" target=_blank>
+                                 <a :href="'https://marketbot.biz/scripteditor/wizard/'+item.id" target="_blank">
                                 <div class="chat_block_id_3_border">
                                     <img src="../assets/layers.png" alt="layers">
                                     <p>РЕДАКТОР СЦЕНАРИЯ</p>
@@ -167,7 +167,7 @@
 
                                 
                                 <div class="chat_block_id_3_border">
-                                    <a :href="'https://marketbot.biz/spam/tasks/'+item.id" target=_blank>
+                                    <a :href="'https://marketbot.biz/spam/tasks/'+item.id" target="_blank">
                                     <img src="../assets/menu3.png" alt="mail">
                                     <p>РАССЫЛКА</p>
                                     </a>
