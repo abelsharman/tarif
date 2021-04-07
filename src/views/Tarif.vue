@@ -408,7 +408,7 @@
                             <div @mouseover="this.checkMailSpan = true" @mouseleave="this.checkMailSpan = false">
                                 <span class="tarif_calculator_scroll_first_block_icons_span9" v-if="checkMailSpan && info.pricelist">{{ info.pricelist.mailing }}₽</span>
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-if="info.used_features && info.used_features.features.includes('bot')" src="../assets/mail2.png" alt="mail2">
-                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkMail }" v-if="info.used_feature && !info.used_features.features.includes('bot')" @click="closeMail"  src="../assets/mail2.png" alt="mail2">
+                                <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': !checkMail }" v-if="info.used_features && !info.used_features.features.includes('bot')" @click="closeMail" src="../assets/mail2.png" alt="mail2">
                                 <img class="tarif_calculator_scroll_first_block_greyicons" v-bind:class="{ 'tarif_calculator_scroll_first_block_greyicons_opacity': checkMail }" v-if="info.used_features && !info.used_features.features.includes('bot')" @click="clickMail" style="width: 85%;border:0;" src="../assets/mail3.png" alt="mail2">
                                 <p>Массовая рассылка</p>
                             </div>
@@ -954,6 +954,12 @@ export default {
         },
         clickWhatsAppDiv(event){
             this.checkBusi = !this.checkBusi
+            if(event.screenY < window.innerHeight / 2){
+                event.target.parentNode.childNodes[5].style.top = event.screenY - 20 + 'px'
+            }
+            else{
+                event.target.parentNode.childNodes[5].style.top = event.screenY - 270 + 'px'
+            }
             event.target.parentNode.childNodes[5].style.opacity = 1
             event.target.parentNode.childNodes[5].style.visibility = 'visible'
             setTimeout(function () {
@@ -962,7 +968,12 @@ export default {
             }, 5000);
         },
         clickDiv(event){
-            event.target.parentNode.childNodes[5].style.top = event.screenY + 'px'
+            if(event.screenY < window.innerHeight / 2){
+                event.target.parentNode.childNodes[5].style.top = event.screenY - 20 + 'px'
+            }
+            else{
+                event.target.parentNode.childNodes[5].style.top = event.screenY - 270 + 'px'
+            }
             event.target.parentNode.childNodes[5].style.opacity = 1
             event.target.parentNode.childNodes[5].style.visibility = 'visible'
             setTimeout(function () {
@@ -979,7 +990,12 @@ export default {
             }, 5000);
         },
         clickDivCrm(event){
-            event.target.parentNode.parentNode.childNodes[2].style.top = event.screenY + 'px'
+            if(event.screenY < window.innerHeight / 2){
+                event.target.parentNode.parentNode.childNodes[2].style.top = event.screenY - 20 + 'px'
+            }
+            else{
+                event.target.parentNode.parentNode.childNodes[2].style.top = event.screenY - 270 + 'px'
+            }
             event.target.parentNode.parentNode.childNodes[2].style.opacity = 1
             event.target.parentNode.parentNode.childNodes[2].style.visibility = 'visible'
             setTimeout(function () {
