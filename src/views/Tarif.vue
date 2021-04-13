@@ -3533,32 +3533,6 @@ export default {
     
         
     }
-    @media (max-width: 440px){
-        .block_for_phones{
-            display: block;
-            position: fixed;
-            background: linear-gradient(353deg, rgba(120,51,137,1) 0%, rgba(214,73,111,1) 100%);
-            width: calc(89%);
-            color: white;
-            top: 30%;   
-            font-size: 1.5em;
-            left: 3%;
-            padding: 15% 3% 18% 3%;
-            margin: 0;
-        }
-
-        .block_for_phones p{
-            margin: 0;
-        }
-        .chat_block_inner table{
-            min-width: 100%;
-            opacity: 0.3;
-        }
-        .left_block, .right_block{
-            opacity: 0.2;
-        }
-
-    }
     @media screen and (max-height: 750px){
     
     .tarif_calculator_result{
