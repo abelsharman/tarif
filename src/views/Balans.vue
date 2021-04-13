@@ -386,8 +386,8 @@
 
 
             <div class="right_balans_right_count">
-                <h4>Выставление счета для юридических лиц</h4>
-                <div class="right_balans_right_count_inner" v-if="billForm" @click="this.billForm = !this.billForm">
+                <h4>Выставление счета для юр. лиц</h4>
+                <div class="right_balans_right_count_inner">
                     <img src="../assets/menu_add.png" alt="add">
                     <p>Создать новый счет</p>
                 </div>
@@ -2937,6 +2937,7 @@ export default {
         
 
         .right_balans_right
+            background: #f6f8f9
             text-align: left
             width: 100vw
             display: inline-block
@@ -2976,6 +2977,49 @@ export default {
                         border-bottom: 1px solid #d6496f
             .table_odd_row_2
                 background-color: #fbfbfb
+
+
+        .right_balans_right_count
+            background: #f6f8f9
+            border-collapse: collapse
+            width: 100%
+            text-align: left
+            margin: 0%
+            padding-top: 3vh
+            border: 0px solid rgb(229, 230, 231)
+            border-top: 1px solid #ebebeb
+            background-color: rgb(248, 249, 250)
+            box-shadow: 0px 0px 0px 0px
+
+            h4
+                margin: 0
+                background-color: white
+                border-radius: 0px
+                font-weight: 500
+                padding: 20px 6vw
+                border-top: 1px solid #ebebeb
+                color: #222
+                font-size: 4.117vw //14px
+                text-align: left
+
+            .right_balans_right_count_inner
+                width: 100%
+                padding: 10px 0
+                text-align: center
+
+                img
+                    display: inline-block
+                    vertical-align: middle
+                    margin-right: 8px
+                    width: 4vw
+
+                p
+                    display: inline-block
+                    vertical-align: middle
+                    font-size: 4.117vw //14px
+                    font-weight: regular
+                    color: #aaa
+                    letter-spacing: 5
 
 
 
