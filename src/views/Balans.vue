@@ -340,7 +340,7 @@
                         <img src="../assets/logo_whatsapp.png" alt="">
                         <span>+{{ item.tel }}</span>
 
-                        <div v-show="addBalans">
+                        <div v-show="addBalans" v-bind:id="'b'+index">
                             <input type="text" required>
                             <input type="hidden" v-bind:value="item.id">
                             <button type="submit" @click="submitAmountToFill"></button>
@@ -353,7 +353,7 @@
 
                         <p v-if="item.waba_balance_usd > 0">Баланс WABA: ${{ item.waba_balance_usd }}</p>
 
-                        <p class="table_odd_row_1_line_2_btn" @click="addBalansForm">Пополнить</p>
+                        <p class="table_odd_row_1_line_2_btn" @click="addBalansForm" v-show="btn" v-bind:id="index + 1000">Пополнить</p>
                     </div>
                 </div>
 
@@ -363,7 +363,7 @@
                         <img src="../assets/logo_whatsapp.png" alt="">
                         <span>+{{ item.tel }}</span>
 
-                        <div v-show="addBalans">
+                        <div v-show="addBalans" v-bind:id="'b'+index">
                             <input type="text" required>
                             <input type="hidden" v-bind:value="item.id">
                             <button type="submit" @click="submitAmountToFill"></button>
@@ -376,7 +376,7 @@
 
                         <p v-if="item.waba_balance_usd > 0">Баланс WABA: ${{ item.waba_balance_usd }}</p>
 
-                        <p class="table_odd_row_1_line_2_btn" @click="addBalansForm">Пополнить</p>
+                        <p class="table_odd_row_1_line_2_btn" @click="addBalansForm" v-show="btn" v-bind:id="index + 1000">Пополнить</p>
                     </div>
                 </div>
             </div>
@@ -417,7 +417,8 @@ export default {
             carta_info: false,
             addBalans: false,
             billForm: true,
-            user_token: this.$cookie.getCookie('user_token')
+            user_token: this.$cookie.getCookie('user_token'),
+            btn: true,
         }
     },
     methods: {
@@ -445,15 +446,17 @@ export default {
             this.$refs.submit_button.style.display = 'inline-block'
         }, 
         addBalansForm(event){
-            event.target.parentNode.childNodes[0].style.display = 'block'
-            event.target.style.display = 'none'
+            let a = "b" + (event.target.id - 1000).toString()
+            document.querySelector("#"+a+"").style.display = "inline-block"
+            event.target.style.display = "none"
+            
         },
         closeBalansForm(event){
             event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
             event.target.parentNode.style.display = 'none'
         },
         submitAmountToFill(event){
-            event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
+            //event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
             event.target.parentNode.style.display = 'none'
             
 
@@ -2950,6 +2953,8 @@ export default {
             .table_odd_row_1
                 padding: 2.4vh 0
                 width: 100vw
+                
+
                 .table_odd_row_1_line_1
                     width: 100vw
                     img
@@ -2960,6 +2965,34 @@ export default {
                         color: #370954
                         font-size: 4.117vw //14px
                         font-weight: 500
+                    div
+                        display: inline-block
+                        width: 40vw
+                        float: right
+                        input[type="text"]
+                            width: 20vw
+                            position: relative
+                            top: -5px
+                            display: inline-block
+                            border: 1px solid lightgrey
+                            text-align: center
+                            font-size: 3.823vw //13px
+                            height: 7vw
+                            outline: none
+                            padding: 0px 5%
+                            border-radius: 5px
+                            margin: 0px 5px 0px 5%
+
+                        button
+                            width: 5vw
+                            display: inline-block
+                            height: 5vw
+                            background-color: inherit
+                            vertical-align: top
+                            background-image: url('../assets/check.png')
+                            background-position: center
+                            background-size: 100% 100%
+                            border: 0px
                 .table_odd_row_1_line_2
                     width: 96vw
                     p
@@ -2977,6 +3010,7 @@ export default {
                         border-bottom: 1px solid #d6496f
             .table_odd_row_2
                 background-color: #fbfbfb
+            
 
 
         .right_balans_right_count
@@ -3020,6 +3054,7 @@ export default {
                     font-weight: regular
                     color: #aaa
                     letter-spacing: 5
+            
 
 
 
