@@ -457,7 +457,7 @@ export default {
         },
         submitAmountToFill(event){
             //event.target.parentNode.parentNode.childNodes[1].style.display = 'block'
-            event.target.parentNode.style.display = 'none'
+            //event.target.parentNode.style.display = 'none'
             
 
             const a = event.target.parentNode.childNodes[1].value
