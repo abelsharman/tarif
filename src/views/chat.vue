@@ -423,8 +423,10 @@
                             </div>
                           
                             <div class="chat_block_inner_second_column_2">
-                                <p>{{ item.lead_count }} {{ numplid(item.lead_count) }}</p>
-                                <p>{{ item.contact_count }} {{ numpcontact(item.contact_count) }}</p>
+                                <p id="chat_novye_span">{{ item.lead_count }}</p>
+                                <p> {{ numplid(item.lead_count) }}</p>
+                                <p style="margin-top: 2vh" id="chat_novye_span">{{ item.contact_count }}</p>
+                                <p> {{ numpcontact(item.contact_count) }}</p>
                                 <a :href="'https://marketbot.biz/lead/index/'+item.id">Подробнее</a>
                             </div>  
                     </div>
@@ -433,19 +435,21 @@
 
 
                     <div class="chat_block_inner_fourth_column">
+                          <div class="chat_block_inner_fourth_column_1">
                             <p v-if="item.tariff.paid_until == 0 && item.tariff.trial_until >= unixtime">Бесплатный период действует еще <span style="color:#1b680f;font-weight:600;">{{ Math.round((item.tariff.trial_until - unixtime)/24/60/60) }}</span> {{ numpf(Math.round(item.tariff.trial_until - unixtime)/24/60/60) }} </p>
                             <p v-else-if="item.tariff.paid_until > item.tariff.trial_until && item.tariff.paid_until > unixtime">Бот оплачен еще  <span style="color:#1b680f;font-weight:600;">{{ Math.round((item.tariff.paid_until - unixtime)/24/60/60) }}</span> {{ numpf(Math.round(item.tariff.paid_until - unixtime)/24/60/60) }} </p>
                             <p v-else-if="item.tariff.trial_until < unixtime"><span class="color:#d92253;font-weight:600;">Бесплатный период закончился</span></p>
                             <p v-else-if="item.tariff.paid_until < unixtime"><span class="color:#d92253;font-weight:600;">Оплаченный период закончился</span></p>
-                            <a :href="'https://marketbot.biz/bot/openownerchat/'+item.id">Чат с владельцем</a><br>
+                            <a :href="'https://marketbot.biz/bot/openownerchat/'+item.id">Чат с владельцем</a>
                             <router-link :to="{ name: 'Tarif', params: { bot: item.id }}">Настроить тариф</router-link>
+                          </div>
+                          <div class="chat_block_inner_fourth_column_2">
+                            <a :href="'https://marketbot.biz/bot/del/'+item.id"><img src="../assets/close.png" alt="close"></a>
+                            <p>Удалить чат-бота</p>
+                          </div>
                     </div>
 
 
-
-                    <div class="chat_block_inner_fifth_column">
-                        <a :href="'https://marketbot.biz/bot/del/'+item.id"><img src="../assets/close.png" alt="close"></a>
-                    </div>
                 </div>
         </div>
 
@@ -1965,7 +1969,7 @@ export default {
                 vertical-align: middle
             h1
                 display: inline-block
-                font-weight: medium
+                font-weight: 500
                 width: 76vw
                 margin-left: 4vw
                 padding-top: 5px
@@ -2005,18 +2009,21 @@ export default {
                 position: relative
                 border: 0px solid 
                 border-radius: 0px
-                width: 100vw
+                width: calc(100vw - 6px)
                 border-left: 6px solid #dae1e5 
+                border-bottom: 1px dashed rgb(207, 219, 224)
                 padding-bottom: 00px
                 margin-top: 0px
                 overflow: hidden
                 overflow-x: hidden 
-                max-height: calc(100vh - 150px)
+                max-height: max-content
                 height: max-content
-                box-shadow: 0px 0px 0px 0px 
+                box-shadow: 0px 0px 0px 0px
+                background-color: #f6f6f6 
                 transition: 0.5s all ease
                 &:hover
                     border-left: 6px solid #c44475
+                    background-color: white
                 .chat_block_inner_first_column
                     width: calc(91vw - 6px)
                     margin-left: 5vw
@@ -2029,17 +2036,17 @@ export default {
                         width: 60%
                         margin: 0
                         .chat_block_id_1_grey
-                            font-weight: medium
+                            font-weight: 500
                             font-size: 3.823vw //13px
                         .chat_block_id_1_big
-                            font-weight: medium
+                            font-weight: 500
                             font-size: 4.70vw //16px
                         .chat_block_id_1_green, .chat_block_id_1_red
-                            font-weight: medium
+                            font-weight: 500
                             font-size: 3.823vw //13px
                             letter-spacing: -0.5px
                         .chat_block_id_1_darkgrey
-                            font-weight: medium
+                            font-weight: 500
                             font-size: 3.823vw //13px
                         .chat_block_id_1_grey_date
                             font-size: 3.5294vw //12px
@@ -2052,7 +2059,7 @@ export default {
                             p
                                 margin-top: 0.8vh
                                 font-size: 2.94vw //10px
-                                font-weight: medium
+                                font-weight: 500
                             img
                                 width: 8%
                                 margin-top: 1vh
@@ -2064,7 +2071,7 @@ export default {
                         text-align: right
                         margin: 0
                         strong 
-                            font-weight: medium
+                            font-weight: 500
                             font-size: 3.823vw //13px
                             line-height: 7.35vw //25px
                 .chat_block_inner_second_column
@@ -2075,20 +2082,84 @@ export default {
                     border-bottom: 1px solid #d9d9d9
                     .chat_block_inner_second_column_1
                         display: inline-block
-                        width: 60%
+                        width: 64%
                         margin: 0
+                        div
+                          margin-bottom: 7px
+                        img
+                          width: 6.5vw
+                        strong 
+                          font-size: 4.11vw //14px
+                        span
+                          font-size: 3.82vw //13px
+                        .chat_green_point, .chat_red_point
+                          width: 7px
+                          height: 7px
+                          margin-top: 3px
+
 
                     .chat_block_inner_second_column_2
                         display: inline-block
-                        width: 40%
+                        width: 36%
                         margin: 0
                         text-align: right
+                        vertical-align: top
+                        a
+                          color: #c34688
+                          font-size: 3.8235vw //13px
+                          font-weight: 500
+                          display: block
+                          margin-top: 1vh
+                        p
+                          color: #370954
+                          font-size: 3.8235vw //13px
+                          font-weight: 500
+                          margin: 0
+                        #chat_novye_span
+                          width: max-content
+                          color: #370954
+                          margin: 0
+                          font-size: 3.8235vw //13px
+                          font-weight: 500
+                          padding: 2px 3px 
+                        
                 
+
+
+
+
                 .chat_block_inner_fourth_column
                     width: calc(91vw - 6px)
-                    padding-left: 5vw
-                .chat_block_inner_fifth_column
-                    width: calc(91vw - 6px)
-                    padding-left: 5vw
+                    margin-left: 5vw
+                    padding-top: 4vh
+                    padding-bottom: 4vh
+                    .chat_block_inner_fourth_column_1
+                      display: inline-block
+                      width: 61%
+                      vertical-align: top
+                      p
+                        color: #370954
+                        font-weight: 500
+                        margin: 0
+                        line-height: 5.8823vw //20px
+                        font-size: 3.8235vw //13px
+                      a
+                        color: #c34688
+                        font-weight: 500
+                        display: block
+                        margin: 1vh 0 0 0 
+                        font-size: 3.8235vw //13px
+                    .chat_block_inner_fourth_column_2
+                      display: inline-block
+                      width: 39%
+                      padding-top: 1vh
+                      img
+                        width: 20%
+                        margin-left: 40%
+                      p
+                        color: #777
+                        font-weight: 500
+                        font-size: 3.8235vw //13px
+                        margin: 1vh 0 0 0
 
 </style>
