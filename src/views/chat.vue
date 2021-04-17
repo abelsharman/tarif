@@ -2089,7 +2089,7 @@ export default {
                         img
                           width: 6.5vw
                         strong 
-                          font-size: 4.11vw //14px
+                          font-size: 4.01vw //14px
                         span
                           font-size: 3.82vw //13px
                         .chat_green_point, .chat_red_point
