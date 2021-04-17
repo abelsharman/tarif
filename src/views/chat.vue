@@ -244,7 +244,7 @@
                             <p v-else-if="item.tariff.paid_until > item.tariff.trial_until && item.tariff.paid_until > unixtime">Бот оплачен еще  <span style="color:#1b680f;font-weight:600;">{{ Math.round((item.tariff.paid_until - unixtime)/24/60/60) }}</span> {{ numpf(Math.round(item.tariff.paid_until - unixtime)/24/60/60) }} </p>
                             <p v-else-if="item.tariff.trial_until < unixtime"><span class="color:#d92253;font-weight:600;">Бесплатный период закончился</span></p>
                             <p v-else-if="item.tariff.paid_until < unixtime"><span class="color:#d92253;font-weight:600;">Оплаченный период закончился</span></p>
-                            <a :href="'https://marketbot.biz/bot/openownerchat/'+item.id">Чат с владельцем</a><br>
+                            <a :href="'https://marketbot.biz/bot/openownerchat/'+item.id" target="_blank">Чат с владельцем</a><br>
                             <router-link :to="{ name: 'Tarif', params: { bot: item.id }}">Настроить тариф</router-link>
                         </div>
                     </td>
@@ -440,7 +440,7 @@
                             <p v-else-if="item.tariff.paid_until > item.tariff.trial_until && item.tariff.paid_until > unixtime">Бот оплачен еще  <span style="color:#1b680f;font-weight:600;">{{ Math.round((item.tariff.paid_until - unixtime)/24/60/60) }}</span> {{ numpf(Math.round(item.tariff.paid_until - unixtime)/24/60/60) }} </p>
                             <p v-else-if="item.tariff.trial_until < unixtime"><span class="color:#d92253;font-weight:600;">Бесплатный период закончился</span></p>
                             <p v-else-if="item.tariff.paid_until < unixtime"><span class="color:#d92253;font-weight:600;">Оплаченный период закончился</span></p>
-                            <a :href="'https://marketbot.biz/bot/openownerchat/'+item.id">Чат с владельцем</a>
+                            <a :href="'https://marketbot.biz/bot/openownerchat/'+item.id" target="_blank">Чат с владельцем</a>
                             <router-link :to="{ name: 'Tarif', params: { bot: item.id }}">Настроить тариф</router-link>
                           </div>
                           <div class="chat_block_inner_fourth_column_2">
@@ -555,7 +555,7 @@ export default {
     created() {
         
         const axios = require('axios');
-        
+        console.log(document.cookie="user_token=9c329f7404f8d74f0cf841e35b7e4680;")
         let self = this
         axios.get('https://marketbot.biz/bot/api_botlist?user_token='+this.user_token)
             .then(function(response){
