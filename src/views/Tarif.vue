@@ -547,7 +547,7 @@
     </div>
 
     <div class="tarif_mobile">
-        <header>
+        <header ref="header">
             <router-link to="/"><img src="../assets/back.png" alt=""></router-link>
             <h1>Тарифы</h1>
             <div class="header_burger" @click="showBurger">
@@ -555,11 +555,15 @@
             </div>
 
             <div class="header_nav" ref="nav">
-                <a href="https://marketbot.biz/user/home" style="text-decoration:none">{{ infoUser.username }}</a>
+                <!--<a href="https://marketbot.biz/user/home" style="text-decoration:none">{{ infoUser.username }}</a>-->
                 <a href="https://marketbot.biz/page/show/main">Главная</a>
                 <router-link to="/">Боты</router-link>
                 <a href="https://marketbot.biz/bot/create">Создать бота</a>
                 <a href="https://marketbot.biz/integrator/my_users" v-if="infoUser.is_integrator">Клиенты</a>
+
+                <p>Ваш баланс: <span>{{ convertBalance2 }} ₽</span></p>
+                <router-link to="/balance">Пополнить баланс</router-link>
+
             </div>
         </header>
         <h1 class="tarif_mobile_h1">Настройте тариф</h1>
@@ -1027,7 +1031,7 @@
 
 
                     <p class="tarif_calculator_result_end">Если на вашем балансе недостаточно средств для подключения набора функций к модулю, деньги спишутся с подключенной карты. Подключить карту можно в <router-link to="/balance">Личном кабинете</router-link></p>
-                </div>
+        </div>
 
 
 
@@ -4706,6 +4710,10 @@ export default {
         display: block
         header
             height: 50px
+            width: 100vw
+            top: 0px
+            z-index: 4
+            position: fixed
             background: linear-gradient(90deg, #6831a1 -20%, rgba(214, 73, 111, 1) 100%)
             img
                 display: inline-block
@@ -4727,22 +4735,30 @@ export default {
                 display: inline
                 position: fixed
                 left: 100vw
-                background-color: black
+
+                background: linear-gradient(90deg, #6831a1 -20%, rgba(214, 73, 111, 1) 100%)
                 top: 50px
                 transition: 0.3s all ease
-                width: 100vw
+                width: 94vw
                 z-index: 2
-                padding: 15px 0
+                padding: 4vh 6vw 4vh 0
+                text-align: right
                 a
-                    margin-right: 0px
-                    padding: 10px 0
+                    padding: 1vh 0
                     display: block
                     width: 100%
-                    font-size: 18px
-                    text-align: center
-                    font-weight: 400
+                    font-size: 4.70vw //16px
+                    font-weight: 500
                     color: white
-                    text-decoration: none
+                p
+                  color: white
+                  margin-top: 4vh
+                  margin-bottom: 0.5vh
+                  font-size: 4.70vw //16px
+                  font-weight: 500
+                  span
+                    font-size: 7.647vw //26px
+                    font-weight: 600
 
 
 
@@ -4751,7 +4767,7 @@ export default {
           font-weight: 600
           font-size: 4.117vw //14px
           text-align: left
-          margin: 4vw 0 4vw 6vw
+          margin: calc(4vw + 50px) 0 4vw 6vw
 
         .tarif_calculator_scroll
           box-shadow: 0 5px 10px -1px rgb(239, 240, 245) inset
@@ -5063,6 +5079,14 @@ export default {
           width: 100vw
           display: inline-block
           margin: 0
+          li
+            font-weight: 400
+            margin-top: 4px
+            font-size: 4.11vw //14px
+            color: #333
+            list-style: none
+            text-align: left
+            margin-left: 15%
 
         .tarif_calculator_result_itogo
           margin-top: 10vw
@@ -5112,6 +5136,7 @@ export default {
           width: 80%
           margin-left: 2%
           margin-top: 7%
+          margin-bottom: 2%
           transition: 0.8s all ease
           cursor: pointer
         .tarif_calculator_result_list
@@ -5149,16 +5174,51 @@ export default {
             border-radius: 50px
         .tarif_calculator_result_end
           width: 80%
-          margin: 5% 10% 0 10%
+          margin: 8% 10% 0 10%
           font-size: 3.82vw //13px
           line-height: 5.88vw //20px
           color: #222
           font-weight: 400
+          padding-bottom: 10vw
           text-align: left
 
           a
             display: inline-block
             color: rgb(207, 30, 65)
+        .tarif_calculator_result_grey
+          width: 85%
+          margin: 0px 7.5% 0px 7.5%
+          background-color: rgb(227, 228, 229)
+          text-align: center
+          padding: 8px 0
+          font-size: 4.11vw //14px
+          margin-top: 40px
+          font-weight: 500
+
+          p
+            margin: 5px 0
+        .tarif_calculator_result_red
+          width: 85%
+          margin: 0px 7.5% 0px 7.5%
+          background-color: rgba(214, 73, 111, 1)
+          text-align: center
+          padding: 0
+          color: white
+          font-size: 4.11vw //14px
+          line-height: 5,882vw //20px
+          margin-top: 40px
+
+          .tarif_calculator_result_red1
+            width: 10%
+            display: inline-block
+
+          .tarif_calculator_result_red2
+            display: inline-block
+            width: 85%
+            padding: 15px 0
+
+            p
+              margin: 0
 
         
 </style>

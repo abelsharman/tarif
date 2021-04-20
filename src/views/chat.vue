@@ -272,11 +272,15 @@
             </div>
 
             <div class="header_nav" ref="nav">
-                <a href="https://marketbot.biz/user/home" style="text-decoration:none">{{ infoUser.username }}</a>
+                <!--<a href="https://marketbot.biz/user/home" style="text-decoration:none">{{ infoUser.username }}</a>-->
                 <a href="https://marketbot.biz/page/show/main">Главная</a>
                 <router-link to="/">Боты</router-link>
                 <a href="https://marketbot.biz/bot/create">Создать бота</a>
                 <a href="https://marketbot.biz/integrator/my_users" v-if="infoUser.is_integrator">Клиенты</a>
+
+                <p>Ваш баланс: <span>{{ convertBalance }} ₽</span></p>
+                <router-link to="/balance">Пополнить баланс</router-link>
+
             </div>
         </header>
 
@@ -1962,6 +1966,10 @@ export default {
         display: block
         header
             height: 50px
+            width: 100vw
+            top: 0px
+            z-index: 4
+            position: fixed
             background: linear-gradient(90deg, #6831a1 -20%, rgba(214, 73, 111, 1) 100%)
             img
                 display: inline-block
@@ -1969,9 +1977,8 @@ export default {
                 vertical-align: middle
             h1
                 display: inline-block
-                font-weight: 500
-                width: 76vw
-                margin-left: 4vw
+                font-weight: medium
+                width: 80vw
                 padding-top: 5px
                 font-size: 3.823vw //13px
                 color: white
@@ -1984,27 +1991,38 @@ export default {
                 display: inline
                 position: fixed
                 left: 100vw
-                background-color: black
+
+                background: linear-gradient(90deg, #6831a1 -20%, rgba(214, 73, 111, 1) 100%)
                 top: 50px
                 transition: 0.3s all ease
-                width: 100vw
+                width: 94vw
                 z-index: 2
-                padding: 15px 0
+                padding: 4vh 6vw 4vh 0
+                text-align: right
                 a
-                    margin-right: 0px
-                    padding: 10px 0
+                    padding: 1vh 0
                     display: block
                     width: 100%
-                    font-size: 18px
-                    text-align: center
-                    font-weight: 400
+                    font-size: 4.70vw //16px
+                    font-weight: 500
                     color: white
-                    text-decoration: none
+                p
+                  color: white
+                  margin-top: 4vh
+                  margin-bottom: 0.5vh
+                  font-size: 4.70vw //16px
+                  font-weight: 500
+                  span
+                    font-size: 7.647vw //26px
+                    font-weight: 600
+
+
         .chat_block
             margin: 0
             text-align: left
             width: 100%
             padding: 0px 0%
+            margin-top: 50px
             .chat_block_inner
                 position: relative
                 border: 0px solid 

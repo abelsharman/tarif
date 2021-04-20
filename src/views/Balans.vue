@@ -302,12 +302,16 @@
                 <img src="../assets/menu.png" alt="burder_1">
             </div>
 
-            <div class="header_nav" ref="nav">
-                <a href="https://marketbot.biz/user/home" style="text-decoration:none">{{ infoUser.username }}</a>
+           <div class="header_nav" ref="nav">
+                <!--<a href="https://marketbot.biz/user/home" style="text-decoration:none">{{ infoUser.username }}</a>-->
                 <a href="https://marketbot.biz/page/show/main">Главная</a>
                 <router-link to="/">Боты</router-link>
                 <a href="https://marketbot.biz/bot/create">Создать бота</a>
                 <a href="https://marketbot.biz/integrator/my_users" v-if="infoUser.is_integrator">Клиенты</a>
+
+                <p>Ваш баланс: <span>{{ convertBalance2 }} ₽</span></p>
+                <router-link to="/balance">Пополнить баланс</router-link>
+
             </div>
         </header>
 
@@ -2809,6 +2813,10 @@ export default {
         display: block
         header
             height: 50px
+            width: 100vw
+            top: 0px
+            z-index: 4
+            position: fixed
             background: linear-gradient(90deg, #6831a1 -20%, rgba(214, 73, 111, 1) 100%)
             img
                 display: inline-block
@@ -2830,28 +2838,38 @@ export default {
                 display: inline
                 position: fixed
                 left: 100vw
-                background-color: black
+
+                background: linear-gradient(90deg, #6831a1 -20%, rgba(214, 73, 111, 1) 100%)
                 top: 50px
                 transition: 0.3s all ease
-                width: 100vw
+                width: 94vw
                 z-index: 2
-                padding: 15px 0
+                padding: 4vh 6vw 4vh 0
+                text-align: right
                 a
-                    margin-right: 0px
-                    padding: 10px 0
+                    padding: 1vh 0
                     display: block
                     width: 100%
-                    font-size: 18px
-                    text-align: center
-                    font-weight: 400
+                    font-size: 4.70vw //16px
+                    font-weight: 500
                     color: white
-                    text-decoration: none
+                p
+                  color: white
+                  margin-top: 4vh
+                  margin-bottom: 0.5vh
+                  font-size: 4.70vw //16px
+                  font-weight: 500
+                  span
+                    font-size: 7.647vw //26px
+                    font-weight: 600
+
+
 
         .right_balans_left
             width: 100vw
             background-color: rgb(248, 249, 250)
             text-align: right
-            margin: 0
+            margin: 50px 0 0 0 
             box-shadow: 0px 0px 0px 0px 
             border: 0px
 
