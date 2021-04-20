@@ -630,8 +630,8 @@
                            
                         </div>
 
-                        <div>
-                            <label class="switch" v-if="checkBusi &&info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')" style="margin-bottom: 20px;">
+                        <div class="tarif_calculator_scroll_first_block_cost_business">
+                            <label class="switch" v-if="checkBusi &&info.used_features && info.used_features.features && !info.used_features.features.includes('waba_registered')" style="margin-bottom: 0px;">
                                 <input @click="clickBusinessApi" type="checkbox" ref="businessapi" v-model="businessapiModel">
                                 <span class="slider round"></span>
                                 <img class="img1" src="../assets/close2.png" alt="">
@@ -640,7 +640,7 @@
 
 
 
-                            <span v-if="checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
+                            <span class="tarif_calculator_scroll_first_block_cost_business_span" v-if="checkBusi && info.used_features && !info.used_features.features.includes('waba_registered')">Подключение вашего номера к WhatsApp Business API</span>
 
                             <div class="tarif_calculator_scroll_first_block_icons_div">
                                 <p>Функция используется и ее нельзя выключить, сначала перестаньте использовать функцию.</p>
@@ -4816,6 +4816,41 @@ export default {
             margin: 0 4vw
             padding: 0
             border: 0px
+
+            .tarif_calculator_scroll_first_block_cost_business
+              margin-top: 4vh
+              text-align: left
+              padding-left: 2vw
+              .tarif_calculator_scroll_first_block_cost_business_span
+                font-size: 3.52vw //11px
+                line-height: 5.994vw //18px
+                margin-left: -2vw
+            .switch
+              position: relative
+              left: -2vw
+              top: -0.1vh
+              img
+                position: relative
+                width: 8px
+                left: 24px
+                top: 0px
+
+              .img2
+                left: -7px
+
+            input:checked + .slider:before
+              -webkit-transform: translateX(24px)
+              -ms-transform: translateX(24px)
+              transform: translateX(24px)
+
+            .slider.round
+              border-radius: 34px
+
+              &:before
+                border-radius: 50%
+
+
+
           .tarif_calculator_scroll_first_block_icons .tarif_calculator_scroll_first_block_icons_plus_minus
             border: 1px solid rgb(140, 40, 110)
             border-radius: 35px
