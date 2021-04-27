@@ -266,7 +266,7 @@
 
     <div class="chat_mobile">
         <header>
-            <h1>Ваш чат-боты</h1>
+            <h1>Ваши чат-боты</h1>
             <div class="header_burger" @click="showBurger">
                 <img src="../assets/menu.png" alt="burder_1">
             </div>
@@ -305,12 +305,11 @@
                                 </div>
                                 </a>
 
-                                 <a :href="'https://marketbot.biz/scripteditor/wizard/'+item.id" target="_blank">
+                                 <!--<a :href="'https://marketbot.biz/scripteditor/wizard/'+item.id" target="_blank">-->
                                 <div class="chat_block_id_3_border">
                                     <img src="../assets/layers.png" alt="layers">
                                     <p>РЕДАКТОР СЦЕНАРИЯ</p>
                                 </div>
-                                </a>
 
                                 
                                 <div class="chat_block_id_3_border">
@@ -323,9 +322,8 @@
 
                             <div class="chat_block_id_2">
                                 <div>
-                                    <a :href="'https://marketbot.biz/bchannels/index/'+ item.id">
+                                    <!--<a :href="'https://marketbot.biz/bchannels/index/'+ item.id">-->
                                     <strong>Каналы</strong>
-                                    </a>
                                  </div>
 
                                 <div>
